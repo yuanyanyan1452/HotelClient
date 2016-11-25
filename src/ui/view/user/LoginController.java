@@ -14,54 +14,62 @@ import ui.view.Main;
 public class LoginController implements Initializable {
 	@FXML
 	private Label loginLabel;
-	
+
 	@FXML
 	private Label usernameLabel;
-	
+
 	@FXML
 	private Label passwordLabel;
-	
+
 	@FXML
 	private TextField usernameTextField;
-	
+
 	@FXML
 	private PasswordField passwordField;
-	
+
 	@FXML
 	private Button loginButton;
-	
+
 	@FXML
 	private Button registButton;
-	
-	
+
 	@FXML
-	public void gotoRegist(){
+	public void gotoClientOverview() {
+		// TODO 登录验证
+		main.gotoClientOverview();
+	}
+
+	@FXML
+	public void gotoRegist() {
 		main.gotoRegist();
 	}
+
 	// Reference to the main application.
 	private Main main;
-	 /**
-     * The constructor.
-     * The constructor is called before the initialize() method.
-     */
-	public LoginController(){
-		
-	}
+
 	/**
-     * Initializes the controller class. This method is automatically called
-     * after the fxml file has been loaded.
-     */
-	@FXML
-	private void initialize(){
-		
+	 * The constructor. The constructor is called before the initialize()
+	 * method.
+	 */
+	public LoginController() {
+
 	}
-	
-	public void setMain(Main main){
+
+	/**
+	 * Initializes the controller class. This method is automatically called
+	 * after the fxml file has been loaded.
+	 */
+	@FXML
+	private void initialize() {
+
+	}
+
+	public void setMain(Main main) {
 		this.main = main;
 	}
+
 	@Override
 	public void initialize(URL location, ResourceBundle resources) {
-		// TODO 自动生成的方法存根
-		
+
 	}
 }

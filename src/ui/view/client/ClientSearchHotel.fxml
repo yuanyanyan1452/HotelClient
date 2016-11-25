@@ -6,7 +6,7 @@
 <?import javafx.scene.layout.*?>
 <?import javafx.scene.layout.AnchorPane?>
 
-<AnchorPane prefHeight="600.0" prefWidth="750.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1">
+<AnchorPane prefHeight="600.0" prefWidth="750.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="ui.view.client.ClientSearchHotelController">
    <children>
       <SplitPane dividerPositions="0.39297658862876256" orientation="VERTICAL" prefHeight="600.0" prefWidth="750.0">
         <items>
@@ -20,7 +20,7 @@
                                  <items>
                                     <AnchorPane prefHeight="54.0" prefWidth="360.0">
                                        <children>
-                                          <Label layoutX="67.0" layoutY="20.0" text="所在地：" />
+                                          <Label layoutX="111.0" layoutY="20.0" text="所在地：" />
                                           <SplitMenuButton alignment="CENTER" layoutX="193.0" layoutY="16.0" mnemonicParsing="false" prefHeight="23.0" prefWidth="94.0" text="南京">
                                             <items>
                                               <MenuItem mnemonicParsing="false" text="嘉兴" />
@@ -28,11 +28,12 @@
                                                 <MenuItem mnemonicParsing="false" text="上海" />
                                             </items>
                                           </SplitMenuButton>
-                                          <ImageView fitHeight="36.0" fitWidth="35.0" layoutX="25.0" layoutY="9.0">
+                                          <ImageView fitHeight="36.0" fitWidth="35.0" layoutX="67.0" layoutY="9.0">
                                              <image>
-                                                <Image url="@../所在地%20.png" />
+                                                <Image url="@../../../../resources/所在地%20.png" />
                                              </image>
                                           </ImageView>
+                                          <Button layoutX="4.0" layoutY="5.0" mnemonicParsing="false" onAction="#back" prefHeight="23.0" prefWidth="65.0" text="返回" />
                                        </children>
                                     </AnchorPane>
                                  </items>
@@ -47,7 +48,7 @@
                                                 <TextField layoutX="151.0" layoutY="60.0" />
                                                 <ImageView fitHeight="36.0" fitWidth="35.0" layoutX="26.0" layoutY="53.0">
                                                    <image>
-                                                      <Image url="@../酒店名称.png" />
+                                                      <Image url="@../../../../resources/酒店名称.png" />
                                                    </image>
                                                 </ImageView>
                                              </children>
@@ -67,7 +68,7 @@
                                                 </SplitMenuButton>
                                                 <ImageView fitHeight="36.0" fitWidth="35.0" layoutX="27.0" layoutY="53.0">
                                                    <image>
-                                                      <Image url="@../近商圈.png" />
+                                                      <Image url="@../../../../resources/近商圈.png" />
                                                    </image>
                                                 </ImageView>
                                              </children>
@@ -87,7 +88,7 @@
                                                 </SplitMenuButton>
                                                 <ImageView fitHeight="45.0" fitWidth="42.0" layoutX="22.0" layoutY="50.0">
                                                    <image>
-                                                      <Image url="@../房型.png" />
+                                                      <Image url="@../../../../resources/房型.png" />
                                                    </image>
                                                 </ImageView>
                                              </children>
@@ -107,7 +108,7 @@
                                                 </SplitMenuButton>
                                                 <ImageView fitHeight="36.0" fitWidth="35.0" layoutX="29.0" layoutY="52.0">
                                                    <image>
-                                                      <Image url="@../星级.png" />
+                                                      <Image url="@../../../../resources/星级.png" />
                                                    </image>
                                                 </ImageView>
                                              </children>
@@ -134,7 +135,7 @@
                                                 </SplitMenuButton>
                                                 <ImageView fitHeight="36.0" fitWidth="35.0" layoutX="89.0" layoutY="10.0">
                                                    <image>
-                                                      <Image url="@../评分.png" />
+                                                      <Image url="@../../../../resources/评分.png" />
                                                    </image>
                                                 </ImageView>
                                              </children>
@@ -151,7 +152,7 @@
                                  <graphic>
                                     <ImageView fitHeight="200.0" fitWidth="200.0">
                                        <image>
-                                          <Image url="@../搜索.png" />
+                                          <Image url="@../../../../resources/搜索.png" />
                                        </image>
                                     </ImageView>
                                  </graphic>
