@@ -6,22 +6,28 @@
 <?import javafx.scene.layout.*?>
 <?import javafx.scene.layout.AnchorPane?>
 
-
-<AnchorPane prefHeight="600.0" prefWidth="750.0" xmlns:fx="http://javafx.com/fxml/1" xmlns="http://javafx.com/javafx/8">
+<AnchorPane prefHeight="600.0" prefWidth="750.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="ui.view.client.ClientBrowseHotelController">
    <children>
-      <TableView layoutY="34.0" prefHeight="566.0" prefWidth="750.0">
-         <columns>
-            <TableColumn prefWidth="107.0" text="酒店名称" />
-            <TableColumn minWidth="0.0" prefWidth="140.0" text="所属商圈" />
-            <TableColumn minWidth="0.0" prefWidth="306.0" text="地址" />
-            <TableColumn prefWidth="94.0" text="星级" />
-            <TableColumn minWidth="7.0" prefWidth="102.0" text="评分" />
-         </columns>
-      </TableView>
-      <Label layoutX="321.0" layoutY="4.0" text="历史酒店列表">
+      <TitledPane alignment="CENTER" animated="false" collapsible="false" prefHeight="600.0" prefWidth="750.0" text="酒店列表" textAlignment="RIGHT">
+        <content>
+          <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
+               <children>
+                  <TableView prefHeight="566.0" prefWidth="750.0">
+                     <columns>
+                        <TableColumn prefWidth="107.0" text="酒店名称" />
+                        <TableColumn minWidth="0.0" prefWidth="140.0" text="所属商圈" />
+                        <TableColumn minWidth="0.0" prefWidth="306.0" text="地址" />
+                        <TableColumn prefWidth="94.0" text="星级" />
+                        <TableColumn minWidth="7.0" prefWidth="102.0" text="评分" />
+                     </columns>
+                  </TableView>
+               </children>
+            </AnchorPane>
+        </content>
          <font>
-            <Font size="18.0" />
+            <Font name="System Bold" size="14.0" />
          </font>
-      </Label>
+      </TitledPane>
+      <Button layoutX="-31.0" layoutY="-1.0" mnemonicParsing="false" onAction="#back" prefHeight="23.0" prefWidth="65.0" text="返回" AnchorPane.leftAnchor="2.0" AnchorPane.topAnchor="3.0" />
    </children>
 </AnchorPane>
