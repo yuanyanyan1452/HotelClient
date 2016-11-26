@@ -2,6 +2,7 @@ package ui.view;
 
 import java.util.logging.Level;
 import java.util.logging.Logger;
+
 import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
@@ -14,10 +15,23 @@ import ui.view.client.ClientEnrollVIPController;
 import ui.view.client.ClientEvaluateHotelController;
 import ui.view.client.ClientOverviewController;
 import ui.view.client.ClientSearchHotelController;
+import ui.view.hotel.HotelCheckInController;
+import ui.view.hotel.HotelDetailInfoController;
+import ui.view.hotel.HotelOverviewController;
+import ui.view.hotel.HotelRoomManageController;
+import ui.view.hotel.HotelStrategyController;
+import ui.view.manager.ManagerOverviewController;
+import ui.view.market.CreditChargeController;
+import ui.view.market.MarketOverviewController;
+import ui.view.market.MarketStrategyController;
 import ui.view.order.ClientBrowseOrderController;
-import ui.view.user.LoginController;
+import ui.view.order.ClientGenerateOrderController;
+import ui.view.order.HotelBrowseOrderController;
+import ui.view.order.HotelExecuteOrderController;
+import ui.view.order.MarketBrowseAbnormalOrderController;
+import ui.view.user.ClientLoginController;
+import ui.view.user.ClientRegistController;
 import ui.view.user.LoginOverviewController;
-import ui.view.user.RegistController;
 
 public class Main extends Application {
 	private Stage stage;
@@ -47,20 +61,25 @@ public class Main extends Application {
 		}
 	}
 
-	// 跳转到登录界面
-	public void gotoLogin() {
+	// 跳转到客户登录界面
+	public void gotoClientLogin() {
 		try {
-			LoginController loginController = (LoginController) replaceSceneContent("user/Login.fxml");
+			ClientLoginController loginController = (ClientLoginController) replaceSceneContent("user/Login.fxml");
 			loginController.setMain(this);
 		} catch (Exception e) {
 			Logger.getLogger(Main.class.getName()).log(Level.SEVERE, null, e);
 		}
 	}
-
+	// 跳转到酒店工作人员登录界面
+	
+	// 跳转到网站营销人员登录界面
+	
+	// 跳转到网站管理人员登录界面
+	
 	// 跳转到注册界面
 	public void gotoRegist() {
 		try {
-			RegistController registController = (RegistController) replaceSceneContent("user/Regist.fxml");
+			ClientRegistController registController = (ClientRegistController) replaceSceneContent("user/Regist.fxml");
 			registController.setMain(this);
 		} catch (Exception e) {
 			Logger.getLogger(Main.class.getName()).log(Level.SEVERE, null, e);
@@ -104,7 +123,7 @@ public class Main extends Application {
 		public void gotoClientBrowseOrder() {
 			try {
 				ClientBrowseOrderController controller = (ClientBrowseOrderController) replaceSceneContent(
-						"order/ClietnBrowseOrder.fxml");
+						"order/ClientBrowseOrder.fxml");
 				controller.setMain(this);
 			} catch (Exception e) {
 				Logger.getLogger(Main.class.getName()).log(Level.SEVERE, null, e);
@@ -143,6 +162,163 @@ public class Main extends Application {
 			Logger.getLogger(Main.class.getName()).log(Level.SEVERE, null, e);
 		}
 	}
+	
+	//客户查看酒店详细信息
+	public void gotoHotelDetailInfo() {
+		try {
+			ClientSearchHotelController controller = (ClientSearchHotelController) replaceSceneContent(
+					"hotel/HotelDetailInfo.fxml");
+			controller.setMain(this);
+		} catch (Exception e) {
+			Logger.getLogger(Main.class.getName()).log(Level.SEVERE, null, e);
+		}
+	}
+	
+	//客户生成订单
+	public void gotoGenerateOrder() {
+		try {
+			ClientGenerateOrderController controller = (ClientGenerateOrderController) replaceSceneContent(
+					"order/ClientGenerateOrder.fxml");
+			controller.setMain(this);
+		} catch (Exception e) {
+			Logger.getLogger(Main.class.getName()).log(Level.SEVERE, null, e);
+		}
+	}
+	
+	//跳转到酒店主界面
+	public void gotoHotelOverview() {
+		try {
+			HotelOverviewController HotelOverviewController = (HotelOverviewController) replaceSceneContent(
+					"hotel/HotelOverview.fxml");
+			HotelOverviewController.setMain(this);
+		} catch (Exception e) {
+			Logger.getLogger(Main.class.getName()).log(Level.SEVERE, null, e);
+		}
+	}
+	// 酒店工作人员管理酒店信息
+	public void gotoHotelBasicInfo() {
+		try {
+			HotelDetailInfoController controller = (HotelDetailInfoController) replaceSceneContent(
+					"hotel/HotelBasicInfo.fxml");
+			controller.setMain(this);
+		} catch (Exception e) {
+			Logger.getLogger(Main.class.getName()).log(Level.SEVERE, null, e);
+		}
+	}
+	
+	// 酒店可用房间管理
+	public void gotoHotelRoomManage() {
+		try {
+			HotelRoomManageController controller = (HotelRoomManageController) replaceSceneContent(
+					"hotel/HotelRoomManage.fxml");
+			controller.setMain(this);
+		} catch (Exception e) {
+			Logger.getLogger(Main.class.getName()).log(Level.SEVERE, null, e);
+		}
+	}
+	
+	//酒店订单浏览
+	public void gotoHotelBrowseOrder() {
+		try {
+			HotelBrowseOrderController controller = (HotelBrowseOrderController) replaceSceneContent(
+					"order/HotelBrowseOrder.fxml");
+			controller.setMain(this);
+		} catch (Exception e) {
+			Logger.getLogger(Main.class.getName()).log(Level.SEVERE, null, e);
+		}
+	}
+	//酒店订单执行
+	public void gotoHotelExecuteOrder() {
+		try {
+			HotelExecuteOrderController controller = (HotelExecuteOrderController) replaceSceneContent(
+					"order/HotelExecuteOrder.fxml");
+			controller.setMain(this);
+		} catch (Exception e) {
+			Logger.getLogger(Main.class.getName()).log(Level.SEVERE, null, e);
+		}
+	}
+	
+	
+	//酒店房间信息更新
+	public void gotoHotelCheckIn() {
+		try {
+			HotelCheckInController controller = (HotelCheckInController) replaceSceneContent(
+					"hotel/HotelCheckIn.fxml");
+			controller.setMain(this);
+		} catch (Exception e) {
+			Logger.getLogger(Main.class.getName()).log(Level.SEVERE, null, e);
+		}
+	}
+	//酒店销售策略管理
+	public void gotoHotelStrategyManage() {
+		try {
+			HotelStrategyController controller = (HotelStrategyController) replaceSceneContent(
+					"hotel/HotelStrategy.fxml");
+			controller.setMain(this);
+		} catch (Exception e) {
+			Logger.getLogger(Main.class.getName()).log(Level.SEVERE, null, e);
+		}
+	}
+	
+	//跳转到网站营销人员主界面
+	public void gotoMarketOverview() {
+		try {
+			MarketOverviewController MarketOverviewController = (MarketOverviewController) replaceSceneContent(
+					"market/MarketOverview.fxml");
+			MarketOverviewController.setMain(this);
+		} catch (Exception e) {
+			Logger.getLogger(Main.class.getName()).log(Level.SEVERE, null, e);
+		}
+	}
+	
+	
+	//网站销售策略管理
+	public void gotoWebStrategyManage() {
+		// TODO Auto-generated method stub
+		try {
+			MarketStrategyController MarketStrategyController = (MarketStrategyController) replaceSceneContent(
+					"market/MarketStrategy.fxml");
+			MarketStrategyController.setMain(this);
+		} catch (Exception e) {
+			Logger.getLogger(Main.class.getName()).log(Level.SEVERE, null, e);
+		}
+	}
+
+	//网站营销人员浏览异常订单
+	public void gotoMarketAbnormalOrder() {
+		// TODO Auto-generated method stub
+		try {
+			MarketBrowseAbnormalOrderController controller = (MarketBrowseAbnormalOrderController) replaceSceneContent(
+					"order/MarketBrowseAbnormalOrder.fxml");
+			controller.setMain(this);
+		} catch (Exception e) {
+			Logger.getLogger(Main.class.getName()).log(Level.SEVERE, null, e);
+		}
+	}
+
+	//信用充值
+	public void gotoMarketCreditCharge() {
+		// TODO Auto-generated method stub
+		try {
+			CreditChargeController controller = (CreditChargeController) replaceSceneContent(
+					"order/MarketBrowseAbnormalOrder.fxml");
+			controller.setMain(this);
+		} catch (Exception e) {
+			Logger.getLogger(Main.class.getName()).log(Level.SEVERE, null, e);
+		}
+	}
+	
+	//跳转到网站管理人员主界面
+		public void gotoManagerOverview() {
+			try {
+				ManagerOverviewController ManagerOverviewController = (ManagerOverviewController) replaceSceneContent(
+						"manager/ManagerOverview.fxml");
+				ManagerOverviewController.setMain(this);
+			} catch (Exception e) {
+				Logger.getLogger(Main.class.getName()).log(Level.SEVERE, null, e);
+			}
+		}
+		
 
 	// 界面跳转主要方法
 	private Initializable replaceSceneContent(String fxml) throws Exception {
@@ -164,5 +340,7 @@ public class Main extends Application {
 	public static void main(String[] args) {
 		launch(args);
 	}
+
+	
 
 }

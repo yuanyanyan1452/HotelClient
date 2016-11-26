@@ -14,24 +14,32 @@ public class ClientOverviewController implements Initializable {
 	private void initialize() {
 
 	}
-
+	
+	//查看客户基本信息
 	@FXML
 	private void gotoBasicInfo(){
 		main.gotoClientBasicInfo();
 	}
 	
+	//浏览预定过的酒店
 	@FXML
 	private void gotoBrowseHotel(){
 		main.gotoClientBrowseHotel();
 	}
+	
+	//注册会员
 	@FXML
 	private void gotoEnrollVIP(){
 		main.gotoClientEnrollVIP();
 	}
+	
+	//浏览订单
 	@FXML
 	private void gotoBrowseOrder(){
 		main.gotoClientBrowseOrder();
 	}
+	
+	//搜索酒店
 	@FXML
 	private void gotoSearchHotel(){
 		main.gotoClientSearchHotel();

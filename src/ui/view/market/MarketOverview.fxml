@@ -7,7 +7,7 @@
 <?import javafx.scene.layout.*?>
 <?import javafx.scene.layout.AnchorPane?>
 
-<AnchorPane prefHeight="600.0" prefWidth="1000.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1">
+<AnchorPane prefHeight="600.0" prefWidth="1000.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="ui.view.market.MarketOverviewController">
    <children>
       <GridPane layoutX="-1.0" layoutY="-1.0" prefHeight="600.0" prefWidth="1000.0" AnchorPane.leftAnchor="1.0" AnchorPane.topAnchor="1.0">
          <children>
@@ -16,9 +16,9 @@
                   <VBox prefHeight="200.0" prefWidth="250.0" GridPane.rowIndex="1">
                      <children>
                         <Label alignment="CENTER" prefHeight="46.0" prefWidth="252.0" style="-fx-border-color: #000000;" text="网站营销" />
-                        <Button mnemonicParsing="false" prefHeight="80.0" prefWidth="254.0" text="网站促销策略制定" />
-                        <Button mnemonicParsing="false" prefHeight="80.0" prefWidth="254.0" text="异常订单浏览" />
-                        <Button mnemonicParsing="false" prefHeight="80.0" prefWidth="256.0" text="信用充值" />
+                        <Button mnemonicParsing="false" onAction="#gotoStrategyManage" prefHeight="80.0" prefWidth="254.0" text="网站促销策略制定" />
+                        <Button mnemonicParsing="false" onAction="#gotoAbnormalOrder" prefHeight="80.0" prefWidth="254.0" text="异常订单浏览" />
+                        <Button mnemonicParsing="false" onAction="#gotoCreditCharge" prefHeight="80.0" prefWidth="256.0" text="信用充值" />
                      </children>
                   </VBox>
                   <GridPane gridLinesVisible="true">
