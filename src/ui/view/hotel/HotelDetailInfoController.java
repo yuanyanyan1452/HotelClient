@@ -3,6 +3,7 @@ package ui.view.hotel;
 import java.net.URL;
 import java.util.ResourceBundle;
 
+import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import ui.view.Main;
 
@@ -16,6 +17,11 @@ public class HotelDetailInfoController implements Initializable {
 		// TODO 自动生成的方法存根
 
 	}
+//	//回到客户主界面
+//	@FXML
+//	public void gotoClientOverview(){
+//		main.gotoClientSearchHotel();
+//	}
 
 	public void setMain(Main main) {
 		this.main = main;
