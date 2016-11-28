@@ -8,10 +8,10 @@ import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import ui.view.Main;
 
-public class ClientRegistController implements Initializable {
+public class RegistController implements Initializable {
 	private Main main;
-	
-	public ClientRegistController(){
+	private String type;
+	public RegistController(){
 		
 	}
 	public void setMain(Main main){
@@ -20,7 +20,7 @@ public class ClientRegistController implements Initializable {
 
 	@FXML
 	private void cancelRegist(ActionEvent event){
-		main.gotoClientLogin();
+		main.gotoLogin(type);
 	}
 	@Override
 	public void initialize(URL location, ResourceBundle resources) {

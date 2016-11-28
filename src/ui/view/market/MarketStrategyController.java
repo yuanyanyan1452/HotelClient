@@ -8,12 +8,15 @@ import ui.view.Main;
 
 public class MarketStrategyController implements Initializable {
 	private Main main;
-	
+	public MarketStrategyController() {
+		// TODO 自动生成的构造函数存根
+	}
 	@Override
 	public void initialize(URL location, ResourceBundle resources) {
 		// TODO 自动生成的方法存根
 
 	}
+
 	public void setMain(Main main) {
 		this.main = main;
 	}

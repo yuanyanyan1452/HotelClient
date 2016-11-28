@@ -6,7 +6,7 @@
 <?import javafx.scene.layout.*?>
 <?import javafx.scene.layout.AnchorPane?>
 
-<AnchorPane prefHeight="600.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1">
+<AnchorPane prefHeight="600.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="ui.view.hotel.HotelDetailInfoController">
    <children>
       <TitledPane alignment="CENTER" animated="false" collapsible="false" prefHeight="600.0" prefWidth="600.0" text="酒店详细信息">
         <content>
@@ -69,7 +69,7 @@
                      <graphic>
                         <ImageView fitHeight="23.0" fitWidth="24.0">
                            <image>
-                              <Image url="@../搜索.png" />
+                              <Image url="@../../../../resources/搜索.png" />
                            </image>
                         </ImageView>
                      </graphic>

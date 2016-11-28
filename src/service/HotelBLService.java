@@ -29,7 +29,7 @@ public interface HotelBLService {
 	 * @param info
 	 * @return 酒店更新入住信息
 	 */
-	public ResultMessage hotel_updateAccomodation(AccommodationInfo info);
+	public ResultMessage hotel_updateAccomodation(AcommodationInfo info);
 
 	// 提供给同层调用的接口
 	/**

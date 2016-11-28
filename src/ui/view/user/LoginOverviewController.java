@@ -29,25 +29,22 @@ public class LoginOverviewController implements Initializable {
 	private Main main;
 
 	@FXML
-	public void gotoClientLogin(ActionEvent event) {
-		main.gotoClientLogin();
-	}
-	
-	@FXML
-	public void gotoHotelWorkerLogin(ActionEvent event) {
-		main.gotoHotelOverview();
-	}
-	
-	@FXML
-	public void gotoWebMarketLogin(ActionEvent event) {
-		main.gotoMarketOverview();
-	}
-	
-	@FXML
-	public void gotoWebManagerLogin(ActionEvent event) {
-		main.gotoManagerOverview();
+	public void clientgotoLogin(ActionEvent event) {
+		main.gotoLogin("client");
 	}
 
+	@FXML
+	public void hotelgotoLogin(ActionEvent event) {
+		main.gotoLogin("hotel");
+	}
+	@FXML
+	public void marketgotoLogin(ActionEvent event) {
+		main.gotoLogin("market");
+	}
+	@FXML
+	public void managergotoLogin(ActionEvent event) {
+		main.gotoLogin("manager");
+	}
 	public LoginOverviewController() {
 
 	}

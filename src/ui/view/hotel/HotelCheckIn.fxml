@@ -7,7 +7,7 @@
 <?import javafx.scene.layout.*?>
 <?import javafx.scene.layout.AnchorPane?>
 
-<AnchorPane prefHeight="600.0" prefWidth="700.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1">
+<AnchorPane prefHeight="600.0" prefWidth="700.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="ui.view.hotel.HotelCheckInController">
    <children>
       <GridPane layoutX="-2.0" layoutY="-1.0" prefHeight="600.0" prefWidth="700.0">
         <columnConstraints>
@@ -48,7 +48,7 @@
                                        <graphic>
                                           <ImageView fitHeight="103.0" fitWidth="109.0">
                                              <image>
-                                                <Image url="@../搜索.png" />
+                                                <Image url="@../../../../resources/搜索.png" />
                                              </image>
                                           </ImageView>
                                        </graphic>

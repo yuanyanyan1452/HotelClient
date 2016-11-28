@@ -30,7 +30,9 @@ public class ClientRunner {
 		}
 	}
 	
-
+//	private void initGUI() {
+//		MainFrame mainFrame = new MainFrame();
+//	}
 	
 
 	public static void main(String[] args){

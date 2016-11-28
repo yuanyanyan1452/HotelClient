@@ -7,10 +7,9 @@
 <?import javafx.scene.layout.*?>
 <?import javafx.scene.layout.AnchorPane?>
 
-
-<AnchorPane prefHeight="600.0" prefWidth="700.0" xmlns:fx="http://javafx.com/fxml/1" xmlns="http://javafx.com/javafx/8">
+<AnchorPane prefHeight="600.0" prefWidth="700.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="ui.view.hotel.HotelBasicInfoController">
    <children>
-      <GridPane layoutX="-1.0" layoutY="-2.0" prefHeight="600.0" prefWidth="700.0">
+      <GridPane layoutX="-1.0" layoutY="4.0" prefHeight="594.0" prefWidth="700.0">
         <columnConstraints>
           <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
         </columnConstraints>
@@ -24,7 +23,7 @@
                   <Insets left="550.0" />
                </GridPane.margin>
             </Button>
-            <GridPane>
+            <GridPane prefHeight="513.0" prefWidth="700.0">
               <columnConstraints>
                 <ColumnConstraints hgrow="SOMETIMES" maxWidth="345.0" minWidth="10.0" prefWidth="189.0" />
                 <ColumnConstraints hgrow="SOMETIMES" maxWidth="531.0" minWidth="10.0" prefWidth="511.0" />
@@ -42,7 +41,7 @@
                   <Label text="简介：" GridPane.halignment="CENTER" GridPane.rowIndex="2" GridPane.valignment="CENTER" />
                   <Label text="设施服务：" GridPane.halignment="CENTER" GridPane.rowIndex="3" />
                   <Label text="星级：" GridPane.halignment="CENTER" GridPane.rowIndex="4" />
-                  <ScrollPane prefHeight="200.0" prefWidth="200.0" GridPane.columnIndex="1">
+                  <ScrollPane prefHeight="64.0" prefWidth="511.0" GridPane.columnIndex="1">
                      <content>
                         <TextArea prefHeight="83.0" prefWidth="509.0" text="&#10;" wrapText="true">
                            <padding>
@@ -53,7 +52,7 @@
                   </ScrollPane>
                   <ScrollPane prefHeight="200.0" prefWidth="200.0" GridPane.columnIndex="1" GridPane.rowIndex="1">
                      <content>
-                        <TextArea prefHeight="89.0" prefWidth="508.0" wrapText="true" />
+                        <TextArea prefHeight="88.0" prefWidth="508.0" wrapText="true" />
                      </content>
                   </ScrollPane>
                   <ScrollPane prefHeight="200.0" prefWidth="200.0" GridPane.columnIndex="1" GridPane.rowIndex="2">

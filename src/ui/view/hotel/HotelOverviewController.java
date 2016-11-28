@@ -9,58 +9,65 @@ import ui.view.Main;
 
 public class HotelOverviewController implements Initializable {
 	private Main main;
-	
-	@FXML
-	private void initialize() {
 
-	}
-	
-	//管理酒店信息
+	/*
+	 * 跳转到酒店基本信息管理窗口
+	 */
 	@FXML
-	private void gotoBasicInfo(){
+	public void gotoHotelBasicInfo() {
 		main.gotoHotelBasicInfo();
 	}
-	
-	//可用客房管理
+
+	/*
+	 * 跳转到酒店浏览订单窗口
+	 */
 	@FXML
-	private void gotoRoomManage(){
-		main.gotoHotelRoomManage();
-	}
-	
-	//订单浏览
-	@FXML
-	private void gotoOrderBrowse(){
+	public void gotoHotelBrowseOrder() {
 		main.gotoHotelBrowseOrder();
 	}
-	//订单执行
+
+	/*
+	 * 跳转到酒店客户入住窗口
+	 */
 	@FXML
-	private void gotoOrderExecute(){
-		main.gotoHotelExecuteOrder();
-	}
-	
-	//酒店房间信息更新
-	@FXML
-	private void gotoCheckIn(){
+	public void gotoHotelCheckIn() {
 		main.gotoHotelCheckIn();
 	}
-	
-	//酒店销售策略管理
+
+	/*
+	 * 跳转到酒店执行订单窗口
+	 */
 	@FXML
-	private void gotoStrategyManage(){
+	public void gotoHotelExecuteOrder() {
+		main.gotoHotelExecuteOrder();
+	}
+
+	/*
+	 * 跳转到酒店可用房间管理窗口
+	 */
+	@FXML
+	public void gotoHotelRoomManage() {
+		main.gotoHotelRoomManage();
+	}
+
+	/*
+	 * 跳转到酒店促销策略管理窗口
+	 */
+	@FXML
+	public void gotoHotelStrategyManage() {
 		main.gotoHotelStrategyManage();
 	}
-	
-	public HotelOverviewController() {
 
+	public HotelOverviewController() {
+		// TODO 自动生成的构造函数存根
 	}
-	
-	
+
 	@Override
 	public void initialize(URL location, ResourceBundle resources) {
 		// TODO 自动生成的方法存根
 
 	}
-	
+
 	public void setMain(Main main) {
 		this.main = main;
 	}

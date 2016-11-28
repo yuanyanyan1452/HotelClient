@@ -11,7 +11,8 @@ import javafx.scene.control.PasswordField;
 import javafx.scene.control.TextField;
 import ui.view.Main;
 
-public class ClientLoginController implements Initializable {
+public class LoginController implements Initializable {
+	private String type;
 	@FXML
 	private Label loginLabel;
 
@@ -34,14 +35,28 @@ public class ClientLoginController implements Initializable {
 	private Button registButton;
 
 	@FXML
-	public void gotoClientOverview() {
+	public void gotoOverview() {
 		// TODO µÇÂ¼ÑéÖ¤
-		main.gotoClientOverview();
+		switch (type) {
+		case "client":
+			main.gotoClientOverview();
+			break;
+		case "hotel":
+			main.gotoHotelOverview();
+		    break;
+		case "market":
+			main.gotoMarketOverview();
+			break;
+		case "manager":
+			main.gotoManagerOverview();
+		default:
+			break;
+		}
 	}
 
 	@FXML
 	public void gotoRegist() {
-		main.gotoRegist();
+		main.gotoRegist(type);
 	}
 
 	// Reference to the main application.
@@ -51,7 +66,7 @@ public class ClientLoginController implements Initializable {
 	 * The constructor. The constructor is called before the initialize()
 	 * method.
 	 */
-	public ClientLoginController() {
+	public LoginController() {
 
 	}
 
@@ -64,8 +79,9 @@ public class ClientLoginController implements Initializable {
 
 	}
 
-	public void setMain(Main main) {
+	public void setMain(Main main,String type) {
 		this.main = main;
+		this.type = type;
 	}
 
 	@Override

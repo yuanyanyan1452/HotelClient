@@ -8,16 +8,9 @@ import ui.view.Main;
 
 public class ManagerOverviewController implements Initializable {
 	private Main main;
-	
-	
-	//客户人员管理
-	
-	//酒店管理
-	
-	//酒店工作人员管理
-	
-	//网站营销人员管理
-	
+	public ManagerOverviewController() {
+		// TODO 自动生成的构造函数存根
+	}
 	@Override
 	public void initialize(URL location, ResourceBundle resources) {
 		// TODO 自动生成的方法存根

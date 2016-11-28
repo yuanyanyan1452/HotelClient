@@ -6,8 +6,7 @@
 <?import javafx.scene.layout.*?>
 <?import javafx.scene.layout.AnchorPane?>
 
-
-<AnchorPane prefHeight="600.0" prefWidth="750.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1">
+<AnchorPane prefHeight="600.0" prefWidth="700.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="ui.view.market.CreditChargeController">
    <children>
       <GridPane layoutX="92.0" layoutY="39.0" prefHeight="106.0" prefWidth="246.0">
         <columnConstraints>
@@ -25,7 +24,7 @@
             <TextField GridPane.columnIndex="1" GridPane.rowIndex="1" />
          </children>
       </GridPane>
-      <TitledPane alignment="CENTER" animated="false" collapsible="false" layoutX="51.0" layoutY="170.0" prefHeight="279.0" prefWidth="390.0" text="客户信息">
+      <TitledPane alignment="CENTER" animated="false" collapsible="false" layoutX="30.0" layoutY="170.0" prefHeight="279.0" prefWidth="390.0" text="客户信息">
          <content>
             <GridPane>
               <columnConstraints>
@@ -51,13 +50,13 @@
          <graphic>
             <ImageView fitHeight="23.0" fitWidth="22.0">
                <image>
-                  <Image url="@../搜索.png" />
+                  <Image url="@../../../../resources/搜索.png" />
                </image>
             </ImageView>
          </graphic>
       </Button>
-      <Button layoutX="192.0" layoutY="485.0" mnemonicParsing="false" prefHeight="41.0" prefWidth="108.0" text="确认充值" />
-      <ImageView fitHeight="279.0" fitWidth="288.0" layoutX="458.0" layoutY="170.0">
+      <Button layoutX="171.0" layoutY="485.0" mnemonicParsing="false" prefHeight="41.0" prefWidth="108.0" text="确认充值" />
+      <ImageView fitHeight="243.0" fitWidth="246.0" layoutX="434.0" layoutY="188.0">
          <image>
             <Image url="@../../../../resources/timg.png" />
          </image>

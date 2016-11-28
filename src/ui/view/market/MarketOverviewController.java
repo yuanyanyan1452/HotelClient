@@ -9,33 +9,39 @@ import ui.view.Main;
 
 public class MarketOverviewController implements Initializable {
 	private Main main;
-	
-	//网站销售策略管理
+
+	/*
+	 * 跳转到信用充值窗口
+	 */
 	@FXML
-	private void gotoStrategyManage(){
-		main.gotoWebStrategyManage();
-	}
-	
-	//异常订单浏览
-	@FXML
-	private void gotoAbnormalOrder(){
-		main.gotoMarketAbnormalOrder();
-	}
-	
-	//信用充值
-	@FXML
-	private void gotoCreditCharge(){
+	public void gotoCreditCharge(){
 		main.gotoMarketCreditCharge();
 	}
 	
-	@Override
-	public void initialize(URL location, ResourceBundle resources) {
-		// TODO 自动生成的方法存根
+	/*
+	 * 跳转到网站促销策略管理窗口
+	 */
+	@FXML
+	public void gotoStrategy(){
+		main.gotoWebStrategyManage();
+	}
+	/*
+	 * 跳转到撤销异常订单窗口
+	 */
+	@FXML
+	public void gotoAbnormalOrder(){
+		main.gotoMarketAbnormalOrder();
+	}
+	public MarketOverviewController() {
 
 	}
-	
+
+	@Override
+	public void initialize(URL location, ResourceBundle resources) {
+
+	}
+
 	public void setMain(Main main) {
 		this.main = main;
 	}
-
 }
