@@ -14,8 +14,9 @@ public class RegistController implements Initializable {
 	public RegistController(){
 		
 	}
-	public void setMain(Main main){
+	public void setMain(Main main,String type){
 		this.main = main;
+		this.type = type;
 	}
 
 	@FXML

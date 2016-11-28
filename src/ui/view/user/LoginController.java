@@ -35,6 +35,9 @@ public class LoginController implements Initializable {
 	private Button registButton;
 
 	@FXML
+	private Button updatepasswordButton;
+	
+	@FXML
 	public void gotoOverview() {
 		// TODO µÇÂ¼ÑéÖ¤
 		switch (type) {
@@ -57,6 +60,11 @@ public class LoginController implements Initializable {
 	@FXML
 	public void gotoRegist() {
 		main.gotoRegist(type);
+	}
+	
+	@FXML
+	public void gotoUpdatePassword(){
+		main.gotoUpdatePassword(type);
 	}
 
 	// Reference to the main application.
@@ -87,5 +95,9 @@ public class LoginController implements Initializable {
 	@Override
 	public void initialize(URL location, ResourceBundle resources) {
 
+	}
+
+	public Button getRegistButton() {
+		return registButton;
 	}
 }

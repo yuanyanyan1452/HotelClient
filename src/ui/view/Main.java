@@ -25,6 +25,7 @@ import ui.view.order.*;
 import ui.view.user.LoginController;
 import ui.view.user.LoginOverviewController;
 import ui.view.user.RegistController;
+import ui.view.user.UpdatePasswordController;
 
 public class Main extends Application {
 	private Stage stage;
@@ -44,7 +45,7 @@ public class Main extends Application {
 		stage.show();
 	}
 
-	// ³õÊ¼½çÃæ
+	// åˆå§‹ç•Œé¢
 	public void initUI() {
 		try {
 			LoginOverviewController loginOverviewController = (LoginOverviewController) replaceSceneContent(
@@ -55,27 +56,52 @@ public class Main extends Application {
 		}
 	}
 
-	// Ìø×ªµ½µÇÂ¼½çÃæ
+	// è·³è½¬åˆ°ç™»å½•ç•Œé¢
 	public void gotoLogin(String type) {
 		try {
-			LoginController loginController = (LoginController) replaceSceneContent("user/Login.fxml");
+			FXMLLoader loader = new FXMLLoader();
+			loader.setLocation(Main.class.getResource("user/Login.fxml"));
+			AnchorPane pane = (AnchorPane) loader.load();
+			this.scene = new Scene(pane);
+			LoginController loginController = (LoginController) loader.getController();
 			loginController.setMain(this,type);
+			
+			//å½“éå®¢æˆ·ç”¨æˆ·ç™»å½•æ—¶ï¼Œéšè—æ³¨å†ŒæŒ‰é’®
+			if(type!="client"){
+				loginController.getRegistButton().setVisible(false);
+			}
+			
+			stage.setScene(scene);
+			stage.sizeToScene();
+			stage.centerOnScreen();
+			stage.setResizable(false);
+			stage.show();
 		} catch (Exception e) {
 			Logger.getLogger(Main.class.getName()).log(Level.SEVERE, null, e);
 		}
 	}
 
-	// Ìø×ªµ½×¢²á½çÃæ
+	// è·³è½¬åˆ°æ³¨å†Œç•Œé¢
 	public void gotoRegist(String type) {
 		try {
 			RegistController registController = (RegistController) replaceSceneContent("user/Regist.fxml");
-			registController.setMain(this);
+			registController.setMain(this,type);
+		} catch (Exception e) {
+			Logger.getLogger(Main.class.getName()).log(Level.SEVERE, null, e);
+		}
+	}
+	
+	//è·³è½¬åˆ°ä¿®æ”¹å¯†ç ç•Œé¢
+	public void gotoUpdatePassword(String type){
+		try {
+			UpdatePasswordController controller= (UpdatePasswordController) replaceSceneContent("user/UpdatePassword.fxml");
+			controller.setMain(this,type);
 		} catch (Exception e) {
 			Logger.getLogger(Main.class.getName()).log(Level.SEVERE, null, e);
 		}
 	}
 
-	// Ìø×ªµ½¿Í»§Ö÷½çÃæ
+	// è·³è½¬åˆ°å®¢æˆ·ä¸»ç•Œé¢
 	public void gotoClientOverview() {
 		try {
 			FXMLLoader fxmlLoader = new FXMLLoader();
@@ -94,7 +120,7 @@ public class Main extends Application {
 		}
 	}
 
-	// ¿Í»§²é¿´»ù±¾ĞÅÏ¢
+	// å®¢æˆ·æŸ¥çœ‹åŸºæœ¬ä¿¡æ¯
 	public void gotoClientBasicInfo() {
 		try {
 			FXMLLoader fxmlLoader = new FXMLLoader();
@@ -109,7 +135,7 @@ public class Main extends Application {
 		}
 	}
 
-	// ¿Í»§ä¯ÀÀ¾Æµê
+	// å®¢æˆ·æµè§ˆé…’åº—
 	public void gotoClientBrowseHotel() {
 		try {
 			FXMLLoader fxmlLoader = new FXMLLoader();
@@ -125,7 +151,7 @@ public class Main extends Application {
 		}
 	}
 
-	// ¿Í»§ä¯ÀÀ¶©µ¥
+	// å®¢æˆ·æµè§ˆè®¢å•
 	public void gotoClientBrowseOrder() {
 		try {
 			FXMLLoader fxmlLoader = new FXMLLoader();
@@ -141,7 +167,7 @@ public class Main extends Application {
 		}
 	}
 
-	// ¿Í»§×¢²á»áÔ±
+	// å®¢æˆ·æ³¨å†Œä¼šå‘˜
 	public void gotoClientEnrollVIP() {
 		try {
 			FXMLLoader fxmlLoader = new FXMLLoader();
@@ -157,7 +183,7 @@ public class Main extends Application {
 		}
 	}
 
-	// ¿Í»§ÆÀ¼Û¾Æµê
+	// å®¢æˆ·è¯„ä»·é…’åº—
 	public void gotoClientEvaluateHotel() {
 		try {
 			FXMLLoader fxmlLoader = new FXMLLoader();
@@ -173,7 +199,7 @@ public class Main extends Application {
 		}
 	}
 
-	// ¿Í»§ËÑË÷¾Æµê
+	// å®¢æˆ·æœç´¢é…’åº—
 	public void gotoClientSearchHotel() {
 		try {
 			FXMLLoader fxmlLoader = new FXMLLoader();
@@ -189,7 +215,7 @@ public class Main extends Application {
 		}
 	}
 
-	// ¿Í»§²é¿´¾ÆµêÏêÏ¸ĞÅÏ¢
+	// å®¢æˆ·æŸ¥çœ‹é…’åº—è¯¦ç»†ä¿¡æ¯
 	public void gotoHotelDetailInfo() {
 		try {
 			HotelDetailInfoController controller = (HotelDetailInfoController) replaceSceneContent(
@@ -200,7 +226,7 @@ public class Main extends Application {
 		}
 	}
 
-	// ¿Í»§Éú³É¶©µ¥
+	// å®¢æˆ·ç”Ÿæˆè®¢å•
 	public void gotoGenerateOrder() {
 		try {
 			ClientGenerateOrderController controller = (ClientGenerateOrderController) replaceSceneContent(
@@ -211,7 +237,7 @@ public class Main extends Application {
 		}
 	}
 
-	// Ìø×ªµ½¾ÆµêÖ÷½çÃæ
+	// è·³è½¬åˆ°é…’åº—ä¸»ç•Œé¢
 	public void gotoHotelOverview() {
 		try {
 			FXMLLoader fxmlLoader = new FXMLLoader();
@@ -230,7 +256,7 @@ public class Main extends Application {
 		}
 	}
 
-	// ¾Æµê¹¤×÷ÈËÔ±¹ÜÀí¾ÆµêĞÅÏ¢
+	// é…’åº—å·¥ä½œäººå‘˜ç®¡ç†é…’åº—ä¿¡æ¯
 	public void gotoHotelBasicInfo() {
 		try {
 			FXMLLoader fxmlLoader = new FXMLLoader();
@@ -245,7 +271,7 @@ public class Main extends Application {
 		}
 	}
 
-	// ¾Æµê¿ÉÓÃ·¿¼ä¹ÜÀí
+	// é…’åº—å¯ç”¨æˆ¿é—´ç®¡ç†
 	public void gotoHotelRoomManage() {
 		try {
 			FXMLLoader fxmlLoader = new FXMLLoader();
@@ -260,7 +286,7 @@ public class Main extends Application {
 		}
 	}
 
-	// ¾Æµê¶©µ¥ä¯ÀÀ
+	// é…’åº—è®¢å•æµè§ˆ
 	public void gotoHotelBrowseOrder() {
 		try {
 			FXMLLoader fxmlLoader = new FXMLLoader();
@@ -275,7 +301,7 @@ public class Main extends Application {
 		}
 	}
 
-	// ¾Æµê¶©µ¥Ö´ĞĞ
+	// é…’åº—è®¢å•æ‰§è¡Œ
 	public void gotoHotelExecuteOrder() {
 		try {
 			FXMLLoader fxmlLoader = new FXMLLoader();
@@ -290,7 +316,7 @@ public class Main extends Application {
 		}
 	}
 
-	// ¾Æµê·¿¼äĞÅÏ¢¸üĞÂ
+	// é…’åº—æˆ¿é—´ä¿¡æ¯æ›´æ–°
 	public void gotoHotelCheckIn() {
 		try {
 			FXMLLoader fxmlLoader = new FXMLLoader();
@@ -305,7 +331,7 @@ public class Main extends Application {
 		}
 	}
 
-	// ¾ÆµêÏúÊÛ²ßÂÔ¹ÜÀí
+	// é…’åº—é”€å”®ç­–ç•¥ç®¡ç†
 	public void gotoHotelStrategyManage() {
 		try {
 			FXMLLoader fxmlLoader = new FXMLLoader();
@@ -320,7 +346,7 @@ public class Main extends Application {
 		}
 	}
 
-	// Ìø×ªµ½ÍøÕ¾ÓªÏúÈËÔ±Ö÷½çÃæ
+	// è·³è½¬åˆ°ç½‘ç«™è¥é”€äººå‘˜ä¸»ç•Œé¢
 	public void gotoMarketOverview() {
 		try {
 			FXMLLoader fxmlLoader = new FXMLLoader();
@@ -339,7 +365,7 @@ public class Main extends Application {
 		}
 	}
 
-	// ÍøÕ¾ÏúÊÛ²ßÂÔ¹ÜÀí
+	// ç½‘ç«™é”€å”®ç­–ç•¥ç®¡ç†
 	public void gotoWebStrategyManage() {
 		try {
 			FXMLLoader fxmlLoader = new FXMLLoader();
@@ -354,7 +380,7 @@ public class Main extends Application {
 		}
 	}
 
-	// ÍøÕ¾ÓªÏúÈËÔ±ä¯ÀÀÒì³£¶©µ¥
+	// ç½‘ç«™è¥é”€äººå‘˜æµè§ˆå¼‚å¸¸è®¢å•
 	public void gotoMarketAbnormalOrder() {
 		try {
 			FXMLLoader fxmlLoader = new FXMLLoader();
@@ -369,7 +395,7 @@ public class Main extends Application {
 		}
 	}
 
-	// ĞÅÓÃ³äÖµ
+	// ä¿¡ç”¨å……å€¼
 	public void gotoMarketCreditCharge() {
 		try {
 			FXMLLoader fxmlLoader = new FXMLLoader();
@@ -384,7 +410,7 @@ public class Main extends Application {
 		}
 	}
 
-	// Ìø×ªµ½ÍøÕ¾¹ÜÀíÈËÔ±Ö÷½çÃæ
+	// è·³è½¬åˆ°ç½‘ç«™ç®¡ç†äººå‘˜ä¸»ç•Œé¢
 	public void gotoManagerOverview() {
 		try {
 			ManagerOverviewController ManagerOverviewController = (ManagerOverviewController) replaceSceneContent(
@@ -395,7 +421,7 @@ public class Main extends Application {
 		}
 	}
 
-	// ½çÃæÌø×ªÖ÷Òª·½·¨
+	// ç•Œé¢è·³è½¬ä¸»è¦æ–¹æ³•
 	private Initializable replaceSceneContent(String fxml) throws Exception {
 		FXMLLoader loader = new FXMLLoader();
 		loader.setLocation(Main.class.getResource(fxml));
