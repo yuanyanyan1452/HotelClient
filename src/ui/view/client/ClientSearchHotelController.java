@@ -17,6 +17,20 @@ public class ClientSearchHotelController implements Initializable{
 	private void back(){
 		main.gotoClientOverview();
 	}
+	
+	//客户查看酒店详细信息
+	@FXML
+	private void gotoHotelDetailInfo(){
+		main.gotoHotelDetailInfo();
+	}
+
+	//客户生成订单
+	@FXML 
+	private void gotoGenerateOrder(){
+		main.gotoGenerateOrder();
+	}
+	
+	
 	public ClientSearchHotelController() {
 		// TODO 自动生成的构造函数存根
 	}

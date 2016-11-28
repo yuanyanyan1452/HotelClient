@@ -6,23 +6,13 @@
 <?import javafx.scene.layout.*?>
 <?import javafx.scene.layout.AnchorPane?>
 
-<AnchorPane prefHeight="600.0" prefWidth="750.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1">
+<AnchorPane prefHeight="600.0" prefWidth="700.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="ui.view.order.HotelExecuteOrderController">
    <children>
-      <GridPane prefHeight="610.0" prefWidth="760.0">
+      <GridPane prefHeight="600.0" prefWidth="700.0">
          <children>
-            <Button mnemonicParsing="false" prefHeight="42.0" prefWidth="130.0" text="延迟入住" GridPane.rowIndex="1">
-               <GridPane.margin>
-                  <Insets left="600.0" />
-               </GridPane.margin>
-            </Button>
-            <Button mnemonicParsing="false" prefHeight="42.0" prefWidth="130.0" text="执行" GridPane.rowIndex="1">
-               <GridPane.margin>
-                  <Insets left="400.0" />
-               </GridPane.margin>
-            </Button>
-            <ScrollPane prefHeight="496.0" prefWidth="760.0">
+            <ScrollPane prefHeight="479.0" prefWidth="700.0">
                <content>
-                  <TableView editable="true" prefHeight="561.0" prefWidth="1100.0">
+                  <TableView editable="true" prefHeight="485.0" prefWidth="1100.0">
                      <columns>
                         <TableColumn prefWidth="150.0" text="编号" />
                         <TableColumn prefWidth="150.0" text="开始时间" />
@@ -38,6 +28,12 @@
                   </TableView>
                </content>
             </ScrollPane>
+            <AnchorPane prefHeight="200.0" prefWidth="200.0" GridPane.rowIndex="1">
+               <children>
+                  <Button layoutX="520.0" layoutY="35.0" mnemonicParsing="false" prefHeight="42.0" prefWidth="130.0" text="延迟入住" />
+                  <Button layoutX="324.0" layoutY="35.0" mnemonicParsing="false" prefHeight="42.0" prefWidth="130.0" text="执行" />
+               </children>
+            </AnchorPane>
          </children>
          <columnConstraints>
             <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />

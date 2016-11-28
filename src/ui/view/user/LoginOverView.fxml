@@ -20,7 +20,7 @@
           <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
         </rowConstraints>
          <children>
-            <Button fx:id="clientButton" alignment="BOTTOM_CENTER" contentDisplay="TOP" mnemonicParsing="false" onAction="#gotoLogin" prefHeight="184.0" prefWidth="254.0" text="客户" GridPane.valignment="TOP">
+            <Button fx:id="clientButton" alignment="BOTTOM_CENTER" contentDisplay="TOP" mnemonicParsing="false" onAction="#clientgotoLogin" prefHeight="184.0" prefWidth="254.0" text="客户" GridPane.valignment="TOP">
                <font>
                   <Font name="Microsoft JhengHei Light" size="22.0" />
                </font>
@@ -35,7 +35,7 @@
                   </ImageView>
                </graphic>
             </Button>
-            <Button fx:id="hotelButton" alignment="BOTTOM_CENTER" contentDisplay="TOP" graphicTextGap="0.0" mnemonicParsing="false" onAction="#gotoLogin" prefHeight="192.0" prefWidth="250.0" text="酒店" GridPane.columnIndex="1">
+            <Button fx:id="hotelButton" alignment="BOTTOM_CENTER" contentDisplay="TOP" graphicTextGap="0.0" mnemonicParsing="false" onAction="#hotelgotoLogin" prefHeight="192.0" prefWidth="250.0" text="酒店" GridPane.columnIndex="1">
                <font>
                   <Font name="Microsoft JhengHei Light" size="22.0" />
                </font>
@@ -47,7 +47,7 @@
                   </ImageView>
                </graphic>
             </Button>
-            <Button fx:id="marketButton" alignment="BOTTOM_CENTER" contentDisplay="TOP" mnemonicParsing="false" onAction="#gotoLogin" prefHeight="185.0" prefWidth="250.0" text="网站营销" GridPane.rowIndex="1">
+            <Button fx:id="marketButton" alignment="BOTTOM_CENTER" contentDisplay="TOP" mnemonicParsing="false" onAction="#marketgotoLogin" prefHeight="185.0" prefWidth="250.0" text="网站营销" GridPane.rowIndex="1">
                <font>
                   <Font name="Microsoft JhengHei" size="22.0" />
                </font>
@@ -59,7 +59,7 @@
                   </ImageView>
                </graphic>
             </Button>
-            <Button fx:id="managerButton" alignment="BOTTOM_CENTER" contentDisplay="TOP" mnemonicParsing="false" onAction="#gotoLogin" prefHeight="0.0" prefWidth="250.0" text="网站管理" GridPane.columnIndex="1" GridPane.rowIndex="1">
+            <Button fx:id="managerButton" alignment="BOTTOM_CENTER" contentDisplay="TOP" mnemonicParsing="false" onAction="#managergotoLogin" prefHeight="0.0" prefWidth="250.0" text="网站管理" GridPane.columnIndex="1" GridPane.rowIndex="1">
                <font>
                   <Font name="Microsoft JhengHei Light" size="22.0" />
                </font>

@@ -10,7 +10,7 @@ import ui.view.Main;
 
 public class RegistController implements Initializable {
 	private Main main;
-	
+	private String type;
 	public RegistController(){
 		
 	}
@@ -20,7 +20,7 @@ public class RegistController implements Initializable {
 
 	@FXML
 	private void cancelRegist(ActionEvent event){
-		main.gotoLogin();
+		main.gotoLogin(type);
 	}
 	@Override
 	public void initialize(URL location, ResourceBundle resources) {

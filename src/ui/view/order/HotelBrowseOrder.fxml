@@ -6,11 +6,11 @@
 <?import javafx.scene.layout.*?>
 <?import javafx.scene.layout.AnchorPane?>
 
-<AnchorPane prefHeight="600.0" prefWidth="750.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1">
+<AnchorPane prefHeight="600.0" prefWidth="700.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="ui.view.order.HotelBrowseOrderController">
    <children>
-      <GridPane prefHeight="600.0" prefWidth="760.0">
+      <GridPane prefHeight="600.0" prefWidth="700.0">
          <children>
-            <ScrollPane prefHeight="579.0" prefWidth="760.0">
+            <ScrollPane prefHeight="579.0" prefWidth="700.0">
                <content>
                   <VBox prefHeight="607.0" prefWidth="936.0">
                      <children>
