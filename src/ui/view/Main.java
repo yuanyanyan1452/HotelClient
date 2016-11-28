@@ -192,7 +192,7 @@ public class Main extends Application {
 	// 客户查看酒店详细信息
 	public void gotoHotelDetailInfo() {
 		try {
-			ClientSearchHotelController controller = (ClientSearchHotelController) replaceSceneContent(
+			HotelDetailInfoController controller = (HotelDetailInfoController) replaceSceneContent(
 					"hotel/HotelDetailInfo.fxml");
 			controller.setMain(this);
 		} catch (Exception e) {
