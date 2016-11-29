@@ -16,19 +16,20 @@
             <Font name="Microsoft JhengHei Bold" size="29.0" />
          </font>
       </Label>
-      <Label fx:id="usernameLabel" layoutX="108.0" layoutY="141.0" prefHeight="31.0" prefWidth="50.0" text="账号" textFill="SNOW" AnchorPane.leftAnchor="108.0">
+      <Label fx:id="usernameLabel" layoutX="108.0" layoutY="126.0" prefHeight="31.0" prefWidth="69.0" text="账号:" textFill="SNOW" AnchorPane.leftAnchor="108.0">
          <font>
             <Font name="Microsoft JhengHei" size="22.0" />
          </font>
       </Label>
-      <TextField fx:id="usernameTextField" layoutX="240.0" layoutY="141.0" prefHeight="31.0" prefWidth="178.0" />
-      <Label fx:id="passwordLabel" layoutX="108.0" layoutY="224.0" prefHeight="31.0" prefWidth="50.0" text="密码" textFill="SNOW" AnchorPane.leftAnchor="108.0">
+      <TextField fx:id="usernameTextField" layoutX="240.0" layoutY="126.0" prefHeight="31.0" prefWidth="178.0" />
+      <Label fx:id="passwordLabel" layoutX="108.0" layoutY="209.0" prefHeight="31.0" prefWidth="69.0" text="密码:" textFill="SNOW" AnchorPane.leftAnchor="108.0">
          <font>
             <Font name="Microsoft JhengHei" size="22.0" />
          </font>
       </Label>
-      <Button fx:id="loginButton" layoutX="294.0" layoutY="315.0" mnemonicParsing="false" onAction="#gotoOverview" prefHeight="50.0" prefWidth="130.0" text="登录" />
-      <PasswordField fx:id="passwordField" layoutX="240.0" layoutY="224.0" prefHeight="31.0" prefWidth="178.0" />
-      <Button fx:id="registButton" layoutX="74.0" layoutY="315.0" mnemonicParsing="false" onAction="#gotoRegist" prefHeight="50.0" prefWidth="130.0" text="注册" />
+      <Button fx:id="loginButton" layoutX="329.0" layoutY="315.0" mnemonicParsing="false" onAction="#gotoOverview" prefHeight="40.0" prefWidth="92.0" text="登录" />
+      <PasswordField fx:id="passwordField" layoutX="240.0" layoutY="209.0" prefHeight="31.0" prefWidth="178.0" />
+      <Button fx:id="registButton" layoutX="204.0" layoutY="315.0" mnemonicParsing="false" onAction="#gotoRegist" prefHeight="40.0" prefWidth="92.0" text="注册" />
+      <Button fx:id="updatepasswordButton" layoutX="78.0" layoutY="315.0" mnemonicParsing="false" onAction="#gotoUpdatePassword" prefHeight="40.0" prefWidth="92.0" text="修改密码" />
    </children>
 </AnchorPane>
