@@ -6,6 +6,7 @@ import java.rmi.NotBoundException;
 import java.rmi.RemoteException;
 
 import rmi.RemoteHelper;
+import ui.view.Main;
 
 
 public class ClientRunner {
@@ -37,6 +38,6 @@ public class ClientRunner {
 
 	public static void main(String[] args){
 		ClientRunner cr = new ClientRunner();
-		
+		Main.main(args);
 	}
 }
