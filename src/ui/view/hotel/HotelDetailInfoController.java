@@ -17,11 +17,12 @@ public class HotelDetailInfoController implements Initializable {
 		// TODO 自动生成的方法存根
 
 	}
-//	//回到客户主界面
-//	@FXML
-//	public void gotoClientOverview(){
-//		main.gotoClientSearchHotel();
-//	}
+	
+	//关闭酒店详细信息界面
+	@FXML
+	public void close(){
+		main.closeExtraStage();
+	}
 
 	public void setMain(Main main) {
 		this.main = main;

@@ -10,6 +10,7 @@ import javafx.scene.Scene;
 import javafx.scene.control.SplitPane;
 import javafx.scene.layout.AnchorPane;
 import javafx.stage.Stage;
+import javafx.stage.StageStyle;
 import ui.view.client.ClientBasicInfoController;
 import ui.view.client.ClientBrowseHotelController;
 import ui.view.client.ClientEnrollVIPController;
@@ -28,8 +29,15 @@ import ui.view.user.RegistController;
 import ui.view.user.UpdatePasswordController;
 
 public class Main extends Application {
+	//主窗口
 	private Stage stage;
+	
+	//弹窗
+	private Stage extraStage;
+	
+	//内部窗口
 	private SplitPane rootLayout;
+	
 	private Scene scene;
 	private final double MINIMUM_WINDOW_WIDTH = 400.0;
 	private final double MINIMUM_WINDOW_HEIGHT = 250.0;
@@ -218,9 +226,18 @@ public class Main extends Application {
 	// 客户查看酒店详细信息
 	public void gotoHotelDetailInfo() {
 		try {
-			HotelDetailInfoController controller = (HotelDetailInfoController) replaceSceneContent(
-					"hotel/HotelDetailInfo.fxml");
+			FXMLLoader fxmlLoader = new FXMLLoader();
+			fxmlLoader.setLocation(Main.class.getResource("hotel/HotelDetailInfo.fxml"));
+			AnchorPane insidePane = (AnchorPane) fxmlLoader.load();
+//			insidePane.setPrefSize(700, 600);
+			
+			HotelDetailInfoController controller = (HotelDetailInfoController) fxmlLoader.getController();
 			controller.setMain(this);
+			
+			extraStage = new Stage(StageStyle.UNDECORATED);
+			extraStage.setScene(new Scene(insidePane));
+			extraStage.centerOnScreen();
+			extraStage.show();
 		} catch (Exception e) {
 			Logger.getLogger(Main.class.getName()).log(Level.SEVERE, null, e);
 		}
@@ -434,6 +451,10 @@ public class Main extends Application {
 		return (Initializable) loader.getController();
 	}
 
+	//关闭弹窗
+	public void closeExtraStage(){
+		extraStage.hide();
+	}
 	public Stage getPrimaryStage() {
 		return stage;
 	}

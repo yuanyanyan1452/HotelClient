@@ -62,7 +62,7 @@
                   <Label layoutX="183.0" layoutY="345.0" text="日" />
                   <Label layoutX="94.0" layoutY="441.0" text="共2晚" />
                   <Button layoutX="407.0" layoutY="520.0" mnemonicParsing="false" prefHeight="39.0" prefWidth="129.0" text="预定" AnchorPane.leftAnchor="383.0" AnchorPane.rightAnchor="114.0" />
-                  <Button layoutX="114.0" layoutY="520.0" mnemonicParsing="false" prefHeight="40.0" prefWidth="120.0" text="关闭" AnchorPane.leftAnchor="114.0" AnchorPane.rightAnchor="383.20000000000005" />
+                  <Button layoutX="114.0" layoutY="520.0" mnemonicParsing="false" onAction="#close" prefHeight="40.0" prefWidth="120.0" text="关闭" AnchorPane.leftAnchor="114.0" AnchorPane.rightAnchor="383.20000000000005" />
                   <Label layoutX="299.0" layoutY="213.0" text="设施服务：" />
                   <Label layoutX="431.0" layoutY="213.0" text="xxxxxxx" />
                   <Button layoutX="90.0" layoutY="468.0" mnemonicParsing="false">

@@ -36,7 +36,7 @@
                            <content>
                               <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
                                  <children>
-                                    <GridPane prefHeight="181.0" prefWidth="748.0">
+                                    <GridPane prefHeight="181.0" prefWidth="680.0">
                                        <children>
                                           <Label text="名称：" />
                                           <Label text="结束时间：" GridPane.rowIndex="1" />
@@ -75,7 +75,7 @@
                            <content>
                               <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
                                  <children>
-                                    <GridPane prefHeight="181.0" prefWidth="748.0">
+                                    <GridPane prefHeight="181.0" prefWidth="680.0">
                                        <children>
                                           <Label text="名称：" />
                                           <Label text="结束时间：" GridPane.rowIndex="1" />
@@ -126,7 +126,7 @@
                            <content>
                               <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
                                  <children>
-                                    <GridPane prefHeight="181.0" prefWidth="748.0">
+                                    <GridPane prefHeight="181.0" prefWidth="680.0">
                                        <children>
                                           <Label text="名称：" />
                                           <Label text="结束时间：" GridPane.rowIndex="1" />
