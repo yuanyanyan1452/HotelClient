@@ -21,11 +21,11 @@
                                     <AnchorPane prefHeight="48.0" prefWidth="364.0">
                                        <children>
                                           <Label layoutX="111.0" layoutY="20.0" text="所在地：" />
-                                          <SplitMenuButton alignment="CENTER" layoutX="193.0" layoutY="16.0" mnemonicParsing="false" prefHeight="23.0" prefWidth="94.0" text="南京">
+                                          <SplitMenuButton fx:id="locationButton" alignment="CENTER" layoutX="193.0" layoutY="16.0" mnemonicParsing="false" prefHeight="23.0" prefWidth="94.0">
                                             <items>
-                                              <MenuItem mnemonicParsing="false" text="嘉兴" />
-                                              <MenuItem mnemonicParsing="false" text="北京" />
-                                                <MenuItem mnemonicParsing="false" text="上海" />
+                                                <MenuItem fx:id="locationMenuItem1" mnemonicParsing="false" onAction="#locationAction1" text="南京" />
+                                              <MenuItem fx:id="locationMenuItem2" mnemonicParsing="false" onAction="#locationAction2" text="北京" />
+                                                <MenuItem fx:id="locationMenuItem3" mnemonicParsing="false" onAction="#locationAction3" text="上海" />
                                             </items>
                                           </SplitMenuButton>
                                           <ImageView fitHeight="36.0" fitWidth="35.0" layoutX="67.0" layoutY="9.0">
@@ -59,10 +59,11 @@
                                       <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
                                              <children>
                                                 <Label layoutX="98.0" layoutY="64.0" text="商圈：" />
-                                                <SplitMenuButton alignment="CENTER" layoutX="191.0" layoutY="60.0" mnemonicParsing="false" prefHeight="23.0" prefWidth="94.0" text="新街口">
+                                                <SplitMenuButton fx:id="businessAddressButton" alignment="CENTER" layoutX="191.0" layoutY="60.0" mnemonicParsing="false" prefHeight="23.0" prefWidth="94.0">
                                                   <items>
-                                                    <MenuItem mnemonicParsing="false" text="Action 1" />
-                                                    <MenuItem mnemonicParsing="false" text="Action 2" />
+                                                      <MenuItem fx:id="businessAddressMenuItem1" mnemonicParsing="false" text="新街口" />
+                                                    <MenuItem fx:id="businessAddressMenuItem2" mnemonicParsing="false" text="仙林中心" />
+                                                    <MenuItem fx:id="businessAddressMenuItem3" mnemonicParsing="false" text="马群" />
                                                   </items>
                                                 </SplitMenuButton>
                                                 <ImageView fitHeight="36.0" fitWidth="35.0" layoutX="27.0" layoutY="53.0">
@@ -79,10 +80,11 @@
                                           <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
                                              <children>
                                                 <Label layoutX="92.0" layoutY="64.0" text="房间类型：" />
-                                                <SplitMenuButton alignment="CENTER" layoutX="192.0" layoutY="60.0" mnemonicParsing="false" prefHeight="23.0" prefWidth="94.0" text="大床房">
+                                                <SplitMenuButton fx:id="roomtypeButton" alignment="CENTER" layoutX="192.0" layoutY="60.0" mnemonicParsing="false" prefHeight="23.0" prefWidth="94.0">
                                                   <items>
-                                                    <MenuItem mnemonicParsing="false" text="Action 1" />
-                                                    <MenuItem mnemonicParsing="false" text="Action 2" />
+                                                      <MenuItem mnemonicParsing="false" text="大床房" />
+                                                    <MenuItem mnemonicParsing="false" text="双人房" />
+                                                    <MenuItem mnemonicParsing="false" text="商务房" />
                                                   </items>
                                                 </SplitMenuButton>
                                                 <ImageView fitHeight="45.0" fitWidth="42.0" layoutX="22.0" layoutY="50.0">
@@ -99,10 +101,13 @@
                                           <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
                                              <children>
                                                 <Label layoutX="102.0" layoutY="64.0" text="星级：" />
-                                                <SplitMenuButton alignment="CENTER" layoutX="191.0" layoutY="60.0" mnemonicParsing="false" prefHeight="23.0" prefWidth="94.0" text="1星">
+                                                <SplitMenuButton fx:id="starButton" alignment="CENTER" layoutX="191.0" layoutY="60.0" mnemonicParsing="false" prefHeight="23.0" prefWidth="94.0">
                                                   <items>
-                                                    <MenuItem mnemonicParsing="false" text="Action 1" />
-                                                    <MenuItem mnemonicParsing="false" text="Action 2" />
+                                                      <MenuItem mnemonicParsing="false" text="1星" />
+                                                    <MenuItem mnemonicParsing="false" text="2星" />
+                                                    <MenuItem mnemonicParsing="false" text="3星" />
+                                                      <MenuItem mnemonicParsing="false" text="4星" />
+                                                      <MenuItem mnemonicParsing="false" text="5星" />
                                                   </items>
                                                 </SplitMenuButton>
                                                 <ImageView fitHeight="36.0" fitWidth="35.0" layoutX="29.0" layoutY="52.0">
@@ -120,13 +125,13 @@
                                              <children>
                                                 <Label layoutX="166.0" layoutY="20.0" text="评分区间：" />
                                                 <Label layoutX="184.0" layoutY="66.0" text="至" />
-                                                <SplitMenuButton layoutX="59.0" layoutY="62.0" mnemonicParsing="false" prefHeight="23.0" prefWidth="94.0" text="4.0分">
+                                                <SplitMenuButton fx:id="lowscoreButton" layoutX="59.0" layoutY="62.0" mnemonicParsing="false" prefHeight="23.0" prefWidth="94.0">
                                                   <items>
                                                     <MenuItem mnemonicParsing="false" text="Action 1" />
                                                     <MenuItem mnemonicParsing="false" text="Action 2" />
                                                   </items>
                                                 </SplitMenuButton>
-                                                <SplitMenuButton layoutX="233.0" layoutY="62.0" mnemonicParsing="false" prefHeight="23.0" prefWidth="94.0" text="5.0分">
+                                                <SplitMenuButton fx:id="highscoreButton" layoutX="233.0" layoutY="62.0" mnemonicParsing="false" prefHeight="23.0" prefWidth="94.0">
                                                    <items>
                                                       <MenuItem mnemonicParsing="false" text="Action 1" />
                                                       <MenuItem mnemonicParsing="false" text="Action 2" />
@@ -165,9 +170,9 @@
                     <columns>
                       <TableColumn prefWidth="107.0" text="酒店名称" />
                       <TableColumn minWidth="0.0" prefWidth="140.0" text="所属商圈" />
-                        <TableColumn minWidth="0.0" prefWidth="306.0" text="地址" />
-                        <TableColumn prefWidth="94.0" text="星级" />
-                        <TableColumn minWidth="7.0" prefWidth="100.0" text="评分" />
+                        <TableColumn minWidth="0.0" prefWidth="296.0" text="地址" />
+                        <TableColumn prefWidth="76.0" text="星级" />
+                        <TableColumn minWidth="7.0" text="评分" />
                     </columns>
                   </TableView>
                   <Button layoutX="529.0" layoutY="323.0" mnemonicParsing="false" onAction="#gotoGenerateOrder" prefHeight="36.0" prefWidth="155.0" text="预订房间" />

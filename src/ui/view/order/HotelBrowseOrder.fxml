@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<?import javafx.scene.text.*?>
 <?import javafx.geometry.*?>
 <?import javafx.scene.control.*?>
 <?import java.lang.*?>
@@ -8,37 +9,54 @@
 
 <AnchorPane prefHeight="600.0" prefWidth="700.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="ui.view.order.HotelBrowseOrderController">
    <children>
-      <GridPane prefHeight="600.0" prefWidth="700.0">
-         <children>
-            <ScrollPane prefHeight="579.0" prefWidth="700.0">
-               <content>
-                  <VBox prefHeight="607.0" prefWidth="936.0">
+      <TitledPane alignment="CENTER" animated="false" collapsible="false" layoutY="56.0" prefHeight="544.0" prefWidth="700.0" text="订单列表">
+        <content>
+          <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="539.0" prefWidth="698.0">
+               <children>
+                  <GridPane prefHeight="527.0" prefWidth="700.0">
                      <children>
-                        <TableView editable="true" prefHeight="600.0" prefWidth="936.0">
-                           <columns>
-                              <TableColumn prefWidth="85.0" text="订单号" />
-                              <TableColumn prefWidth="75.0" text="订单状态" />
-                              <TableColumn prefWidth="140.0" text="开始时间" />
-                              <TableColumn prefWidth="140.0" text="退房时间" />
-                              <TableColumn prefWidth="70.0" text="房间类型" />
-                              <TableColumn prefWidth="72.0" text="房间数量" />
-                              <TableColumn prefWidth="75.0" text="入住人数" />
-                              <TableColumn prefWidth="65.0" text="有无儿童" />
-                              <TableColumn prefWidth="85.0" text="总价值（元）" />
-                              <TableColumn prefWidth="130.0" text="使用的促销策略" />
-                           </columns>
-                        </TableView>
+                        <ScrollPane prefHeight="579.0" prefWidth="700.0">
+                           <content>
+                              <VBox prefHeight="588.0" prefWidth="936.0">
+                                 <children>
+                                    <TableView editable="true" prefHeight="613.0" prefWidth="936.0">
+                                       <columns>
+                                          <TableColumn prefWidth="85.0" text="订单号" />
+                                          <TableColumn prefWidth="75.0" text="订单状态" />
+                                          <TableColumn prefWidth="140.0" text="开始时间" />
+                                          <TableColumn prefWidth="140.0" text="退房时间" />
+                                          <TableColumn prefWidth="70.0" text="房间类型" />
+                                          <TableColumn prefWidth="72.0" text="房间数量" />
+                                          <TableColumn prefWidth="75.0" text="入住人数" />
+                                          <TableColumn prefWidth="65.0" text="有无儿童" />
+                                          <TableColumn prefWidth="85.0" text="总价值（元）" />
+                                          <TableColumn prefWidth="130.0" text="使用的促销策略" />
+                                       </columns>
+                                    </TableView>
+                                 </children>
+                              </VBox>
+                           </content>
+                        </ScrollPane>
                      </children>
-                  </VBox>
-               </content>
-            </ScrollPane>
-         </children>
-         <columnConstraints>
-            <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
-         </columnConstraints>
-         <rowConstraints>
-            <RowConstraints maxHeight="600.0" minHeight="10.0" prefHeight="499.0" vgrow="SOMETIMES" />
-         </rowConstraints>
-      </GridPane>
+                     <columnConstraints>
+                        <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+                     </columnConstraints>
+                     <rowConstraints>
+                        <RowConstraints maxHeight="600.0" minHeight="10.0" prefHeight="499.0" vgrow="SOMETIMES" />
+                     </rowConstraints>
+                  </GridPane>
+               </children>
+            </AnchorPane>
+        </content>
+         <font>
+            <Font name="System Bold" size="12.0" />
+         </font>
+      </TitledPane>
+      <RadioButton layoutX="265.0" layoutY="33.0" mnemonicParsing="false" text="撤销" />
+      <RadioButton layoutX="172.0" layoutY="33.0" mnemonicParsing="false" text="异常" />
+      <RadioButton layoutX="75.0" layoutY="33.0" mnemonicParsing="false" text="正常" />
+      <RadioButton layoutX="172.0" layoutY="7.0" mnemonicParsing="false" text="未执行" />
+      <RadioButton layoutX="75.0" layoutY="7.0" mnemonicParsing="false" text="已执行" />
+      <Label layoutX="20.0" layoutY="21.0" text="筛选：" />
    </children>
 </AnchorPane>

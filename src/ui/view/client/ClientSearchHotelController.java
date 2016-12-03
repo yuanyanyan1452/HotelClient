@@ -5,14 +5,74 @@ import java.util.ResourceBundle;
 
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
+import javafx.scene.control.MenuItem;
+import javafx.scene.control.SplitMenuButton;
 import ui.view.Main;
 
 public class ClientSearchHotelController implements Initializable{
 	private Main main;
+	
+	@FXML
+	private SplitMenuButton locationButton;
+	
+	@FXML
+	private MenuItem locationMenuItem1;
+	
+	@FXML
+	private MenuItem locationMenuItem2;
+	
+	@FXML
+	private MenuItem locationMenuItem3;
+	
+	@FXML
+	private SplitMenuButton businessAddressButton;
+	
+	@FXML
+	private MenuItem businessAddressMenuItem1;
+	
+	@FXML
+	private MenuItem businessAddressMenuItem2;
+	
+	@FXML
+	private MenuItem businessAddressMenuItem3;
+	
+	
+	
+	
+	@FXML
+	private SplitMenuButton roomtypeButton;
+	
+	@FXML
+	private SplitMenuButton starButton;
+	
+	@FXML
+	private SplitMenuButton lowscoreButton;
+	
+	@FXML
+	private SplitMenuButton highscoreButton;
 	@FXML
 	private void initialize(){
 		
 	}
+	
+	//回显并置为搜索条件
+	@FXML
+	private void locationAction1(){
+		locationButton.setText("南京");
+		//TODO
+	}
+	@FXML
+	private void locationAction2(){
+		locationButton.setText("北京");
+		//TODO
+	}
+	@FXML
+	private void locationAction3(){
+		locationButton.setText("上海");
+		//TODO
+	}
+	
+	
 	@FXML
 	private void back(){
 		main.gotoClientOverview();
