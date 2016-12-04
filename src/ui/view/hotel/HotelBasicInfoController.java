@@ -3,17 +3,24 @@ package ui.view.hotel;
 import java.net.URL;
 import java.util.ResourceBundle;
 
+import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import ui.view.Main;
 
 public class HotelBasicInfoController implements Initializable {
 	private Main main;
+	
+	@FXML
+	private void save(){
+		//TODO
+	}
+	
 	public HotelBasicInfoController() {
-		// TODO 自动生成的构造函数存根
+	
 	}
 	@Override
 	public void initialize(URL location, ResourceBundle resources) {
-		// TODO 自动生成的方法存根
+		
 
 	}
 

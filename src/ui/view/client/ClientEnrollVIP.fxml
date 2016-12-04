@@ -21,10 +21,10 @@
             <Font name="AR LisuGB Medium" size="32.0" />
          </font>
       </Label>
-      <RadioButton layoutX="341.0" layoutY="201.0" mnemonicParsing="false" text="普通会员" />
-      <RadioButton layoutX="509.0" layoutY="201.0" mnemonicParsing="false" text="企业会员" />
-      <TextField layoutX="341.0" layoutY="322.0" prefHeight="30.0" prefWidth="238.0" />
-      <Button layoutX="111.0" layoutY="467.0" mnemonicParsing="false" prefHeight="42.0" prefWidth="121.0" text="取消" />
-      <Button layoutX="473.0" layoutY="467.0" mnemonicParsing="false" prefHeight="42.0" prefWidth="121.0" text="确认" />
+      <RadioButton fx:id="normalButton" layoutX="341.0" layoutY="201.0" mnemonicParsing="false" text="普通会员" />
+      <RadioButton fx:id="companyButton" layoutX="509.0" layoutY="201.0" mnemonicParsing="false" text="企业会员" />
+      <TextField fx:id="infoTextField" layoutX="341.0" layoutY="322.0" prefHeight="30.0" prefWidth="238.0" />
+      <Button layoutX="111.0" layoutY="467.0" mnemonicParsing="false" onAction="#close" prefHeight="42.0" prefWidth="121.0" text="取消" />
+      <Button layoutX="473.0" layoutY="467.0" mnemonicParsing="false" onAction="#enroll" prefHeight="42.0" prefWidth="121.0" text="确认" />
    </children>
 </AnchorPane>

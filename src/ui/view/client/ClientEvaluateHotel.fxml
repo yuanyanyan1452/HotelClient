@@ -37,18 +37,27 @@
         </rowConstraints>
          <children>
             <Label text="酒店：" />
-            <Label text="xxx" GridPane.columnIndex="1" />
+            <Label fx:id="hotelnameLabel" prefHeight="15.0" prefWidth="151.0" GridPane.columnIndex="1" />
             <Label text="评分：" GridPane.rowIndex="1" />
-            <Label text="xxx" GridPane.columnIndex="1" GridPane.rowIndex="1" />
             <Label text="评论：" GridPane.rowIndex="2" GridPane.valignment="TOP">
                <GridPane.margin>
                   <Insets top="20.0" />
                </GridPane.margin>
             </Label>
-            <TextArea prefHeight="180.0" prefWidth="259.0" GridPane.columnIndex="1" GridPane.rowIndex="2" />
+            <TextArea fx:id="commentArea" prefHeight="180.0" prefWidth="259.0" GridPane.columnIndex="1" GridPane.rowIndex="2" />
+            <AnchorPane prefHeight="200.0" prefWidth="200.0" GridPane.columnIndex="1" GridPane.rowIndex="1">
+               <children>
+                  <Label fx:id="scoreLabel" layoutX="52.0" layoutY="18.0" text="0.0">
+                     <font>
+                        <Font size="13.0" />
+                     </font>
+                  </Label>
+                  <Slider fx:id="scoreSlider" layoutX="97.0" layoutY="19.0" />
+               </children>
+            </AnchorPane>
          </children>
       </GridPane>
-      <Button layoutX="398.0" layoutY="520.0" mnemonicParsing="false" prefHeight="41.0" prefWidth="113.0" text="确认评价" />
-      <Button layoutX="90.0" layoutY="520.0" mnemonicParsing="false" prefHeight="41.0" prefWidth="113.0" text="取消评价" />
+      <Button layoutX="398.0" layoutY="520.0" mnemonicParsing="false" onAction="#evaluate" prefHeight="41.0" prefWidth="113.0" text="确认评价" />
+      <Button layoutX="90.0" layoutY="520.0" mnemonicParsing="false" onAction="#close" prefHeight="41.0" prefWidth="113.0" text="取消评价" />
    </children>
 </AnchorPane>

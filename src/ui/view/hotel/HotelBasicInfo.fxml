@@ -18,7 +18,7 @@
           <RowConstraints maxHeight="295.0" minHeight="10.0" prefHeight="54.0" vgrow="SOMETIMES" />
         </rowConstraints>
          <children>
-            <Button mnemonicParsing="false" prefHeight="31.0" prefWidth="102.0" text="保存" GridPane.rowIndex="1">
+            <Button mnemonicParsing="false" onAction="#save" prefHeight="31.0" prefWidth="102.0" text="保存" GridPane.rowIndex="1">
                <GridPane.margin>
                   <Insets left="550.0" />
                </GridPane.margin>

@@ -12,13 +12,13 @@
         <content>
           <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
                <children>
-                  <TableView prefHeight="600.0" prefWidth="700.0">
+                  <TableView fx:id="hotelTable" prefHeight="600.0" prefWidth="700.0">
                      <columns>
-                        <TableColumn prefWidth="107.0" text="酒店名称" />
-                        <TableColumn minWidth="0.0" prefWidth="140.0" text="所属商圈" />
-                        <TableColumn minWidth="0.0" prefWidth="292.0" text="地址" />
-                        <TableColumn text="星级" />
-                        <TableColumn minWidth="7.0" text="评分" />
+                        <TableColumn fx:id="hotelnameColumn" prefWidth="107.0" text="酒店名称" />
+                        <TableColumn fx:id="businessAddressColumn" minWidth="0.0" prefWidth="140.0" text="所属商圈" />
+                        <TableColumn fx:id="addressColumn" minWidth="0.0" prefWidth="292.0" text="地址" />
+                        <TableColumn fx:id="starColumn" text="星级" />
+                        <TableColumn fx:id="scoreColumn" minWidth="7.0" text="评分" />
                      </columns>
                   </TableView>
                </children>

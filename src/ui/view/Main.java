@@ -4,19 +4,24 @@ import java.util.logging.Level;
 import java.util.logging.Logger;
 
 import javafx.application.Application;
+import javafx.collections.FXCollections;
+import javafx.collections.ObservableList;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
 import javafx.scene.Scene;
 import javafx.scene.control.SplitPane;
+import javafx.scene.control.TableColumn;
 import javafx.scene.layout.AnchorPane;
 import javafx.stage.Stage;
 import javafx.stage.StageStyle;
+import objects.Hotel;
 import ui.view.client.ClientBasicInfoController;
 import ui.view.client.ClientBrowseHotelController;
 import ui.view.client.ClientEnrollVIPController;
 import ui.view.client.ClientEvaluateHotelController;
 import ui.view.client.ClientOverviewController;
 import ui.view.client.ClientSearchHotelController;
+import ui.model.HotelModel;
 import ui.view.market.*;
 import ui.view.hotel.*;
 import ui.view.manager.ManagerOverviewController;
@@ -29,22 +34,39 @@ import ui.view.user.RegistController;
 import ui.view.user.UpdatePasswordController;
 
 public class Main extends Application {
-	//主窗口
+	// 主窗口
 	private Stage stage;
-	
-	//弹窗
+
+	// 弹窗
 	private Stage extraStage;
-	
-	//内部窗口
+
+	// 内部窗口
 	private SplitPane rootLayout;
-	
+
 	private Scene scene;
 	private final double MINIMUM_WINDOW_WIDTH = 400.0;
 	private final double MINIMUM_WINDOW_HEIGHT = 250.0;
 
+	/*
+	 * an observable list of hotels.
+	 */
+	private ObservableList<HotelModel> hotelData = FXCollections.observableArrayList();
+
+	public Main() {
+		// hotelData.add(new HotelModel("ww","新街口","xx广场xx号",3,4.5));
+		// hotelData.add(new HotelModel("ss","马群","xx广场xx号",4,4.7));
+		// hotelData.add(new HotelModel("ww","仙林","xx广场xx号",1,4.0));
+		// hotelData.add(new HotelModel("xx","旧街口","xx广场xx号",2,4.2));
+	}
+
+	public ObservableList<HotelModel> getHotelData() {
+		return hotelData;
+	}
+
 	@Override
 	public void start(Stage primaryStage) throws Exception {
 		stage = primaryStage;
+		// stage.initStyle(StageStyle.UNDECORATED);
 		stage.setTitle("Hotel");
 		stage.setMinHeight(MINIMUM_WINDOW_HEIGHT);
 		stage.setMinWidth(MINIMUM_WINDOW_WIDTH);
@@ -56,6 +78,7 @@ public class Main extends Application {
 	// 初始界面
 	public void initUI() {
 		try {
+
 			LoginOverviewController loginOverviewController = (LoginOverviewController) replaceSceneContent(
 					"user/LoginOverview.fxml");
 			loginOverviewController.setMain(this);
@@ -72,13 +95,13 @@ public class Main extends Application {
 			AnchorPane pane = (AnchorPane) loader.load();
 			this.scene = new Scene(pane);
 			LoginController loginController = (LoginController) loader.getController();
-			loginController.setMain(this,type);
-			
-			//当非客户用户登录时，隐藏注册按钮
-			if(type!="client"){
+			loginController.setMain(this, type);
+
+			// 当非客户用户登录时，隐藏注册按钮
+			if (type != "client") {
 				loginController.getRegistButton().setVisible(false);
 			}
-			
+
 			stage.setScene(scene);
 			stage.sizeToScene();
 			stage.centerOnScreen();
@@ -93,17 +116,18 @@ public class Main extends Application {
 	public void gotoRegist(String type) {
 		try {
 			RegistController registController = (RegistController) replaceSceneContent("user/Regist.fxml");
-			registController.setMain(this,type);
+			registController.setMain(this, type);
 		} catch (Exception e) {
 			Logger.getLogger(Main.class.getName()).log(Level.SEVERE, null, e);
 		}
 	}
-	
-	//跳转到修改密码界面
-	public void gotoUpdatePassword(String type){
+
+	// 跳转到修改密码界面
+	public void gotoUpdatePassword(String type) {
 		try {
-			UpdatePasswordController controller= (UpdatePasswordController) replaceSceneContent("user/UpdatePassword.fxml");
-			controller.setMain(this,type);
+			UpdatePasswordController controller = (UpdatePasswordController) replaceSceneContent(
+					"user/UpdatePassword.fxml");
+			controller.setMain(this, type);
 		} catch (Exception e) {
 			Logger.getLogger(Main.class.getName()).log(Level.SEVERE, null, e);
 		}
@@ -197,11 +221,15 @@ public class Main extends Application {
 			FXMLLoader fxmlLoader = new FXMLLoader();
 			fxmlLoader.setLocation(Main.class.getResource("client/ClientEvaluateHotel.fxml"));
 			AnchorPane insidePane = (AnchorPane) fxmlLoader.load();
-			insidePane.setPrefSize(700, 600);
-			rootLayout.getItems().set(1, insidePane);
+
 			ClientEvaluateHotelController controller = (ClientEvaluateHotelController) fxmlLoader.getController();
 			controller.setMain(this);
-			stage.centerOnScreen();
+
+			extraStage = new Stage(StageStyle.UNDECORATED);
+			extraStage.setScene(new Scene(insidePane));
+			extraStage.setAlwaysOnTop(true);
+			extraStage.centerOnScreen();
+			extraStage.show();
 		} catch (Exception e) {
 			Logger.getLogger(Main.class.getName()).log(Level.SEVERE, null, e);
 		}
@@ -229,11 +257,10 @@ public class Main extends Application {
 			FXMLLoader fxmlLoader = new FXMLLoader();
 			fxmlLoader.setLocation(Main.class.getResource("hotel/HotelDetailInfo.fxml"));
 			AnchorPane insidePane = (AnchorPane) fxmlLoader.load();
-//			insidePane.setPrefSize(700, 600);
-			
+
 			HotelDetailInfoController controller = (HotelDetailInfoController) fxmlLoader.getController();
 			controller.setMain(this);
-			
+
 			extraStage = new Stage(StageStyle.UNDECORATED);
 			extraStage.setScene(new Scene(insidePane));
 			extraStage.centerOnScreen();
@@ -244,11 +271,19 @@ public class Main extends Application {
 	}
 
 	// 客户生成订单
-	public void gotoGenerateOrder() {
+	public void gotoGenerateOrder(HotelModel hotel) {
 		try {
-			ClientGenerateOrderController controller = (ClientGenerateOrderController) replaceSceneContent(
-					"order/ClientGenerateOrder.fxml");
-			controller.setMain(this);
+			FXMLLoader fxmlLoader = new FXMLLoader();
+			fxmlLoader.setLocation(Main.class.getResource("order/ClientGenerateOrder.fxml"));
+			AnchorPane insidePane = (AnchorPane) fxmlLoader.load();
+
+			ClientGenerateOrderController controller = (ClientGenerateOrderController) fxmlLoader.getController();
+			controller.setMain(this, hotel);
+
+			extraStage = new Stage(StageStyle.UNDECORATED);
+			extraStage.setScene(new Scene(insidePane));
+			extraStage.centerOnScreen();
+			extraStage.show();
 		} catch (Exception e) {
 			Logger.getLogger(Main.class.getName()).log(Level.SEVERE, null, e);
 		}
@@ -405,7 +440,8 @@ public class Main extends Application {
 			AnchorPane insidePane = (AnchorPane) fxmlLoader.load();
 			insidePane.setPrefSize(700, 600);
 			rootLayout.getItems().set(1, insidePane);
-			MarketBrowseAbnormalOrderController controller = (MarketBrowseAbnormalOrderController) fxmlLoader.getController();
+			MarketBrowseAbnormalOrderController controller = (MarketBrowseAbnormalOrderController) fxmlLoader
+					.getController();
 			controller.setMain(this);
 		} catch (Exception e) {
 			Logger.getLogger(Main.class.getName()).log(Level.SEVERE, null, e);
@@ -451,10 +487,11 @@ public class Main extends Application {
 		return (Initializable) loader.getController();
 	}
 
-	//关闭弹窗
-	public void closeExtraStage(){
+	// 关闭弹窗
+	public void closeExtraStage() {
 		extraStage.hide();
 	}
+
 	public Stage getPrimaryStage() {
 		return stage;
 	}
