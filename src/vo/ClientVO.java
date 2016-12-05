@@ -103,6 +103,6 @@ public class ClientVO implements Serializable {
 		this.info = info;
 	}
 	
-	
+
 
 }

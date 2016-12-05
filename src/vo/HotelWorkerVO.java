@@ -21,6 +21,10 @@ public class HotelWorkerVO implements Serializable{
 	public int gethotelid(){
 		return hotelid;
 	}
+	
+	public void sethotelid(int id){
+		hotelid=id;
+	}
 	public String getusername(){
 		return username;
 	}

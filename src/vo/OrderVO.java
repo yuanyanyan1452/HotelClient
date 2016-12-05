@@ -1,6 +1,9 @@
 package vo;
 
 import java.io.Serializable;
+import java.util.ArrayList;
+
+import po.RoomOrderPO;
 
 public class OrderVO implements Serializable {
 	/**
@@ -15,8 +18,7 @@ public class OrderVO implements Serializable {
 	String start_time;
 	String end_time;
 	String latest_execute_time;
-	String room_type;
-	int room_number;
+	ArrayList<RoomOrderPO>room_order;
 	String strategy;
 	int price;
 	int expect_number_of_people;
@@ -31,14 +33,13 @@ public class OrderVO implements Serializable {
 		start_time=null;
 		end_time=null;
 		latest_execute_time=null;
-		room_type=null;
-		room_number=0;
+		room_order=null;
 		strategy=null;
 		price=0;
 		expect_number_of_people=0;
 		havechild=false;
 	}
-	public OrderVO(int i,int cid,int hid,String s,boolean e,String st,String et,String lt,String rt,int rm,String str,int p,int en,boolean child){
+	public OrderVO(int i,int cid,int hid,String s,boolean e,String st,String et,String lt,ArrayList<RoomOrderPO>list,String str,int p,int en,boolean child){
 		id=i;
 		clientid=cid;
 		hotelid=hid;
@@ -47,8 +48,7 @@ public class OrderVO implements Serializable {
 		start_time=st;
 		end_time=et;
 		latest_execute_time=lt;
-		room_type=rt;
-		room_number=rm;
+		room_order=list;
 		strategy=str;
 		price=p;
 		expect_number_of_people=en;
@@ -111,18 +111,11 @@ public class OrderVO implements Serializable {
 		return latest_execute_time; 
 	}
 	
-	public void setroom_type(String type){
-		room_type = type;
+	public void setroom_order(ArrayList<RoomOrderPO> list){
+		room_order = list;
 	}
-	public String getroom_type(){
-		return room_type;
-	}
-	
-	public void setroom_number(int number){
-		room_number = number;
-	}
-	public int getroom_number(){
-		return room_number;
+	public ArrayList<RoomOrderPO> getroom_order(){
+		return room_order;
 	}
 	
 	public void setstrategy(String strategy){
