@@ -142,7 +142,7 @@
                         <TableView fx:constant="CONSTRAINED_RESIZE_POLICY" />
                      </columnResizePolicy>
                   </TableView>
-                  <Button layoutX="273.0" layoutY="323.0" mnemonicParsing="false" onAction="#gotoHotelDetailInfo" prefHeight="36.0" prefWidth="155.0" text="查看详细信息" />
+                  <Button layoutX="273.0" layoutY="323.0" mnemonicParsing="false" onAction="#gotoGenerateOrder" prefHeight="36.0" prefWidth="155.0" text="预订酒店" />
                </children>
             </AnchorPane>
         </items>

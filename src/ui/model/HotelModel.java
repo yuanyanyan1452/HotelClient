@@ -73,11 +73,11 @@ public class HotelModel {
 		return this.score;
 	}
 
-	public SimpleStringProperty getStar() {
-		return star;
+	public String getStar() {
+		return this.star.get();
 	}
 
-	public SimpleStringProperty getScore() {
-		return score;
+	public String getScore() {
+		return this.score.get();
 	}
 }

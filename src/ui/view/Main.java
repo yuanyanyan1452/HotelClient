@@ -252,14 +252,14 @@ public class Main extends Application {
 	}
 
 	// 客户查看酒店详细信息
-	public void gotoHotelDetailInfo() {
+	public void gotoHotelDetailInfo(HotelModel hotel) {
 		try {
 			FXMLLoader fxmlLoader = new FXMLLoader();
 			fxmlLoader.setLocation(Main.class.getResource("hotel/HotelDetailInfo.fxml"));
 			AnchorPane insidePane = (AnchorPane) fxmlLoader.load();
 
 			HotelDetailInfoController controller = (HotelDetailInfoController) fxmlLoader.getController();
-			controller.setMain(this);
+			controller.setMain(this,hotel);
 
 			extraStage = new Stage(StageStyle.UNDECORATED);
 			extraStage.setScene(new Scene(insidePane));
