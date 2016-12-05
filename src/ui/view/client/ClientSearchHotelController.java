@@ -1,106 +1,173 @@
 package ui.view.client;
 
 import java.net.URL;
+import java.util.ArrayList;
 import java.util.ResourceBundle;
-
+import ui.model.*;
+import javafx.collections.FXCollections;
+import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
+import javafx.scene.control.Button;
+import javafx.scene.control.Cell;
+import javafx.scene.control.ComboBox;
 import javafx.scene.control.MenuItem;
 import javafx.scene.control.SplitMenuButton;
+import javafx.scene.control.TableCell;
+import javafx.scene.control.TableColumn;
+import javafx.scene.control.TableColumn.CellDataFeatures;
+import javafx.scene.control.TableView;
+import javafx.scene.control.cell.PropertyValueFactory;
+import javafx.scene.control.cell.TextFieldTableCell;
+import javafx.scene.input.MouseEvent;
+import javafx.util.Callback;
+import objects.Hotel;
 import ui.view.Main;
 
-public class ClientSearchHotelController implements Initializable{
+public class ClientSearchHotelController implements Initializable {
 	private Main main;
-	
 	@FXML
-	private SplitMenuButton locationButton;
-	
+	private TableView<HotelModel> hotelTable;
 	@FXML
-	private MenuItem locationMenuItem1;
-	
+	private TableColumn<HotelModel, String> hotelnamecolumn;
+
 	@FXML
-	private MenuItem locationMenuItem2;
-	
+	private TableColumn<HotelModel, String> businessaddresscolumn;
+
 	@FXML
-	private MenuItem locationMenuItem3;
-	
+	private TableColumn<HotelModel, String> addresscolumn;
+
 	@FXML
-	private SplitMenuButton businessAddressButton;
-	
+	private TableColumn<HotelModel, String> starcolumn;
+
 	@FXML
-	private MenuItem businessAddressMenuItem1;
-	
+	private TableColumn<HotelModel, String> scorecolumn;
+
 	@FXML
-	private MenuItem businessAddressMenuItem2;
-	
+	private ComboBox<String> locationButton;
+
 	@FXML
-	private MenuItem businessAddressMenuItem3;
-	
-	
-	
-	
+	private ComboBox<String> businessAddressButton;
+
 	@FXML
-	private SplitMenuButton roomtypeButton;
-	
+	private ComboBox<String> roomtypeButton;
+
 	@FXML
-	private SplitMenuButton starButton;
-	
+	private ComboBox<String> starButton;
+
 	@FXML
-	private SplitMenuButton lowscoreButton;
-	
+	private ComboBox<String> lowscoreButton;
+
 	@FXML
-	private SplitMenuButton highscoreButton;
+	private ComboBox<String> highscoreButton;
+
 	@FXML
-	private void initialize(){
-		
+	private Button searchButton;
+
+	@FXML
+	private void initialize() {
+
 	}
-	
-	//ªÿœ‘≤¢÷√Œ™À—À˜Ãıº˛
+
 	@FXML
-	private void locationAction1(){
-		locationButton.setText("ƒœæ©");
-		//TODO
+	private void search() {
+		ObservableList<HotelModel> hotelData = FXCollections.observableArrayList();
+		hotelData.add(new HotelModel("Â¶ÇÂÆ∂", "Êñ∞Ë°óÂè£", "xxÂπøÂú∫xxÂè∑", "1", "2.0"));
+		hotelData.add(new HotelModel("7Â§©", "È©¨Áæ§", "xxÂπøÂú∫xxÂè∑", "2", "3.0"));
+		hotelData.add(new HotelModel("Ê±âÂ∫≠", "‰ªôÊûó", "xxÂπøÂú∫xxÂè∑", "3", "4.0"));
+		hotelData.add(new HotelModel("Â∏É‰∏Å", "ÊóßË°óÂè£", "xxÂπøÂú∫xxÂè∑", "4", "5.0"));
+
+		hotelnamecolumn.setCellValueFactory(celldata -> celldata.getValue().hotelNameProperty());
+		hotelnamecolumn.setCellFactory(new Callback<TableColumn<HotelModel, String>, TableCell<HotelModel, String>>() {
+
+			@Override
+			public TableCell<HotelModel, String> call(TableColumn<HotelModel, String> param) {
+				TextFieldTableCell<HotelModel, String> cell = new TextFieldTableCell<>();
+				cell.setOnMouseClicked((MouseEvent t) -> {
+					if (t.getClickCount() == 2) {
+						main.gotoGenerateOrder(hotelData.get(cell.getIndex()));
+					}
+				});
+				return cell;
+			}
+		});
+		businessaddresscolumn.setCellValueFactory(celldata -> celldata.getValue().businessAddressProperty());
+		businessaddresscolumn
+				.setCellFactory(new Callback<TableColumn<HotelModel, String>, TableCell<HotelModel, String>>() {
+
+					@Override
+					public TableCell<HotelModel, String> call(TableColumn<HotelModel, String> param) {
+						TextFieldTableCell<HotelModel, String> cell = new TextFieldTableCell<>();
+						cell.setOnMouseClicked((MouseEvent t) -> {
+							if (t.getClickCount() == 2) {
+								main.gotoGenerateOrder(hotelData.get(cell.getIndex()));
+							}
+						});
+						return cell;
+					}
+				});
+		addresscolumn.setCellValueFactory(celldata -> celldata.getValue().addressProperty());
+		addresscolumn.setCellFactory(new Callback<TableColumn<HotelModel, String>, TableCell<HotelModel, String>>() {
+
+			@Override
+			public TableCell<HotelModel, String> call(TableColumn<HotelModel, String> param) {
+				TextFieldTableCell<HotelModel, String> cell = new TextFieldTableCell<>();
+				cell.setOnMouseClicked((MouseEvent t) -> {
+					if (t.getClickCount() == 2) {
+						main.gotoGenerateOrder(hotelData.get(cell.getIndex()));
+					}
+				});
+				return cell;
+			}
+		});
+		starcolumn.setCellValueFactory(celldata -> celldata.getValue().starProperty());
+		starcolumn.setCellFactory(new Callback<TableColumn<HotelModel, String>, TableCell<HotelModel, String>>() {
+
+			@Override
+			public TableCell<HotelModel, String> call(TableColumn<HotelModel, String> param) {
+				TextFieldTableCell<HotelModel, String> cell = new TextFieldTableCell<>();
+				cell.setOnMouseClicked((MouseEvent t) -> {
+					if (t.getClickCount() == 2) {
+						main.gotoGenerateOrder(hotelData.get(cell.getIndex()));
+					}
+				});
+				return cell;
+			}
+		});
+		scorecolumn.setCellValueFactory(celldata -> celldata.getValue().scoreProperty());
+		scorecolumn.setCellFactory(new Callback<TableColumn<HotelModel, String>, TableCell<HotelModel, String>>() {
+
+			@Override
+			public TableCell<HotelModel, String> call(TableColumn<HotelModel, String> param) {
+				TextFieldTableCell<HotelModel, String> cell = new TextFieldTableCell<>();
+				cell.setOnMouseClicked((MouseEvent t) -> {
+					if (t.getClickCount() == 2) {
+						main.gotoGenerateOrder(hotelData.get(cell.getIndex()));
+					}
+				});
+				return cell;
+			}
+		});
+		hotelTable.setItems(hotelData);
 	}
+
+	// Ë∑≥ËΩ¨Âà∞ÈÖíÂ∫óËØ¶ÁªÜ‰ø°ÊÅØÁïåÈù¢
 	@FXML
-	private void locationAction2(){
-		locationButton.setText("±±æ©");
-		//TODO
-	}
-	@FXML
-	private void locationAction3(){
-		locationButton.setText("…œ∫£");
-		//TODO
-	}
-	
-	
-	@FXML
-	private void back(){
-		main.gotoClientOverview();
-	}
-	
-	//øÕªß≤Èø¥æ∆µÍœÍœ∏–≈œ¢
-	@FXML
-	private void gotoHotelDetailInfo(){
+	private void gotoHotelDetailInfo() {
 		main.gotoHotelDetailInfo();
 	}
 
-	//øÕªß…˙≥…∂©µ•
-	@FXML 
-	private void gotoGenerateOrder(){
-		main.gotoGenerateOrder();
-	}
-	
-	
 	public ClientSearchHotelController() {
-		// TODO ◊‘∂Ø…˙≥…µƒππ‘Ï∫Ø ˝¥Ê∏˘
+
 	}
 
 	@Override
 	public void initialize(URL location, ResourceBundle resources) {
-		
+
 	}
-	
-	public void setMain(Main main){
+
+	public void setMain(Main main) {
 		this.main = main;
+		hotelTable.setItems(main.getHotelData());
 	}
 }
