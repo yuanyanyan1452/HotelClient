@@ -1,127 +1,132 @@
 package service;
 
-import vo.*;
 import java.util.ArrayList;
 
-import objects.*;
+import objects.Client;
+import objects.ResultMessage;
+import objects.RoomType;
+import objects.VIPInfo;
+import vo.ClientVO;
+import vo.EvaluationVO;
+import vo.HotelVO;
 
 public interface ClientBLService {
-	// Ìá¹©¸ø½çÃæµ÷ÓÃµÄ½Ó¿Ú
+	// ï¿½á¹©ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ÃµÄ½Ó¿ï¿½
 
 	/**
 	 * @param clientid
-	 * @return ¿Í»§»ñÈ¡ÏêÏ¸ÐÅÏ¢
+	 * @return ï¿½Í»ï¿½ï¿½ï¿½È¡ï¿½ï¿½Ï¸ï¿½ï¿½Ï¢
 	 */
 	public ClientVO client_checkInfo(int clientid);
 
 	/**
 	 * @param vo
-	 * @return ¿Í»§¸üÐÂÏêÏ¸ÐÅÏ¢
+	 * @return ï¿½Í»ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ï¸ï¿½ï¿½Ï¢
 	 */
 	public ResultMessage client_updateInfo(ClientVO vo);
 
 	/**
 	 * @param clientid
-	 * @return ¿Í»§»ñÈ¡ÀúÊ·¾ÆµêÁÐ±í
+	 * @return ï¿½Í»ï¿½ï¿½ï¿½È¡ï¿½ï¿½Ê·ï¿½Æµï¿½ï¿½Ð±ï¿½
 	 */
 	public ArrayList<HotelVO> client_getpreviousHotelList(int clientid);
 
 	/**
 	 * @param clientid
-	 * @return ¿Í»§²é¿´ÐÅÓÃÖµ
+	 * @return ï¿½Í»ï¿½ï¿½é¿´ï¿½ï¿½ï¿½ï¿½Öµ
 	 */
 	public int client_checkCredit(int clientid);
 
 	/**
 	 * @param clientid
-	 * @return ¿Í»§»ñÈ¡ÐÅÓÃ¼ÇÂ¼
+	 * @return ï¿½Í»ï¿½ï¿½ï¿½È¡ï¿½ï¿½ï¿½Ã¼ï¿½Â¼
 	 */
 	public ArrayList<String> client_checkCreditList(int clientid);
 
 	/**
 	 * @param location
-	 * @return ¿Í»§»ñÈ¡¶ÔÓ¦µØÖ·µÄ¾ÆµêÁÐ±í
+	 * @return ï¿½Í»ï¿½ï¿½ï¿½È¡ï¿½ï¿½Ó¦ï¿½ï¿½Ö·ï¿½Ä¾Æµï¿½ï¿½Ð±ï¿½
 	 */
 	public ArrayList<HotelVO> client_setLocation(String location);
 
 	/**
 	 * @param hotelname
-	 * @return ·ûºÏ¶ÔÓ¦¾ÆµêÃûµÄ¾ÆµêÁÐ±í
+	 * @return ï¿½ï¿½ï¿½Ï¶ï¿½Ó¦ï¿½Æµï¿½ï¿½ï¿½ï¿½Ä¾Æµï¿½ï¿½Ð±ï¿½
 	 */
 	public ArrayList<HotelVO> client_searchHotel(String hotelname);
 
 	/**
 	 * @param type
-	 * @return ÓÐ·ûºÏ¶ÔÓ¦·¿¼äÀàÐÍµÄ¾ÆµêÁÐ±í
+	 * @return ï¿½Ð·ï¿½ï¿½Ï¶ï¿½Ó¦ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ÍµÄ¾Æµï¿½ï¿½Ð±ï¿½
 	 */
 	public ArrayList<HotelVO> client_searchHotel(RoomType type);
 
 	/**
 	 * @param lowprice
 	 * @param highprice
-	 * @return ÓÐ·ûºÏ¶ÔÓ¦¼Û¸ñÇø¼äµÄ·¿¼äµÄ¾ÆµêÁÐ±í
+	 * @return ï¿½Ð·ï¿½ï¿½Ï¶ï¿½Ó¦ï¿½Û¸ï¿½ï¿½ï¿½ï¿½ï¿½Ä·ï¿½ï¿½ï¿½Ä¾Æµï¿½ï¿½Ð±ï¿½
 	 */
 	public ArrayList<HotelVO> client_searchHotel(int lowprice, int highprice);
 
 	/**
 	 * @param inTime
 	 * @param leaveTime
-	 * @return ÓÐ·ûºÏ¶ÔÓ¦Ê±¼ä¶ÎµÄ·¿¼äµÄ¾ÆµêÁÐ±í
+	 * @return ï¿½Ð·ï¿½ï¿½Ï¶ï¿½Ó¦Ê±ï¿½ï¿½ÎµÄ·ï¿½ï¿½ï¿½Ä¾Æµï¿½ï¿½Ð±ï¿½
 	 */
 	public ArrayList<HotelVO> client_searchHotel(String inTime, String leaveTime);
 
 	/**
 	 * @param star
-	 * @return ·ûºÏ¶ÔÓ¦ÐÇ¼¶µÄ¾ÆµêÁÐ±í
+	 * @return ï¿½ï¿½ï¿½Ï¶ï¿½Ó¦ï¿½Ç¼ï¿½ï¿½Ä¾Æµï¿½ï¿½Ð±ï¿½
 	 */
 	public ArrayList<HotelVO> client_searchHotel(int star);
 
 	/**
 	 * @param lowscore
 	 * @param highscore
-	 * @return ·ûºÏ¶ÔÓ¦ÆÀ·ÖÇø¼äµÄ¾ÆµêÁÐ±í
+	 * @return ï¿½ï¿½ï¿½Ï¶ï¿½Ó¦ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ä¾Æµï¿½ï¿½Ð±ï¿½
 	 */
 	public ArrayList<HotelVO> client_searchHotel(double lowscore, double highscore);
 
 	/**
 	 * @param hotelid
-	 * @return ¿Í»§»ñÈ¡¾ÆµêÏêÏ¸ÐÅÏ¢
+	 * @return ï¿½Í»ï¿½ï¿½ï¿½È¡ï¿½Æµï¿½ï¿½ï¿½Ï¸ï¿½ï¿½Ï¢
 	 */
 	public HotelVO client_checkHotelInfo(int hotelid);
 
 	/**
 	 * @param e
 	 * @param clientid
-	 * @return ¿Í»§ÆÀ¼Û¾Æµê
+	 * @return ï¿½Í»ï¿½ï¿½ï¿½ï¿½Û¾Æµï¿½
 	 */
-	public ResultMessage client_evaluateHotel(Evaluation e, int clientid);
+	public ResultMessage client_evaluateHotel(EvaluationVO e, int clientid);
 
 	/**
 	 * @param info
 	 * @param clientid
-	 * @return ¿Í»§×¢²á»áÔ±
+	 * @return ï¿½Í»ï¿½×¢ï¿½ï¿½ï¿½Ô±
 	 */
 	public ResultMessage client_enrollVIP(VIPInfo info, int clientid);
 
-	// Ìá¹©¸øÍ¬²ãµ÷ÓÃµÄ½Ó¿Ú
+	// ï¿½á¹©ï¿½ï¿½Í¬ï¿½ï¿½ï¿½ï¿½ÃµÄ½Ó¿ï¿½
 
 	/**
 	 * @param clientId
 	 * @param value
 	 * @param tag
-	 * @return ¸üÐÂ¿Í»§ÐÅÓÃÖµ
+	 * @return ï¿½ï¿½ï¿½Â¿Í»ï¿½ï¿½ï¿½ï¿½ï¿½Öµ
 	 */
 	public ResultMessage updateClientCredit(int clientId, int value, int tag);
 
 	/**
 	 * @param clientid
-	 * @return ²é¿´¿Í»§ÏêÏ¸ÐÅÏ¢
+	 * @return ï¿½é¿´ï¿½Í»ï¿½ï¿½ï¿½Ï¸ï¿½ï¿½Ï¢
 	 */
 	public Client checkClientInfo(int clientid);
 
 	/**
 	 * @param client
-	 * @return ¸üÐÂ¿Í»§ÏêÏ¸ÐÅÏ¢
+	 * @return ï¿½ï¿½ï¿½Â¿Í»ï¿½ï¿½ï¿½Ï¸ï¿½ï¿½Ï¢
 	 */
 	public ResultMessage updateClientInfo(Client client);
 }

@@ -1,21 +1,37 @@
 package vo;
 
+import java.io.Serializable;
 import java.util.ArrayList;
 
 import objects.VIPInfo;
 
-public class ClientVO {
+public class ClientVO implements Serializable {
 	int clientid;
+	String username;
+	String password;
 	String client_name;
 	String contact;
 	int credit;
 	ArrayList<String> credit_record;
 	VIPInfo info;
 
+	public ClientVO(int clientid,String username,String password, String client_name, String contact, int credit, ArrayList<String> credit_record,
+			VIPInfo info) {
+		super();
+		this.clientid = clientid;
+		this.username=username;
+		this.password=password;
+		this.client_name = client_name;
+		this.contact = contact;
+		this.credit = credit;
+		this.credit_record = credit_record;
+		this.info = info;
+	}
 	public ClientVO(int clientid, String client_name, String contact, int credit, ArrayList<String> credit_record,
 			VIPInfo info) {
 		super();
 		this.clientid = clientid;
+		
 		this.client_name = client_name;
 		this.contact = contact;
 		this.credit = credit;
@@ -29,6 +45,22 @@ public class ClientVO {
 
 	public void setClientid(int clientid) {
 		this.clientid = clientid;
+	}
+	
+	public String getusername(){
+		return username;
+	}
+	
+	public void setusername(String um){
+		username=um;;
+	}
+	
+	public String getpassword(){
+		return password;
+	}
+	
+	public void setpassword(String pass){
+		password=pass;
 	}
 
 	public String getClient_name() {
@@ -63,12 +95,14 @@ public class ClientVO {
 		this.credit_record = credit_record;
 	}
 
-	public VIPInfo getInfo() {
+	public VIPInfo getVIPInfo() {
 		return info;
 	}
 
-	public void setInfo(VIPInfo info) {
+	public void setVIPInfo(VIPInfo info) {
 		this.info = info;
 	}
+	
+	
 
 }

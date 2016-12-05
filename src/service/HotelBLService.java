@@ -2,70 +2,74 @@ package service;
 
 import java.util.ArrayList;
 
-import vo.*;
-import objects.*;
+import objects.Hotel;
+import objects.HotelWorker;
+import objects.ResultMessage;
+import objects.Room;
+import vo.AccommodationVO;
+import vo.HotelVO;
 
 public interface HotelBLService {
-	// Ìá¹©¸ø½çÃæµ÷ÓÃµÄ½Ó¿Ú
+	// ï¿½á¹©ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ÃµÄ½Ó¿ï¿½
 	/**
 	 * @param hotelid
-	 * @return ¾Æµê²é¿´ÏêÏ¸ÐÅÏ¢
+	 * @return ï¿½Æµï¿½é¿´ï¿½ï¿½Ï¸ï¿½ï¿½Ï¢
 	 */
 	public HotelVO hotel_checkInfo(int hotelid);
 
 	/**
 	 * @param vo
-	 * @return ¾Æµê¸üÐÂÏêÏ¸ÐÅÏ¢
+	 * @return ï¿½Æµï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ï¸ï¿½ï¿½Ï¢
 	 */
 	public ResultMessage hotel_updateInfo(HotelVO vo);
 
 	/**
 	 * @param room
-	 * @return ¾ÆµêÂ¼Èë¿ÉÓÃ·¿¼ä
+	 * @return ï¿½Æµï¿½Â¼ï¿½ï¿½ï¿½ï¿½Ã·ï¿½ï¿½ï¿½
 	 */
 	public ResultMessage hotel_importRoom(Room room);
 
 	/**
 	 * @param info
-	 * @return ¾Æµê¸üÐÂÈë×¡ÐÅÏ¢
+	 * @return ï¿½Æµï¿½ï¿½ï¿½ï¿½ï¿½ï¿½×¡ï¿½ï¿½Ï¢
 	 */
-	public ResultMessage hotel_updateAccomodation(AccommodationInfo info);
+	public ResultMessage hotel_updateAccomodation(AccommodationVO info);
 
-	// Ìá¹©¸øÍ¬²ãµ÷ÓÃµÄ½Ó¿Ú
+	// ï¿½á¹©ï¿½ï¿½Í¬ï¿½ï¿½ï¿½ï¿½ÃµÄ½Ó¿ï¿½
 	/**
 	 * @param hotelid
-	 * @return ·µ»Ø¶ÔÓ¦¾Æµê
+	 * @return ï¿½ï¿½ï¿½Ø¶ï¿½Ó¦ï¿½Æµï¿½
 	 */
 	public Hotel searchHotel(int hotelid);
 
 	/**
 	 * @param clientid
-	 * @return ·µ»Ø¶ÔÓ¦¿Í»§Ô¤¶¨¹ýµÄ¾ÆµêÁÐ±í
+	 * @return ï¿½ï¿½ï¿½Ø¶ï¿½Ó¦ï¿½Í»ï¿½Ô¤ï¿½ï¿½ï¿½ï¿½ï¿½Ä¾Æµï¿½ï¿½Ð±ï¿½
 	 */
 	public ArrayList<Hotel> previousHotel(int clientid);
 
 	/**
 	 * @param hotel
-	 * @return Ìí¼Ó¾Æµê
+	 * @return ï¿½ï¿½Ó¾Æµï¿½
 	 */
 	public ResultMessage addHotel(Hotel hotel);
 
 	/**
 	 * @param worker
-	 * @return Ìí¼Ó¾Æµê¹¤×÷ÈËÔ±
+	 * @return ï¿½ï¿½Ó¾Æµê¹¤ï¿½ï¿½ï¿½ï¿½Ô±
 	 */
 	public ResultMessage addHotelWorker(HotelWorker worker);
 
 	/**
 	 * @param hotelid
-	 * @return ·µ»Ø¶ÔÓ¦¾ÆµêµÄ¹¤×÷ÈËÔ±
+	 * @return ï¿½ï¿½ï¿½Ø¶ï¿½Ó¦ï¿½Æµï¿½Ä¹ï¿½ï¿½ï¿½ï¿½ï¿½Ô±
 	 */
 	public HotelWorker searchHotelWorker(int hotelid);
 
 	/**
 	 * @param hotelid
 	 * @param worker
-	 * @return ¸üÐÂ¶ÔÓ¦¾ÆµêµÄ¹¤×÷ÈËÔ±ÐÅÏ¢
+	 * @return ï¿½ï¿½ï¿½Â¶ï¿½Ó¦ï¿½Æµï¿½Ä¹ï¿½ï¿½ï¿½ï¿½ï¿½Ô±ï¿½ï¿½Ï¢
 	 */
 	public ResultMessage updateHotelWokerInfo(int hotelid, HotelWorker worker);
 }
