@@ -1,62 +1,66 @@
 package service;
 
-import vo.*;
-import objects.*;
+import java.rmi.Remote;
 
-public interface ManageBLService {
-	// Ìá¹©¸ø½çÃæµ÷ÓÃµÄ½Ó¿Ú
+import objects.ResultMessage;
+import vo.ClientVO;
+import vo.HotelWorkerVO;
+import vo.WebMarketVO;
+
+public interface ManageBLService extends Remote{
+	// ï¿½á¹©ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ÃµÄ½Ó¿ï¿½
 	/**
 	 * @param clientid
-	 * @return ËÑË÷¿Í»§
+	 * @return ï¿½ï¿½ï¿½ï¿½ï¿½Í»ï¿½
 	 */
 	public ClientVO manage_searchClient(int clientid);
 
 	/**
 	 * @param clientid
-	 * @return ¸üĞÂ¿Í»§ĞÅÏ¢
+	 * @return ï¿½ï¿½ï¿½Â¿Í»ï¿½ï¿½ï¿½Ï¢
 	 */
 	public ResultMessage manage_updateClient(int clientid);
 
 	/**
 	 * @param hotelid
-	 * @return Ìí¼Ó¾Æµê
+	 * @return ï¿½ï¿½Ó¾Æµï¿½
 	 */
 	public ResultMessage manage_addHotel(int hotelid);
 
 	/**
 	 * @param hotelid
 	 * @param w
-	 * @return Ìí¼Ó¾Æµê¹¤×÷ÈËÔ±
+	 * @return ï¿½ï¿½Ó¾Æµê¹¤ï¿½ï¿½ï¿½ï¿½Ô±
 	 */
 	public ResultMessage manage_addHotelWorker(int hotelid, HotelWorkerVO w);
 
 	/**
 	 * @param hotelid
-	 * @return ËÑË÷¾Æµê¹¤×÷ÈËÔ±
+	 * @return ï¿½ï¿½ï¿½ï¿½ï¿½Æµê¹¤ï¿½ï¿½ï¿½ï¿½Ô±
 	 */
 	public HotelWorkerVO manage_searchHotelWorker(int hotelid);
 
 	/**
 	 * @param hotelid
-	 * @return ¸üĞÂ¾Æµê¹¤×÷ÈËÔ±ĞÅÏ¢
+	 * @return ï¿½ï¿½ï¿½Â¾Æµê¹¤ï¿½ï¿½ï¿½ï¿½Ô±ï¿½ï¿½Ï¢
 	 */
 	public ResultMessage manage_updateHotelWorker(int hotelid);
 
 	/**
 	 * @param mw
-	 * @return Ìí¼ÓÍøÕ¾ÓªÏúÈËÔ±
+	 * @return ï¿½ï¿½ï¿½ï¿½ï¿½Õ¾Óªï¿½ï¿½ï¿½ï¿½Ô±
 	 */
 	public ResultMessage manage_addMarketWorker(WebMarketVO mw);
 
 	/**
 	 * @param marketWorkerid
-	 * @return ËÑË÷ÍøÕ¾ÓªÏúÈËÔ±
+	 * @return ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Õ¾Óªï¿½ï¿½ï¿½ï¿½Ô±
 	 */
 	public WebMarketVO manage_searchMarketWorker(int marketWorkerid);
 
 	/**
 	 * @param mw
-	 * @return ¸üĞÂÍøÕ¾ÓªÏúÈËÔ±ĞÅÏ¢
+	 * @return ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Õ¾Óªï¿½ï¿½ï¿½ï¿½Ô±ï¿½ï¿½Ï¢
 	 */
 	public ResultMessage manage_updateMarketWorker(WebMarketVO mw);
 

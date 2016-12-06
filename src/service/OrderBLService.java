@@ -1,86 +1,91 @@
 package service;
 
+import java.rmi.Remote;
 import java.util.ArrayList;
 
-import vo.*;
-import objects.*;
+import objects.OrderState;
+import objects.ResultMessage;
+import objects.RoomType;
+import vo.HotelStrategyVO;
+import vo.OrderVO;
+import vo.WebStrategyVO;
 
-public interface OrderBLService {
-	// Ìá¹©¸ø½çÃæµ÷ÓÃµÄ½Ó¿Ú
+public interface OrderBLService extends Remote{
+	// ï¿½á¹©ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ÃµÄ½Ó¿ï¿½
 	/**
 	 * @param clientid
-	 * @return ¿Í»§ä¯ÀÀ¶©µ¥
+	 * @return ï¿½Í»ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
 	 */
 	public ArrayList<OrderVO> order_client_browse(int clientid);
 
 	/**
 	 * @param clientid
 	 * @param state
-	 * @return ¿Í»§¸ù¾Ý¶©µ¥×´Ì¬ä¯ÀÀ
+	 * @return ï¿½Í»ï¿½ï¿½ï¿½ï¿½Ý¶ï¿½ï¿½ï¿½×´Ì¬ï¿½ï¿½ï¿½
 	 */
 	public ArrayList<OrderVO> order_client_browse(int clientid, OrderState state);
 
 	/**
 	 * @param clientid
 	 * @param isExecute
-	 * @return ¿Í»§¸ù¾ÝÖ´ÐÐÇé¿öä¯ÀÀ
+	 * @return ï¿½Í»ï¿½ï¿½ï¿½ï¿½ï¿½Ö´ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
 	 */
 	public ArrayList<OrderVO> order_client_browse(int clientid, boolean isExecute);
 
 	/**
 	 * @param hotelid
-	 * @return ¾Æµêä¯ÀÀ¶©µ¥
+	 * @return ï¿½Æµï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
 	 */
 	public ArrayList<OrderVO> order_hotel_browse(int hotelid);
 
 	/**
 	 * @param hotelid
 	 * @param state
-	 * @return ¾Æµê¸ù¾Ý¶©µ¥×´Ì¬ä¯ÀÀ
+	 * @return ï¿½Æµï¿½ï¿½ï¿½Ý¶ï¿½ï¿½ï¿½×´Ì¬ï¿½ï¿½ï¿½
 	 */
 	public ArrayList<OrderVO> order_hotel_browse(int hotelid, OrderState state);
 
 	/**
 	 * @param hotelid
 	 * @param isExecute
-	 * @return ¾Æµê¸ù¾ÝÖ´ÐÐÇé¿öä¯ÀÀ
+	 * @return ï¿½Æµï¿½ï¿½ï¿½ï¿½Ö´ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
 	 */
 	public ArrayList<OrderVO> order_hotel_browse(int hotelid, boolean isExecute);
 
 	/**
 	 * @param clientid
 	 * @param orderid
-	 * @return ¿Í»§³·Ïú¶©µ¥
+	 * @return ï¿½Í»ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
 	 */
 	public ResultMessage order_client_cancel(int clientid, int orderid);
 
 	/**
 	 * @param vo
-	 * @return ¿Í»§Éú³É¶©µ¥
+	 * @return ï¿½Í»ï¿½ï¿½ï¿½ï¿½É¶ï¿½ï¿½ï¿½
 	 */
 	public ResultMessage order_client_generate(OrderVO vo);
 
 	/**
 	 * @param orderid
-	 * @return ¾ÆµêÖ´ÐÐ¶©µ¥
+	 * @return ï¿½Æµï¿½Ö´ï¿½Ð¶ï¿½ï¿½ï¿½
 	 */
 	public ResultMessage order_hotel_execute(int orderid);
 
 	/**
-	 * @return ÍøÕ¾ÓªÏúÈËÔ±ä¯ÀÀÎ´Ö´ÐÐ¶©µ¥
+	 * @return ï¿½ï¿½Õ¾Óªï¿½ï¿½ï¿½ï¿½Ô±ï¿½ï¿½ï¿½Î´Ö´ï¿½Ð¶ï¿½ï¿½ï¿½
 	 */
 	public ArrayList<OrderVO> order_market_browseUnfilled();
 
 	/**
 	 * @param orderid
-	 * @return ÍøÕ¾ÓªÏúÈËÔ±³·ÏúÒì³£¶©µ¥
+	 * @return ï¿½ï¿½Õ¾Óªï¿½ï¿½ï¿½ï¿½Ô±ï¿½ï¿½ï¿½ï¿½ï¿½ì³£ï¿½ï¿½ï¿½ï¿½
 	 */
 	public ResultMessage order_market_cancelAbnormal(int orderid);
 
 	/**
 	 * @param type
 	 * @param num
-	 * @return ¼ÆËã¶©µ¥×Ü¼Û£¨ÎÞ´ÙÏú²ßÂÔ£©
+	 * @return ï¿½ï¿½ï¿½ã¶©ï¿½ï¿½ï¿½Ü¼Û£ï¿½ï¿½Þ´ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ô£ï¿½
 	 */
 	public int calculateTotalwithoutStrategy(RoomType type, int num);
 
@@ -89,15 +94,15 @@ public interface OrderBLService {
 	 * @param num
 	 * @param list1
 	 * @param list2
-	 * @return ¼ÆËã¶©µ¥×Ü¼Û£¨ÓÐ´ÙÏú²ßÂÔ£©
+	 * @return ï¿½ï¿½ï¿½ã¶©ï¿½ï¿½ï¿½Ü¼Û£ï¿½ï¿½Ð´ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ô£ï¿½
 	 */
-	public int calculateTotalwithStrategy(RoomType type, int num, ArrayList<HotelStrategy> list1,
-			ArrayList<WebStrategy> list2);
+	public int calculateTotalwithStrategy(RoomType type, int num, ArrayList<HotelStrategyVO> list1,
+			ArrayList<WebStrategyVO> list2);
 
-	// Ìá¹©¸øÍ¬²ãµ÷ÓÃµÄ½Ó¿Ú
+	// ï¿½á¹©ï¿½ï¿½Í¬ï¿½ï¿½ï¿½ï¿½ÃµÄ½Ó¿ï¿½
 	/**
 	 * @param leaveTime
-	 * @return ¸üÐÂ¶©µ¥Êµ¼ÊÀë¿ªÊ±¼ä
+	 * @return ï¿½ï¿½ï¿½Â¶ï¿½ï¿½ï¿½Êµï¿½ï¿½ï¿½ë¿ªÊ±ï¿½ï¿½
 	 */
 	public ResultMessage updateActualLeaveTime(int orderid, String leaveTime);
 }

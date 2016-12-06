@@ -1,14 +1,12 @@
 package service;
 
-import java.util.ArrayList;
+import java.rmi.Remote;
 
-import objects.HotelStrategy;
 import objects.ResultMessage;
-import objects.WebStrategy;
 import vo.HotelStrategyVO;
 import vo.WebStrategyVO;
 
-public interface StrategyBLService {
+public interface StrategyBLService extends Remote{
 	// �ṩ��������õĽӿ�
 
 	/**
@@ -35,17 +33,17 @@ public interface StrategyBLService {
 	 */
 	public ResultMessage webstrategy_update(WebStrategyVO strategyvo);
 
-	// �ṩ��ͬ����õĽӿ�
-	/**
-	 * @param hotelid
-	 * @param clientid
-	 * @return �õ���Ӧ�ͻ����õĶ�Ӧ�Ƶ�Ĵ��������б�
-	 */
-	public ArrayList<HotelStrategy> getStrategy(int hotelid, int clientid);
-
-	/**
-	 * @param clientid
-	 * @return �õ���Ӧ�ͻ�ʹ�õ���վ�Ĵ��������б�
-	 */
-	public ArrayList<WebStrategy> getStrategy(int clientid);
+//	// �ṩ��ͬ����õĽӿ�
+//	/**
+//	 * @param hotelid
+//	 * @param clientid
+//	 * @return �õ���Ӧ�ͻ����õĶ�Ӧ�Ƶ�Ĵ��������б�
+//	 */
+//	public ArrayList<HotelStrategy> getStrategy(int hotelid, int clientid);
+//
+//	/**
+//	 * @param clientid
+//	 * @return �õ���Ӧ�ͻ�ʹ�õ���վ�Ĵ��������б�
+//	 */
+//	public ArrayList<WebStrategy> getStrategy(int clientid);
 }

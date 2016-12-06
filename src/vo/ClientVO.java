@@ -3,8 +3,6 @@ package vo;
 import java.io.Serializable;
 import java.util.ArrayList;
 
-import objects.VIPInfo;
-
 public class ClientVO implements Serializable {
 	int clientid;
 	String username;
@@ -13,10 +11,10 @@ public class ClientVO implements Serializable {
 	String contact;
 	int credit;
 	ArrayList<String> credit_record;
-	VIPInfo info;
+	VIPInfoVO info;
 
 	public ClientVO(int clientid,String username,String password, String client_name, String contact, int credit, ArrayList<String> credit_record,
-			VIPInfo info) {
+			VIPInfoVO info) {
 		super();
 		this.clientid = clientid;
 		this.username=username;
@@ -28,7 +26,7 @@ public class ClientVO implements Serializable {
 		this.info = info;
 	}
 	public ClientVO(int clientid, String client_name, String contact, int credit, ArrayList<String> credit_record,
-			VIPInfo info) {
+			VIPInfoVO info) {
 		super();
 		this.clientid = clientid;
 		
@@ -95,11 +93,11 @@ public class ClientVO implements Serializable {
 		this.credit_record = credit_record;
 	}
 
-	public VIPInfo getVIPInfo() {
+	public VIPInfoVO getVIPInfo() {
 		return info;
 	}
 
-	public void setVIPInfo(VIPInfo info) {
+	public void setVIPInfo(VIPInfoVO info) {
 		this.info = info;
 	}
 	

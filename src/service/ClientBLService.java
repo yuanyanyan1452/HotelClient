@@ -1,16 +1,16 @@
 package service;
 
+import java.rmi.Remote;
 import java.util.ArrayList;
 
-import objects.Client;
 import objects.ResultMessage;
 import objects.RoomType;
-import objects.VIPInfo;
 import vo.ClientVO;
 import vo.EvaluationVO;
 import vo.HotelVO;
+import vo.VIPInfoVO;
 
-public interface ClientBLService {
+public interface ClientBLService extends Remote{
 	// �ṩ��������õĽӿ�
 
 	/**
@@ -106,27 +106,27 @@ public interface ClientBLService {
 	 * @param clientid
 	 * @return �ͻ�ע���Ա
 	 */
-	public ResultMessage client_enrollVIP(VIPInfo info, int clientid);
+	public ResultMessage client_enrollVIP(VIPInfoVO info, int clientid);
 
-	// �ṩ��ͬ����õĽӿ�
-
-	/**
-	 * @param clientId
-	 * @param value
-	 * @param tag
-	 * @return ���¿ͻ�����ֵ
-	 */
-	public ResultMessage updateClientCredit(int clientId, int value, int tag);
-
-	/**
-	 * @param clientid
-	 * @return �鿴�ͻ���ϸ��Ϣ
-	 */
-	public Client checkClientInfo(int clientid);
-
-	/**
-	 * @param client
-	 * @return ���¿ͻ���ϸ��Ϣ
-	 */
-	public ResultMessage updateClientInfo(Client client);
+//	// �ṩ��ͬ����õĽӿ�
+//
+//	/**
+//	 * @param clientId
+//	 * @param value
+//	 * @param tag
+//	 * @return ���¿ͻ�����ֵ
+//	 */
+//	public ResultMessage updateClientCredit(int clientId, int value, int tag);
+//
+//	/**
+//	 * @param clientid
+//	 * @return �鿴�ͻ���ϸ��Ϣ
+//	 */
+//	public Client checkClientInfo(int clientid);
+//
+//	/**
+//	 * @param client
+//	 * @return ���¿ͻ���ϸ��Ϣ
+//	 */
+//	public ResultMessage updateClientInfo(Client client);
 }
