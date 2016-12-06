@@ -35,8 +35,8 @@
                                     <Insets />
                                  </GridPane.margin>
                               </Label>
-                              <Label text="Tom" GridPane.columnIndex="1" GridPane.halignment="CENTER" />
-                              <Label text="88888888" GridPane.columnIndex="1" GridPane.halignment="CENTER" GridPane.rowIndex="1" />
+                              <Label fx:id="nameLabel" text="Tom" GridPane.columnIndex="1" GridPane.halignment="CENTER" />
+                              <Label fx:id="contactLabel" text="88888888" GridPane.columnIndex="1" GridPane.halignment="CENTER" GridPane.rowIndex="1" />
                            </children>
                            <columnConstraints>
                               <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />

@@ -21,9 +21,9 @@
                               <Label layoutX="12.0" layoutY="71.0" text="已注册客户数：" />
                               <Label layoutX="12.0" layoutY="114.0" text="已加盟酒店数：" />
                               <Label layoutX="18.0" layoutY="155.0" text="累计订单量：" />
-                              <Label layoutX="144.0" layoutY="71.0" text="0" />
-                              <Label layoutX="144.0" layoutY="114.0" text="0" />
-                              <Label layoutX="144.0" layoutY="155.0" text="0" />
+                              <Label fx:id="clientNumLabel" layoutX="144.0" layoutY="71.0" text="0" />
+                              <Label fx:id="hotelNumLabel" layoutX="144.0" layoutY="114.0" text="0" />
+                              <Label fx:id="orderNumLabel" layoutX="144.0" layoutY="155.0" text="0" />
                               <Label layoutX="18.0" layoutY="35.0" text="截止至" />
                               <Label layoutX="70.0" layoutY="35.0" text="2016/10/23 0:00" />
                            </children>
@@ -44,21 +44,21 @@
                                       <items>
                                         <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="100.0" prefWidth="160.0">
                                              <children>
-                                                <TableView prefHeight="434.0" prefWidth="537.0">
+                                                <TableView fx:id="clientTable" prefHeight="434.0" prefWidth="537.0">
                                                   <columns>
-                                                    <TableColumn prefWidth="123.0" text="姓名" />
-                                                      <TableColumn prefWidth="143.0" text="手机号" />
-                                                    <TableColumn prefWidth="181.0" text="会员信息" />
-                                                      <TableColumn prefWidth="88.0" text="信用值" />
+                                                    <TableColumn fx:id="clientNameColumn" prefWidth="123.0" text="姓名" />
+                                                      <TableColumn fx:id="clientContactColumn" prefWidth="143.0" text="手机号" />
+                                                    <TableColumn fx:id="clientVipColumn" prefWidth="181.0" text="会员信息" />
+                                                      <TableColumn fx:id="clientCreditColumn" prefWidth="88.0" text="信用值" />
                                                   </columns>
                                                 </TableView>
                                              </children>
                                           </AnchorPane>
                                         <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="222.0" prefWidth="529.0">
                                              <children>
-                                                <Button layoutX="123.0" layoutY="52.0" mnemonicParsing="false" prefHeight="40.0" prefWidth="110.0" text="添加" />
-                                                <Button layoutX="255.0" layoutY="52.0" mnemonicParsing="false" prefHeight="40.0" prefWidth="110.0" text="删除" />
-                                                <Button layoutX="390.0" layoutY="52.0" mnemonicParsing="false" prefHeight="40.0" prefWidth="110.0" text="修改" />
+                                                <Button fx:id="clientAddButton" layoutX="123.0" layoutY="52.0" mnemonicParsing="false" prefHeight="40.0" prefWidth="110.0" text="添加" />
+                                                <Button fx:id="clientDeleteButton" layoutX="255.0" layoutY="52.0" mnemonicParsing="false" prefHeight="40.0" prefWidth="110.0" text="删除" />
+                                                <Button fx:id="clientUpdateButton" layoutX="390.0" layoutY="52.0" mnemonicParsing="false" prefHeight="40.0" prefWidth="110.0" text="修改" />
                                              </children>
                                           </AnchorPane>
                                       </items>
@@ -75,22 +75,22 @@
                                        <items>
                                           <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="100.0" prefWidth="160.0">
                                              <children>
-                                                <TableView prefHeight="434.0" prefWidth="537.0">
+                                                <TableView fx:id="hotelTable" prefHeight="434.0" prefWidth="537.0">
                                                    <columns>
-                                                      <TableColumn prefWidth="126.0" text="酒店名" />
-                                                      <TableColumn prefWidth="149.0" text="地址" />
-                                                      <TableColumn prefWidth="118.0" text="所属商圈" />
-                                                      <TableColumn prefWidth="65.0" text="星级" />
-                                                      <TableColumn prefWidth="76.0" text="平均评分" />
+                                                      <TableColumn fx:id="hotelNameColumn" prefWidth="126.0" text="酒店名" />
+                                                      <TableColumn fx:id="hotelAddressColumn" prefWidth="149.0" text="地址" />
+                                                      <TableColumn fx:id="hotelBusinessAddressColumn" prefWidth="118.0" text="所属商圈" />
+                                                      <TableColumn fx:id="hotelStarColumn" prefWidth="65.0" text="星级" />
+                                                      <TableColumn fx:id="hotelScoreColumn" prefWidth="76.0" text="平均评分" />
                                                    </columns>
                                                 </TableView>
                                              </children>
                                           </AnchorPane>
                                           <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="222.0" prefWidth="529.0">
                                              <children>
-                                                <Button layoutX="123.0" layoutY="52.0" mnemonicParsing="false" prefHeight="40.0" prefWidth="110.0" text="添加" />
-                                                <Button layoutX="255.0" layoutY="52.0" mnemonicParsing="false" prefHeight="40.0" prefWidth="110.0" text="删除" />
-                                                <Button layoutX="390.0" layoutY="52.0" mnemonicParsing="false" prefHeight="40.0" prefWidth="110.0" text="修改" />
+                                                <Button fx:id="hotelAddButton" layoutX="123.0" layoutY="52.0" mnemonicParsing="false" prefHeight="40.0" prefWidth="110.0" text="添加" />
+                                                <Button fx:id="hotelDeleteButton" layoutX="255.0" layoutY="52.0" mnemonicParsing="false" prefHeight="40.0" prefWidth="110.0" text="删除" />
+                                                <Button fx:id="hotelUpdateButton" layoutX="390.0" layoutY="52.0" mnemonicParsing="false" prefHeight="40.0" prefWidth="110.0" text="修改" />
                                              </children>
                                           </AnchorPane>
                                        </items>
@@ -107,20 +107,20 @@
                                        <items>
                                           <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="100.0" prefWidth="160.0">
                                              <children>
-                                                <TableView prefHeight="434.0" prefWidth="537.0">
+                                                <TableView fx:id="hotelWorkerTable" prefHeight="434.0" prefWidth="537.0">
                                                    <columns>
-                                                      <TableColumn prefWidth="169.0" text="姓名" />
-                                                      <TableColumn prefWidth="201.0" text="所属酒店" />
-                                                      <TableColumn prefWidth="166.0" text="手机号" />
+                                                      <TableColumn fx:id="workerNameColumn" prefWidth="169.0" text="姓名" />
+                                                      <TableColumn fx:id="workerHotelColumn" prefWidth="201.0" text="所属酒店" />
+                                                      <TableColumn fx:id="workerContactColumn" prefWidth="166.0" text="手机号" />
                                                    </columns>
                                                 </TableView>
                                              </children>
                                           </AnchorPane>
                                           <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="222.0" prefWidth="529.0">
                                              <children>
-                                                <Button layoutX="123.0" layoutY="52.0" mnemonicParsing="false" prefHeight="40.0" prefWidth="110.0" text="添加" />
-                                                <Button layoutX="255.0" layoutY="52.0" mnemonicParsing="false" prefHeight="40.0" prefWidth="110.0" text="删除" />
-                                                <Button layoutX="390.0" layoutY="52.0" mnemonicParsing="false" prefHeight="40.0" prefWidth="110.0" text="修改" />
+                                                <Button fx:id="workerAddButton" layoutX="123.0" layoutY="52.0" mnemonicParsing="false" prefHeight="40.0" prefWidth="110.0" text="添加" />
+                                                <Button fx:id="workerDeleteButton" layoutX="255.0" layoutY="52.0" mnemonicParsing="false" prefHeight="40.0" prefWidth="110.0" text="删除" />
+                                                <Button fx:id="workerUpdateButton" layoutX="390.0" layoutY="52.0" mnemonicParsing="false" prefHeight="40.0" prefWidth="110.0" text="修改" />
                                              </children>
                                           </AnchorPane>
                                        </items>
@@ -137,19 +137,19 @@
                                        <items>
                                           <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="100.0" prefWidth="160.0">
                                              <children>
-                                                <TableView prefHeight="434.0" prefWidth="537.0">
+                                                <TableView fx:id="marketTable" prefHeight="434.0" prefWidth="537.0">
                                                    <columns>
-                                                      <TableColumn prefWidth="256.0" text="姓名" />
-                                                      <TableColumn prefWidth="280.0" text="手机号" />
+                                                      <TableColumn fx:id="marketNameColumn" prefWidth="256.0" text="姓名" />
+                                                      <TableColumn fx:id="marketContactColumn" prefWidth="280.0" text="手机号" />
                                                    </columns>
                                                 </TableView>
                                              </children>
                                           </AnchorPane>
                                           <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="222.0" prefWidth="529.0">
                                              <children>
-                                                <Button layoutX="123.0" layoutY="52.0" mnemonicParsing="false" prefHeight="40.0" prefWidth="110.0" text="添加" />
-                                                <Button layoutX="255.0" layoutY="52.0" mnemonicParsing="false" prefHeight="40.0" prefWidth="110.0" text="删除" />
-                                                <Button layoutX="390.0" layoutY="52.0" mnemonicParsing="false" prefHeight="40.0" prefWidth="110.0" text="修改" />
+                                                <Button fx:id="marketAddButton" layoutX="123.0" layoutY="52.0" mnemonicParsing="false" prefHeight="40.0" prefWidth="110.0" text="添加" />
+                                                <Button fx:id="marketDeleteButton" layoutX="255.0" layoutY="52.0" mnemonicParsing="false" prefHeight="40.0" prefWidth="110.0" text="删除" />
+                                                <Button fx:id="marketUpdateButton" layoutX="390.0" layoutY="52.0" mnemonicParsing="false" prefHeight="40.0" prefWidth="110.0" text="修改" />
                                              </children>
                                           </AnchorPane>
                                        </items>
@@ -160,8 +160,8 @@
                         </Tab>
                     </tabs>
                   </TabPane>
-                  <TextField layoutX="636.0" layoutY="15.0" />
-                  <Button layoutX="549.0" layoutY="14.0" mnemonicParsing="false" prefHeight="23.0" prefWidth="8.0">
+                  <TextField fx:id="nameTextField" layoutX="636.0" layoutY="15.0" />
+                  <Button fx:id="searchButton" layoutX="549.0" layoutY="14.0" mnemonicParsing="false" prefHeight="23.0" prefWidth="8.0">
                      <graphic>
                         <ImageView fitHeight="16.0" fitWidth="16.0">
                            <image>

@@ -85,7 +85,7 @@ public class ClientSearchHotelController implements Initializable {
 				TextFieldTableCell<HotelModel, String> cell = new TextFieldTableCell<>();
 				cell.setOnMouseClicked((MouseEvent t) -> {
 					if (t.getClickCount() == 2) {
-						main.gotoGenerateOrder(hotelData.get(cell.getIndex()));
+						main.gotoHotelDetailInfo(hotelData.get(cell.getIndex()));
 					}
 				});
 				return cell;
@@ -100,7 +100,7 @@ public class ClientSearchHotelController implements Initializable {
 						TextFieldTableCell<HotelModel, String> cell = new TextFieldTableCell<>();
 						cell.setOnMouseClicked((MouseEvent t) -> {
 							if (t.getClickCount() == 2) {
-								main.gotoGenerateOrder(hotelData.get(cell.getIndex()));
+								main.gotoHotelDetailInfo(hotelData.get(cell.getIndex()));
 							}
 						});
 						return cell;
@@ -114,7 +114,7 @@ public class ClientSearchHotelController implements Initializable {
 				TextFieldTableCell<HotelModel, String> cell = new TextFieldTableCell<>();
 				cell.setOnMouseClicked((MouseEvent t) -> {
 					if (t.getClickCount() == 2) {
-						main.gotoGenerateOrder(hotelData.get(cell.getIndex()));
+						main.gotoHotelDetailInfo(hotelData.get(cell.getIndex()));
 					}
 				});
 				return cell;
@@ -128,7 +128,7 @@ public class ClientSearchHotelController implements Initializable {
 				TextFieldTableCell<HotelModel, String> cell = new TextFieldTableCell<>();
 				cell.setOnMouseClicked((MouseEvent t) -> {
 					if (t.getClickCount() == 2) {
-						main.gotoGenerateOrder(hotelData.get(cell.getIndex()));
+						main.gotoHotelDetailInfo(hotelData.get(cell.getIndex()));
 					}
 				});
 				return cell;
@@ -142,7 +142,7 @@ public class ClientSearchHotelController implements Initializable {
 				TextFieldTableCell<HotelModel, String> cell = new TextFieldTableCell<>();
 				cell.setOnMouseClicked((MouseEvent t) -> {
 					if (t.getClickCount() == 2) {
-						main.gotoGenerateOrder(hotelData.get(cell.getIndex()));
+						main.gotoHotelDetailInfo(hotelData.get(cell.getIndex()));
 					}
 				});
 				return cell;
@@ -151,10 +151,10 @@ public class ClientSearchHotelController implements Initializable {
 		hotelTable.setItems(hotelData);
 	}
 
-	// 跳转到酒店详细信息界面
+	// 直接跳转到生成订单界面
 	@FXML
-	private void gotoHotelDetailInfo() {
-		main.gotoHotelDetailInfo();
+	private void gotoGenerateOrder() {
+		main.gotoGenerateOrder(new HotelModel());
 	}
 
 	public ClientSearchHotelController() {
@@ -168,6 +168,6 @@ public class ClientSearchHotelController implements Initializable {
 
 	public void setMain(Main main) {
 		this.main = main;
-		hotelTable.setItems(main.getHotelData());
+//		hotelTable.setItems(main.getHotelData());
 	}
 }
