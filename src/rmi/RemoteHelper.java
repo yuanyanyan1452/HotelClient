@@ -7,7 +7,6 @@ import service.HotelBLService;
 import service.ManageBLService;
 import service.OrderBLService;
 import service.StrategyBLService;
-import service.UserBLService;
 
 public class RemoteHelper {
 	private Remote remote;
@@ -43,7 +42,5 @@ public class RemoteHelper {
 		return (StrategyBLService)remote;
 	}
 	
-	public UserBLService getUserBLService() {
-		return (UserBLService)remote;
-	}
+
 }

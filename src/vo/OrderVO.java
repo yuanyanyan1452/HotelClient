@@ -3,7 +3,6 @@ package vo;
 import java.io.Serializable;
 import java.util.ArrayList;
 
-import po.RoomOrderPO;
 
 public class OrderVO implements Serializable {
 	/**
@@ -18,7 +17,7 @@ public class OrderVO implements Serializable {
 	String start_time;
 	String end_time;
 	String latest_execute_time;
-	ArrayList<RoomOrderPO>room_order;
+	ArrayList<RoomOrderVO>room_order;
 	String strategy;
 	int price;
 	int expect_number_of_people;
@@ -39,7 +38,7 @@ public class OrderVO implements Serializable {
 		expect_number_of_people=0;
 		havechild=false;
 	}
-	public OrderVO(int i,int cid,int hid,String s,boolean e,String st,String et,String lt,ArrayList<RoomOrderPO>list,String str,int p,int en,boolean child){
+	public OrderVO(int i,int cid,int hid,String s,boolean e,String st,String et,String lt,ArrayList<RoomOrderVO>list,String str,int p,int en,boolean child){
 		id=i;
 		clientid=cid;
 		hotelid=hid;
@@ -111,10 +110,10 @@ public class OrderVO implements Serializable {
 		return latest_execute_time; 
 	}
 	
-	public void setroom_order(ArrayList<RoomOrderPO> list){
+	public void setroom_order(ArrayList<RoomOrderVO> list){
 		room_order = list;
 	}
-	public ArrayList<RoomOrderPO> getroom_order(){
+	public ArrayList<RoomOrderVO> getroom_order(){
 		return room_order;
 	}
 	

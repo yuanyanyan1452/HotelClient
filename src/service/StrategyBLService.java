@@ -2,46 +2,50 @@ package service;
 
 import java.util.ArrayList;
 
-import objects.*;
+import objects.HotelStrategy;
+import objects.ResultMessage;
+import objects.WebStrategy;
+import vo.HotelStrategyVO;
+import vo.WebStrategyVO;
 
 public interface StrategyBLService {
-	// Ìá¹©¸ø½çÃæµ÷ÓÃµÄ½Ó¿Ú
+	// ï¿½á¹©ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ÃµÄ½Ó¿ï¿½
 
 	/**
 	 * @param input
-	 * @return ¾ÆµêÌí¼Ó´ÙÏú²ßÂÔ
+	 * @return ï¿½Æµï¿½ï¿½ï¿½Ó´ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
 	 */
-	public ResultMessage hotelstrategy_make(HotelStrategy strategy);
+	public ResultMessage hotelstrategy_make(HotelStrategyVO strategyvo);
 
 	/**
 	 * @param strategy
-	 * @return ¾Æµê¸üĞÂ´ÙÏú²ßÂÔ
+	 * @return ï¿½Æµï¿½ï¿½ï¿½Â´ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
 	 */
-	public ResultMessage hotelstrategy_update(HotelStrategy strategy);
+	public ResultMessage hotelstrategy_update(HotelStrategyVO strategyvo);
 
 	/**
 	 * @param strategy
-	 * @return ÍøÕ¾ÓªÏúÈËÔ±Ìí¼Ó´ÙÏú²ßÂÔ
+	 * @return ï¿½ï¿½Õ¾Óªï¿½ï¿½ï¿½ï¿½Ô±ï¿½ï¿½Ó´ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
 	 */
-	public ResultMessage webstrategy_make(WebStrategy strategy);
+	public ResultMessage webstrategy_make(WebStrategyVO strategyvo);
 
 	/**
 	 * @param strategy
-	 * @return ÍøÕ¾ÓªÏúÈËÔ±¸üĞÂ´ÙÏú²ßÂÔ
+	 * @return ï¿½ï¿½Õ¾Óªï¿½ï¿½ï¿½ï¿½Ô±ï¿½ï¿½ï¿½Â´ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
 	 */
-	public ResultMessage webstrategy_update(WebStrategy strategy);
+	public ResultMessage webstrategy_update(WebStrategyVO strategyvo);
 
-	// Ìá¹©¸øÍ¬²ãµ÷ÓÃµÄ½Ó¿Ú
+	// ï¿½á¹©ï¿½ï¿½Í¬ï¿½ï¿½ï¿½ï¿½ÃµÄ½Ó¿ï¿½
 	/**
 	 * @param hotelid
 	 * @param clientid
-	 * @return µÃµ½¶ÔÓ¦¿Í»§ÊÊÓÃµÄ¶ÔÓ¦¾ÆµêµÄ´ÙÏú²ßÂÔÁĞ±í
+	 * @return ï¿½Ãµï¿½ï¿½ï¿½Ó¦ï¿½Í»ï¿½ï¿½ï¿½ï¿½ÃµÄ¶ï¿½Ó¦ï¿½Æµï¿½Ä´ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ğ±ï¿½
 	 */
 	public ArrayList<HotelStrategy> getStrategy(int hotelid, int clientid);
 
 	/**
 	 * @param clientid
-	 * @return µÃµ½¶ÔÓ¦¿Í»§Ê¹ÓÃµÄÍøÕ¾µÄ´ÙÏú²ßÂÔÁĞ±í
+	 * @return ï¿½Ãµï¿½ï¿½ï¿½Ó¦ï¿½Í»ï¿½Ê¹ï¿½Ãµï¿½ï¿½ï¿½Õ¾ï¿½Ä´ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ğ±ï¿½
 	 */
 	public ArrayList<WebStrategy> getStrategy(int clientid);
 }
