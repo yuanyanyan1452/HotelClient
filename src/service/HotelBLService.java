@@ -1,6 +1,7 @@
 package service;
 
 import java.rmi.Remote;
+import java.rmi.RemoteException;
 
 import objects.ResultMessage;
 import vo.AccommodationVO;
@@ -13,25 +14,25 @@ public interface HotelBLService extends Remote{
 	 * @param hotelid
 	 * @return �Ƶ�鿴��ϸ��Ϣ
 	 */
-	public HotelVO hotel_checkInfo(int hotelid);
+	public HotelVO hotel_checkInfo(int hotelid)throws RemoteException;
 
 	/**
 	 * @param vo
 	 * @return �Ƶ������ϸ��Ϣ
 	 */
-	public ResultMessage hotel_updateInfo(HotelVO vo);
+	public ResultMessage hotel_updateInfo(HotelVO vo)throws RemoteException;
 
 	/**
 	 * @param room
 	 * @return �Ƶ�¼����÷���
 	 */
-	public ResultMessage hotel_importRoom(RoomVO room);
+	public ResultMessage hotel_importRoom(RoomVO room)throws RemoteException;
 
 	/**
 	 * @param info
 	 * @return �Ƶ������ס��Ϣ
 	 */
-	public ResultMessage hotel_updateAccomodation(AccommodationVO info);
+	public ResultMessage hotel_updateAccomodation(AccommodationVO info)throws RemoteException;
 
 //	// �ṩ��ͬ����õĽӿ�
 //	/**

@@ -1,6 +1,7 @@
 package service;
 
 import java.rmi.Remote;
+import java.rmi.RemoteException;
 import java.util.ArrayList;
 
 import objects.ResultMessage;
@@ -17,96 +18,96 @@ public interface ClientBLService extends Remote{
 	 * @param clientid
 	 * @return �ͻ���ȡ��ϸ��Ϣ
 	 */
-	public ClientVO client_checkInfo(int clientid);
+	public ClientVO client_checkInfo(int clientid) throws RemoteException;
 
 	/**
 	 * @param vo
 	 * @return �ͻ�������ϸ��Ϣ
 	 */
-	public ResultMessage client_updateInfo(ClientVO vo);
+	public ResultMessage client_updateInfo(ClientVO vo)throws RemoteException;
 
 	/**
 	 * @param clientid
 	 * @return �ͻ���ȡ��ʷ�Ƶ��б�
 	 */
-	public ArrayList<HotelVO> client_getpreviousHotelList(int clientid);
+	public ArrayList<HotelVO> client_getpreviousHotelList(int clientid)throws RemoteException;
 
 	/**
 	 * @param clientid
 	 * @return �ͻ��鿴����ֵ
 	 */
-	public int client_checkCredit(int clientid);
+	public int client_checkCredit(int clientid)throws RemoteException;
 
 	/**
 	 * @param clientid
 	 * @return �ͻ���ȡ���ü�¼
 	 */
-	public ArrayList<String> client_checkCreditList(int clientid);
+	public ArrayList<String> client_checkCreditList(int clientid)throws RemoteException;
 
 	/**
 	 * @param location
 	 * @return �ͻ���ȡ��Ӧ��ַ�ľƵ��б�
 	 */
-	public ArrayList<HotelVO> client_setLocation(String location);
+	public ArrayList<HotelVO> client_setLocation(String location)throws RemoteException;
 
 	/**
 	 * @param hotelname
 	 * @return ���϶�Ӧ�Ƶ����ľƵ��б�
 	 */
-	public ArrayList<HotelVO> client_searchHotel(String hotelname);
+	public ArrayList<HotelVO> client_searchHotel(String hotelname)throws RemoteException;
 
 	/**
 	 * @param type
 	 * @return �з��϶�Ӧ�������͵ľƵ��б�
 	 */
-	public ArrayList<HotelVO> client_searchHotel(RoomType type);
+	public ArrayList<HotelVO> client_searchHotel(RoomType type)throws RemoteException;
 
 	/**
 	 * @param lowprice
 	 * @param highprice
 	 * @return �з��϶�Ӧ�۸�����ķ���ľƵ��б�
 	 */
-	public ArrayList<HotelVO> client_searchHotel(int lowprice, int highprice);
+	public ArrayList<HotelVO> client_searchHotel(int lowprice, int highprice)throws RemoteException;
 
 	/**
 	 * @param inTime
 	 * @param leaveTime
 	 * @return �з��϶�Ӧʱ��εķ���ľƵ��б�
 	 */
-	public ArrayList<HotelVO> client_searchHotel(String inTime, String leaveTime);
+	public ArrayList<HotelVO> client_searchHotel(String inTime, String leaveTime)throws RemoteException;
 
 	/**
 	 * @param star
 	 * @return ���϶�Ӧ�Ǽ��ľƵ��б�
 	 */
-	public ArrayList<HotelVO> client_searchHotel(int star);
+	public ArrayList<HotelVO> client_searchHotel(int star)throws RemoteException;
 
 	/**
 	 * @param lowscore
 	 * @param highscore
 	 * @return ���϶�Ӧ��������ľƵ��б�
 	 */
-	public ArrayList<HotelVO> client_searchHotel(double lowscore, double highscore);
+	public ArrayList<HotelVO> client_searchHotel(double lowscore, double highscore)throws RemoteException;
 
 	/**
 	 * @param hotelid
 	 * @return �ͻ���ȡ�Ƶ���ϸ��Ϣ
 	 */
-	public HotelVO client_checkHotelInfo(int hotelid);
+	public HotelVO client_checkHotelInfo(int hotelid)throws RemoteException;
 
 	/**
 	 * @param e
 	 * @param clientid
 	 * @return �ͻ����۾Ƶ�
 	 */
-	public ResultMessage client_evaluateHotel(EvaluationVO e, int clientid);
+	public ResultMessage client_evaluateHotel(EvaluationVO e, int clientid)throws RemoteException;
 
 	/**
 	 * @param info
 	 * @param clientid
 	 * @return �ͻ�ע���Ա
 	 */
-	public ResultMessage client_enrollVIP(VIPInfoVO info, int clientid);
+	public ResultMessage client_enrollVIP(VIPInfoVO info, int clientid)throws RemoteException;
 
 //	// �ṩ��ͬ����õĽӿ�
 //

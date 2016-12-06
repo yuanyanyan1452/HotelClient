@@ -1,6 +1,7 @@
 package service;
 
 import java.rmi.Remote;
+import java.rmi.RemoteException;
 
 import objects.ResultMessage;
 import vo.ClientVO;
@@ -13,55 +14,55 @@ public interface ManageBLService extends Remote{
 	 * @param clientid
 	 * @return �����ͻ�
 	 */
-	public ClientVO manage_searchClient(int clientid);
+	public ClientVO manage_searchClient(int clientid)throws RemoteException;
 
 	/**
 	 * @param clientid
 	 * @return ���¿ͻ���Ϣ
 	 */
-	public ResultMessage manage_updateClient(int clientid);
+	public ResultMessage manage_updateClient(int clientid)throws RemoteException;
 
 	/**
 	 * @param hotelid
 	 * @return ��ӾƵ�
 	 */
-	public ResultMessage manage_addHotel(int hotelid);
+	public ResultMessage manage_addHotel(int hotelid)throws RemoteException;
 
 	/**
 	 * @param hotelid
 	 * @param w
 	 * @return ��ӾƵ깤����Ա
 	 */
-	public ResultMessage manage_addHotelWorker(int hotelid, HotelWorkerVO w);
+	public ResultMessage manage_addHotelWorker(int hotelid, HotelWorkerVO w)throws RemoteException;
 
 	/**
 	 * @param hotelid
 	 * @return �����Ƶ깤����Ա
 	 */
-	public HotelWorkerVO manage_searchHotelWorker(int hotelid);
+	public HotelWorkerVO manage_searchHotelWorker(int hotelid)throws RemoteException;
 
 	/**
 	 * @param hotelid
 	 * @return ���¾Ƶ깤����Ա��Ϣ
 	 */
-	public ResultMessage manage_updateHotelWorker(int hotelid);
+	public ResultMessage manage_updateHotelWorker(int hotelid)throws RemoteException;
 
 	/**
 	 * @param mw
 	 * @return �����վӪ����Ա
 	 */
-	public ResultMessage manage_addMarketWorker(WebMarketVO mw);
+	public ResultMessage manage_addMarketWorker(WebMarketVO mw)throws RemoteException;
 
 	/**
 	 * @param marketWorkerid
 	 * @return ������վӪ����Ա
 	 */
-	public WebMarketVO manage_searchMarketWorker(int marketWorkerid);
+	public WebMarketVO manage_searchMarketWorker(int marketWorkerid)throws RemoteException;
 
 	/**
 	 * @param mw
 	 * @return ������վӪ����Ա��Ϣ
 	 */
-	public ResultMessage manage_updateMarketWorker(WebMarketVO mw);
+	public ResultMessage manage_updateMarketWorker(WebMarketVO mw)throws RemoteException;
 
 }
