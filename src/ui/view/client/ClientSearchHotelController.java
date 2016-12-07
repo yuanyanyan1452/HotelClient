@@ -1,27 +1,21 @@
 package ui.view.client;
 
 import java.net.URL;
-import java.util.ArrayList;
 import java.util.ResourceBundle;
-import ui.model.*;
+
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.Button;
-import javafx.scene.control.Cell;
 import javafx.scene.control.ComboBox;
-import javafx.scene.control.MenuItem;
-import javafx.scene.control.SplitMenuButton;
 import javafx.scene.control.TableCell;
 import javafx.scene.control.TableColumn;
-import javafx.scene.control.TableColumn.CellDataFeatures;
 import javafx.scene.control.TableView;
-import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.control.cell.TextFieldTableCell;
 import javafx.scene.input.MouseEvent;
 import javafx.util.Callback;
-import objects.Hotel;
+import ui.model.HotelModel;
 import ui.view.Main;
 
 public class ClientSearchHotelController implements Initializable {
