@@ -23,6 +23,7 @@ public class MarketStrategyController implements Initializable {
 	private Main main;
 	private ArrayList<Integer> IDList = new ArrayList<Integer>();
 	private WebStrategyModel currentStrategy;
+	
 	@FXML
 	private TableView<WebStrategyModel> strategyTable;
 
@@ -188,12 +189,14 @@ public class MarketStrategyController implements Initializable {
 		
 		ObservableList<WebStrategyModel> list = strategyTable.getItems();
 		list.remove(currentStrategy);
+		
 		currentStrategy.setName(name);
 		currentStrategy.setStartTime(startTime);
 		currentStrategy.setEndTime(endTime);
 		currentStrategy.setDiscount(discount);
 		currentStrategy.setCondition(condition);
 		currentStrategy.setSuperposition(superposition);
+		
 		list.add(currentStrategy);
 	}
 

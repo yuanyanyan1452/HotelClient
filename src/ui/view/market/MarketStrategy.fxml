@@ -18,8 +18,8 @@
                         <TableView fx:id="strategyTable" prefHeight="200.0" prefWidth="698.0">
                           <columns>
                             <TableColumn fx:id="nameColumn" prefWidth="118.0" text="名称" />
-                              <TableColumn fx:id="startColumn" prefWidth="122.0" text="起始时间" />
-                              <TableColumn fx:id="endColumn" prefWidth="139.0" text="结束时间" />
+                              <TableColumn fx:id="startColumn" prefWidth="133.0" text="起始时间" />
+                              <TableColumn fx:id="endColumn" prefWidth="133.0" text="结束时间" />
                               <TableColumn fx:id="discountColumn" prefWidth="66.0" text="折扣" />
                               <TableColumn fx:id="conditionColumn" prefWidth="171.0" text="使用条件" />
                               <TableColumn fx:id="superpositionColumn" prefWidth="82.0" text="是否可叠加" />
