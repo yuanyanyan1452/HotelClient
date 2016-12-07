@@ -17,6 +17,7 @@ public interface ClientBLService extends Remote{
 	public ResultMessage client_login(String username,String password)throws RemoteException ;
 	
 	public ResultMessage client_register(String username,String password)throws RemoteException;
+	
 	/**
 	 * @param clientid
 	 * @return �ͻ���ȡ��ϸ��Ϣ

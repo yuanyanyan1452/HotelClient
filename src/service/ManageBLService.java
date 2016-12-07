@@ -10,6 +10,11 @@ import vo.WebMarketVO;
 
 public interface ManageBLService extends Remote{
 	// �ṩ��������õĽӿ�
+	
+	public ResultMessage webmanager_login(String username,String password) throws RemoteException;
+	
+	public ResultMessage webmarket_login(String username,String password) throws RemoteException;
+	
 	/**
 	 * @param clientid
 	 * @return �����ͻ�

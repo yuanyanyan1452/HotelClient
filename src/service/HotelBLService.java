@@ -9,6 +9,9 @@ import vo.HotelVO;
 import vo.RoomVO;
 
 public interface HotelBLService extends Remote{
+	
+	public ResultMessage hotelworker_login(String username,String password) throws RemoteException;
+	
 	// �ṩ��������õĽӿ�
 	/**
 	 * @param hotelid
