@@ -1,46 +1,67 @@
 package vo;
 
-import java.io.Serializable;
 
-public class WebMarketVO implements Serializable{
+
+public class WebMarketVO {
 	int webmarketid;
-	String username;
-	String password;
 	String name;
 	String contact;
+	String username;
+	String password;
 	
-	public WebMarketVO(int id,String um,String pa,String n,String c){
+	public WebMarketVO(){
+		webmarketid = 0;
+		name=null;
+		contact=null;
+		username=null;
+		password=null;
+	}
+	
+	public WebMarketVO(int id,String n,String c,String u,String p){
 		webmarketid = id;
-		username=um;
-		password=pa;
 		name=n;
 		contact=c;
+		username=u;
+		password=p;
 	}
-	public int getid(){
+
+	public int getwebmarketid() {
 		return webmarketid;
 	}
-	public String getusername(){
-		return username;
+
+	public void setwebmarketid(int webmarketid) {
+		this.webmarketid = webmarketid;
 	}
-	public void setusername(String um){
-		username=um;;
-	}
-	public String getpassword(){
-		return password;
-	}
-	public void setpassword(String pass){
-		password=pass;
-	}
-	public String getname(){
+
+	public String getname() {
 		return name;
 	}
-	public void setname(String na) {
-		name = na;
+
+	public void setname(String name) {
+		this.name = name;
 	}
-	public String getcontact(){
+
+	public String getcontact() {
 		return contact;
 	}
-	public void setContact(String contact) {
+
+	public void setcontact(String contact) {
 		this.contact = contact;
+	}
+
+	public String getusername() {
+		return username;
+	}
+
+	public void setusername(String username) {
+		this.username = username;
+	}
+
+	public String getpassword() {
+		return password;
+	}
+
+	public void setpassword(String password) {
+		this.password = password;
 	}
 }

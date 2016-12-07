@@ -3,6 +3,8 @@ package vo;
 import java.io.Serializable;
 import java.util.ArrayList;
 
+import objects.VIPInfo;
+
 public class ClientVO implements Serializable {
 	int clientid;
 	String username;
@@ -11,37 +13,27 @@ public class ClientVO implements Serializable {
 	String contact;
 	int credit;
 	ArrayList<String> credit_record;
-	VIPInfoVO info;
+	VIPInfo info;
 
-	public ClientVO(int clientid,String username,String password, String client_name, String contact, int credit, ArrayList<String> credit_record,
-			VIPInfoVO info) {
+	
+	public ClientVO(int clientid, String client_name, String contact, int credit, ArrayList<String> credit_record,
+			VIPInfo info,String username,String password) {
 		super();
 		this.clientid = clientid;
+		this.client_name = client_name;
+		this.contact = contact;
+		this.credit = credit;
+		this.credit_record = credit_record;
+		this.info = info;
 		this.username=username;
 		this.password=password;
-		this.client_name = client_name;
-		this.contact = contact;
-		this.credit = credit;
-		this.credit_record = credit_record;
-		this.info = info;
-	}
-	public ClientVO(int clientid, String client_name, String contact, int credit, ArrayList<String> credit_record,
-			VIPInfoVO info) {
-		super();
-		this.clientid = clientid;
-		
-		this.client_name = client_name;
-		this.contact = contact;
-		this.credit = credit;
-		this.credit_record = credit_record;
-		this.info = info;
 	}
 
-	public int getClientid() {
+	public int getclientid() {
 		return clientid;
 	}
 
-	public void setClientid(int clientid) {
+	public void setclientid(int clientid) {
 		this.clientid = clientid;
 	}
 	
@@ -61,46 +53,44 @@ public class ClientVO implements Serializable {
 		password=pass;
 	}
 
-	public String getClient_name() {
+	public String getclient_name() {
 		return client_name;
 	}
 
-	public void setClient_name(String client_name) {
+	public void setclient_name(String client_name) {
 		this.client_name = client_name;
 	}
 
-	public String getContact() {
+	public String getcontact() {
 		return contact;
 	}
 
-	public void setContact(String contact) {
+	public void setcontact(String contact) {
 		this.contact = contact;
 	}
 
-	public int getCredit() {
+	public int getcredit() {
 		return credit;
 	}
 
-	public void setCredit(int credit) {
+	public void setcredit(int credit) {
 		this.credit = credit;
 	}
 
-	public ArrayList<String> getCredit_record() {
+	public ArrayList<String> getcredit_record() {
 		return credit_record;
 	}
 
-	public void setCredit_record(ArrayList<String> credit_record) {
+	public void setcredit_record(ArrayList<String> credit_record) {
 		this.credit_record = credit_record;
 	}
 
-	public VIPInfoVO getVIPInfo() {
+	public VIPInfo getvipinfo() {
 		return info;
 	}
 
-	public void setVIPInfo(VIPInfoVO info) {
+	public void setvipinfo(VIPInfo info) {
 		this.info = info;
 	}
-	
-
 
 }

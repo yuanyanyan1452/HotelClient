@@ -3,7 +3,6 @@ package vo;
 import java.io.Serializable;
 import java.util.ArrayList;
 
-
 public class OrderVO implements Serializable {
 	/**
 	 * 
@@ -13,12 +12,12 @@ public class OrderVO implements Serializable {
 	int clientid;
 	int hotelid;
 	String state;
+	String cancel_time;
 	boolean execute;
 	String start_time;
 	String end_time;
 	String latest_execute_time;
 	ArrayList<RoomOrderVO>room_order;
-	String strategy;
 	int price;
 	int expect_number_of_people;
 	boolean havechild;
@@ -28,27 +27,27 @@ public class OrderVO implements Serializable {
 		clientid=0;
 		hotelid=0;
 		state=null;
+		cancel_time=null;
 		execute=false;
 		start_time=null;
 		end_time=null;
 		latest_execute_time=null;
 		room_order=null;
-		strategy=null;
 		price=0;
 		expect_number_of_people=0;
 		havechild=false;
 	}
-	public OrderVO(int i,int cid,int hid,String s,boolean e,String st,String et,String lt,ArrayList<RoomOrderVO>list,String str,int p,int en,boolean child){
+	public OrderVO(int i,int cid,int hid,String s,String cancel,boolean e,String st,String et,String lt,ArrayList<RoomOrderVO>list,int p,int en,boolean child){
 		id=i;
 		clientid=cid;
 		hotelid=hid;
 		state=s;
+		cancel_time=cancel;
 		execute=e;
 		start_time=st;
 		end_time=et;
 		latest_execute_time=lt;
 		room_order=list;
-		strategy=str;
 		price=p;
 		expect_number_of_people=en;
 		havechild=child;
@@ -80,6 +79,13 @@ public class OrderVO implements Serializable {
 	}
 	public String getstate(){
 		return state;
+	}
+	
+	public void setcancel_time(String cancel){
+		cancel_time=cancel;
+	}
+	public String getcancel_time(){
+		return cancel_time;
 	}
 	
 	public void setexecute(boolean isExecute){
@@ -115,13 +121,6 @@ public class OrderVO implements Serializable {
 	}
 	public ArrayList<RoomOrderVO> getroom_order(){
 		return room_order;
-	}
-	
-	public void setstrategy(String strategy){
-		this.strategy = strategy;
-	}
-	public String getstrategy(){
-		return strategy;
 	}
 	
 	public void setprice(int price){

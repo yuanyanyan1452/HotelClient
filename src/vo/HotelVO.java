@@ -5,15 +5,14 @@ import java.util.ArrayList;
 
 public class HotelVO implements Serializable{
 	int hotelid ;
+	String name;
 	String address;
 	String bussiness_address;
-	String name;
 	String introduction;
 	String service;
-	int score; 
-	String evaluation;
 	String star;
-	int min_price;
+	String score;
+	ArrayList<String> hotel_evaluation;
 	ArrayList<Integer> book_clientid;
 	
 	public HotelVO(){
@@ -23,35 +22,37 @@ public class HotelVO implements Serializable{
 		name=null;
 		introduction=null;
 		service=null;
-		score=0;
-		evaluation=null;
 		star=null;
-		min_price=0;
+		score=null;
+		hotel_evaluation=null;
 		book_clientid=null;
 	}
 	
-	public HotelVO(int id,String a,String ba,String na,String in,String s,int sc,String e,String m,int mp,ArrayList<Integer>book){
+	public HotelVO(int id,String na,String a,String ba,String in,String s,String star,String score,ArrayList<String> e,ArrayList<Integer>book){
 		hotelid = id;
+		name=na;
 		address=a;
 		bussiness_address=ba;
-		name=na;
 		introduction=in;
 		service=s;
-		score=sc;
-		evaluation=e;
-		star=m;
-		min_price=mp;
+		this.star=star;
+		this.score=score;
+		hotel_evaluation=e;
 		book_clientid=book;
 	}
-	
-	
-	
 	
 	public void setid(int id){
 		hotelid = id;
 	}
 	public int getid(){
 		return hotelid;
+	}
+	
+	public void setname(String name){
+		this.name = name;
+	}
+	public String getname(){
+		return name;
 	}
 	
 	public void setaddress(String addr){
@@ -68,13 +69,6 @@ public class HotelVO implements Serializable{
 		return bussiness_address;
 	}
 	
-	public void setname(String name){
-		this.name = name;
-	}
-	public String getname(){
-		return name;
-	}
-	
 	public void setintroduction(String intro){
 		introduction = intro;
 	}
@@ -89,33 +83,25 @@ public class HotelVO implements Serializable{
 		return service;
 	}
 	
-	public void setscore(int m){
-		score=m;
-	}
-	public int getcore(){
-		return score;
-	}
-	
-	public void setevaluation(String evalu){
-		evaluation = evalu;
-	}
-	public String getevaluation(){
-		return evaluation;
-	}
-	
-	
-	public void setstar(String m){
-		star=m;
+	public void setstar(String star){
+		this.star = star;
 	}
 	public String getstar(){
 		return star;
 	}
 	
-	public void setmin_price(int m){
-		min_price=m;
+	public void setscore(String score){
+		this.score = score;
 	}
-	public int getmin_price(){
-		return min_price;
+	public String getscore(){
+		return score;
+	}
+	
+	public void sethotel_evaluation(ArrayList<String> evalu){
+		hotel_evaluation = evalu;
+	}
+	public ArrayList<String> gethotel_evaluation(){
+		return hotel_evaluation;
 	}
 	
 	public void setbook_clientid(ArrayList<Integer>book){
@@ -124,4 +110,5 @@ public class HotelVO implements Serializable{
 	public ArrayList<Integer> getbook_clientid(){
 		return book_clientid;
 	}
+ 
 }
