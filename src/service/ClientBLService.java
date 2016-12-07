@@ -52,46 +52,46 @@ public interface ClientBLService extends Remote{
 	 * @param location
 	 * @return �ͻ���ȡ��Ӧ��ַ�ľƵ��б�
 	 */
-	public ArrayList<HotelVO> client_setLocation(String location)throws RemoteException;
+	public ArrayList<HotelVO> client_searchHotelByaddress(String address,String business_address)throws RemoteException;
 
 	/**
 	 * @param hotelname
 	 * @return ���϶�Ӧ�Ƶ����ľƵ��б�
 	 */
-	public ArrayList<HotelVO> client_searchHotel(String hotelname)throws RemoteException;
+	public ArrayList<HotelVO> client_searchHotelByname(String hotelname)throws RemoteException;
 
 	/**
 	 * @param type
 	 * @return �з��϶�Ӧ�������͵ľƵ��б�
 	 */
-	public ArrayList<HotelVO> client_searchHotel(RoomType type)throws RemoteException;
+	public ArrayList<HotelVO> client_searchHotelBytype(String type)throws RemoteException;
 
 	/**
 	 * @param lowprice
 	 * @param highprice
 	 * @return �з��϶�Ӧ�۸�����ķ���ľƵ��б�
 	 */
-	public ArrayList<HotelVO> client_searchHotel(int lowprice, int highprice)throws RemoteException;
+	public ArrayList<HotelVO> client_searchHotelByprice(int lowprice, int highprice)throws RemoteException;
 
 	/**
 	 * @param inTime
 	 * @param leaveTime
 	 * @return �з��϶�Ӧʱ��εķ���ľƵ��б�
 	 */
-	public ArrayList<HotelVO> client_searchHotel(String inTime, String leaveTime)throws RemoteException;
+	public ArrayList<HotelVO> client_searchHotelBytime(String inTime, String leaveTime)throws RemoteException;
 
 	/**
 	 * @param star
 	 * @return ���϶�Ӧ�Ǽ��ľƵ��б�
 	 */
-	public ArrayList<HotelVO> client_searchHotel(int star)throws RemoteException;
+	public ArrayList<HotelVO> client_searchHotelBystar(String star)throws RemoteException;
 
 	/**
 	 * @param lowscore
 	 * @param highscore
 	 * @return ���϶�Ӧ��������ľƵ��б�
 	 */
-	public ArrayList<HotelVO> client_searchHotel(double lowscore, double highscore)throws RemoteException;
+	public ArrayList<HotelVO> client_searchHotelByscore(double lowscore, double highscore)throws RemoteException;
 
 	/**
 	 * @param hotelid
