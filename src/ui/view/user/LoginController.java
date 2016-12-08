@@ -1,14 +1,20 @@
 package ui.view.user;
 
 import java.net.URL;
+import java.rmi.RemoteException;
 import java.util.ResourceBundle;
 
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
+import javafx.scene.control.Alert;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.PasswordField;
 import javafx.scene.control.TextField;
+import javafx.scene.control.Alert.AlertType;
+import objects.ResultMessage;
+import rmi.RemoteHelper;
+import service.ClientBLService;
 import ui.view.Main;
 
 public class LoginController implements Initializable {
@@ -39,24 +45,71 @@ public class LoginController implements Initializable {
 	
 	@FXML
 	public void gotoOverview() {
-		// TODO ��¼��֤
+		RemoteHelper helper =  RemoteHelper.getInstance();
 		switch (type) {
 		case "client":
-			main.gotoClientOverview();
+			try {
+				if(helper.getClientBLService().client_login(usernameTextField.getText(), passwordField.getText())
+						==ResultMessage.Success){
+					main.gotoClientOverview();
+				}
+				else{
+					warning();
+				}
+			} catch (RemoteException e) {
+				e.printStackTrace();
+			}
 			break;
 		case "hotel":
-			main.gotoHotelOverview();
+			try {
+				if(helper.getHotelBLService().hotelworker_login(usernameTextField.getText(), passwordField.getText())
+						==ResultMessage.Success){
+					main.gotoHotelOverview();
+				}
+				else {
+					warning();
+				}
+			} catch (RemoteException e) {
+				e.printStackTrace();
+			}
 		    break;
 		case "market":
-			main.gotoMarketOverview();
+			try {
+				if(helper.getManageBLService().webmarket_login(usernameTextField.getText(), passwordField.getText())
+						==ResultMessage.Success){
+					main.gotoMarketOverview();
+				}
+				else {
+					warning();
+				}
+			} catch (RemoteException e) {
+				e.printStackTrace();
+			}
 			break;
 		case "manager":
-			main.gotoManagerOverview();
+			try {
+				if(helper.getManageBLService().webmanager_login(usernameTextField.getText(), passwordField.getText())
+						==ResultMessage.Success){
+					main.gotoManagerOverview();
+				}
+				else {
+					warning();
+				}
+			} catch (RemoteException e) {
+				e.printStackTrace();
+			}
 		default:
 			break;
 		}
 	}
 
+	public void warning(){
+		Alert alert = new Alert(AlertType.ERROR);
+		alert.setTitle("错误");
+		alert.setHeaderText("登录失败");
+		alert.setContentText("用户名或密码错误！");
+		alert.show();
+	}
 	@FXML
 	public void gotoRegist() {
 		main.gotoRegist(type);

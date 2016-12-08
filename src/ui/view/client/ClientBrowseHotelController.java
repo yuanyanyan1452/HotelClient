@@ -31,6 +31,8 @@ public class ClientBrowseHotelController implements Initializable{
 	private TableColumn<HotelModel, String> scoreColumn;
 	
 	@FXML
+	private TableColumn<HotelModel, String> orderStateColumn;
+	@FXML
 	private void initialize(){
 		
 	}
