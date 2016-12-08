@@ -9,6 +9,7 @@ import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.Button;
 import javafx.scene.control.ComboBox;
+import javafx.scene.control.RadioButton;
 import javafx.scene.control.TableCell;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
@@ -58,6 +59,9 @@ public class ClientSearchHotelController implements Initializable {
 	@FXML
 	private Button searchButton;
 
+	@FXML
+	private RadioButton everBookedButton;
+	
 	@FXML
 	private void initialize() {
 

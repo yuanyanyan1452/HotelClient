@@ -5,10 +5,13 @@ import java.util.ResourceBundle;
 
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
+import ui.model.ClientModel;
 import ui.view.Main;
+import vo.ClientVO;
 
 public class ClientOverviewController implements Initializable {
 	private Main main;
+	private ClientVO currentClient;
 
 	@FXML
 	private void initialize() {

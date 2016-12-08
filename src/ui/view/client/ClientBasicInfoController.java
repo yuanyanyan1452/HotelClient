@@ -44,6 +44,12 @@ public class ClientBasicInfoController implements Initializable {
 	
 	@FXML
 	private TableColumn< String, String> resultColumn;
+	
+	@FXML
+	private TableColumn<String, String> changeColumn;
+	
+	@FXML
+	private TableColumn<String, String> orderidColumn;
 
 	@FXML
 	private void update() {

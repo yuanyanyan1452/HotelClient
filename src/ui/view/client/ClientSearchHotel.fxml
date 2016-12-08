@@ -20,13 +20,15 @@
                                  <items>
                                     <AnchorPane prefHeight="48.0" prefWidth="364.0">
                                        <children>
-                                          <Label layoutX="111.0" layoutY="20.0" text="所在地：" />
-                                          <ImageView fitHeight="36.0" fitWidth="35.0" layoutX="67.0" layoutY="9.0">
+                                          <Label layoutX="71.0" layoutY="20.0" text="所在地：" />
+                                          <ImageView fitHeight="36.0" fitWidth="35.0" layoutX="24.0" layoutY="10.0">
                                              <image>
                                                 <Image url="@../../../../resources/所在地%20.png" />
                                              </image>
                                           </ImageView>
-                                          <ComboBox fx:id="locationButton" layoutX="186.0" layoutY="16.0" prefHeight="23.0" prefWidth="105.0" />
+                                          <ComboBox fx:id="locationButton" layoutX="119.0" layoutY="15.0" prefHeight="23.0" prefWidth="105.0" />
+                                          <Label layoutX="230.0" layoutY="18.0" text="商圈：" />
+                                          <ComboBox fx:id="businessAddressButton" layoutX="269.0" layoutY="15.0" prefHeight="23.0" prefWidth="95.0" />
                                        </children>
                                     </AnchorPane>
                                  </items>
@@ -44,21 +46,6 @@
                                                       <Image url="@../../../../resources/酒店名称.png" />
                                                    </image>
                                                 </ImageView>
-                                             </children>
-                                          </AnchorPane>
-                                    </content>
-                                  </Tab>
-                                  <Tab text="商圈查找">
-                                    <content>
-                                      <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
-                                             <children>
-                                                <Label layoutX="98.0" layoutY="64.0" text="商圈：" />
-                                                <ImageView fitHeight="36.0" fitWidth="35.0" layoutX="27.0" layoutY="53.0">
-                                                   <image>
-                                                      <Image url="@../../../../resources/近商圈.png" />
-                                                   </image>
-                                                </ImageView>
-                                                <ComboBox fx:id="businessAddressButton" layoutX="187.0" layoutY="60.0" prefHeight="23.0" prefWidth="95.0" />
                                              </children>
                                           </AnchorPane>
                                     </content>
@@ -110,6 +97,20 @@
                                           </AnchorPane>
                                        </content>
                                     </Tab>
+                                  <Tab text="其它查找">
+                                    <content>
+                                      <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
+                                             <children>
+                                                <ImageView fitHeight="36.0" fitWidth="35.0" layoutX="46.0" layoutY="53.0">
+                                                   <image>
+                                                      <Image url="@../../../../resources/近商圈.png" />
+                                                   </image>
+                                                </ImageView>
+                                                <RadioButton fx:id="everBookedButton" layoutX="130.0" layoutY="63.0" mnemonicParsing="false" text="只搜索自己预定过的酒店" />
+                                             </children>
+                                          </AnchorPane>
+                                    </content>
+                                  </Tab>
                                 </tabs>
                               </TabPane>
                            </children>
