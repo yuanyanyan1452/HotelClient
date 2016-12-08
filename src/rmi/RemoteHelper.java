@@ -2,11 +2,11 @@ package rmi;
 
 import java.rmi.Remote;
 
-import service.ClientBLService;
-import service.HotelBLService;
-import service.ManageBLService;
-import service.OrderBLService;
-import service.StrategyBLService;
+import service.blservice.ClientBLService;
+import service.blservice.HotelBLService;
+import service.blservice.ManageBLService;
+import service.blservice.OrderBLService;
+import service.blservice.StrategyBLService;
 
 public class RemoteHelper {
 	private Remote remote;
