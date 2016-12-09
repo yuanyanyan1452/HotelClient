@@ -16,6 +16,10 @@ public interface ManageBLService extends Remote{
 		
 		public ResultMessage webmarket_login(String username,String password) throws RemoteException;
 		
+		public ResultMessage webmarket_change_password(String username,String oldpassword,String newpassword)throws RemoteException;
+		
+		public ResultMessage webmanager_change_password(String username,String oldpassword,String newpassword)throws RemoteException;
+		
 		/**
 		 * @param clientid
 		 * @return 搜索客户

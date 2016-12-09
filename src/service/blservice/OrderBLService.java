@@ -110,8 +110,10 @@ import java.util.ArrayList;
 import objects.OrderState;
 import objects.ResultMessage;
 import objects.RoomType;
+import vo.AccommodationVO;
 import vo.HotelStrategyVO;
 import vo.OrderVO;
+import vo.RoomOrderVO;
 import vo.WebStrategyVO;
 
 public interface OrderBLService extends Remote{
@@ -191,7 +193,7 @@ public interface OrderBLService extends Remote{
 	 * @param num
 	 * @return 计算订单总价（无促销策略）
 	 */
-	public int calculateTotalwithoutStrategy(RoomType type, int num)throws RemoteException;
+	public int calculateTotalwithoutStrategy(ArrayList<RoomOrderVO> roomlist)throws RemoteException;
 
 	/**
 	 * @param type
@@ -200,7 +202,7 @@ public interface OrderBLService extends Remote{
 	 * @param list2
 	 * @return 计算订单总价（有促销策略）
 	 */
-	public int calculateTotalwithStrategy(RoomType type, int num, ArrayList<HotelStrategyVO> list1,
+	public int calculateTotalwithStrategy(ArrayList<RoomOrderVO> roomlist, ArrayList<HotelStrategyVO> list1,
 			ArrayList<WebStrategyVO> list2)throws RemoteException;
 
 	// 提供给同层调用的接口
@@ -209,4 +211,6 @@ public interface OrderBLService extends Remote{
 	 * @return 更新订单实际离开时间
 	 */
 	public ResultMessage updateActualLeaveTime(int orderid, String leaveTime)throws RemoteException;
+	
+	public ResultMessage updateorder(AccommodationVO info,int orderid)throws RemoteException;
 }
