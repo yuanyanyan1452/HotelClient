@@ -9,6 +9,7 @@ import objects.HotelWorker;
 import objects.ResultMessage;
 import objects.RoomType;
 import vo.AccommodationVO;
+import vo.EvaluationVO;
 import vo.HotelVO;
 import vo.RoomVO;
 
@@ -125,4 +126,6 @@ public interface HotelBLService extends Remote{
 	 */
 	public ArrayList<Hotel> searchHotelByscore(double lowscore, double highscore)throws RemoteException;
 
+	public ResultMessage evalutehotel(EvaluationVO e, int clientid,int hotelid) throws RemoteException;
+	
 }
