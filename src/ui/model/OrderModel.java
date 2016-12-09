@@ -1,5 +1,8 @@
 package ui.model;
 
-public class OrderModel {
+import javafx.beans.property.SimpleIntegerProperty;
 
+public class OrderModel {
+//	private final SimpleIntegerProperty id;
+	
 }
