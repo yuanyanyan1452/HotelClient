@@ -1,6 +1,5 @@
 package objects;
 
-import po.WebMarketPO;
 import vo.WebMarketVO;
 
 public class WebMarket {
@@ -66,15 +65,6 @@ public class WebMarket {
 		this.password = password;
 	}
 	
-	public WebMarketPO changetowebmarketpo(){
-		WebMarketPO po=new WebMarketPO();
-		po.setwebmarketid(this.webmarketid);
-		po.setname(this.name);
-		po.setcontact(this.contact);
-		po.setusername(this.username);
-		po.setpassword(this.password);
-		return po;
-	}
 	
 	public WebMarketVO changetowebmarketvo(){
 		WebMarketVO vo=new WebMarketVO();
