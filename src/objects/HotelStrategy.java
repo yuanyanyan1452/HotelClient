@@ -2,7 +2,6 @@ package objects;
 
 import java.util.Date;
 
-import po.HotelStrategyPO;
 import vo.HotelStrategyVO;
 
 public class HotelStrategy {
@@ -95,18 +94,6 @@ public class HotelStrategy {
 		return superposition;
 	}
 
-	public HotelStrategyPO changetohotelstrategypo(){
-		HotelStrategyPO po=new HotelStrategyPO();
-		po.setid(this.hsid);
-		po.sethotelid(this.hotelid);
-		po.setname(this.name);
-		po.setcondition(this.condition);
-		po.setstart_time(this.start_time);
-		po.setend_time(this.end_time);
-		po.setexecuteway(this.executeway);
-		po.setsuperposition(this.superposition);
-		return po;
-	}
 	
 	public HotelStrategyVO changetohotelstrategyvo(){
 		HotelStrategyVO vo=new HotelStrategyVO();

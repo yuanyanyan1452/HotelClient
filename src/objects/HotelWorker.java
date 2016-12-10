@@ -1,6 +1,5 @@
 package objects;
 
-import po.HotelWorkerPO;
 import vo.HotelWorkerVO;
 
 public class HotelWorker {

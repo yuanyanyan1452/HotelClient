@@ -3,7 +3,6 @@ package objects;
 import java.util.ArrayList;
 import java.util.Date;
 
-import po.RoomOrderPO;
 import vo.RoomOrderVO;
 
 public class Order {

@@ -36,10 +36,7 @@ public class ClientBrowseHotelController implements Initializable{
 	private void initialize(){
 		
 	}
-	@FXML
-	private void back(){
-		main.gotoClientOverview();
-	}
+	
 	public ClientBrowseHotelController() {
 	
 	}
