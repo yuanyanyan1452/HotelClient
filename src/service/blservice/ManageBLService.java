@@ -7,6 +7,7 @@ import objects.ResultMessage;
 import vo.ClientVO;
 import vo.HotelVO;
 import vo.HotelWorkerVO;
+import vo.WebManagerVO;
 import vo.WebMarketVO;
 
 public interface ManageBLService extends Remote{
@@ -19,6 +20,12 @@ public interface ManageBLService extends Remote{
 		public ResultMessage webmarket_change_password(String username,String oldpassword,String newpassword)throws RemoteException;
 		
 		public ResultMessage webmanager_change_password(String username,String oldpassword,String newpassword)throws RemoteException;
+		
+		public WebMarketVO webmarket_getvo(String username)throws RemoteException;
+		
+		public WebManagerVO webmanager_getvo(String username)throws RemoteException;
+		
+		
 		
 		/**
 		 * @param clientid

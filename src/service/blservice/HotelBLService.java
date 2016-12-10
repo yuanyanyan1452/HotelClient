@@ -7,16 +7,18 @@ import java.util.ArrayList;
 import objects.Hotel;
 import objects.HotelWorker;
 import objects.ResultMessage;
-import objects.RoomType;
 import vo.AccommodationVO;
 import vo.EvaluationVO;
 import vo.HotelVO;
+import vo.HotelWorkerVO;
 import vo.RoomVO;
 
 public interface HotelBLService extends Remote{
 	// 提供给界面调用的接口
 	
 	public ResultMessage hotelworker_login(String username,String password) throws RemoteException;
+	
+	public HotelWorkerVO hotelworker_getvo(String username)throws RemoteException;
 	
 	public ResultMessage hotelworker_change_password(String username,String oldpassword,String newpassword)throws RemoteException;
 	

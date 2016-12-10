@@ -106,10 +106,9 @@ package service.blservice;
 import java.rmi.Remote;
 import java.rmi.RemoteException;
 import java.util.ArrayList;
+import java.util.Date;
 
-import objects.OrderState;
 import objects.ResultMessage;
-import objects.RoomType;
 import vo.AccommodationVO;
 import vo.HotelStrategyVO;
 import vo.OrderVO;
@@ -210,7 +209,7 @@ public interface OrderBLService extends Remote{
 	 * @param leaveTime
 	 * @return 更新订单实际离开时间
 	 */
-	public ResultMessage updateActualLeaveTime(int orderid, String leaveTime)throws RemoteException;
+	public ResultMessage updateActualLeaveTime(int orderid, Date leaveTime)throws RemoteException;
 	
 	public ResultMessage updateorder(AccommodationVO info,int orderid)throws RemoteException;
 }
