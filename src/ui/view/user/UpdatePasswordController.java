@@ -39,8 +39,10 @@ public class UpdatePasswordController implements Initializable{
 	@FXML
 	public void changepassword() throws RemoteException{
 		if(newpasswordTextField1.getText()==newpasswordTextField2.getText()){
-		ResultMessage result=helper.getClientBLService().client_change_password(usernameTextField.getText(), oldpasswordTextField.getText(), newpasswordTextField1.getText());
-		if(result==ResultMessage.Success){
+		switch(type){
+		case "client":
+		ResultMessage result1=helper.getClientBLService().client_change_password(usernameTextField.getText(), oldpasswordTextField.getText(), newpasswordTextField1.getText());
+		if(result1==ResultMessage.Success){
 			Alert alert = new Alert(AlertType.INFORMATION);
 			alert.setTitle(null);
 			alert.setHeaderText(null);
@@ -53,6 +55,58 @@ public class UpdatePasswordController implements Initializable{
 			alert.setHeaderText(null);
 			alert.setContentText("对不起，更新密码失败，可能是用户名或密码输入错误或网络原因");
 			alert.showAndWait();
+		}
+			break;
+		case "hotel":
+			ResultMessage result2=helper.getHotelBLService().hotelworker_change_password(usernameTextField.getText(), oldpasswordTextField.getText(), newpasswordTextField1.getText());
+			if(result2==ResultMessage.Success){
+				Alert alert = new Alert(AlertType.INFORMATION);
+				alert.setTitle(null);
+				alert.setHeaderText(null);
+				alert.setContentText("更新密码成功");
+				alert.showAndWait();
+			}
+			else{
+				Alert alert = new Alert(AlertType.ERROR);
+				alert.setTitle(null);
+				alert.setHeaderText(null);
+				alert.setContentText("对不起，更新密码失败，可能是用户名或密码输入错误或网络原因");
+				alert.showAndWait();
+			}
+			break;
+		case "market":
+			ResultMessage result3=helper.getManageBLService().webmarket_change_password(usernameTextField.getText(), oldpasswordTextField.getText(), newpasswordTextField1.getText());
+			if(result3==ResultMessage.Success){
+				Alert alert = new Alert(AlertType.INFORMATION);
+				alert.setTitle(null);
+				alert.setHeaderText(null);
+				alert.setContentText("更新密码成功");
+				alert.showAndWait();
+			}
+			else{
+				Alert alert = new Alert(AlertType.ERROR);
+				alert.setTitle(null);
+				alert.setHeaderText(null);
+				alert.setContentText("对不起，更新密码失败，可能是用户名或密码输入错误或网络原因");
+				alert.showAndWait();
+			}
+			break;
+		case "manager":
+			ResultMessage result4=helper.getManageBLService().webmanager_change_password(usernameTextField.getText(), oldpasswordTextField.getText(), newpasswordTextField1.getText());
+			if(result4==ResultMessage.Success){
+				Alert alert = new Alert(AlertType.INFORMATION);
+				alert.setTitle(null);
+				alert.setHeaderText(null);
+				alert.setContentText("更新密码成功");
+				alert.showAndWait();
+			}
+			else{
+				Alert alert = new Alert(AlertType.ERROR);
+				alert.setTitle(null);
+				alert.setHeaderText(null);
+				alert.setContentText("对不起，更新密码失败，可能是用户名或密码输入错误或网络原因");
+				alert.showAndWait();
+			}
 		}
 		}
 		else{
