@@ -12,6 +12,7 @@ import javafx.scene.control.*;
 import javafx.scene.control.Alert.AlertType;
 import objects.VIPInfo;
 import objects.VIPInfo.VIPType;
+import rmi.RemoteHelper;
 import ui.model.*;
 import ui.view.Main;
 
@@ -425,6 +426,8 @@ public class ManagerOverviewController implements Initializable {
 
 	public void setMain(Main main) {
 		this.main = main;
+		
+		RemoteHelper remoteHelper = RemoteHelper.getInstance();
 		
 		clientList.add(new ClientModel(1, "张三", "18888888888", new VIPInfo(VIPType.NORMAL, "1999/01/01"), 0));
 		clientList.add(new ClientModel(2, "李四", "13333333333",null, 0));

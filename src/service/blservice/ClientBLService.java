@@ -17,7 +17,7 @@ public interface ClientBLService extends Remote{
 	
 	public ResultMessage client_login(String username,String password)throws RemoteException ;
 	
-	public ClientVO clinet_getclientvo(String username)throws RemoteException;
+	public ClientVO client_getclientvo(String username)throws RemoteException;
 	
 	public ResultMessage client_register(String username,String password)throws RemoteException;
 	

@@ -50,7 +50,7 @@ public class LoginController implements Initializable {
 			try {
 				if(helper.getClientBLService().client_login(usernameTextField.getText(), passwordField.getText())
 						==ResultMessage.Success){
-					main.gotoClientOverview();
+					main.gotoClientOverview(helper.getClientBLService().client_getclientvo(usernameTextField.getText()));
 				}
 				else{
 					warning();

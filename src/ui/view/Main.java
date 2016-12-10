@@ -39,6 +39,7 @@ import ui.view.user.LoginController;
 import ui.view.user.LoginOverviewController;
 import ui.view.user.RegistController;
 import ui.view.user.UpdatePasswordController;
+import vo.ClientVO;
 
 public class Main extends Application {
 	// 主窗口
@@ -141,7 +142,7 @@ public class Main extends Application {
 	}
 
 	// 跳转到客户主界面
-	public void gotoClientOverview() {
+	public void gotoClientOverview(ClientVO vo) {
 		try {
 			FXMLLoader fxmlLoader = new FXMLLoader();
 			fxmlLoader.setLocation(Main.class.getResource("client/ClientOverview.fxml"));
@@ -149,7 +150,7 @@ public class Main extends Application {
 			rootLayout.setPrefSize(1000, 600);
 			rootLayout.setDividerPositions(0.3f);
 			ClientOverviewController controller = (ClientOverviewController) fxmlLoader.getController();
-			controller.setMain(this);
+			controller.setMain(this,vo);
 			Scene scene = new Scene(rootLayout);
 			stage.setScene(scene);
 			stage.centerOnScreen();

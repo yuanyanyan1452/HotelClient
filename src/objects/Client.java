@@ -1,9 +1,8 @@
 package objects;
 
-import java.io.Serializable;
 import java.util.ArrayList;
 
-public class Client implements Serializable{
+public class Client {
 	int clientid;
 	String client_name;
 	String contact;
