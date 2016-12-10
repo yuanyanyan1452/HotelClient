@@ -212,4 +212,6 @@ public interface OrderBLService extends Remote{
 	public ResultMessage updateActualLeaveTime(int orderid, Date leaveTime)throws RemoteException;
 	
 	public ResultMessage updateorder(AccommodationVO info,int orderid)throws RemoteException;
+	
+	public OrderVO order_findbyid(int orderid)throws RemoteException;
 }

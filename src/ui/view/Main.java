@@ -40,6 +40,10 @@ import ui.view.user.LoginOverviewController;
 import ui.view.user.RegistController;
 import ui.view.user.UpdatePasswordController;
 import vo.ClientVO;
+import vo.HotelVO;
+import vo.HotelWorkerVO;
+import vo.WebManagerVO;
+import vo.WebMarketVO;
 
 public class Main extends Application {
 	// 主窗口
@@ -161,7 +165,7 @@ public class Main extends Application {
 	}
 
 	// 客户查看基本信息
-	public void gotoClientBasicInfo() {
+	public void gotoClientBasicInfo(ClientVO vo) {
 		try {
 			FXMLLoader fxmlLoader = new FXMLLoader();
 			fxmlLoader.setLocation(Main.class.getResource("client/ClientBasicInfo.fxml"));
@@ -169,7 +173,7 @@ public class Main extends Application {
 			insidePane.setPrefSize(700, 600);
 			rootLayout.getItems().set(1, insidePane);
 			ClientBasicInfoController controller = (ClientBasicInfoController) fxmlLoader.getController();
-			controller.setMain(this);
+			controller.setMain(this,vo);
 		} catch (Exception e) {
 			Logger.getLogger(Main.class.getName()).log(Level.SEVERE, null, e);
 		}
@@ -208,7 +212,7 @@ public class Main extends Application {
 	}
 
 	// 客户注册会员
-	public void gotoClientEnrollVIP() {
+	public void gotoClientEnrollVIP(ClientVO vo) {
 		try {
 			FXMLLoader fxmlLoader = new FXMLLoader();
 			fxmlLoader.setLocation(Main.class.getResource("client/ClientEnrollVIP.fxml"));
@@ -216,7 +220,7 @@ public class Main extends Application {
 			insidePane.setPrefSize(700, 600);
 			rootLayout.getItems().set(1, insidePane);
 			ClientEnrollVIPController controller = (ClientEnrollVIPController) fxmlLoader.getController();
-			controller.setMain(this);
+			controller.setMain(this,vo);
 			stage.centerOnScreen();
 		} catch (Exception e) {
 			Logger.getLogger(Main.class.getName()).log(Level.SEVERE, null, e);
@@ -298,7 +302,7 @@ public class Main extends Application {
 	}
 
 	// 跳转到酒店主界面
-	public void gotoHotelOverview() {
+	public void gotoHotelOverview(HotelWorkerVO hotelworkervo,HotelVO hotelvo) {
 		try {
 			FXMLLoader fxmlLoader = new FXMLLoader();
 			fxmlLoader.setLocation(Main.class.getResource("hotel/HotelOverview.fxml"));
@@ -306,7 +310,7 @@ public class Main extends Application {
 			rootLayout.setPrefSize(1000, 600);
 			rootLayout.setDividerPositions(0.3f);
 			HotelOverviewController controller = (HotelOverviewController) fxmlLoader.getController();
-			controller.setMain(this);
+			controller.setMain(this,hotelworkervo,hotelvo);
 			Scene scene = new Scene(rootLayout);
 			stage.setScene(scene);
 			stage.centerOnScreen();
@@ -317,7 +321,7 @@ public class Main extends Application {
 	}
 
 	// 酒店工作人员管理酒店信息
-	public void gotoHotelBasicInfo() {
+	public void gotoHotelBasicInfo(HotelVO vo) {
 		try {
 			FXMLLoader fxmlLoader = new FXMLLoader();
 			fxmlLoader.setLocation(Main.class.getResource("hotel/HotelBasicInfo.fxml"));
@@ -325,7 +329,7 @@ public class Main extends Application {
 			insidePane.setPrefSize(700, 600);
 			rootLayout.getItems().set(1, insidePane);
 			HotelBasicInfoController controller = (HotelBasicInfoController) fxmlLoader.getController();
-			controller.setMain(this);
+			controller.setMain(this,vo);
 		} catch (Exception e) {
 			Logger.getLogger(Main.class.getName()).log(Level.SEVERE, null, e);
 		}
@@ -407,7 +411,7 @@ public class Main extends Application {
 	}
 
 	// 跳转到网站营销人员主界面
-	public void gotoMarketOverview() {
+	public void gotoMarketOverview(WebMarketVO vo) {
 		try {
 			FXMLLoader fxmlLoader = new FXMLLoader();
 			fxmlLoader.setLocation(Main.class.getResource("market/MarketOverview.fxml"));
@@ -415,7 +419,7 @@ public class Main extends Application {
 			rootLayout.setPrefSize(1000, 600);
 			rootLayout.setDividerPositions(0.3f);
 			MarketOverviewController controller = (MarketOverviewController) fxmlLoader.getController();
-			controller.setMain(this);
+			controller.setMain(this,vo);
 			Scene scene = new Scene(rootLayout);
 			stage.setScene(scene);
 			stage.centerOnScreen();
@@ -472,11 +476,11 @@ public class Main extends Application {
 	}
 
 	// 跳转到网站管理人员主界面
-	public void gotoManagerOverview() {
+	public void gotoManagerOverview(WebManagerVO vo) {
 		try {
 			ManagerOverviewController ManagerOverviewController = (ManagerOverviewController) replaceSceneContent(
 					"manager/ManagerOverview.fxml");
-			ManagerOverviewController.setMain(this);
+			ManagerOverviewController.setMain(this,vo);
 		} catch (Exception e) {
 			Logger.getLogger(Main.class.getName()).log(Level.SEVERE, null, e);
 		}

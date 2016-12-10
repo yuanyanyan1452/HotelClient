@@ -20,7 +20,7 @@
          <children>
             <Label text="增加信用值：" GridPane.rowIndex="1" />
             <Label text="客户名：" />
-            <TextField fx:id="clientNameTextField" GridPane.columnIndex="1" />
+            <TextField fx:id="clientUserNameTextField" GridPane.columnIndex="1" />
             <TextField fx:id="creditTextField" GridPane.columnIndex="1" GridPane.rowIndex="1" />
          </children>
       </GridPane>

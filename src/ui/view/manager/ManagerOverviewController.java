@@ -6,15 +6,23 @@ import java.util.ResourceBundle;
 
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
-import javafx.fxml.*;
+import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
-import javafx.scene.control.*;
+import javafx.scene.control.Alert;
 import javafx.scene.control.Alert.AlertType;
+import javafx.scene.control.Label;
+import javafx.scene.control.TableColumn;
+import javafx.scene.control.TableView;
+import javafx.scene.control.TextField;
 import objects.VIPInfo;
 import objects.VIPInfo.VIPType;
 import rmi.RemoteHelper;
-import ui.model.*;
+import ui.model.ClientModel;
+import ui.model.HotelModel;
+import ui.model.HotelWorkerModel;
+import ui.model.MarketModel;
 import ui.view.Main;
+import vo.WebManagerVO;
 
 public class ManagerOverviewController implements Initializable {
 	private Main main;
@@ -424,7 +432,7 @@ public class ManagerOverviewController implements Initializable {
 
 	}
 
-	public void setMain(Main main) {
+	public void setMain(Main main,WebManagerVO vo) {
 		this.main = main;
 		
 		RemoteHelper remoteHelper = RemoteHelper.getInstance();

@@ -15,6 +15,9 @@ import javafx.scene.control.TextField;
 import objects.ResultMessage;
 import rmi.RemoteHelper;
 import ui.view.Main;
+import vo.HotelVO;
+import vo.HotelWorkerVO;
+import vo.WebManagerVO;
 
 public class LoginController implements Initializable {
 	private String type;
@@ -63,7 +66,9 @@ public class LoginController implements Initializable {
 			try {
 				if(helper.getHotelBLService().hotelworker_login(usernameTextField.getText(), passwordField.getText())
 						==ResultMessage.Success){
-					main.gotoHotelOverview();
+					HotelWorkerVO hotelworkervo=helper.getHotelBLService().hotelworker_getvo(usernameTextField.getText());
+					HotelVO hotelvo=helper.getHotelBLService().hotel_checkInfo(hotelworkervo.gethotelid());
+					main.gotoHotelOverview(hotelworkervo,hotelvo);
 				}
 				else {
 					warning();
@@ -76,7 +81,7 @@ public class LoginController implements Initializable {
 			try {
 				if(helper.getManageBLService().webmarket_login(usernameTextField.getText(), passwordField.getText())
 						==ResultMessage.Success){
-					main.gotoMarketOverview();
+					main.gotoMarketOverview(helper.getManageBLService().webmarket_getvo(usernameTextField.getText()));
 				}
 				else {
 					warning();
@@ -89,7 +94,12 @@ public class LoginController implements Initializable {
 			try {
 				if(helper.getManageBLService().webmanager_login(usernameTextField.getText(), passwordField.getText())
 						==ResultMessage.Success){
-					main.gotoManagerOverview();
+//					ClientVO clientvo=
+//					HotelWorkerVO hotelworkervo=
+//					HotelVO hotelvo=
+//					WebManagerVO webmanagervo=
+					WebManagerVO webmanagervo=helper.getManageBLService().webmanager_getvo(usernameTextField.getText());
+					main.gotoManagerOverview(webmanagervo);
 				}
 				else {
 					warning();

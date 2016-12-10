@@ -36,11 +36,11 @@
                   <RowConstraints minHeight="10.0" prefHeight="10.0" vgrow="SOMETIMES" />
               </rowConstraints>
                <children>
-                  <Label prefHeight="24.0" prefWidth="38.0" text="地址：" GridPane.halignment="CENTER" GridPane.valignment="CENTER" />
-                  <Label text="所属商圈：" GridPane.halignment="CENTER" GridPane.rowIndex="1" />
-                  <Label text="简介：" GridPane.halignment="CENTER" GridPane.rowIndex="2" GridPane.valignment="CENTER" />
-                  <Label text="设施服务：" GridPane.halignment="CENTER" GridPane.rowIndex="3" />
-                  <Label text="星级：" GridPane.halignment="CENTER" GridPane.rowIndex="4" />
+                  <Label fx:id="addressTextField" prefHeight="24.0" prefWidth="38.0" text="地址：" GridPane.halignment="CENTER" GridPane.valignment="CENTER" />
+                  <Label fx:id="business_adressTextField" text="所属商圈：" GridPane.halignment="CENTER" GridPane.rowIndex="1" />
+                  <Label fx:id="introductionTextField" text="简介：" GridPane.halignment="CENTER" GridPane.rowIndex="2" GridPane.valignment="CENTER" />
+                  <Label fx:id="serviceTextField" text="设施服务：" GridPane.halignment="CENTER" GridPane.rowIndex="3" />
+                  <Label fx:id="starTextField" text="星级：" GridPane.halignment="CENTER" GridPane.rowIndex="4" />
                   <ScrollPane prefHeight="64.0" prefWidth="511.0" GridPane.columnIndex="1">
                      <content>
                         <TextArea prefHeight="83.0" prefWidth="509.0" text="&#10;" wrapText="true">

@@ -1,75 +1,89 @@
 package ui.view.hotel;
 
 import java.net.URL;
+import java.rmi.RemoteException;
 import java.util.ResourceBundle;
 
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
+import javafx.scene.control.Label;
+import rmi.RemoteHelper;
 import ui.view.Main;
+import vo.HotelVO;
+import vo.HotelWorkerVO;
 
 public class HotelOverviewController implements Initializable {
 	private Main main;
-
-	/*
-	 * 跳转到酒店基本信息管理窗口
-	 */
+	RemoteHelper helper =  RemoteHelper.getInstance();
+	private HotelVO currenthotelvo;
+	private HotelWorkerVO currenthotelworkervo;
+	
 	@FXML
-	public void gotoHotelBasicInfo() {
-		main.gotoHotelBasicInfo();
+	private Label hotelnamelabel;
+
+	@FXML
+	private Label namelabel;
+	
+	@FXML
+	private Label contactlabel;
+	
+
+	@FXML
+	public void gotoHotelBasicInfo() throws RemoteException {
+		this.update();
+		main.gotoHotelBasicInfo(currenthotelvo);
 	}
 
-	/*
-	 * 跳转到酒店浏览订单窗口
-	 */
 	@FXML
 	public void gotoHotelBrowseOrder() {
 		main.gotoHotelBrowseOrder();
 	}
 
-	/*
-	 * 跳转到酒店客户入住窗口
-	 */
+
 	@FXML
 	public void gotoHotelCheckIn() {
 		main.gotoHotelCheckIn();
 	}
 
-	/*
-	 * 跳转到酒店执行订单窗口
-	 */
+
 	@FXML
 	public void gotoHotelExecuteOrder() {
 		main.gotoHotelExecuteOrder();
 	}
 
-	/*
-	 * 跳转到酒店可用房间管理窗口
-	 */
+
 	@FXML
 	public void gotoHotelRoomManage() {
 		main.gotoHotelRoomManage();
 	}
 
-	/*
-	 * 跳转到酒店促销策略管理窗口
-	 */
 	@FXML
 	public void gotoHotelStrategyManage() {
 		main.gotoHotelStrategyManage();
 	}
 
 	public HotelOverviewController() {
-		// TODO 自动生成的构造函数存根
+		// TODO
 	}
 
 	@Override
 	public void initialize(URL location, ResourceBundle resources) {
-		// TODO 自动生成的方法存根
+		// TODO 
 
 	}
 
-	public void setMain(Main main) {
+	public void setMain(Main main,HotelWorkerVO hotelworkervo,HotelVO hotelvo) throws RemoteException {
 		this.main = main;
+		currenthotelvo=hotelvo;
+		currenthotelworkervo=hotelworkervo;
+		hotelnamelabel.setText(hotelvo.getname());
+		namelabel.setText(hotelworkervo.getname());
+		contactlabel.setText(hotelworkervo.getcontact());
+		
+	}
+	
+	public void update() throws RemoteException{
+		currenthotelvo=helper.getHotelBLService().hotel_checkInfo(currenthotelvo.getid());
 	}
 
 }
