@@ -1,65 +1,61 @@
 package objects;
 
-import po.HotelWorkerPO;
-import vo.HotelWorkerVO;
-
-public class HotelWorker {
-	int hotelid;
+public class Manage {
+	int webmanagerid;
 	String name;
 	String contact;
 	String username;
 	String password;
 	
-	public HotelWorker(){
-		hotelid=0;
+	public Manage(){
+		webmanagerid=0;
 		name=null;
 		contact=null;
 		username=null;
 		password=null;
 	}
 	
-	public HotelWorker(int id,String n,String c,String u,String p){
-		hotelid=id;
+	public Manage(int i,String n,String c,String u,String p){
+		webmanagerid = i;
 		name=n;
 		contact=c;
 		username=u;
 		password=p;
 	}
-	
-	public int gethotelid() {
-		return hotelid;
+	public int getwebmanagerid() {
+		return webmanagerid;
 	}
-	public void sethotelid(int hotelid) {
-		this.hotelid = hotelid;
+	public void setwebmanagerid(int webmanagerid) {
+		this.webmanagerid = webmanagerid;
 	}
 	
 	public void setname(String name) {
 		this.name = name;
 	}
-	public String getname() {
+	public String getname(){
 		return name;
 	}
+	
 	
 	public void setcontact(String contact) {
 		this.contact = contact;
 	}
-	public String getcontact() {
+	public String getcontact(){
 		return contact;
 	}
-
-	public String getusername() {
-		return username;
-	}
+	
 	public void setusername(String username) {
 		this.username = username;
 	}
-
+	public String getusername() {
+		return username;
+	}
+	
 	public String getpassword() {
 		return password;
 	}
 	public void setpassword(String password) {
 		this.password = password;
 	}
-	
-	
+
 }

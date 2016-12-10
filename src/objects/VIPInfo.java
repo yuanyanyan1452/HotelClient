@@ -1,7 +1,5 @@
 package objects;
 
-import objects.VIPInfo.VIPType;
-
 public class VIPInfo {
 	public enum VIPType {
 		NORMAL, Enterprise
@@ -13,6 +11,10 @@ public class VIPInfo {
 	public VIPInfo(VIPType type, String info) {
 		this.type = type;
 		this.info = info;
+	}
+
+	public VIPInfo() {
+		// TODO Auto-generated constructor stub
 	}
 
 	public VIPType getType() {

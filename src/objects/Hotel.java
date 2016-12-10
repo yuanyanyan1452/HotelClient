@@ -1,9 +1,8 @@
 package objects;
 
-import java.io.Serializable;
 import java.util.ArrayList;
 
-public class Hotel implements Serializable{
+public class Hotel {
 	int hotelid ;
 	String name;
 	String address;
