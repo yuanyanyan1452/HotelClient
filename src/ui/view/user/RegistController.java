@@ -43,7 +43,7 @@ public class RegistController implements Initializable {
 	
 	@FXML
 	private void register() throws RemoteException{
-		if(passwordTextField1.getText()==passwordTextField2.getText()){
+		if(passwordTextField1.getText().equals(passwordTextField2.getText())){
 		ResultMessage result=helper.getClientBLService().client_register(usernameTextField.getText(), passwordTextField1.getText());
 		if(result==ResultMessage.Success){
 			Alert alert = new Alert(AlertType.INFORMATION);
