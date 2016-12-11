@@ -45,10 +45,10 @@
                               <Insets />
                            </GridPane.margin>
                         </Label>
-                        <Label text="Tom" GridPane.columnIndex="1" GridPane.halignment="CENTER" GridPane.rowIndex="1" />
-                        <Label text="88888888" GridPane.columnIndex="1" GridPane.halignment="CENTER" GridPane.rowIndex="2" />
+                        <Label fx:id="namelabel" alignment="CENTER" prefHeight="22.0" prefWidth="97.0" GridPane.columnIndex="1" GridPane.halignment="CENTER" GridPane.rowIndex="1" />
+                        <Label fx:id="contactlabel" alignment="CENTER" prefHeight="15.0" prefWidth="99.0" GridPane.columnIndex="1" GridPane.halignment="CENTER" GridPane.rowIndex="2" />
                         <Label text="酒店名：" />
-                        <Label text="如家" GridPane.columnIndex="1" />
+                        <Label fx:id="hotelnamelabel" alignment="CENTER" prefHeight="21.0" prefWidth="95.0" GridPane.columnIndex="1" />
                      </children>
                      <columnConstraints>
                         <ColumnConstraints halignment="CENTER" hgrow="SOMETIMES" maxWidth="217.0" minWidth="10.0" prefWidth="150.0" />

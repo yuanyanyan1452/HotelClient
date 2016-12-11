@@ -1,6 +1,8 @@
 package vo;
 
-public class RoomOrderVO {
+import java.io.Serializable;
+
+public class RoomOrderVO implements Serializable{
 	String room_type;
 	int room_number;
 	
