@@ -1,8 +1,8 @@
 package vo;
 
+import java.io.Serializable;
 
-
-public class WebManagerVO {
+public class WebManagerVO implements Serializable{
 	int webmanagerid;
 	String name;
 	String contact;

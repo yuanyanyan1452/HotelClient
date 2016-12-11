@@ -1,5 +1,6 @@
 package vo;
 
+import java.io.Serializable;
 import java.util.ArrayList;
 
 import objects.Client;
@@ -25,7 +26,7 @@ import vo.WebManagerVO;
 import vo.WebMarketVO;
 import vo.WebStrategyVO;
 
-public class VOChange {
+public class VOChange implements Serializable{
 
 	public static Client clientvo_to_client(ClientVO clientvo) {
 		Client client = new Client();

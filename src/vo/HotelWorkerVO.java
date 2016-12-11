@@ -1,8 +1,8 @@
 package vo;
 
+import java.io.Serializable;
 
-
-public class HotelWorkerVO {
+public class HotelWorkerVO implements Serializable{
 	int hotelid;
 	String name;
 	String contact;

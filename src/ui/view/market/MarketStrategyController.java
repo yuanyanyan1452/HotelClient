@@ -1,6 +1,7 @@
 package ui.view.market;
 
 import java.net.URL;
+import java.rmi.RemoteException;
 import java.util.ArrayList;
 import java.util.ResourceBundle;
 
@@ -10,6 +11,7 @@ import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.Alert;
 import javafx.scene.control.Alert.AlertType;
+import rmi.RemoteHelper;
 import javafx.scene.control.Label;
 import javafx.scene.control.RadioButton;
 import javafx.scene.control.TableColumn;
@@ -18,6 +20,7 @@ import javafx.scene.control.TextField;
 import javafx.scene.control.ToggleGroup;
 import ui.model.*;
 import ui.view.Main;
+import vo.WebStrategyVO;
 
 public class MarketStrategyController implements Initializable {
 	private Main main;
@@ -231,7 +234,7 @@ public class MarketStrategyController implements Initializable {
 
 	public void setMain(Main main) {
 		this.main = main;
-		
+		RemoteHelper helper = RemoteHelper.getInstance();
 
 		final ToggleGroup addGroup = new ToggleGroup();
 		addYesButton.setToggleGroup(addGroup);
@@ -241,9 +244,25 @@ public class MarketStrategyController implements Initializable {
 		updateNoButton.setToggleGroup(updateGroup);
 
 		ObservableList<WebStrategyModel> webStrategyData = FXCollections.observableArrayList();
-		webStrategyData.add(new WebStrategyModel(1, "双十一优惠", "11/11", "11/12", "0.5", "无条件", "是"));
-		webStrategyData.add(new WebStrategyModel(2, "会员折扣", "01/01", "12/31", "0.8", "会员适用", "是"));
-
+		WebStrategyModel temp = null;
+		try {
+			ArrayList<WebStrategyVO> webdata = helper.getStrategyBLService().getStrategy(1);
+			for(WebStrategyVO vo:webdata){
+				temp = new WebStrategyModel
+						(vo.getid(),
+						vo.getname(), 
+						vo.getstart_time().toString(), 
+						vo.getend_time().toString(), 
+						vo.getexecuteway(), 
+						vo.getcondition(), 
+						vo.getsuperposition()?"是":"否");
+			}
+			webStrategyData.add(temp);
+		} catch (RemoteException e) {
+			// TODO 自动生成的 catch 块
+			e.printStackTrace();
+		}
+		
 		for (WebStrategyModel model : webStrategyData) {
 			IDList.add(model.getID());
 		}
