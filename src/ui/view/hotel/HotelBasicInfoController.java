@@ -8,6 +8,7 @@ import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.Alert;
 import javafx.scene.control.Alert.AlertType;
+import javafx.scene.control.TextArea;
 import javafx.scene.control.TextField;
 import objects.ResultMessage;
 import rmi.RemoteHelper;
@@ -20,19 +21,19 @@ public class HotelBasicInfoController implements Initializable {
 	RemoteHelper helper=RemoteHelper.getInstance();
 	
 	@FXML
-	private TextField addressTextField;
+	private TextArea addressTextField;
 	
 	@FXML
-	private TextField business_adressTextField;
+	private TextArea business_adressTextField;
 	
 	@FXML
-	private TextField introductionTextField;
+	private TextArea introductionTextField;
 	
 	@FXML
-	private TextField serviceTextField;
+	private TextArea serviceTextField;
 	
 	@FXML
-	private TextField starTextField;
+	private TextArea starTextField;
 	
 	
 	@FXML

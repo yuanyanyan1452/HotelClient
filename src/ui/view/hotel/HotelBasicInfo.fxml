@@ -65,7 +65,10 @@
                         <TextArea fx:id="serviceTextField" prefHeight="116.0" prefWidth="508.0" wrapText="true" />
                      </content>
                   </ScrollPane>
-                  <ScrollPane fx:id="starTextField" prefHeight="200.0" prefWidth="200.0" GridPane.columnIndex="1" GridPane.rowIndex="4" />
+                  <ScrollPane prefHeight="200.0" prefWidth="200.0" GridPane.columnIndex="1" GridPane.rowIndex="4">
+                     <content>
+                        <TextArea fx:id="starTextField" prefHeight="78.0" prefWidth="508.0" />
+                     </content></ScrollPane>
                </children>
             </GridPane>
          </children>
