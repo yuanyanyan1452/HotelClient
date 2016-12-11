@@ -87,11 +87,11 @@ public interface StrategyBLService extends Remote{
 	 * @param clientid
 	 * @return 得到对应客户适用的对应酒店的促销策略列表
 	 */
-	public ArrayList<HotelStrategyVO> getStrategy(int hotelid, int clientid)throws RemoteException;
+	public ArrayList<HotelStrategyVO> getHotelStrategy(int hotelid)throws RemoteException;
 
 	/**
 	 * @param clientid
 	 * @return 得到对应客户使用的网站的促销策略列表
 	 */
-	public ArrayList<WebStrategyVO> getStrategy(int clientid)throws RemoteException;
+	public ArrayList<WebStrategyVO> getWebStrategy(int clientid)throws RemoteException;
 }

@@ -84,5 +84,13 @@ public class ClientOverviewController implements Initializable {
 	
 	public void updateVO() throws RemoteException{
 		this.currentclientvo = helper.getClientBLService().client_checkInfo(currentclientvo.getclientid());
+		nameLabel.setText(currentclientvo.getclient_name());
+		contactLabel.setText(currentclientvo.getcontact());
+		if(currentclientvo.getvipinfo()==null){
+			vipLabel.setText("非会员");
+		}
+		else {
+			vipLabel.setText(currentclientvo.getvipinfo().getType()==VIPType.NORMAL? "普通会员":"企业会员");
+		}
 	}
 }

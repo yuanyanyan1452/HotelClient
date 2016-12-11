@@ -36,14 +36,14 @@
                   <RowConstraints minHeight="10.0" prefHeight="10.0" vgrow="SOMETIMES" />
               </rowConstraints>
                <children>
-                  <Label fx:id="addressTextField" prefHeight="24.0" prefWidth="38.0" text="地址：" GridPane.halignment="CENTER" GridPane.valignment="CENTER" />
-                  <Label fx:id="business_adressTextField" text="所属商圈：" GridPane.halignment="CENTER" GridPane.rowIndex="1" />
-                  <Label fx:id="introductionTextField" text="简介：" GridPane.halignment="CENTER" GridPane.rowIndex="2" GridPane.valignment="CENTER" />
-                  <Label fx:id="serviceTextField" text="设施服务：" GridPane.halignment="CENTER" GridPane.rowIndex="3" />
-                  <Label fx:id="starTextField" text="星级：" GridPane.halignment="CENTER" GridPane.rowIndex="4" />
+                  <Label prefHeight="24.0" prefWidth="38.0" text="地址：" GridPane.halignment="CENTER" GridPane.valignment="CENTER" />
+                  <Label text="所属商圈：" GridPane.halignment="CENTER" GridPane.rowIndex="1" />
+                  <Label text="简介：" GridPane.halignment="CENTER" GridPane.rowIndex="2" GridPane.valignment="CENTER" />
+                  <Label text="设施服务：" GridPane.halignment="CENTER" GridPane.rowIndex="3" />
+                  <Label text="星级：" GridPane.halignment="CENTER" GridPane.rowIndex="4" />
                   <ScrollPane prefHeight="64.0" prefWidth="511.0" GridPane.columnIndex="1">
                      <content>
-                        <TextArea prefHeight="83.0" prefWidth="509.0" text="&#10;" wrapText="true">
+                        <TextArea fx:id="addressTextField" prefHeight="83.0" prefWidth="509.0" text="&#10;" wrapText="true">
                            <padding>
                               <Insets top="2.0" />
                            </padding>
@@ -52,20 +52,20 @@
                   </ScrollPane>
                   <ScrollPane prefHeight="200.0" prefWidth="200.0" GridPane.columnIndex="1" GridPane.rowIndex="1">
                      <content>
-                        <TextArea prefHeight="88.0" prefWidth="508.0" wrapText="true" />
+                        <TextArea fx:id="business_adressTextField" prefHeight="88.0" prefWidth="508.0" wrapText="true" />
                      </content>
                   </ScrollPane>
                   <ScrollPane prefHeight="200.0" prefWidth="200.0" GridPane.columnIndex="1" GridPane.rowIndex="2">
                      <content>
-                        <TextArea prefHeight="167.0" prefWidth="508.0" wrapText="true" />
+                        <TextArea fx:id="introductionTextField" prefHeight="167.0" prefWidth="508.0" wrapText="true" />
                      </content>
                   </ScrollPane>
                   <ScrollPane prefHeight="200.0" prefWidth="200.0" GridPane.columnIndex="1" GridPane.rowIndex="3">
                      <content>
-                        <TextArea prefHeight="116.0" prefWidth="508.0" wrapText="true" />
+                        <TextArea fx:id="serviceTextField" prefHeight="116.0" prefWidth="508.0" wrapText="true" />
                      </content>
                   </ScrollPane>
-                  <ScrollPane prefHeight="200.0" prefWidth="200.0" GridPane.columnIndex="1" GridPane.rowIndex="4" />
+                  <ScrollPane fx:id="starTextField" prefHeight="200.0" prefWidth="200.0" GridPane.columnIndex="1" GridPane.rowIndex="4" />
                </children>
             </GridPane>
          </children>

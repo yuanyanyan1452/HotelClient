@@ -38,7 +38,7 @@ public class UpdatePasswordController implements Initializable{
 	
 	@FXML
 	public void changepassword() throws RemoteException{
-		if(newpasswordTextField1.getText()==newpasswordTextField2.getText()){
+		if(newpasswordTextField1.getText().equals(newpasswordTextField2.getText())){
 		switch(type){
 		case "client":
 		ResultMessage result1=helper.getClientBLService().client_change_password(usernameTextField.getText(), oldpasswordTextField.getText(), newpasswordTextField1.getText());
@@ -48,6 +48,7 @@ public class UpdatePasswordController implements Initializable{
 			alert.setHeaderText(null);
 			alert.setContentText("更新密码成功");
 			alert.showAndWait();
+			main.gotoLogin(type);
 		}
 		else{
 			Alert alert = new Alert(AlertType.ERROR);
@@ -65,6 +66,7 @@ public class UpdatePasswordController implements Initializable{
 				alert.setHeaderText(null);
 				alert.setContentText("更新密码成功");
 				alert.showAndWait();
+				main.gotoLogin(type);
 			}
 			else{
 				Alert alert = new Alert(AlertType.ERROR);
@@ -82,6 +84,7 @@ public class UpdatePasswordController implements Initializable{
 				alert.setHeaderText(null);
 				alert.setContentText("更新密码成功");
 				alert.showAndWait();
+				main.gotoLogin(type);
 			}
 			else{
 				Alert alert = new Alert(AlertType.ERROR);
@@ -99,6 +102,7 @@ public class UpdatePasswordController implements Initializable{
 				alert.setHeaderText(null);
 				alert.setContentText("更新密码成功");
 				alert.showAndWait();
+				main.gotoLogin(type);
 			}
 			else{
 				Alert alert = new Alert(AlertType.ERROR);

@@ -102,6 +102,8 @@ public class ClientBasicInfoController implements Initializable {
 	public void setMain(Main main,ClientVO clientvo) {
 		this.main = main;
 		currentclientvo=clientvo;
+		nameTextField.setText(clientvo.getclient_name());
+		contactTextField.setText(clientvo.getcontact());
 		VIPType viptype=currentclientvo.getvipinfo().getType();
 		if(viptype.equals(VIPType.NORMAL)){
 			vipTypeLabel.setText("普通会员");
@@ -113,13 +115,16 @@ public class ClientBasicInfoController implements Initializable {
 			
 			//信用记录列表初始化
 		}
-		else{
+		else if(viptype.equals(VIPType.Enterprise)){
 			vipTypeLabel.setText("企业会员");
 			infoNameLabel.setText("所属企业");
 			String [] info=currentclientvo.getvipinfo().getInfo().split(",");
 			infoLabel.setText(info[1]);
 			vipLevelLabel.setText(info[0]);
 			creditLabel.setText(String.valueOf(currentclientvo.getcredit()));
+		}
+		else{
+			vipTypeLabel.setText("非会员");
 		}
 		
 		

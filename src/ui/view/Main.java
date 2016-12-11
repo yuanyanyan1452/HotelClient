@@ -324,8 +324,11 @@ public class Main extends Application {
 	public void gotoHotelBasicInfo(HotelVO vo) {
 		try {
 			FXMLLoader fxmlLoader = new FXMLLoader();
+			System.out.println("1");
 			fxmlLoader.setLocation(Main.class.getResource("hotel/HotelBasicInfo.fxml"));
+			System.out.println("2");
 			AnchorPane insidePane = (AnchorPane) fxmlLoader.load();
+			System.out.println("3");
 			insidePane.setPrefSize(700, 600);
 			rootLayout.getItems().set(1, insidePane);
 			HotelBasicInfoController controller = (HotelBasicInfoController) fxmlLoader.getController();
