@@ -30,6 +30,10 @@ public class ClientBasicInfoController implements Initializable {
 	private TextField contactTextField;
 
 	@FXML
+	private Label vipLevelLabel;
+	
+	
+	@FXML
 	private Label vipTypeLabel;
 	
 	@FXML

@@ -1,6 +1,8 @@
 package objects;
 
-public class VIPInfo {
+import java.io.Serializable;
+
+public class VIPInfo implements Serializable{
 	public enum VIPType {
 		NORMAL, Enterprise
 	};
