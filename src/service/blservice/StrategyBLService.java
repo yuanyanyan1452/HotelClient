@@ -94,4 +94,8 @@ public interface StrategyBLService extends Remote{
 	 * @return 得到对应客户使用的网站的促销策略列表
 	 */
 	public ArrayList<WebStrategyVO> getWebStrategy(int clientid)throws RemoteException;
+
+	public HotelStrategyVO gethotelstrategybyname(String name)throws RemoteException;
+	
+	public WebStrategyVO getwebstrategybyname(String name)throws RemoteException;
 }
