@@ -20,6 +20,7 @@ import javafx.scene.control.TableView;
 import javafx.scene.control.TextField;
 import javafx.scene.control.ToggleGroup;
 import ui.model.*;
+import ui.util.AlertUtil;
 import ui.view.Main;
 import vo.WebStrategyVO;
 
@@ -132,10 +133,7 @@ public class MarketStrategyController implements Initializable {
 			deleteConditionLabel.setText("");
 			deleteSuperpositionLabel.setText("");
 
-			Alert alert = new Alert(AlertType.ERROR);
-			alert.setContentText("不存在该促销策略！");
-			alert.setHeaderText("搜索失败！");
-			alert.show();
+			AlertUtil.showErrorAlert("不存在该促销策略！");
 		}
 	}
 
@@ -168,10 +166,7 @@ public class MarketStrategyController implements Initializable {
 			updateYesButton.setSelected(false);
 			updateNoButton.setSelected(false);
 
-			Alert alert = new Alert(AlertType.ERROR);
-			alert.setContentText("不存在该促销策略！");
-			alert.setHeaderText("搜索失败！");
-			alert.show();
+			AlertUtil.showErrorAlert("不存在该促销策略！");
 		}
 	}
 
@@ -190,11 +185,7 @@ public class MarketStrategyController implements Initializable {
 		ObservableList<WebStrategyModel> list = strategyTable.getItems();
 		for (WebStrategyModel model : list) {
 			if (model.getName().equals(name)) {
-				Alert alert = new Alert(AlertType.ERROR);
-				alert.setContentText("不存在该促销策略！");
-				alert.setHeaderText("搜索失败！");
-				alert.show();
-
+				AlertUtil.showErrorAlert("已存在同名的促销策略！");
 				return;
 			}
 		}
@@ -225,10 +216,7 @@ public class MarketStrategyController implements Initializable {
 
 		// 拒绝更新一个不存在的策略
 		if (!list.contains(currentStrategy)) {
-			Alert alert = new Alert(AlertType.ERROR);
-			alert.setContentText("不存在该促销策略！");
-			alert.setHeaderText("更新失败！");
-			alert.show();
+			AlertUtil.showErrorAlert("不存在该促销策略！");
 			return;
 		}
 
@@ -263,10 +251,7 @@ public class MarketStrategyController implements Initializable {
 				e.printStackTrace();
 			}
 		} else {
-			Alert alert = new Alert(AlertType.ERROR);
-			alert.setContentText("不存在该促销策略！");
-			alert.setHeaderText("删除失败！");
-			alert.show();
+			AlertUtil.showErrorAlert("不存在该促销策略！");
 		}
 	}
 
