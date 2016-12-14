@@ -26,7 +26,7 @@ import vo.WebStrategyVO;
 public class MarketStrategyController implements Initializable {
 	private Main main;
 	private WebStrategyModel currentStrategy;
-	private SimpleDateFormat format = new SimpleDateFormat("yyyy-MM-dd hh:mm:ss");
+	private SimpleDateFormat format = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
 	@FXML
 	private TableView<WebStrategyModel> strategyTable;
 
