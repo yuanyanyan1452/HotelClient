@@ -480,7 +480,7 @@ public class Main extends Application {
 		try {
 			ManagerOverviewController ManagerOverviewController = (ManagerOverviewController) replaceSceneContent(
 					"manager/ManagerOverview.fxml");
-			ManagerOverviewController.setMain(this,vo);
+			ManagerOverviewController.setMain(this,vo,stage);
 		} catch (Exception e) {
 			Logger.getLogger(Main.class.getName()).log(Level.SEVERE, null, e);
 		}
