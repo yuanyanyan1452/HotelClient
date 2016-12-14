@@ -23,7 +23,7 @@ import vo.ClientVO;
 public class CreditChargeController implements Initializable {
 	private Main main;
 	private ClientVO currentclientvo;
-	private SimpleDateFormat format = new SimpleDateFormat("yyyy-MM-dd hh:mm:ss");
+	private SimpleDateFormat format = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
 	private 
 	RemoteHelper helper=RemoteHelper.getInstance();
 

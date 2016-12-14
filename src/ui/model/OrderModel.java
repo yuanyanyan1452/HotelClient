@@ -9,65 +9,79 @@ import javafx.beans.property.SimpleStringProperty;
 import objects.OrderState;
 
 public class OrderModel {
-	private SimpleStringProperty orderid;
-	private SimpleStringProperty clientid;
-	private SimpleStringProperty hotelid;
-	private SimpleStringProperty state;
-	private SimpleStringProperty cancelTime;
-	private SimpleStringProperty isExecute;
-	private SimpleStringProperty startTime;
-	private SimpleStringProperty endTime;
-	private SimpleStringProperty latestExecuteTime;
-	private SimpleStringProperty roomOrder;
-	private SimpleStringProperty price;
-	private SimpleStringProperty numOfPeople;
-	private SimpleStringProperty haveChild;
-	private SimpleStringProperty overTime;
-	private SimpleStringProperty punishCredit;
-	private SimpleDateFormat format = new SimpleDateFormat("yyyy-MM-dd hh:mm:ss");
+	private final SimpleStringProperty orderid;
+	private final SimpleStringProperty clientid;
+	private final SimpleStringProperty hotelid;
+	private final SimpleStringProperty state;
+	private final SimpleStringProperty cancelTime;
+	private final SimpleStringProperty isExecute;
+	private final SimpleStringProperty startTime;
+	private final SimpleStringProperty endTime;
+	private final SimpleStringProperty latestExecuteTime;
+	private final SimpleStringProperty roomOrder;
+	private final SimpleStringProperty price;
+	private final SimpleStringProperty numOfPeople;
+	private final SimpleStringProperty haveChild;
+	private final SimpleStringProperty overTime;
+	private final SimpleStringProperty punishCredit;
+	private SimpleDateFormat format = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
 
 	public OrderModel() {
-
+		orderid=new SimpleStringProperty();
+		clientid = new SimpleStringProperty();
+		hotelid = new SimpleStringProperty();
+		state = new SimpleStringProperty();
+		cancelTime = new SimpleStringProperty();
+		isExecute = new SimpleStringProperty();
+		startTime = new SimpleStringProperty();
+		endTime = new SimpleStringProperty();
+		latestExecuteTime = new SimpleStringProperty();
+		roomOrder = new SimpleStringProperty();
+		price = new SimpleStringProperty();
+		numOfPeople = new SimpleStringProperty();
+		haveChild = new SimpleStringProperty();
+		overTime = new SimpleStringProperty();
+		punishCredit = new SimpleStringProperty();
 	}
 
 	public String getOrderid() {
-		return orderid.get();
+		return this.orderid.get();
 	}
 
 	public void setOrderid(int orderid) {
-		this.orderid.set(orderid + "");
+		this.orderid.set(orderid+"");
 	}
 
 	public SimpleStringProperty orderidProperty() {
-		return orderid;
+		return this.orderid;
 	}
 
 	public String getClientid() {
-		return clientid.get();
+		return this.clientid.get();
 	}
 
 	public void setClientid(int clientid) {
-		this.clientid.set(clientid + "");
+		this.clientid.set(clientid+"");
 	}
 
 	public SimpleStringProperty clientidProperty() {
-		return clientid;
+		return this.clientid;
 	}
 
 	public String getHotelid() {
-		return hotelid.get();
+		return this.hotelid.get();
 	}
 
 	public void setHotelid(int hotelid) {
-		this.hotelid.set(hotelid + "");
+		this.hotelid.set(hotelid+"");
 	}
 
 	public SimpleStringProperty hotelidProperty() {
-		return hotelid;
+		return this.hotelid;
 	}
 
 	public String getState() {
-		return state.get();
+		return this.state.get();
 	}
 
 	public void setState(String state) {
@@ -75,11 +89,11 @@ public class OrderModel {
 	}
 
 	public SimpleStringProperty stateProperty() {
-		return state;
+		return this.state;
 	}
 
 	public String getCancelTime() {
-		return cancelTime.get();
+		return this.cancelTime.get();
 	}
 
 	public void setCancelTime(Date cancelTime) {
@@ -87,11 +101,11 @@ public class OrderModel {
 	}
 
 	public SimpleStringProperty cancelTimeProperty() {
-		return cancelTime;
+		return this.cancelTime;
 	}
 
 	public String getIsExecute() {
-		return isExecute.get();
+		return this.isExecute.get();
 	}
 
 	public void setIsExecute(boolean isExecute) {
@@ -99,11 +113,11 @@ public class OrderModel {
 	}
 	
 	public SimpleStringProperty isExecuteProperty(){
-		return isExecute;
+		return this.isExecute;
 	}
 	
 	public String getStartTime(){
-		return startTime.get();
+		return this.startTime.get();
 	}
 	
 	public void setStartTime(Date startTime){
@@ -111,11 +125,11 @@ public class OrderModel {
 	}
 	
 	public SimpleStringProperty startTimeProperty(){
-		return startTime;
+		return this.startTime;
 	}
 	
 	public String getEndTime(){
-		return endTime.get();
+		return this.endTime.get();
 	}
 	
 	public void setEndTime(Date endTime){
@@ -131,15 +145,15 @@ public class OrderModel {
 	}
 	
 	public void setLatestExecuteTime(Date time){
-		latestExecuteTime.set(format.format(time));
+		this.latestExecuteTime.set(format.format(time));
 	}
 	
 	public SimpleStringProperty latestExecuteTimeProperty(){
-		return latestExecuteTime;
+		return this.latestExecuteTime;
 	}
 	
 	public String getRoomOrder(){
-		return roomOrder.get();
+		return this.roomOrder.get();
 	}
 	
 	public void setRoomOrder(String roomorder){
@@ -147,72 +161,72 @@ public class OrderModel {
 	}
 	
 	public SimpleStringProperty roomOrderProperty(){
-		return roomOrder;
+		return this.roomOrder;
 	}
 	
 	public String getPrice(){
-		return price.get();
+		return this.price.get();
 	}
 	
 	public void setPrice(int price){
-		this.price.set(String.valueOf(price));
+		this.price.set(price+"");
 	}
 	
 	public SimpleStringProperty priceProperty(){
-		return price;
+		return this.price;
 	}
 	
 	public String getNumOfPeople(){
-		return numOfPeople.get();
+		return this.numOfPeople.get();
 	}
 	
 	public void setNumOfPeople(int num){
-		numOfPeople.set(String.valueOf(num));
+		this.numOfPeople.set(num+"");
 	}
 	
 	public SimpleStringProperty numOfPeopleProperty(){
-		return numOfPeople;
+		return this.numOfPeople;
 	}
 	
 	public String getHaveChild(){
-		return haveChild.get();
+		return this.haveChild.get();
 	}
 	
 	public void setHaveChild(boolean havechild){
-		haveChild.set(havechild?"是":"否");
+		this.haveChild.set(havechild?"是":"否");
 	}
 	
 	public SimpleStringProperty haveChildProperty(){
-		return haveChild;
+		return this.haveChild;
 	}
 	
 	public String getOverTime(){
-		return overTime.get();
+		return this.overTime.get();
 	}
 	
 	public void setOverTime(Date now){
 		long overTime;
 		try {
-			overTime = now.getTime() - format.parse(latestExecuteTime.get()).getTime();
-			this.overTime.set(String.valueOf(overTime));
+			overTime = (now.getTime() - format.parse(latestExecuteTime.get()).getTime())/(1000*3600);
+			this.overTime.set(overTime+"");
 		} catch (ParseException e) {
 			e.printStackTrace();
 		}
 	}
 	
 	public SimpleStringProperty overTimeProperty(){
-		return overTime;
+		return this.overTime;
 	}
 	
 	public String getPunishCredit(){
-		return punishCredit.get();
+		return this.punishCredit.get();
 	}
 	
 	public void setPunishCredit(int punishCredit){
-		this.punishCredit.set(String.valueOf(punishCredit));
+		this.punishCredit.set(punishCredit+"");
 	}
 	
 	public SimpleStringProperty punishCreditProperty(){
-		return punishCredit;
+		return this.punishCredit;
 	}
 }
