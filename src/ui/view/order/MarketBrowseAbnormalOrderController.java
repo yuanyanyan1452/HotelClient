@@ -27,6 +27,7 @@ import rmi.RemoteHelper;
 import ui.model.ClientModel;
 import ui.model.HotelModel;
 import ui.model.OrderModel;
+import ui.util.AlertUtil;
 import ui.view.Main;
 import vo.ClientVO;
 import vo.OrderVO;
@@ -71,23 +72,21 @@ public class MarketBrowseAbnormalOrderController implements Initializable {
 			
 			//恢复信用值
 			ResultMessage m2 = helper.getClientBLService().updateClientCredit(clientid, recover, 1);
+			
 			//添加信用记录
-//			ArrayList<String> record= helper.getClientBLService().client_checkCreditList(clientid);
-//			if (record==null) {
-//				record = new ArrayList<String>();
-//			}
-//			Date date = new Date();
-//			String nowTime = format.format(date);
-//			String newRecord = "'"+nowTime+"'"+","+currentOrder.getOrderid()+",撤销异常订单,"+recover+","+helper.getClientBLService().client_checkCredit(clientid);
-//			record.add(newRecord);
-//			
-//			ResultMessage m3 = helper.getClientBLService().client_updateInfo(helper.getClientBLService().client_getclientvo("").setcredit_record(record));
-					
-					
-			if (m2==ResultMessage.Success&&m1==m2) {
-				Alert alert = new Alert(AlertType.CONFIRMATION);
-				alert.setContentText("撤销成功！");
-				alert.show();
+			Date date = new Date();
+			String nowTime = format.format(date);
+			String newRecord = "'"+nowTime+"'"+","+currentOrder.getOrderid()+",撤销异常订单,"+recover+","+helper.getClientBLService().client_checkCredit(clientid);
+			
+			ResultMessage m3 = helper.getClientBLService().client_updateClientCreditList(clientid, newRecord);
+			if (m2==ResultMessage.Success&&m1==m2&&m3==m2) {
+				AlertUtil.showConfirmingAlert("撤销成功！");
+				
+				//删除表格项
+				orderTable.getItems().remove(currentOrder);
+			}
+			else{
+				AlertUtil.showErrorAlert("撤销失败！");
 			}
 		} catch (NumberFormatException e) {
 			e.printStackTrace();
