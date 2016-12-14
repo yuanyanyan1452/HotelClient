@@ -2,6 +2,7 @@ package ui.view.market;
 
 import java.net.URL;
 import java.rmi.RemoteException;
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.ResourceBundle;
 
@@ -24,9 +25,8 @@ import vo.WebStrategyVO;
 
 public class MarketStrategyController implements Initializable {
 	private Main main;
-	private ArrayList<Integer> IDList = new ArrayList<Integer>();
 	private WebStrategyModel currentStrategy;
-	
+	private SimpleDateFormat format = new SimpleDateFormat("yyyy-MM-dd hh:mm:ss");
 	@FXML
 	private TableView<WebStrategyModel> strategyTable;
 
@@ -121,16 +121,21 @@ public class MarketStrategyController implements Initializable {
 				deleteDiscountLabel.setText(strategy.getDiscount());
 				deleteConditionLabel.setText(strategy.getCondition());
 				deleteSuperpositionLabel.setText(strategy.getSuperposition());
-				
+
 				isSuccess = true;
 			}
 		}
-		if(!isSuccess){
+		if (!isSuccess) {
 			deleteStartTimeLabel.setText("");
 			deleteEndTimeLabel.setText("");
 			deleteDiscountLabel.setText("");
 			deleteConditionLabel.setText("");
 			deleteSuperpositionLabel.setText("");
+
+			Alert alert = new Alert(AlertType.ERROR);
+			alert.setContentText("不存在该促销策略！");
+			alert.setHeaderText("搜索失败！");
+			alert.show();
 		}
 	}
 
@@ -146,29 +151,33 @@ public class MarketStrategyController implements Initializable {
 				updateEndTimeField.setText(strategy.getEndTime());
 				updateDiscountField.setText(strategy.getDiscount());
 				updateConditionField.setText(strategy.getCondition());
-				if(strategy.getSuperposition().equals("是")){
+				if (strategy.getSuperposition().equals("是")) {
 					updateYesButton.setSelected(true);
+				} else {
+					updateNoButton.setSelected(true);
 				}
-				else{
-					updateNoButton.setSelected(false);
-				}
-				
+
 				isSuccess = true;
 			}
 		}
-		if(!isSuccess){
+		if (!isSuccess) {
 			updateStartTimeField.setText("");
 			updateEndTimeField.setText("");
 			updateDiscountField.setText("");
 			updateConditionField.setText("");
 			updateYesButton.setSelected(false);
 			updateNoButton.setSelected(false);
+
+			Alert alert = new Alert(AlertType.ERROR);
+			alert.setContentText("不存在该促销策略！");
+			alert.setHeaderText("搜索失败！");
+			alert.show();
 		}
 	}
 
 	@FXML
 	private void addStrategy() {
-		int id = createID();
+
 		String name = addNameField.getText();
 		String startTime = addStartTimeField.getText();
 		String endTime = addEndTimeField.getText();
@@ -176,9 +185,31 @@ public class MarketStrategyController implements Initializable {
 		String discount = addDiscountField.getText();
 		String superposition = (addYesButton.isSelected()) ? "是" : "否";
 
-		WebStrategyModel strategyModel = new WebStrategyModel(id, name, startTime, endTime, discount, condition,
+		
+		// 检查同名策略
+		ObservableList<WebStrategyModel> list = strategyTable.getItems();
+		for (WebStrategyModel model : list) {
+			if (model.getName().equals(name)) {
+				Alert alert = new Alert(AlertType.ERROR);
+				alert.setContentText("不存在该促销策略！");
+				alert.setHeaderText("搜索失败！");
+				alert.show();
+
+				return;
+			}
+		}
+		WebStrategyModel strategyModel = new WebStrategyModel(0, name, startTime, endTime, discount, condition,
 				superposition);
 		strategyTable.getItems().add(strategyModel);
+
+		WebStrategyVO vo = strategyModel.changeToVO();
+
+		RemoteHelper helper = RemoteHelper.getInstance();
+		try {
+			helper.getStrategyBLService().webstrategy_make(vo);
+		} catch (RemoteException e) {
+			e.printStackTrace();
+		}
 	}
 
 	@FXML
@@ -189,38 +220,54 @@ public class MarketStrategyController implements Initializable {
 		String condition = updateConditionField.getText();
 		String discount = updateDiscountField.getText();
 		String superposition = (updateYesButton.isSelected()) ? "是" : "否";
-		
+
 		ObservableList<WebStrategyModel> list = strategyTable.getItems();
+
+		// 拒绝更新一个不存在的策略
+		if (!list.contains(currentStrategy)) {
+			Alert alert = new Alert(AlertType.ERROR);
+			alert.setContentText("不存在该促销策略！");
+			alert.setHeaderText("更新失败！");
+			alert.show();
+			return;
+		}
+
 		list.remove(currentStrategy);
-		
+
 		currentStrategy.setName(name);
 		currentStrategy.setStartTime(startTime);
 		currentStrategy.setEndTime(endTime);
 		currentStrategy.setDiscount(discount);
 		currentStrategy.setCondition(condition);
 		currentStrategy.setSuperposition(superposition);
-		
+
 		list.add(currentStrategy);
+		RemoteHelper helper = RemoteHelper.getInstance();
+		try {
+			WebStrategyVO vo = currentStrategy.changeToVO();
+			helper.getStrategyBLService().webstrategy_update(vo);
+		} catch (RemoteException e) {
+			e.printStackTrace();
+		}
 	}
 
 	@FXML
 	private void deleteStrategy() {
-		if(strategyTable.getItems().contains(currentStrategy)){
+		if (strategyTable.getItems().contains(currentStrategy)) {
 			strategyTable.getItems().remove(currentStrategy);
-			IDList.remove(IDList.indexOf(currentStrategy.getID()));
-		}
-		else{
+			RemoteHelper helper = RemoteHelper.getInstance();
+			try {
+				helper.getStrategyBLService().webstrategy_delete(
+						helper.getStrategyBLService().getwebstrategybyname(currentStrategy.getName()));
+			} catch (RemoteException e) {
+				e.printStackTrace();
+			}
+		} else {
 			Alert alert = new Alert(AlertType.ERROR);
 			alert.setContentText("不存在该促销策略！");
-			alert.setHeaderText("出错了！");
+			alert.setHeaderText("删除失败！");
 			alert.show();
 		}
-	}
-
-	// 创建strategID
-	public int createID() {
-		int newID = IDList.size() + 1;
-		return newID;
 	}
 
 	public MarketStrategyController() {
@@ -244,28 +291,19 @@ public class MarketStrategyController implements Initializable {
 		updateNoButton.setToggleGroup(updateGroup);
 
 		ObservableList<WebStrategyModel> webStrategyData = FXCollections.observableArrayList();
-		WebStrategyModel temp = null;
 		try {
 			ArrayList<WebStrategyVO> webdata = helper.getStrategyBLService().getWebStrategy(1);
-			for(WebStrategyVO vo:webdata){
-				temp = new WebStrategyModel
-						(vo.getid(),
-						vo.getname(), 
-						vo.getstart_time().toString(), 
-						vo.getend_time().toString(), 
-						vo.getexecuteway(), 
-						vo.getcondition(), 
-						vo.getsuperposition()?"是":"否");
+
+			for (WebStrategyVO vo : webdata) {
+				WebStrategyModel temp = new WebStrategyModel(vo.getid(), vo.getname(),
+						format.format(vo.getstart_time()), format.format(vo.getend_time()), vo.getexecuteway(),
+						vo.getcondition(), vo.getsuperposition() ? "是" : "否");
+				webStrategyData.add(temp);
 			}
-			webStrategyData.add(temp);
 		} catch (RemoteException e) {
-			// TODO 自动生成的 catch 块
 			e.printStackTrace();
 		}
-		
-		for (WebStrategyModel model : webStrategyData) {
-			IDList.add(model.getID());
-		}
+
 		nameColumn.setCellValueFactory(celldata -> celldata.getValue().nameProperty());
 		startColumn.setCellValueFactory(celldata -> celldata.getValue().startTimeProperty());
 		endColumn.setCellValueFactory(celldata -> celldata.getValue().endTimeProperty());

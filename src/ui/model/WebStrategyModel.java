@@ -1,8 +1,13 @@
 package ui.model;
 
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
+import java.util.Date;
+
 import javafx.beans.property.SimpleBooleanProperty;
 import javafx.beans.property.SimpleIntegerProperty;
 import javafx.beans.property.SimpleStringProperty;
+import vo.WebStrategyVO;
 
 public class WebStrategyModel {
 	private final SimpleIntegerProperty id;
@@ -105,5 +110,27 @@ public class WebStrategyModel {
 	
 	public SimpleStringProperty superpostionProperty(){
 		return superpositon;
+	}
+	
+	public WebStrategyVO changeToVO(){
+		SimpleDateFormat format = new SimpleDateFormat("yyyy-MM-dd hh:mm:ss");
+		WebStrategyVO vo = new WebStrategyVO();
+		Date time;
+		vo.setid(id.get());
+		vo.setname(name.get());
+		try {
+			time = format.parse(startTime.get());
+			vo.setstart_time(time);
+			time = format.parse(endTime.get());
+			vo.setend_time(time);
+		} catch (ParseException e) {
+			// TODO 自动生成的 catch 块
+			e.printStackTrace();
+		}
+		vo.setexecuteway(discount.get());
+		vo.setcondition(condition.get());
+		vo.setsuperposition(superpositon.get().equals("是")? true:false);
+		
+		return vo;
 	}
 }
