@@ -2,8 +2,6 @@ package objects;
 
 import java.util.Date;
 
-import vo.WebStrategyVO;
-
 public class WebStrategy {
 
 	/**

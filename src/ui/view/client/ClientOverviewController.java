@@ -7,13 +7,10 @@ import java.util.ResourceBundle;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.Label;
-import objects.Client;
 import objects.VIPInfo.VIPType;
 import rmi.RemoteHelper;
-import ui.model.ClientModel;
 import ui.view.Main;
 import vo.ClientVO;
-import vo.VOChange;
 
 public class ClientOverviewController implements Initializable {
 	private Main main;

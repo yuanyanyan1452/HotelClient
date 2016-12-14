@@ -14,7 +14,6 @@ public class ClientRunner {
 	
 	public ClientRunner() {
 		linkToServer();
-		//initGUI();
 	}
 	
 	private void linkToServer() {
@@ -31,9 +30,7 @@ public class ClientRunner {
 		}
 	}
 	
-//	private void initGUI() {
-//		MainFrame mainFrame = new MainFrame();
-//	}
+
 	
 
 	public static void main(String[] args){

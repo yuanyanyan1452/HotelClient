@@ -1,6 +1,4 @@
-  package objects;
-
-import vo.RoomVO;
+package objects;
 
 public class Room {
 	int id;

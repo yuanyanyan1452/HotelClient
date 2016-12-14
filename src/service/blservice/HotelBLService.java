@@ -127,6 +127,6 @@ public interface HotelBLService extends Remote{
 	 */
 	public ResultMessage updateHotelWokerInfo(HotelWorker worker)throws RemoteException;
 	
-
+	//评价酒店
 	public ResultMessage evalutehotel(EvaluationVO e, int clientid,int hotelid) throws RemoteException;
 }

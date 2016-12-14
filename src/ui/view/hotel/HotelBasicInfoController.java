@@ -9,7 +9,6 @@ import javafx.fxml.Initializable;
 import javafx.scene.control.Alert;
 import javafx.scene.control.Alert.AlertType;
 import javafx.scene.control.TextArea;
-import javafx.scene.control.TextField;
 import objects.ResultMessage;
 import rmi.RemoteHelper;
 import ui.view.Main;
@@ -38,7 +37,6 @@ public class HotelBasicInfoController implements Initializable {
 	
 	@FXML
 	private void save() throws RemoteException{
-		//TODO
 		currenthotelvo.setaddress(addressTextField.getText());
 		currenthotelvo.setbussiness_address(business_adressTextField.getText());
 		currenthotelvo.setintroduction(introductionTextField.getText());
