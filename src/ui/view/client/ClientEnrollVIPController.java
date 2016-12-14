@@ -38,7 +38,6 @@ public class ClientEnrollVIPController implements Initializable {
 	
 	@FXML
 	private void enroll() throws RemoteException{
-		//TODO
 		if(currentclientvo.getvipinfo().getInfo()!=null){
 			Alert alert = new Alert(AlertType.ERROR);
 			alert.setTitle("null");

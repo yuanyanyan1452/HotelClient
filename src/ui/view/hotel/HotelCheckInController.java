@@ -7,10 +7,10 @@ import java.util.ResourceBundle;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.Alert;
+import javafx.scene.control.Alert.AlertType;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.scene.control.TextField;
-import javafx.scene.control.Alert.AlertType;
 import rmi.RemoteHelper;
 import ui.model.OrderModel;
 import ui.view.Main;
@@ -40,7 +40,6 @@ public class HotelCheckInController implements Initializable {
 	
 	@FXML
 	private void search() throws NumberFormatException, RemoteException{
-		//TODO
 		currentordervo=helper.getOrderBLService().order_findbyid(Integer.parseInt(orderIdTextField.getText()));
 		if(currentordervo.getstate()==null){
 			Alert alert = new Alert(AlertType.ERROR);

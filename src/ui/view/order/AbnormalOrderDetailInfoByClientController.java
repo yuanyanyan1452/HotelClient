@@ -8,12 +8,12 @@ import ui.view.Main;
 
 public class AbnormalOrderDetailInfoByClientController implements Initializable {
 	private Main main;
+	
 	public AbnormalOrderDetailInfoByClientController() {
-		// TODO 
 	}
+	
 	@Override
 	public void initialize(URL location, ResourceBundle resources) {
-		// TODO
 
 	}
 

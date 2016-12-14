@@ -115,7 +115,7 @@ public class HotelDetailInfoController implements Initializable {
 		starLabel.setText(hotel.getStar());
 		scoreLabel.setText(hotel.getScore());
 		
-		//TODO 每个月日期不同的现实问题需解决
+		//每个月日期不同的现实问题需解决
 		startMonthBox.getItems().addAll("1","2","3","4","5","6"
 				,"7","8","9","10","11","12");
 		startDayBox.getItems().addAll("1","2","3","4","5","6","7"

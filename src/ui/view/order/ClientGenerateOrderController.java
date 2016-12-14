@@ -3,9 +3,10 @@ package ui.view.order;
 import java.net.URL;
 import java.util.ResourceBundle;
 
-import javafx.fxml.*;
-import javafx.scene.control.*;
-import javafx.stage.Stage;
+import javafx.fxml.FXML;
+import javafx.fxml.Initializable;
+import javafx.scene.control.ComboBox;
+import javafx.scene.control.Label;
 import ui.model.HotelModel;
 import ui.view.Main;
 

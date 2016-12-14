@@ -1,7 +1,5 @@
 package objects;
 
-import vo.HotelWorkerVO;
-
 public class HotelWorker {
 	int hotelid;
 	String name;

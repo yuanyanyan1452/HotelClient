@@ -8,9 +8,11 @@ import ui.view.Main;
 
 public class HotelBrowseOrderController implements Initializable {
 	private Main main;
+	
 	public HotelBrowseOrderController() {
 		// TODO 
 	}
+	
 	@Override
 	public void initialize(URL location, ResourceBundle resources) {
 		// TODO 

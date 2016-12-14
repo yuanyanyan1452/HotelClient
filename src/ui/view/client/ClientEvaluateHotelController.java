@@ -33,8 +33,8 @@ public class ClientEvaluateHotelController implements Initializable{
 	
 	@FXML
 	private void evaluate(){
-		//TODO
 		
+		//TODO
 	}
 	@FXML
 	private void initialize(){
