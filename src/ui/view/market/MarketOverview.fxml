@@ -16,9 +16,9 @@
                   <VBox prefHeight="210.0" prefWidth="218.0" GridPane.rowIndex="1">
                      <children>
                         <Label alignment="CENTER" prefHeight="33.0" prefWidth="304.0" style="-fx-border-color: #000000;" text="网站营销" />
-                        <Button mnemonicParsing="false" onAction="#gotoStrategy" prefHeight="62.0" prefWidth="301.0" text="网站促销策略制定" />
-                        <Button mnemonicParsing="false" onAction="#gotoAbnormalOrder" prefHeight="81.0" prefWidth="296.0" text="异常订单浏览" />
-                        <Button mnemonicParsing="false" onAction="#gotoCreditCharge" prefHeight="73.0" prefWidth="307.0" text="信用充值" />
+                        <Button mnemonicParsing="false" onAction="#gotoStrategy" prefHeight="73.0" prefWidth="296.0" text="网站促销策略制定" />
+                        <Button mnemonicParsing="false" onAction="#gotoAbnormalOrder" prefHeight="73.0" prefWidth="296.0" text="异常订单浏览" />
+                        <Button mnemonicParsing="false" onAction="#gotoCreditCharge" prefHeight="73.0" prefWidth="296.0" text="信用充值" />
                      </children>
                   </VBox>
                   <GridPane gridLinesVisible="true">
@@ -63,8 +63,8 @@
                </columnConstraints>
                <rowConstraints>
                   <RowConstraints maxHeight="270.0" minHeight="10.0" prefHeight="190.0" vgrow="SOMETIMES" />
-                  <RowConstraints maxHeight="476.0" minHeight="10.0" prefHeight="231.0" vgrow="SOMETIMES" />
-                  <RowConstraints maxHeight="446.0" minHeight="10.0" prefHeight="225.0" vgrow="SOMETIMES" />
+                  <RowConstraints maxHeight="476.0" minHeight="10.0" prefHeight="253.0" vgrow="SOMETIMES" />
+                  <RowConstraints maxHeight="446.0" minHeight="10.0" prefHeight="173.0" vgrow="SOMETIMES" />
                </rowConstraints>
             </GridPane>
          </children></AnchorPane>
