@@ -4,6 +4,7 @@ import java.net.URL;
 import java.rmi.RemoteException;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Calendar;
 import java.util.ResourceBundle;
 
 import javafx.collections.FXCollections;
@@ -28,6 +29,7 @@ public class MarketStrategyController implements Initializable {
 	private Main main;
 	private WebStrategyModel currentStrategy;
 	private SimpleDateFormat format = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
+	
 	@FXML
 	private TableView<WebStrategyModel> strategyTable;
 
@@ -298,4 +300,6 @@ public class MarketStrategyController implements Initializable {
 
 		strategyTable.setItems(webStrategyData);
 	}
+
+	
 }

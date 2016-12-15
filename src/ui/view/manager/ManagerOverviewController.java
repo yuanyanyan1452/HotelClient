@@ -1,11 +1,17 @@
 package ui.view.manager;
 
 import java.net.URL;
+import java.text.DateFormat;
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Calendar;
 import java.util.ResourceBundle;
+import java.util.concurrent.Semaphore;
 
+import javafx.application.Platform;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
+import javafx.event.EventHandler;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.Alert;
@@ -14,6 +20,8 @@ import javafx.scene.control.Label;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.scene.control.TextField;
+import javafx.stage.Stage;
+import javafx.stage.WindowEvent;
 import objects.VIPInfo;
 import objects.VIPInfo.VIPType;
 import rmi.RemoteHelper;
@@ -26,16 +34,31 @@ import vo.WebManagerVO;
 
 public class ManagerOverviewController implements Initializable {
 	private Main main;
-	
+	//实时刷新
+	private boolean able;
+	class Updatable {
+		void update(double moment){
+			timeLabel.setText(format.format(Calendar.getInstance().getTime()));
+//			clientNumLabel.setText(remoteHelper.getClientBLService().);
+//			hotelNumLabel.setText(remoteHelper.getHotelBLService().);
+//			orderNumLabel.setText(remoteHelper.getOrderBLService().);
+		}
+	}
 	/*
 	 * 此controller持有系统内所有client，hotel，hotelworker和market的列表
 	 */
 	private ObservableList<ClientModel> clientList = FXCollections.observableArrayList();
-	private ArrayList<Integer> clientIDList=new ArrayList<Integer>();
 	private ClientModel currentClientModel;
 	private ObservableList<HotelModel> hotelList = FXCollections.observableArrayList();
+	private HotelModel currentHotelModel;
 	private ObservableList<HotelWorkerModel> workerList = FXCollections.observableArrayList();
+	private HotelWorkerModel currentHotelWorkerModel;
 	private ObservableList<MarketModel> marketList = FXCollections.observableArrayList();
+	private MarketModel currentMarketModel;
+	private SimpleDateFormat format =new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
+	
+	@FXML
+	private Label timeLabel;
 	
 	@FXML
 	private Label clientNumLabel;
@@ -64,18 +87,6 @@ public class ManagerOverviewController implements Initializable {
 	
 	@FXML
 	private TableColumn<ClientModel, String> clientCreditColumn;
-
-	@FXML
-	private TextField addClientNameTextField;
-	
-	@FXML
-	private TextField 	addClientContactTextField;
-	
-	@FXML
-	private TextField addClientVIPTextField;
-	
-	@FXML
-	private TextField addClientCreditTextField;
 	
 	@FXML
 	private TextField updateClientIDTextField;
@@ -92,20 +103,7 @@ public class ManagerOverviewController implements Initializable {
 	@FXML
 	private TextField updateClientCreditTextField;
 	
-	@FXML
-	private TextField deleteClientIDTextField;
 	
-	@FXML
-	private Label deleteClientNameLabel;
-	
-	@FXML
-	private Label deleteClientContactLabel;
-	
-	@FXML
-	private Label deleteClientVIPLabel;
-	
-	@FXML
-	private Label deleteClientCreditLabel;
 	
 	@FXML
 	private TableView<HotelModel> hotelTable;
@@ -201,6 +199,12 @@ public class ManagerOverviewController implements Initializable {
 	private TextField addWorkerContactTextField;
 	
 	@FXML
+	private TextField addWorkerUsernameTextField;
+	
+	@FXML
+	private TextField addWorkerPasswordTextField;
+	
+	@FXML
 	private TextField updateWorkerIDTextField;
 	
 	@FXML
@@ -236,6 +240,12 @@ public class ManagerOverviewController implements Initializable {
 	private TextField addMarketContactTextField;
 	
 	@FXML
+	private TextField addMarketUsernameTextField;
+	
+	@FXML
+	private TextField addMarketPasswordTextField;
+	
+	@FXML
 	private TextField updateMarketIDTextField;
 	
 	@FXML
@@ -254,21 +264,6 @@ public class ManagerOverviewController implements Initializable {
 	private Label deleteMarketContactLabel;
 	
 	
-	@FXML
-	private void addClient(){
-		int id = clientList.size()+1;
-		String name = addClientNameTextField.getText();
-		String contact = addClientContactTextField.getText();
-		VIPInfo info= null;
-		if(!addClientVIPTextField.getText().equals("")){
-			String[] vipinfo = addClientVIPTextField.getText().split("//");
-			info = new VIPInfo(vipinfo[0].equals("普通会员")? VIPType.NORMAL:VIPType.Enterprise, vipinfo[1]);
-		}
-		int credit = Integer.parseInt(addClientCreditTextField.getText());
-		
-		ClientModel client = new ClientModel(id, name, contact, info, credit);
-		clientTable.getItems().add(client);
-	}
 	
 	@FXML
 	private void updateSearchClient(){
@@ -313,44 +308,6 @@ public class ManagerOverviewController implements Initializable {
 		clientList.add(currentClientModel);
 	}
 	
-	@FXML
-	private void deleteSearchClient(){
-		String id = deleteClientIDTextField.getText();
-		boolean isSuccess = false;
-		
-		for (ClientModel client : clientList) {
-			if (client.getID().equals(id)) {
-				currentClientModel = client;
-				deleteClientNameLabel.setText(client.getName());
-				deleteClientContactLabel.setText(client.getContact());
-				deleteClientVIPLabel.setText(client.getVIPinfo());
-				deleteClientCreditLabel.setText(client.getCredit());
-				
-				isSuccess = true;
-			}
-		}
-		if(!isSuccess){
-			deleteClientNameLabel.setText("");
-			deleteClientContactLabel.setText("");
-			deleteClientVIPLabel.setText("");
-			deleteClientCreditLabel.setText("");
-		
-		}
-	}
-	
-	@FXML
-	private void deleteClient(){
-		if(clientList.contains(currentClientModel)){
-			clientList.remove(currentClientModel);
-			clientIDList.remove(clientIDList.indexOf(currentClientModel.getID())+1);
-		}
-		else{
-			Alert alert = new Alert(AlertType.ERROR);
-			alert.setContentText("不存在该客户！");
-			alert.setHeaderText("出错了！");
-			alert.show();
-		}
-	}
 	
 	@FXML
 	private void addHotel(){
@@ -432,17 +389,45 @@ public class ManagerOverviewController implements Initializable {
 
 	}
 
-	public void setMain(Main main,WebManagerVO vo) {
+	//开始刷新
+	public final synchronized void advance(Updatable renderer){
+		if (able) {
+			return;  //防止启动多个线程
+		}
+		able = true;
+		new Thread(() -> {
+			Semaphore semaphore = new Semaphore(1);
+			while(able){
+				try{
+					long now = System.nanoTime();
+					double moment = now * 0.000000001;
+					semaphore.acquire();
+					Platform.runLater(()->{
+						renderer.update(moment);
+						semaphore.release();
+						});
+				}catch(InterruptedException e){
+					e.printStackTrace();
+				};
+			}
+		}).start();
+		
+	}
+	//结束进程
+	public void misfire(){
+		able = false;
+	}
+	public void setMain(Main main,WebManagerVO vo,Stage stage) {
 		this.main = main;
 		
 		RemoteHelper remoteHelper = RemoteHelper.getInstance();
 		
+		
+		
+		
 		clientList.add(new ClientModel(1, "张三", "18888888888", new VIPInfo(VIPType.NORMAL, "1999/01/01"), 0));
 		clientList.add(new ClientModel(2, "李四", "13333333333",null, 0));
 		
-		for(ClientModel clientModel:clientList){
-			clientIDList.add(Integer.parseInt(clientModel.getID()));
-		}
 		clientIDColumn.setCellValueFactory(celldata->celldata.getValue().iDProperty());
 		clientNameColumn.setCellValueFactory(celldata->celldata.getValue().nameProperty());
 		clientContactColumn.setCellValueFactory(celldata->celldata.getValue().contactProperty());
@@ -450,5 +435,21 @@ public class ManagerOverviewController implements Initializable {
 		clientCreditColumn.setCellValueFactory(celldata->celldata.getValue().creditProperty());
 		
 		clientTable.setItems(clientList);
+		
+		//实时更新时间线程
+		Updatable renderer = new Updatable();
+		advance(renderer);
+		
+		//退出时结束进程
+		stage.setOnCloseRequest(new EventHandler<WindowEvent>() {
+			
+			@Override
+			public void handle(WindowEvent event) {
+				misfire();
+			}
+		});
 	}
+
+	
 }
+
