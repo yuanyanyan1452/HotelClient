@@ -295,7 +295,7 @@ public class MarketStrategyController implements Initializable {
 
 		ObservableList<WebStrategyModel> webStrategyData = FXCollections.observableArrayList();
 		try {
-			ArrayList<WebStrategyVO> webdata = helper.getStrategyBLService().getWebStrategy(1);
+			ArrayList<WebStrategyVO> webdata = helper.getStrategyBLService().getWebStrategy();
 
 			for (WebStrategyVO vo : webdata) {
 				WebStrategyModel temp = new WebStrategyModel(vo.getid(), vo.getname(),
