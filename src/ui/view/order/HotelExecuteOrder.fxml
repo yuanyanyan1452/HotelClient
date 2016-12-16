@@ -12,26 +12,26 @@
          <children>
             <ScrollPane prefHeight="479.0" prefWidth="700.0">
                <content>
-                  <TableView editable="true" prefHeight="485.0" prefWidth="1100.0">
+                  <TableView fx:id="orderTable" editable="true" prefHeight="485.0" prefWidth="1100.0">
                      <columns>
-                        <TableColumn prefWidth="150.0" text="编号" />
-                        <TableColumn prefWidth="150.0" text="开始时间" />
-                        <TableColumn prefWidth="150.0" text="退房时间" />
-                        <TableColumn prefWidth="150.0" text="最晚执行时间" />
-                        <TableColumn text="房间类型" />
-                        <TableColumn prefWidth="65.0" text="房间数量" />
-                        <TableColumn prefWidth="130.0" text="使用的促销策略" />
-                        <TableColumn text="总价值（元）" />
-                        <TableColumn text="预计入住人数" />
-                        <TableColumn prefWidth="65.0" text="有无儿童" />
+                        <TableColumn fx:id="idColumn" prefWidth="150.0" text="编号" />
+                        <TableColumn fx:id="startTimeColumn" prefWidth="150.0" text="开始时间" />
+                        <TableColumn fx:id="endTimeColumn" prefWidth="150.0" text="退房时间" />
+                        <TableColumn fx:id="executebutton" prefWidth="150.0" text="最晚执行时间" />
+                        <TableColumn fx:id="roomTypeColumn" text="房间类型" />
+                        <TableColumn fx:id="roomAmountColumn" prefWidth="65.0" text="房间数量" />
+                        <TableColumn fx:id="strategyColumn" prefWidth="130.0" text="使用的促销策略" />
+                        <TableColumn fx:id="priceColumn" text="总价值（元）" />
+                        <TableColumn fx:id="numberColumn" text="预计入住人数" />
+                        <TableColumn fx:id="hasChildColumn" prefWidth="65.0" text="有无儿童" />
                      </columns>
                   </TableView>
                </content>
             </ScrollPane>
             <AnchorPane prefHeight="200.0" prefWidth="200.0" GridPane.rowIndex="1">
                <children>
-                  <Button layoutX="520.0" layoutY="35.0" mnemonicParsing="false" prefHeight="42.0" prefWidth="130.0" text="延迟入住" />
-                  <Button layoutX="324.0" layoutY="35.0" mnemonicParsing="false" prefHeight="42.0" prefWidth="130.0" text="执行" />
+                  <Button fx:id="delaybutton" layoutX="520.0" layoutY="35.0" mnemonicParsing="false" prefHeight="42.0" prefWidth="130.0" text="延迟入住" />
+                  <Button fx:id="latest_execute_time" layoutX="324.0" layoutY="35.0" mnemonicParsing="false" prefHeight="42.0" prefWidth="130.0" text="执行" />
                </children>
             </AnchorPane>
          </children>
