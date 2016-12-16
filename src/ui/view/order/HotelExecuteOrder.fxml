@@ -12,18 +12,17 @@
          <children>
             <ScrollPane prefHeight="479.0" prefWidth="700.0">
                <content>
-                  <TableView fx:id="orderTable" editable="true" prefHeight="485.0" prefWidth="1100.0">
+                  <TableView fx:id="orderTable" editable="true" prefHeight="485.0" prefWidth="800.0">
                      <columns>
-                        <TableColumn fx:id="idColumn" prefWidth="150.0" text="编号" />
+                        <TableColumn fx:id="idColumn" prefWidth="57.0" text="编号" />
                         <TableColumn fx:id="startTimeColumn" prefWidth="150.0" text="开始时间" />
                         <TableColumn fx:id="endTimeColumn" prefWidth="150.0" text="退房时间" />
-                        <TableColumn fx:id="executebutton" prefWidth="150.0" text="最晚执行时间" />
-                        <TableColumn fx:id="roomTypeColumn" text="房间类型" />
+                        <TableColumn fx:id="executebutton" prefWidth="84.0" text="最晚执行时间" />
+                        <TableColumn fx:id="roomTypeColumn" prefWidth="65.0" text="房间类型" />
                         <TableColumn fx:id="roomAmountColumn" prefWidth="65.0" text="房间数量" />
-                        <TableColumn fx:id="strategyColumn" prefWidth="130.0" text="使用的促销策略" />
-                        <TableColumn fx:id="priceColumn" text="总价值（元）" />
+                        <TableColumn fx:id="priceColumn" prefWidth="77.0" text="总价值（元）" />
                         <TableColumn fx:id="numberColumn" text="预计入住人数" />
-                        <TableColumn fx:id="hasChildColumn" prefWidth="65.0" text="有无儿童" />
+                        <TableColumn fx:id="hasChildColumn" prefWidth="70.0" text="有无儿童" />
                      </columns>
                   </TableView>
                </content>

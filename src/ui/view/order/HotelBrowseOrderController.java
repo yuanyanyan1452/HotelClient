@@ -59,7 +59,7 @@ public class HotelBrowseOrderController implements Initializable {
 	private TableColumn<OrderModel, String> priceColumn;
 	
 	@FXML
-	private TableColumn<OrderModel, String> strategyColumn;
+	private TableColumn<OrderModel, String> executeColumn;
 	
 	public HotelBrowseOrderController() {
 		// TODO 

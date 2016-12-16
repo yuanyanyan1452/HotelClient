@@ -10,7 +10,7 @@
 
 <AnchorPane prefHeight="600.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="ui.view.order.ClientGenerateOrderController">
    <children>
-      <GridPane layoutX="24.0" layoutY="52.0" prefHeight="439.0" prefWidth="552.0">
+      <GridPane gridLinesVisible="true" layoutX="24.0" layoutY="52.0" prefHeight="439.0" prefWidth="552.0">
         <columnConstraints>
           <ColumnConstraints halignment="CENTER" hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
           <ColumnConstraints halignment="CENTER" hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
@@ -29,7 +29,7 @@
         </rowConstraints>
          <children>
             <Label text="酒店名：" />
-            <Label fx:id="hotelnameLabel" GridPane.columnIndex="1" />
+            <Label fx:id="hotelnameLabel" alignment="CENTER" prefHeight="31.0" prefWidth="156.0" GridPane.columnIndex="1" />
             <Label text="开始时间：" GridPane.rowIndex="1" />
             <Label text="结束时间：" GridPane.rowIndex="2" />
             <Label text="最晚订单执行时间：" GridPane.rowIndex="3" />
@@ -39,9 +39,6 @@
             <Label text="有无儿童：" GridPane.rowIndex="7" />
             <Label text="总价值：" GridPane.rowIndex="8" />
             <Label text="使用的促销策略：" GridPane.rowIndex="9" />
-            <Label fx:id="priceLabel" GridPane.columnIndex="1" GridPane.rowIndex="8" />
-            <TextField prefHeight="23.0" prefWidth="67.0" GridPane.columnIndex="1" GridPane.rowIndex="6" />
-            <TextField prefHeight="23.0" prefWidth="67.0" GridPane.columnIndex="1" GridPane.rowIndex="5" />
             <AnchorPane GridPane.columnIndex="1" GridPane.rowIndex="2">
                <children>
                   <Label layoutX="108.0" layoutY="15.0" text="月" />
@@ -50,14 +47,9 @@
                   <ComboBox fx:id="endDay" layoutX="156.0" layoutY="11.0" prefHeight="23.0" prefWidth="50.0" />
                </children>
             </AnchorPane>
-            <ComboBox fx:id="roomType" prefHeight="23.0" prefWidth="82.0" GridPane.columnIndex="1" GridPane.rowIndex="4" />
-            <ComboBox fx:id="hasChild" prefHeight="23.0" prefWidth="72.0" GridPane.columnIndex="1" GridPane.rowIndex="7" />
-            <ComboBox fx:id="strategy" prefHeight="23.0" prefWidth="72.0" GridPane.columnIndex="1" GridPane.rowIndex="9" />
-            <Label text="元" GridPane.columnIndex="1" GridPane.rowIndex="8">
-               <GridPane.margin>
-                  <Insets left="50.0" />
-               </GridPane.margin>
-            </Label>
+            <ComboBox fx:id="roomType" prefHeight="25.0" prefWidth="132.0" GridPane.columnIndex="1" GridPane.rowIndex="4" />
+            <ComboBox fx:id="hasChild" prefHeight="25.0" prefWidth="72.0" GridPane.columnIndex="1" GridPane.rowIndex="7" />
+            <ComboBox fx:id="strategy" prefHeight="25.0" prefWidth="249.0" GridPane.columnIndex="1" GridPane.rowIndex="9" />
             <AnchorPane GridPane.columnIndex="1" GridPane.rowIndex="1">
                <children>
                   <Label layoutX="108.0" layoutY="15.0" text="月" />
@@ -66,7 +58,23 @@
                   <ComboBox fx:id="startDay" layoutX="156.0" layoutY="11.0" prefHeight="23.0" prefWidth="50.0" />
                </children>
             </AnchorPane>
-            <ComboBox fx:id="deadHour" prefHeight="23.0" prefWidth="82.0" GridPane.columnIndex="1" GridPane.rowIndex="3" />
+            <ComboBox fx:id="deadHour" prefHeight="25.0" prefWidth="163.0" GridPane.columnIndex="1" GridPane.rowIndex="3" />
+            <AnchorPane prefHeight="200.0" prefWidth="200.0" GridPane.columnIndex="1" GridPane.rowIndex="5">
+               <children>
+                  <TextField layoutX="105.0" layoutY="11.0" prefHeight="23.0" prefWidth="67.0" />
+               </children>
+            </AnchorPane>
+            <AnchorPane prefHeight="200.0" prefWidth="200.0" GridPane.columnIndex="1" GridPane.rowIndex="6">
+               <children>
+                  <TextField alignment="CENTER" layoutX="105.0" layoutY="11.0" prefHeight="15.0" prefWidth="67.0" />
+               </children>
+            </AnchorPane>
+            <AnchorPane prefHeight="200.0" prefWidth="200.0" GridPane.columnIndex="1" GridPane.rowIndex="8">
+               <children>
+                  <Label layoutX="174.0" layoutY="15.0" text="元" />
+                  <Label fx:id="priceLabel" alignment="CENTER" layoutX="108.0" layoutY="8.0" prefHeight="29.0" prefWidth="60.0" />
+               </children>
+            </AnchorPane>
          </children>
       </GridPane>
       <Label layoutX="256.0" layoutY="14.0" text="您的订单">

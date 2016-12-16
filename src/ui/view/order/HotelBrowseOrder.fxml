@@ -13,24 +13,24 @@
         <content>
           <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="539.0" prefWidth="698.0">
                <children>
-                  <GridPane prefHeight="527.0" prefWidth="700.0">
+                  <GridPane prefHeight="519.0" prefWidth="700.0">
                      <children>
-                        <ScrollPane prefHeight="579.0" prefWidth="700.0">
+                        <ScrollPane prefHeight="504.0" prefWidth="700.0">
                            <content>
-                              <VBox prefHeight="588.0" prefWidth="936.0">
+                              <VBox prefHeight="512.0" prefWidth="882.0">
                                  <children>
-                                    <TableView fx:id="orderTable" editable="true" prefHeight="613.0" prefWidth="936.0">
+                                    <TableView fx:id="orderTable" editable="true" prefHeight="511.0" prefWidth="900.0">
                                        <columns>
-                                          <TableColumn fx:id="idColumn" prefWidth="85.0" text="订单号" />
-                                          <TableColumn fx:id="stateColumn" prefWidth="75.0" text="订单状态" />
-                                          <TableColumn fx:id="startTimeColumn" prefWidth="140.0" text="开始时间" />
-                                          <TableColumn fx:id="endTimeColumn" prefWidth="140.0" text="退房时间" />
+                                          <TableColumn fx:id="idColumn" prefWidth="69.0" text="订单号" />
+                                          <TableColumn fx:id="executeColumn" prefWidth="88.0" text="执行情况" />
+                                          <TableColumn fx:id="stateColumn" prefWidth="62.0" text="状态" />
+                                          <TableColumn fx:id="startTimeColumn" prefWidth="150.0" text="开始时间" />
+                                          <TableColumn fx:id="endTimeColumn" prefWidth="150.0" text="退房时间" />
                                           <TableColumn fx:id="roomTypeColumn" prefWidth="70.0" text="房间类型" />
                                           <TableColumn fx:id="roomAmountColumn" prefWidth="72.0" text="房间数量" />
                                           <TableColumn fx:id="numberColumn" prefWidth="75.0" text="入住人数" />
                                           <TableColumn fx:id="hasChildColumn" prefWidth="65.0" text="有无儿童" />
                                           <TableColumn fx:id="priceColumn" prefWidth="85.0" text="总价值（元）" />
-                                          <TableColumn fx:id="strategyColumn" prefWidth="130.0" text="使用的促销策略" />
                                        </columns>
                                     </TableView>
                                  </children>

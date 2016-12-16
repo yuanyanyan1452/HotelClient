@@ -52,7 +52,7 @@ public class FilledOrderDetailInfoByClientController implements Initializable {
 	private Label pricelabel;
 	
 	@FXML
-	private Label strategylabel;
+	private Label executelabel;
 	
 	public FilledOrderDetailInfoByClientController() {
 	}

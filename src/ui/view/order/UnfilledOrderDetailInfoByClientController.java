@@ -31,6 +31,9 @@ public class UnfilledOrderDetailInfoByClientController implements Initializable 
 	private Label orderstatelabel;
 	
 	@FXML
+	private Label executeLabel;
+	
+	@FXML
 	private Label starttimelabel;
 	
 	@FXML
@@ -50,9 +53,6 @@ public class UnfilledOrderDetailInfoByClientController implements Initializable 
 	
 	@FXML
 	private Label pricelabel;
-	
-	@FXML
-	private Label strategylabel;
 	
 	public UnfilledOrderDetailInfoByClientController() {
 	}

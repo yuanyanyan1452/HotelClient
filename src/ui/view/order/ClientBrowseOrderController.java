@@ -54,7 +54,7 @@ public class ClientBrowseOrderController implements Initializable{
 	private TableColumn<OrderModel, String> roomAmountColumn;
 	
 	@FXML
-	private TableColumn<OrderModel, String> strategyColumn;
+	private TableColumn<OrderModel, String> executeColumn;
 	
 	@FXML
 	private TableColumn<OrderModel, String> priceColumn;
