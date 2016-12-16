@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<?import javafx.scene.text.*?>
 <?import javafx.geometry.*?>
 <?import javafx.scene.control.*?>
 <?import java.lang.*?>
@@ -8,13 +9,13 @@
 
 <AnchorPane prefHeight="600.0" prefWidth="700.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="ui.view.client.ClientBasicInfoController">
    <children>
-      <SplitPane dividerPositions="0.35964912280701755" layoutY="256.0" orientation="VERTICAL" prefHeight="342.0" prefWidth="232.0" AnchorPane.topAnchor="256.0">
+      <SplitPane dividerPositions="0.5029411764705882" layoutY="256.0" orientation="VERTICAL" prefHeight="342.0" prefWidth="232.0" AnchorPane.topAnchor="256.0">
          <items>
             <TitledPane alignment="CENTER" collapsible="false" prefHeight="168.0" prefWidth="345.0" text="会员信息">
                <content>
-                  <AnchorPane prefHeight="137.0" prefWidth="337.0">
+                  <AnchorPane prefHeight="120.0" prefWidth="331.0">
                      <children>
-                        <GridPane layoutX="32.0" layoutY="36.0" prefHeight="116.0" prefWidth="273.0">
+                        <GridPane layoutX="26.0" layoutY="8.0" prefHeight="113.0" prefWidth="284.0">
                           <columnConstraints>
                             <ColumnConstraints halignment="CENTER" hgrow="SOMETIMES" maxWidth="115.0" minWidth="10.0" prefWidth="115.0" />
                             <ColumnConstraints halignment="CENTER" hgrow="SOMETIMES" maxWidth="172.0" minWidth="10.0" prefWidth="119.0" />
@@ -29,7 +30,7 @@
                               <Label fx:id="vipTypeLabel" alignment="CENTER" text="普通" GridPane.columnIndex="1" />
                               <Label fx:id="infoNameLabel" text="生日：" GridPane.rowIndex="2" />
                               <Label fx:id="infoLabel" alignment="CENTER" text="1999/9/9" GridPane.columnIndex="1" GridPane.rowIndex="2" />
-                              <Label text="会员等级：" GridPane.rowIndex="1" />
+                              <Label fx:id="vipLevelNameLabel" text="会员等级：" GridPane.rowIndex="1" />
                               <Label fx:id="vipLevelLabel" alignment="CENTER" prefHeight="17.0" prefWidth="31.0" text="1" GridPane.columnIndex="1" GridPane.rowIndex="1" />
                            </children>
                         </GridPane>
@@ -39,10 +40,13 @@
             </TitledPane>
             <TitledPane alignment="CENTER" collapsible="false" prefHeight="168.0" prefWidth="340.0" text="信用值信息">
                <content>
-                  <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="144.0" prefWidth="335.0">
+                  <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="104.0" prefWidth="335.0">
                      <children>
-                        <Label layoutX="46.0" layoutY="65.0" text="当前信用值：" />
-                        <Label fx:id="creditLabel" layoutX="245.0" layoutY="65.0" text="300" />
+                        <Label layoutX="42.0" layoutY="58.0" text="当前信用值：" />
+                        <Label fx:id="creditLabel" alignment="CENTER" layoutX="130.0" layoutY="39.0" prefHeight="54.0" prefWidth="185.0" text="300">
+                           <font>
+                              <Font name="System Bold" size="40.0" />
+                           </font></Label>
                      </children>
                   </AnchorPane>
                </content>
@@ -74,11 +78,11 @@
                      <children>
                         <TableView fx:id="creditTable" layoutX="-2.0" prefHeight="319.0" prefWidth="363.0">
                            <columns>
-                              <TableColumn fx:id="timeColumn" prefWidth="58.0" text="时间" />
-                              <TableColumn fx:id="orderidColumn" prefWidth="67.0" text="订单号" />
-                              <TableColumn fx:id="reasonColumn" prefWidth="93.0" text="动作" />
-                              <TableColumn fx:id="changeColumn" prefWidth="67.0" text="信用值变化" />
-                              <TableColumn fx:id="resultColumn" prefWidth="77.0" text="信用值结果" />
+                              <TableColumn fx:id="timeColumn" prefWidth="130.0" text="时间" />
+                              <TableColumn fx:id="orderidColumn" minWidth="8.0" prefWidth="41.0" text="订单号" />
+                              <TableColumn fx:id="reasonColumn" prefWidth="88.0" text="动作" />
+                              <TableColumn fx:id="changeColumn" prefWidth="52.0" text="变化" />
+                              <TableColumn fx:id="resultColumn" prefWidth="51.0" text="结果" />
                            </columns>
                         </TableView>
                      </children>

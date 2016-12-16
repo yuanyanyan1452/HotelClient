@@ -13,6 +13,7 @@ import javafx.scene.control.TableView;
 import javafx.scene.control.TextField;
 import rmi.RemoteHelper;
 import ui.model.OrderModel;
+import ui.util.AlertUtil;
 import ui.view.Main;
 import vo.OrderVO;
 
@@ -42,11 +43,7 @@ public class HotelCheckInController implements Initializable {
 	private void search() throws NumberFormatException, RemoteException{
 		currentordervo=helper.getOrderBLService().order_findbyid(Integer.parseInt(orderIdTextField.getText()));
 		if(currentordervo.getstate()==null){
-			Alert alert = new Alert(AlertType.ERROR);
-			alert.setTitle(null);
-			alert.setHeaderText(null);
-			alert.setContentText("对不起，您输入的订单号不存在");
-			alert.showAndWait();
+			AlertUtil.showErrorAlert("对不起，您输入的订单号不存在。");
 		}
 		else{
 			//显示
