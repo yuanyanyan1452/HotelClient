@@ -24,13 +24,13 @@ public class OrderDetailInfoByHotelController implements Initializable{
 	private Label clientnamelabel;
 	
 	@FXML
-	private Label hotelnamelabel;
-	
-	@FXML
 	private Label orderidlabel;
 	
 	@FXML
 	private Label orderstatelabel;
+	
+	@FXML
+	private Label executeLabel;
 	
 	@FXML
 	private Label starttimelabel;
@@ -53,8 +53,6 @@ public class OrderDetailInfoByHotelController implements Initializable{
 	@FXML
 	private Label pricelabel;
 	
-	@FXML
-	private Label strategylabel;
 	
 	public OrderDetailInfoByHotelController() {
 	}

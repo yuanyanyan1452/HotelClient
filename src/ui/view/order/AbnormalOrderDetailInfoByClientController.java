@@ -45,8 +45,12 @@ public class AbnormalOrderDetailInfoByClientController implements Initializable 
 	private Label pricelabel;
 	
 	@FXML
-	private Label strategylabel;
+	private Label orderexecutelabel;
 	
+	@FXML
+	private void close(){
+		main.closeExtraStage();
+	}
 	
 	public AbnormalOrderDetailInfoByClientController() {
 	}
