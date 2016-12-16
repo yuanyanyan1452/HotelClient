@@ -87,7 +87,7 @@ public interface OrderBLService extends Remote{
 	 * @param num
 	 * @return 计算订单总价（无促销策略）
 	 */
-	public int calculateTotalwithoutStrategy(ArrayList<RoomOrderVO> roomlist,int hotelid)throws RemoteException;
+	public double calculateTotalwithoutStrategy(ArrayList<RoomOrderVO> roomlist,int hotelid)throws RemoteException;
 
 	/**
 	 * @param type
@@ -96,7 +96,7 @@ public interface OrderBLService extends Remote{
 	 * @param list2
 	 * @return 计算订单总价（有促销策略）
 	 */
-	public int calculateTotalwithStrategy(ArrayList<RoomOrderVO> roomlist, int hotelid,int clientid)throws RemoteException;
+	public double calculateTotalwithStrategy(ArrayList<RoomOrderVO> roomlist, int hotelid,int clientid)throws RemoteException;
 
 	// 提供给同层调用的接口
 	/**

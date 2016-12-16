@@ -34,6 +34,8 @@ public interface ManageBLService extends Remote{
 		
 		public ArrayList<WebMarketVO> getallwebmarketvo() throws RemoteException;
 		
+		public int getordernumber() throws RemoteException;
+		
 		/**
 		 * @param clientid
 		 * @return 搜索客户
