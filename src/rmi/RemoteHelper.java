@@ -16,6 +16,7 @@ public class RemoteHelper {
 	}
 	
 	private RemoteHelper() {
+		
 	}
 	
 	public void setRemote(Remote remote){

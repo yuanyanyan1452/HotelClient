@@ -70,10 +70,10 @@ public class ClientSearchHotelController implements Initializable {
 	@FXML
 	private void search() {
 		ObservableList<HotelModel> hotelData = FXCollections.observableArrayList();
-		hotelData.add(new HotelModel("如家", "新街口", "xx广场xx号", "1", "2.0"));
-		hotelData.add(new HotelModel("7天", "马群", "xx广场xx号", "2", "3.0"));
-		hotelData.add(new HotelModel("汉庭", "仙林", "xx广场xx号", "3", "4.0"));
-		hotelData.add(new HotelModel("布丁", "旧街口", "xx广场xx号", "4", "5.0"));
+//		hotelData.add(new HotelModel("如家", "新街口", "xx广场xx号", "1", "2.0"));
+//		hotelData.add(new HotelModel("7天", "马群", "xx广场xx号", "2", "3.0"));
+//		hotelData.add(new HotelModel("汉庭", "仙林", "xx广场xx号", "3", "4.0"));
+//		hotelData.add(new HotelModel("布丁", "旧街口", "xx广场xx号", "4", "5.0"));
 
 		hotelnamecolumn.setCellValueFactory(celldata -> celldata.getValue().hotelNameProperty());
 		hotelnamecolumn.setCellFactory(new Callback<TableColumn<HotelModel, String>, TableCell<HotelModel, String>>() {
