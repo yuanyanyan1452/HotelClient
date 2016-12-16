@@ -57,7 +57,7 @@ public class ClientOverviewController implements Initializable {
 
 	@FXML
 	private void gotoBrowseOrder() throws RemoteException {
-		main.gotoClientBrowseOrder();
+		main.gotoClientBrowseOrder(currentclientvo.getclientid());
 	}
 
 	@FXML

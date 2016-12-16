@@ -197,7 +197,7 @@ public class Main extends Application {
 	}
 
 	// 客户浏览订单
-	public void gotoClientBrowseOrder() {
+	public void gotoClientBrowseOrder(int clientid) {
 		try {
 			FXMLLoader fxmlLoader = new FXMLLoader();
 			fxmlLoader.setLocation(Main.class.getResource("order/ClientBrowseOrder.fxml"));
@@ -205,7 +205,7 @@ public class Main extends Application {
 			insidePane.setPrefSize(700, 600);
 			rootLayout.getItems().set(1, insidePane);
 			ClientBrowseOrderController controller = (ClientBrowseOrderController) fxmlLoader.getController();
-			controller.setMain(this);
+			controller.setMain(this,clientid);
 			stage.centerOnScreen();
 		} catch (Exception e) {
 			Logger.getLogger(Main.class.getName()).log(Level.SEVERE, null, e);
