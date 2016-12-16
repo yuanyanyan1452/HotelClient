@@ -15,11 +15,21 @@ import vo.ClientVO;
 public class ClientOverviewController implements Initializable {
 	private Main main;
 	private ClientVO currentclientvo;
-	RemoteHelper helper= RemoteHelper.getInstance();
+	//单键模式，实现currentclientvo的单一性，保证它的持续更新
+	private static ClientOverviewController clientOverviewController;
+	private ClientOverviewController(){
+		
+	}
 	
-	@FXML
-	private void initialize() {
-
+	public static ClientOverviewController getInstance(){
+		if (clientOverviewController==null) {
+			clientOverviewController = new ClientOverviewController();
+		}
+		return clientOverviewController;
+	}
+	
+	public void updateVO(ClientVO vo){
+		currentclientvo = vo;
 	}
 	
 	@FXML
@@ -57,9 +67,6 @@ public class ClientOverviewController implements Initializable {
 		main.gotoClientSearchHotel();
 	}
 
-	public ClientOverviewController() {
-
-	}
 
 	@Override
 	public void initialize(URL location, ResourceBundle resources) {
@@ -80,6 +87,7 @@ public class ClientOverviewController implements Initializable {
 	}
 	
 	public void updateVO() throws RemoteException{
+		RemoteHelper helper= RemoteHelper.getInstance();
 		this.currentclientvo = helper.getClientBLService().client_checkInfo(currentclientvo.getclientid());
 		nameLabel.setText(currentclientvo.getclient_name());
 		contactLabel.setText(currentclientvo.getcontact());

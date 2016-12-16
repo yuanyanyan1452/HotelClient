@@ -19,14 +19,27 @@
                         <AnchorPane prefHeight="200.0" prefWidth="200.0">
                            <children>
                               <Label layoutX="54.0" layoutY="14.0" text="管理员，您好" />
-                              <Label layoutX="12.0" layoutY="79.0" text="已注册客户数：" />
-                              <Label layoutX="12.0" layoutY="120.0" text="已加盟酒店数：" />
-                              <Label layoutX="18.0" layoutY="156.0" text="累计订单量：" />
-                              <Label fx:id="clientNumLabel" layoutX="144.0" layoutY="78.0" text="0" />
-                              <Label fx:id="hotelNumLabel" layoutX="144.0" layoutY="120.0" text="0" />
-                              <Label fx:id="orderNumLabel" layoutX="144.0" layoutY="156.0" text="0" />
                               <Label layoutX="69.0" layoutY="34.0" text="截止至：" />
                               <Label fx:id="timeLabel" alignment="CENTER" contentDisplay="CENTER" layoutX="20.0" layoutY="55.0" prefHeight="15.0" prefWidth="140.0" />
+                              <GridPane layoutX="20.0" layoutY="70.0" prefHeight="124.0" prefWidth="181.0">
+                                <columnConstraints>
+                                  <ColumnConstraints halignment="CENTER" hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+                                  <ColumnConstraints halignment="CENTER" hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+                                </columnConstraints>
+                                <rowConstraints>
+                                  <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                                  <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                                  <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                                </rowConstraints>
+                                 <children>
+                                    <Label text="已注册客户数：" />
+                                    <Label text="已加盟酒店数：" GridPane.rowIndex="1" />
+                                    <Label text="累计订单量：" GridPane.rowIndex="2" />
+                                    <Label fx:id="clientNumLabel" text="0" GridPane.columnIndex="1" />
+                                    <Label fx:id="hotelNumLabel" text="0" GridPane.columnIndex="1" GridPane.rowIndex="1" />
+                                    <Label fx:id="orderNumLabel" text="0" GridPane.columnIndex="1" GridPane.rowIndex="2" />
+                                 </children>
+                              </GridPane>
                            </children>
                         </AnchorPane>
                      </items>
@@ -37,7 +50,7 @@
                <children>
                   <TabPane prefHeight="598.0" prefWidth="537.0" style="-fx-border-color: #C0C0C0;" tabClosingPolicy="UNAVAILABLE">
                     <tabs>
-                      <Tab text="客户人员管理">
+                      <Tab onSelectionChanged="#updateClientTable" text="客户人员管理">
                         <content>
                           <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="219.0" prefWidth="287.0">
                                  <children>
@@ -48,10 +61,11 @@
                                                 <TableView fx:id="clientTable" layoutX="-1.0" prefHeight="377.0" prefWidth="537.0">
                                                   <columns>
                                                       <TableColumn fx:id="clientIDColumn" prefWidth="63.0" text="ID" />
-                                                    <TableColumn fx:id="clientNameColumn" prefWidth="101.0" text="姓名" />
-                                                      <TableColumn fx:id="clientContactColumn" prefWidth="158.0" text="手机号" />
-                                                    <TableColumn fx:id="clientVipColumn" prefWidth="155.0" text="会员信息" />
-                                                      <TableColumn fx:id="clientCreditColumn" prefWidth="59.0" text="信用值" />
+                                                    <TableColumn fx:id="clientNameColumn" prefWidth="68.0" text="姓名" />
+                                                      <TableColumn fx:id="clientContactColumn" prefWidth="105.0" text="手机号" />
+                                                      <TableColumn fx:id="clientCreditColumn" prefWidth="72.0" text="信用值" />
+                                                      <TableColumn fx:id="clientVipTypeColumn" prefWidth="108.0" text="会员类型" />
+                                                    <TableColumn fx:id="clientVipInfoColumn" prefWidth="120.0" text="会员信息" />
                                                   </columns>
                                                 </TableView>
                                              </children>
@@ -67,14 +81,14 @@
                                                                   <Button alignment="CENTER" contentDisplay="CENTER" layoutX="221.0" layoutY="118.0" mnemonicParsing="false" onAction="#updateClient" prefHeight="24.0" prefWidth="95.0" text="修改" AnchorPane.leftAnchor="222.0" />
                                                                   <GridPane layoutY="14.0" prefHeight="109.0" prefWidth="504.0" AnchorPane.topAnchor="9.0">
                                                                      <children>
-                                                                        <Label text="姓名：" GridPane.rowIndex="1" />
-                                                                        <Label text="会员信息：" GridPane.rowIndex="2" />
-                                                                        <Label text="手机号：" GridPane.columnIndex="2" GridPane.rowIndex="1" />
-                                                                        <Label text="信用值：" GridPane.columnIndex="2" GridPane.rowIndex="2" />
+                                                                        <Label text="姓名：" GridPane.columnIndex="2" />
+                                                                        <Label text="会员信息：" GridPane.columnIndex="2" GridPane.rowIndex="2" />
+                                                                        <Label text="手机号：" GridPane.rowIndex="1" />
+                                                                        <Label text="信用值：" GridPane.columnIndex="2" GridPane.rowIndex="1" />
                                                                         <TextField fx:id="updateClientIDTextField" GridPane.columnIndex="1" />
-                                                                        <TextField fx:id="updateClientNameTextField" GridPane.columnIndex="1" GridPane.rowIndex="1" />
-                                                                        <TextField fx:id="updateClientContactTextField" GridPane.columnIndex="3" GridPane.rowIndex="1" />
-                                                                        <TextField fx:id="updateClientCreditTextField" GridPane.columnIndex="3" GridPane.rowIndex="2" />
+                                                                        <TextField fx:id="updateClientNameTextField" GridPane.columnIndex="3" />
+                                                                        <TextField fx:id="updateClientContactTextField" GridPane.columnIndex="1" GridPane.rowIndex="1" />
+                                                                        <TextField fx:id="updateClientCreditTextField" GridPane.columnIndex="3" GridPane.rowIndex="1" />
                                                                         <Button alignment="CENTER" contentDisplay="CENTER" mnemonicParsing="false" onAction="#updateSearchClient" prefHeight="18.0" prefWidth="14.0">
                                                                            <graphic>
                                                                               <ImageView fitHeight="19.0" fitWidth="19.0">
@@ -87,8 +101,10 @@
                                                                               <Insets left="80.0" />
                                                                            </GridPane.margin>
                                                                         </Button>
-                                                                        <TextField fx:id="updateClientVIPTextField" GridPane.columnIndex="1" GridPane.rowIndex="2" />
+                                                                        <TextField fx:id="updateClientVIPTextField" GridPane.columnIndex="3" GridPane.rowIndex="2" />
                                                                         <Label text="ID：" />
+                                                                        <Label text="会员类型：" GridPane.rowIndex="2" />
+                                                                        <ComboBox fx:id="updatevipTypeCombobox" prefWidth="150.0" GridPane.columnIndex="1" GridPane.rowIndex="2" />
                                                                      </children>
                                                                      <columnConstraints>
                                                                         <ColumnConstraints halignment="CENTER" hgrow="SOMETIMES" minWidth="10.0" prefWidth="90.0" />
@@ -116,7 +132,7 @@
                               </AnchorPane>
                         </content>
                       </Tab>
-                        <Tab text="酒店管理">
+                        <Tab onSelectionChanged="#updateHotelTable" text="酒店管理">
                            <content>
                               <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="219.0" prefWidth="287.0">
                                  <children>
@@ -126,9 +142,9 @@
                                              <children>
                                                 <TableView fx:id="hotelTable" prefHeight="377.0" prefWidth="537.0">
                                                    <columns>
-                                                      <TableColumn fx:id="hotelIDColumn" prefWidth="65.0" text="ID" />
-                                                      <TableColumn fx:id="hotelNameColumn" prefWidth="104.0" text="酒店名" />
-                                                      <TableColumn fx:id="hotelAddressColumn" prefWidth="143.0" text="地址" />
+                                                      <TableColumn fx:id="hotelIDColumn" prefWidth="43.0" text="ID" />
+                                                      <TableColumn fx:id="hotelNameColumn" prefWidth="109.0" text="酒店名" />
+                                                      <TableColumn fx:id="hotelAddressColumn" prefWidth="160.0" text="地址" />
                                                       <TableColumn fx:id="hotelBusinessAddressColumn" prefWidth="91.0" text="所属商圈" />
                                                       <TableColumn fx:id="hotelStarColumn" prefWidth="60.0" text="星级" />
                                                       <TableColumn fx:id="hotelScoreColumn" prefWidth="73.0" text="平均评分" />
@@ -155,14 +171,14 @@
                                                                         <TextField fx:id="addHotelAddressTextField" GridPane.columnIndex="3" />
                                                                         <TextField fx:id="addHotelBusinessAddressTextField" GridPane.columnIndex="1" GridPane.rowIndex="1" />
                                                                         <TextField fx:id="addHotelStarTextField" GridPane.columnIndex="3" GridPane.rowIndex="1" />
-                                                                        <Label text="平均评分：" GridPane.rowIndex="2" />
+                                                                        <Label text="初始评分：" GridPane.rowIndex="2" />
                                                                         <TextField fx:id="addHotelScoreTextField" GridPane.columnIndex="1" GridPane.rowIndex="2" />
                                                                      </children>
                                                                      <columnConstraints>
                                                                         <ColumnConstraints halignment="CENTER" hgrow="SOMETIMES" minWidth="10.0" prefWidth="90.0" />
                                                                         <ColumnConstraints halignment="CENTER" hgrow="SOMETIMES" minWidth="10.0" prefWidth="90.0" />
                                                                         <ColumnConstraints halignment="CENTER" hgrow="SOMETIMES" minWidth="10.0" prefWidth="90.0" />
-                                                                        <ColumnConstraints halignment="CENTER" hgrow="SOMETIMES" minWidth="10.0" prefWidth="90.0" />
+                                                                        <ColumnConstraints halignment="CENTER" hgrow="SOMETIMES" minWidth="10.0" prefWidth="150.0" />
                                                                      </columnConstraints>
                                                                      <rowConstraints>
                                                                         <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
@@ -208,55 +224,7 @@
                                                                      </children>
                                                                      <columnConstraints>
                                                                         <ColumnConstraints halignment="CENTER" hgrow="SOMETIMES" minWidth="10.0" prefWidth="90.0" />
-                                                                        <ColumnConstraints halignment="CENTER" hgrow="SOMETIMES" minWidth="10.0" prefWidth="90.0" />
-                                                                        <ColumnConstraints halignment="CENTER" hgrow="SOMETIMES" minWidth="10.0" prefWidth="90.0" />
-                                                                        <ColumnConstraints halignment="CENTER" hgrow="SOMETIMES" minWidth="10.0" prefWidth="90.0" />
-                                                                     </columnConstraints>
-                                                                     <rowConstraints>
-                                                                        <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
-                                                                        <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
-                                                                        <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
-                                                                     </rowConstraints>
-                                                                  </GridPane>
-                                                               </children>
-                                                            </AnchorPane>
-                                                         </content>
-                                                      </Tab>
-                                                      <Tab text="删除酒店">
-                                                         <content>
-                                                            <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
-                                                               <children>
-                                                                  <Button alignment="CENTER" layoutX="228.0" layoutY="118.0" mnemonicParsing="false" onAction="#deleteHotel" prefHeight="24.0" prefWidth="95.0" text="删除" AnchorPane.leftAnchor="222.0" />
-                                                                  <GridPane prefHeight="109.0" prefWidth="504.0" AnchorPane.topAnchor="9.0">
-                                                                     <children>
-                                                                        <Label text="酒店名：" GridPane.columnIndex="2" />
-                                                                        <Label text="所属商圈：" GridPane.columnIndex="2" GridPane.rowIndex="1" />
-                                                                        <Label text="地址：" GridPane.rowIndex="1" />
-                                                                        <Label text="星级：" GridPane.rowIndex="2" />
-                                                                        <TextField fx:id="deleteHotelIDTextField" GridPane.columnIndex="1" />
-                                                                        <Label fx:id="deleteHotelBusinessAddressLabel" prefHeight="25.0" prefWidth="84.0" GridPane.columnIndex="3" GridPane.rowIndex="1" />
-                                                                        <Label fx:id="deleteHotelAddressLabel" prefHeight="25.0" prefWidth="84.0" GridPane.columnIndex="1" GridPane.rowIndex="1" />
-                                                                        <Label fx:id="deleteHotelStarLabel" prefHeight="24.0" prefWidth="84.0" GridPane.columnIndex="1" GridPane.rowIndex="2" />
-                                                                        <Button alignment="CENTER" contentDisplay="CENTER" mnemonicParsing="false" onAction="#deleteSearchHotel" prefHeight="18.0" prefWidth="14.0">
-                                                                           <graphic>
-                                                                              <ImageView fitHeight="19.0" fitWidth="19.0">
-                                                                                 <image>
-                                                                                    <Image url="@../../../../resources/搜索.png" />
-                                                                                 </image>
-                                                                              </ImageView>
-                                                                           </graphic>
-                                                                           <GridPane.margin>
-                                                                              <Insets left="80.0" />
-                                                                           </GridPane.margin>
-                                                                        </Button>
-                                                                        <Label text="平均评分：" GridPane.columnIndex="2" GridPane.rowIndex="2" />
-                                                                        <Label fx:id="deleteHotelScoreLabel" prefHeight="25.0" prefWidth="84.0" GridPane.columnIndex="3" GridPane.rowIndex="2" />
-                                                                        <Label text="ID：" />
-                                                                        <Label fx:id="deleteHotelNameLabel" prefHeight="26.0" prefWidth="91.0" GridPane.columnIndex="3" />
-                                                                     </children>
-                                                                     <columnConstraints>
-                                                                        <ColumnConstraints halignment="CENTER" hgrow="SOMETIMES" minWidth="10.0" prefWidth="90.0" />
-                                                                        <ColumnConstraints halignment="CENTER" hgrow="SOMETIMES" minWidth="10.0" prefWidth="90.0" />
+                                                                        <ColumnConstraints halignment="CENTER" hgrow="SOMETIMES" minWidth="10.0" prefWidth="150.0" />
                                                                         <ColumnConstraints halignment="CENTER" hgrow="SOMETIMES" minWidth="10.0" prefWidth="90.0" />
                                                                         <ColumnConstraints halignment="CENTER" hgrow="SOMETIMES" minWidth="10.0" prefWidth="90.0" />
                                                                      </columnConstraints>
@@ -280,7 +248,7 @@
                               </AnchorPane>
                            </content>
                         </Tab>
-                      <Tab text="酒店工作人员管理">
+                      <Tab onSelectionChanged="#updateHotelWorkerTable" text="酒店工作人员管理">
                            <content>
                               <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="219.0" prefWidth="287.0">
                                  <children>
@@ -376,47 +344,6 @@
                                                             </AnchorPane>
                                                       </content>
                                                     </Tab>
-                                                      <Tab text="删除酒店工作人员">
-                                                        <content>
-                                                          <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
-                                                               <children>
-                                                                  <Button alignment="CENTER" layoutX="221.0" layoutY="114.0" mnemonicParsing="false" onAction="#deleteHotelWorker" prefHeight="24.0" prefWidth="95.0" text="删除" />
-                                                                  <GridPane prefHeight="89.0" prefWidth="527.0" AnchorPane.leftAnchor="0.0" AnchorPane.topAnchor="14.0">
-                                                                     <children>
-                                                                        <Label text="姓名：" GridPane.rowIndex="1" />
-                                                                        <Label text="手机号：" GridPane.columnIndex="2" GridPane.rowIndex="1" />
-                                                                        <TextField fx:id="deleteWorkerIDTextField" GridPane.columnIndex="1" />
-                                                                        <Label text="所属酒店ID:" />
-                                                                        <Button alignment="CENTER" contentDisplay="CENTER" mnemonicParsing="false" onAction="#deleteSearchHotelWorker" prefHeight="27.0" prefWidth="24.0">
-                                                                           <graphic>
-                                                                              <ImageView fitHeight="19.0" fitWidth="14.0">
-                                                                                 <image>
-                                                                                    <Image url="@../../../../resources/搜索.png" />
-                                                                                 </image>
-                                                                              </ImageView>
-                                                                           </graphic>
-                                                                           <GridPane.margin>
-                                                                              <Insets left="95.0" />
-                                                                           </GridPane.margin>
-                                                                        </Button>
-                                                                        <Label fx:id="deleteWorkerNameLabel" prefHeight="23.0" prefWidth="92.0" GridPane.columnIndex="1" GridPane.rowIndex="1" />
-                                                                        <Label fx:id="deleteWorkerContactLabel" prefHeight="22.0" prefWidth="121.0" GridPane.columnIndex="3" GridPane.rowIndex="1" />
-                                                                     </children>
-                                                                     <columnConstraints>
-                                                                        <ColumnConstraints halignment="CENTER" hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
-                                                                        <ColumnConstraints halignment="CENTER" hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
-                                                                        <ColumnConstraints halignment="CENTER" hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
-                                                                        <ColumnConstraints halignment="CENTER" hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
-                                                                     </columnConstraints>
-                                                                     <rowConstraints>
-                                                                        <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
-                                                                        <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
-                                                                     </rowConstraints>
-                                                                  </GridPane>
-                                                               </children>
-                                                            </AnchorPane>
-                                                        </content>
-                                                      </Tab>
                                                   </tabs>
                                                 </TabPane>
                                              </children>
@@ -427,7 +354,7 @@
                               </AnchorPane>
                            </content>
                       </Tab>
-                        <Tab text="网站营销人员管理">
+                        <Tab onSelectionChanged="#updateMarketTable" text="网站营销人员管理">
                            <content>
                               <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="219.0" prefWidth="287.0">
                                  <children>
@@ -520,48 +447,6 @@
                                                             </AnchorPane>
                                                       </content>
                                                     </Tab>
-                                                      <Tab text="删除营销人员">
-                                                         <content>
-                                                            <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
-                                                               <children>
-                                                                  <GridPane prefHeight="94.0" prefWidth="513.0" AnchorPane.topAnchor="14.0">
-                                                                     <children>
-                                                                        <Label text="ID :" />
-                                                                        <Label text="姓名：" GridPane.rowIndex="1" />
-                                                                        <Label text="手机号：" GridPane.columnIndex="2" GridPane.rowIndex="1" />
-                                                                        <TextField fx:id="deleteMarketIDTextField" GridPane.columnIndex="1" />
-                                                                        <Button alignment="CENTER" contentDisplay="CENTER" mnemonicParsing="false" onAction="#deleteSearchMarket" prefHeight="27.0" prefWidth="24.0">
-                                                                           <graphic>
-                                                                              <ImageView fitHeight="19.0" fitWidth="18.0">
-                                                                                 <image>
-                                                                                    <Image url="@../../../../resources/搜索.png" />
-                                                                                 </image>
-                                                                              </ImageView>
-                                                                           </graphic>
-                                                                           <GridPane.margin>
-                                                                              <Insets left="80.0" />
-                                                                           </GridPane.margin>
-                                                                        </Button>
-                                                                        <Label fx:id="deleteMarketNameLabel" prefHeight="22.0" prefWidth="90.0" GridPane.columnIndex="1" GridPane.rowIndex="1" />
-                                                                        <Label prefHeight="22.0" prefWidth="90.0" />
-                                                                        <Label fx:id="deleteMarketContactLabel" prefHeight="22.0" prefWidth="90.0" GridPane.columnIndex="3" GridPane.rowIndex="1" />
-                                                                     </children>
-                                                                     <columnConstraints>
-                                                                        <ColumnConstraints halignment="CENTER" hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
-                                                                        <ColumnConstraints halignment="CENTER" hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
-                                                                        <ColumnConstraints halignment="CENTER" hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
-                                                                        <ColumnConstraints halignment="CENTER" hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
-                                                                     </columnConstraints>
-                                                                     <rowConstraints>
-                                                                        <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
-                                                                        <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
-                                                                     </rowConstraints>
-                                                                  </GridPane>
-                                                                  <Button alignment="CENTER" layoutX="221.0" layoutY="118.0" mnemonicParsing="false" onAction="#deleteMarket" prefHeight="24.0" prefWidth="95.0" text="删除" />
-                                                               </children>
-                                                            </AnchorPane>
-                                                         </content>
-                                                      </Tab>
                                                   </tabs>
                                                 </TabPane>
                                              </children>

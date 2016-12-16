@@ -3,6 +3,7 @@ package ui.model;
 import javafx.beans.property.SimpleStringProperty;
 
 public class HotelModel {
+	private final SimpleStringProperty id;
 	private final SimpleStringProperty hotelName;
 	private final SimpleStringProperty businessAddress;
 	private final SimpleStringProperty address;
@@ -10,17 +11,25 @@ public class HotelModel {
 	private final SimpleStringProperty score;
 	
 	public HotelModel(){
-		this(null, null, null, null,null);
+		id = new SimpleStringProperty();
+		hotelName = new SimpleStringProperty();
+		businessAddress = new SimpleStringProperty();
+		address = new SimpleStringProperty();
+		star = new SimpleStringProperty();
+		score = new SimpleStringProperty();
 	}
 	
-	public HotelModel(String hotelname,String businessaddress,String address,String star,String score){
-		this.hotelName =new SimpleStringProperty(hotelname);
-		this.businessAddress = new SimpleStringProperty(businessaddress);
-		this.address = new SimpleStringProperty(address);
-		this.star = new SimpleStringProperty(star);
-		this.score = new SimpleStringProperty(score);
+	public String getID(){
+		return id.get();
 	}
 	
+	public void setID(int id){
+		this.id.set(String.valueOf(id));
+	}
+	
+	public SimpleStringProperty idProperty(){
+		return id;
+	}
 	public String getHotelName(){
 		return this.hotelName.get();
 	}
@@ -72,8 +81,16 @@ public class HotelModel {
 	public String getStar() {
 		return this.star.get();
 	}
+	
+	public void setStar(String star){
+		this.star.set(star);
+	}
 
 	public String getScore() {
 		return this.score.get();
+	}
+	
+	public void setScore(String score){
+		this.score.set(score);
 	}
 }
