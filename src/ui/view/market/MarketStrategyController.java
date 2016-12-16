@@ -13,6 +13,7 @@ import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.Alert;
 import javafx.scene.control.Alert.AlertType;
+import objects.ResultMessage;
 import rmi.RemoteHelper;
 import javafx.scene.control.Label;
 import javafx.scene.control.RadioButton;
@@ -199,10 +200,15 @@ public class MarketStrategyController implements Initializable {
 
 		RemoteHelper helper = RemoteHelper.getInstance();
 		try {
-			helper.getStrategyBLService().webstrategy_make(vo);
+			ResultMessage message = helper.getStrategyBLService().webstrategy_make(vo);
+			if (message==ResultMessage.Fail) {
+				AlertUtil.showErrorAlert("添加促销策略失败！");
+			}
 		} catch (RemoteException e) {
 			e.printStackTrace();
 		}
+		
+		AlertUtil.showInformationAlert("添加促销策略成功！");
 	}
 
 	@FXML
@@ -221,24 +227,30 @@ public class MarketStrategyController implements Initializable {
 			AlertUtil.showErrorAlert("不存在该促销策略！");
 			return;
 		}
-
-		list.remove(currentStrategy);
-
-		currentStrategy.setName(name);
-		currentStrategy.setStartTime(startTime);
-		currentStrategy.setEndTime(endTime);
-		currentStrategy.setDiscount(discount);
-		currentStrategy.setCondition(condition);
-		currentStrategy.setSuperposition(superposition);
-
-		list.add(currentStrategy);
+		int index;
+		for(index = 0;index<list.size();index++){
+			if (list.get(index).getID().equals(currentStrategy.getID())) {
+				list.get(index).setName(name);
+				list.get(index).setStartTime(startTime);
+				list.get(index).setEndTime(endTime);
+				list.get(index).setDiscount(discount);
+				list.get(index).setCondition(condition);
+				list.get(index).setSuperposition(superposition);
+			}
+		}
+		
 		RemoteHelper helper = RemoteHelper.getInstance();
 		try {
 			WebStrategyVO vo = currentStrategy.changeToVO();
-			helper.getStrategyBLService().webstrategy_update(vo);
+			ResultMessage message = helper.getStrategyBLService().webstrategy_update(vo);
+			if (message==ResultMessage.Fail) {
+				AlertUtil.showErrorAlert("更新促销策略失败！");
+			}
 		} catch (RemoteException e) {
 			e.printStackTrace();
 		}
+		
+		AlertUtil.showInformationAlert("更新促销策略成功！");
 	}
 
 	@FXML
@@ -247,11 +259,15 @@ public class MarketStrategyController implements Initializable {
 			strategyTable.getItems().remove(currentStrategy);
 			RemoteHelper helper = RemoteHelper.getInstance();
 			try {
-				helper.getStrategyBLService().webstrategy_delete(
+				ResultMessage message = helper.getStrategyBLService().webstrategy_delete(
 						helper.getStrategyBLService().getwebstrategybyname(currentStrategy.getName()));
+				if (message==ResultMessage.Fail) {
+					AlertUtil.showErrorAlert("删除促销策略失败！");
+				}
 			} catch (RemoteException e) {
 				e.printStackTrace();
 			}
+			AlertUtil.showInformationAlert("删除促销策略成功！");
 		} else {
 			AlertUtil.showErrorAlert("不存在该促销策略！");
 		}

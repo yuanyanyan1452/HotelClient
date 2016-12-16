@@ -51,6 +51,7 @@ public class Main extends Application {
 
 	// 弹窗
 	private Stage extraStage;
+	private Stage extraStage2;
 
 	// 内部窗口
 	private SplitPane rootLayout;
@@ -165,7 +166,7 @@ public class Main extends Application {
 	}
 
 	// 客户查看基本信息
-	public void gotoClientBasicInfo(ClientVO vo) {
+	public void gotoClientBasicInfo(ClientVO vo,ClientOverviewController clientOverviewController) {
 		try {
 			FXMLLoader fxmlLoader = new FXMLLoader();
 			fxmlLoader.setLocation(Main.class.getResource("client/ClientBasicInfo.fxml"));
@@ -173,7 +174,7 @@ public class Main extends Application {
 			insidePane.setPrefSize(700, 600);
 			rootLayout.getItems().set(1, insidePane);
 			ClientBasicInfoController controller = (ClientBasicInfoController) fxmlLoader.getController();
-			controller.setMain(this,vo);
+			controller.setMain(this,vo,clientOverviewController);
 		} catch (Exception e) {
 			Logger.getLogger(Main.class.getName()).log(Level.SEVERE, null, e);
 		}
@@ -273,10 +274,10 @@ public class Main extends Application {
 			HotelDetailInfoController controller = (HotelDetailInfoController) fxmlLoader.getController();
 			controller.setMain(this,hotel);
 
-			extraStage = new Stage(StageStyle.UNDECORATED);
-			extraStage.setScene(new Scene(insidePane));
-			extraStage.centerOnScreen();
-			extraStage.show();
+			extraStage2 = new Stage(StageStyle.UNDECORATED);
+			extraStage2.setScene(new Scene(insidePane));
+			extraStage2.centerOnScreen();
+			extraStage2.show();
 		} catch (Exception e) {
 			Logger.getLogger(Main.class.getName()).log(Level.SEVERE, null, e);
 		}
@@ -501,7 +502,13 @@ public class Main extends Application {
 
 	// 关闭弹窗
 	public void closeExtraStage() {
-		extraStage.hide();
+		if (extraStage.isShowing()) {
+			extraStage.hide();
+		}
+		if (extraStage2.isShowing()) {
+			extraStage2.hide();
+		}
+	
 	}
 
 	public Stage getPrimaryStage() {

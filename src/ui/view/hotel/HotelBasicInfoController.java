@@ -11,6 +11,7 @@ import javafx.scene.control.Alert.AlertType;
 import javafx.scene.control.TextArea;
 import objects.ResultMessage;
 import rmi.RemoteHelper;
+import ui.util.AlertUtil;
 import ui.view.Main;
 import vo.HotelVO;
 
@@ -44,18 +45,10 @@ public class HotelBasicInfoController implements Initializable {
 		currenthotelvo.setstar(starTextField.getText());
 		ResultMessage result=helper.getHotelBLService().hotel_updateInfo(currenthotelvo);
 		if(result==ResultMessage.Success){
-			Alert alert = new Alert(AlertType.INFORMATION);
-			alert.setTitle(null);
-			alert.setHeaderText(null);
-			alert.setContentText("更新酒店基本信息成功");
-			alert.showAndWait();
+			AlertUtil.showInformationAlert("更新酒店基本信息成功！");
 		}
 		else{
-			Alert alert = new Alert(AlertType.ERROR);
-			alert.setTitle(null);
-			alert.setHeaderText(null);
-			alert.setContentText("对不起，更新失败");
-			alert.showAndWait();
+			AlertUtil.showErrorAlert("对不起，更新失败。");
 		}
 	}
 	

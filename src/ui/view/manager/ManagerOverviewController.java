@@ -53,6 +53,7 @@ public class ManagerOverviewController implements Initializable {
 			// 实时更新统计数据
 			clientNumLabel.setText(String.valueOf(clientList.size()));
 			hotelNumLabel.setText(String.valueOf(hotelList.size()));
+			//TODO
 //			 orderNumLabel.setText(String.valueOf(remoteHelper.getOrderBLService().));
 		}
 
@@ -340,7 +341,7 @@ public class ManagerOverviewController implements Initializable {
 			vo.setclient_name(updateClientNameTextField.getText());
 			vo.setcontact(updateClientContactTextField.getText());
 			vo.setcredit(Integer.parseInt(updateClientCreditTextField.getText()));
-			VIPInfo info = vo.getvipinfo();
+			VIPInfo info = new VIPInfo();
 			if (updatevipTypeCombobox.getValue().equals("非会员")) {
 				info = null;
 			} else {
@@ -348,6 +349,7 @@ public class ManagerOverviewController implements Initializable {
 				info.setInfo(updateClientVIPTextField.getText());
 			}
 			vo.setvipinfo(info);
+			//TODO
 			ResultMessage message = helper.getClientBLService().client_updateInfo(vo);
 			if (message == ResultMessage.Success) {
 				AlertUtil.showInformationAlert("修改客户信息成功！");
@@ -442,6 +444,7 @@ public class ManagerOverviewController implements Initializable {
 			vo.setaddress(updateHotelAddressTextField.getText());
 			vo.setstar(updateHotelStarTextField.getText());
 			vo.setscore(updateHotelScoreTextField.getText());
+			//TODO
 			ResultMessage message = helper.getHotelBLService().hotel_updateInfo(vo);
 			if (message == ResultMessage.Fail) {
 				AlertUtil.showErrorAlert("更新酒店失败！");
