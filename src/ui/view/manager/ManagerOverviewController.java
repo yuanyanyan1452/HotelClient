@@ -54,7 +54,11 @@ public class ManagerOverviewController implements Initializable {
 			clientNumLabel.setText(String.valueOf(clientList.size()));
 			hotelNumLabel.setText(String.valueOf(hotelList.size()));
 			//TODO
-//			 orderNumLabel.setText(String.valueOf(remoteHelper.getOrderBLService().));
+			 try {
+				orderNumLabel.setText(String.valueOf(remoteHelper.getManageBLService().getordernumber()));
+			} catch (RemoteException e) {
+				e.printStackTrace();
+			}
 		}
 
 	}

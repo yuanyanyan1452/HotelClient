@@ -50,7 +50,7 @@
                <children>
                   <TabPane prefHeight="598.0" prefWidth="537.0" style="-fx-border-color: #C0C0C0;" tabClosingPolicy="UNAVAILABLE">
                     <tabs>
-                      <Tab onSelectionChanged="#updateClientTable" text="客户人员管理">
+                      <Tab fx:id="clientTab" onSelectionChanged="#updateClientTable" text="客户人员管理">
                         <content>
                           <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="219.0" prefWidth="287.0">
                                  <children>
@@ -132,7 +132,7 @@
                               </AnchorPane>
                         </content>
                       </Tab>
-                        <Tab onSelectionChanged="#updateHotelTable" text="酒店管理">
+                        <Tab fx:id="hotelTab" onSelectionChanged="#updateHotelTable" text="酒店管理">
                            <content>
                               <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="219.0" prefWidth="287.0">
                                  <children>
@@ -248,7 +248,7 @@
                               </AnchorPane>
                            </content>
                         </Tab>
-                      <Tab onSelectionChanged="#updateHotelWorkerTable" text="酒店工作人员管理">
+                      <Tab fx:id="hotelworkerTab" onSelectionChanged="#updateHotelWorkerTable" text="酒店工作人员管理">
                            <content>
                               <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="219.0" prefWidth="287.0">
                                  <children>
@@ -354,7 +354,7 @@
                               </AnchorPane>
                            </content>
                       </Tab>
-                        <Tab onSelectionChanged="#updateMarketTable" text="网站营销人员管理">
+                        <Tab fx:id="marketTab" onSelectionChanged="#updateMarketTable" text="网站营销人员管理">
                            <content>
                               <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="219.0" prefWidth="287.0">
                                  <children>
