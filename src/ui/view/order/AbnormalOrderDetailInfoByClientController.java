@@ -3,9 +3,8 @@ package ui.view.order;
 import java.net.URL;
 import java.rmi.RemoteException;
 import java.text.SimpleDateFormat;
+import java.util.ArrayList;
 import java.util.ResourceBundle;
-
-import org.omg.PortableServer.POA;
 
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
@@ -13,6 +12,7 @@ import javafx.scene.control.Label;
 import rmi.RemoteHelper;
 import ui.view.Main;
 import vo.OrderVO;
+import vo.RoomOrderVO;
 
 public class AbnormalOrderDetailInfoByClientController implements Initializable {
 	private Main main;
@@ -84,8 +84,15 @@ public class AbnormalOrderDetailInfoByClientController implements Initializable 
 		}
 		starttimelabel.setText(format.format(ordervo.getstart_time()));
 		endtimelabel.setText(format.format(ordervo.getend_time()));
-		//
-		//
+		ArrayList<RoomOrderVO> roomorderlist=ordervo.getroom_order();
+		String roomtype=null;
+		int roomnumber=0;
+		for(int i=0;i<roomorderlist.size();i++){
+			roomtype+=(roomorderlist.get(i).getroom_type()+" ");
+			roomnumber+=roomorderlist.get(i).getroom_number();
+		}
+		roomtypelabel.setText(roomtype);
+		roomnumberlabel.setText(String.valueOf(roomnumber));
 		peoplenumberlabel.setText(String.valueOf(ordervo.getexpect_number_of_people()));
 		if(ordervo.gethave_child()){
 			ifchildlabel.setText("有");

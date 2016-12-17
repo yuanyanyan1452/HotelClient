@@ -229,14 +229,14 @@ public class Main extends Application {
 	}
 
 	// 客户评价酒店
-	public void gotoClientEvaluateHotel() {
+	public void gotoClientEvaluateHotel(int hotelid) {
 		try {
 			FXMLLoader fxmlLoader = new FXMLLoader();
 			fxmlLoader.setLocation(Main.class.getResource("client/ClientEvaluateHotel.fxml"));
 			AnchorPane insidePane = (AnchorPane) fxmlLoader.load();
 
 			ClientEvaluateHotelController controller = (ClientEvaluateHotelController) fxmlLoader.getController();
-			controller.setMain(this);
+			controller.setMain(this,hotelid);
 
 			extraStage = new Stage(StageStyle.UNDECORATED);
 			extraStage.setScene(new Scene(insidePane));

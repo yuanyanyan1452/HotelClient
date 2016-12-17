@@ -2,6 +2,7 @@ package ui.view.order;
 
 import java.net.URL;
 import java.rmi.RemoteException;
+import java.util.ArrayList;
 import java.util.ResourceBundle;
 
 import javafx.collections.FXCollections;
@@ -16,6 +17,7 @@ import rmi.RemoteHelper;
 import ui.model.OrderModel;
 import ui.view.Main;
 import vo.OrderVO;
+import vo.RoomOrderVO;
 
 public class ClientBrowseOrderController implements Initializable{
 	private Main main;
@@ -80,30 +82,74 @@ public class ClientBrowseOrderController implements Initializable{
 	public void update_normal(){
 		orderlist.clear();
 		orderlist=changeOrderlist(mostorderlist, "正常");
+		if(filledButton.isSelected()){
+			orderlist=changeOrderlist(mostorderlist,"是");
+		}
+		else if(unfilledButton.isSelected()){
+			orderlist=changeOrderlist(mostorderlist,"否");
+		}
 		this.show(orderlist);
 	}
 	
+	@FXML
 	public void update_abnormal(){
 		orderlist.clear();
 		orderlist=changeOrderlist(mostorderlist, "异常");
+		if(filledButton.isSelected()){
+			orderlist=changeOrderlist(mostorderlist,"是");
+		}
+		else if(unfilledButton.isSelected()){
+			orderlist=changeOrderlist(mostorderlist,"否");
+		}
 		this.show(orderlist);
 	}
 	
+	@FXML
 	public void update_cancelled(){
 		orderlist.clear();
 		orderlist=changeOrderlist(mostorderlist, "撤销");
+		if(filledButton.isSelected()){
+			orderlist=changeOrderlist(mostorderlist,"是");
+		}
+		else if(unfilledButton.isSelected()){
+			orderlist=changeOrderlist(mostorderlist,"否");
+		}
 		this.show(orderlist);
 	}
 	
-	public void update_execute(ObservableList<OrderModel> orderlist){
-		orderlist=changeOrderlist(orderlist, "是");
+	@FXML
+	public void update_execute(){
+		orderlist.clear();
+		orderlist=changeOrderlist(mostorderlist, "是");
+		if(normalButton.isSelected()){
+			orderlist=changeOrderlist(orderlist,"正常");
+		}
+		else if(abnormalButton.isSelected()){
+			orderlist=changeOrderlist(orderlist,"异常");
+		}
+		else if(cancelButton.isSelected()){
+			orderlist=changeOrderlist(orderlist, "撤销");
+		}
 		this.show(orderlist);
 	}
 	
-	public void update_noexecute(ObservableList<OrderModel> orderlist){
-		orderlist=changeOrderlist(orderlist, "否");
+	@FXML
+	public void update_noexecute(){
+		orderlist.clear();
+		orderlist=changeOrderlist(mostorderlist, "否");
+		if(normalButton.isSelected()){
+			orderlist=changeOrderlist(orderlist,"正常");
+		}
+		else if(abnormalButton.isSelected()){
+			orderlist=changeOrderlist(orderlist,"异常");
+		}
+		else if(cancelButton.isSelected()){
+			orderlist=changeOrderlist(orderlist, "撤销");
+		}
 		this.show(orderlist);
 	}
+	
+	
 	public ObservableList<OrderModel> changeOrderlist(ObservableList<OrderModel> orderlist,String condition){
 		ObservableList<OrderModel> neworderlist=FXCollections.observableArrayList();
 		for(int i=0;i<orderlist.size();i++){
@@ -115,14 +161,16 @@ public class ClientBrowseOrderController implements Initializable{
 	}
 	
 	public void show(ObservableList<OrderModel> orderlist){
+		//没实现根据条件选择
+		
 		idColumn.setCellValueFactory(celldata -> celldata.getValue().orderidProperty());
-		hotelColumn.setCellValueFactory(celldata -> celldata.getValue().hotelidProperty());
+		hotelColumn.setCellValueFactory(celldata -> celldata.getValue().hotelnameProperty());
 		executeColumn.setCellValueFactory(celldata -> celldata.getValue().isExecuteProperty());
 		stateColumn.setCellValueFactory(celldata -> celldata.getValue().stateProperty());
 		startTimeColumn.setCellValueFactory(celldata -> celldata.getValue().startTimeProperty());
 		endTimeColumn.setCellValueFactory(celldata -> celldata.getValue().endTimeProperty());
-		//roomTypeColumn.setCellValueFactory(celldata -> celldata.getValue().orderidProperty());
-		//roomAmountColumn.setCellValueFactory(celldata -> celldata.getValue().orderidProperty());
+		roomTypeColumn.setCellValueFactory(celldata -> celldata.getValue().roomtypeProperty());
+		roomAmountColumn.setCellValueFactory(celldata -> celldata.getValue().roomnumberProperty());
 		priceColumn.setCellValueFactory(celldata -> celldata.getValue().priceProperty());
 		numberColumn.setCellValueFactory(celldata -> celldata.getValue().numOfPeopleProperty());
 		hasChildColumn.setCellValueFactory(celldata -> celldata.getValue().haveChildProperty());
@@ -155,11 +203,19 @@ public class ClientBrowseOrderController implements Initializable{
 		for(OrderVO ordervo:ordervolist){
 			OrderModel model=new OrderModel();
 			model.setOrderid(ordervo.getid());
-			model.setHotelid(ordervo.gethotelid());
+			model.setHotelname(helper.getHotelBLService().hotel_checkInfo(ordervo.gethotelid()).getname());
 			model.setIsExecute(ordervo.getexecute());
 			model.setState(ordervo.getstate());
 			model.setStartTime(ordervo.getstart_time());
-		  //model.setRoomOrder(ordervo.getroom_order());
+			ArrayList<RoomOrderVO> roomorderlist=ordervo.getroom_order();
+			String roomtype="";
+			int roomnumber=0;
+			for(int i=0;i<roomorderlist.size();i++){
+				roomtype+=(roomorderlist.get(i).getroom_type()+" ");
+				roomnumber+=roomorderlist.get(i).getroom_number();
+			}
+			model.setRoomType(roomtype);
+			model.setRoomNumber(String.valueOf(roomnumber));
 			model.setPrice(ordervo.getprice());
 			model.setNumOfPeople(ordervo.getexpect_number_of_people());
 			model.setHaveChild(ordervo.gethave_child());
@@ -167,41 +223,7 @@ public class ClientBrowseOrderController implements Initializable{
 		}
 		this.show(mostorderlist);
 		
-		if(normalButton.isSelected()){
-			this.update_normal();
-			if(filledButton.isSelected()){
-				this.update_execute(orderlist);
-			}
-			else if(unfilledButton.isSelected()){
-				this.update_noexecute(orderlist);
-			}
-		}
-		else if(abnormalButton.isSelected()){
-			this.update_abnormal();
-			if(filledButton.isSelected()){
-				this.update_execute(orderlist);
-			}
-			else if(unfilledButton.isSelected()){
-				this.update_noexecute(orderlist);
-			}
-		}
-		else if(cancelButton.isSelected()){
-			this.update_cancelled();
-			if(filledButton.isSelected()){
-				this.update_execute(orderlist);
-			}
-			else if(unfilledButton.isSelected()){
-				this.update_noexecute(orderlist);
-			}
-		}
-		else {
-			if(filledButton.isSelected()){
-				this.update_execute(mostorderlist);
-			}
-			else if(unfilledButton.isSelected()){
-				this.update_noexecute(mostorderlist);
-			}
-		}
+
 	}
 	
 }

@@ -57,7 +57,7 @@ public interface OrderBLService extends Remote{
 	 * @param orderid
 	 * @return 客户撤销订单
 	 */
-	public ResultMessage order_client_cancel(int clientid, int orderid)throws RemoteException;
+	public ResultMessage order_client_cancel( int orderid)throws RemoteException;
 
 	/**
 	 * @param vo

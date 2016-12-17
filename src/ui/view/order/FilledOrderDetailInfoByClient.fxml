@@ -64,7 +64,7 @@
             <Font size="22.0" />
          </font>
       </Label>
-      <Button fx:id="closebutton" layoutX="109.0" layoutY="519.0" mnemonicParsing="false" prefHeight="40.0" prefWidth="100.0" text="关闭" AnchorPane.leftAnchor="109.0" AnchorPane.rightAnchor="391.0" />
-      <Button fx:id="evaluatebutton" layoutX="389.0" layoutY="519.0" mnemonicParsing="false" prefHeight="40.0" prefWidth="100.0" text="评价酒店" />
+      <Button fx:id="closebutton" layoutX="109.0" layoutY="519.0" mnemonicParsing="false" onAction="#close" prefHeight="40.0" prefWidth="100.0" text="关闭" AnchorPane.leftAnchor="109.0" AnchorPane.rightAnchor="391.0" />
+      <Button fx:id="evaluatebutton" layoutX="389.0" layoutY="519.0" mnemonicParsing="false" onAction="#evaluate" prefHeight="40.0" prefWidth="100.0" text="评价酒店" />
    </children>
 </AnchorPane>

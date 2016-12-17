@@ -10,6 +10,7 @@ public class OrderModel {
 	private final SimpleStringProperty orderid;
 	private final SimpleStringProperty clientid;
 	private final SimpleStringProperty hotelid;
+	private final SimpleStringProperty hotelname;
 	private final SimpleStringProperty state;
 	private final SimpleStringProperty cancelTime;
 	private final SimpleStringProperty isExecute;
@@ -17,6 +18,8 @@ public class OrderModel {
 	private final SimpleStringProperty endTime;
 	private final SimpleStringProperty latestExecuteTime;
 	private final SimpleStringProperty roomOrder;
+	private final SimpleStringProperty roomtype;
+	private final SimpleStringProperty roomnumber;
 	private final SimpleStringProperty price;
 	private final SimpleStringProperty numOfPeople;
 	private final SimpleStringProperty haveChild;
@@ -28,6 +31,7 @@ public class OrderModel {
 		orderid=new SimpleStringProperty();
 		clientid = new SimpleStringProperty();
 		hotelid = new SimpleStringProperty();
+		hotelname=new SimpleStringProperty();
 		state = new SimpleStringProperty();
 		cancelTime = new SimpleStringProperty();
 		isExecute = new SimpleStringProperty();
@@ -35,6 +39,8 @@ public class OrderModel {
 		endTime = new SimpleStringProperty();
 		latestExecuteTime = new SimpleStringProperty();
 		roomOrder = new SimpleStringProperty();
+		roomtype = new SimpleStringProperty();
+		roomnumber = new SimpleStringProperty();
 		price = new SimpleStringProperty();
 		numOfPeople = new SimpleStringProperty();
 		haveChild = new SimpleStringProperty();
@@ -78,6 +84,18 @@ public class OrderModel {
 		return this.hotelid;
 	}
 
+	public String getHotelname() {
+		return this.hotelname.get();
+	}
+
+	public void setHotelname(String hotelname) {
+		this.hotelname.set(hotelname);
+	}
+
+	public SimpleStringProperty hotelnameProperty() {
+		return this.hotelname;
+	}
+	
 	public String getState() {
 		return this.state.get();
 	}
@@ -161,6 +179,31 @@ public class OrderModel {
 	public SimpleStringProperty roomOrderProperty(){
 		return this.roomOrder;
 	}
+	
+	public String getRoomType(){
+		return this.roomtype.get();
+	}
+	
+	public void setRoomType(String roomtype){
+		this.roomtype.set(roomtype);
+	}
+	
+	public SimpleStringProperty roomtypeProperty(){
+		return this.roomtype;
+	}
+	
+	public String getRoomNumber(){
+		return this.roomnumber.get();
+	}
+	
+	public void setRoomNumber(String roomnumber){
+		this.roomnumber.set(roomnumber);
+	}
+	
+	public SimpleStringProperty roomnumberProperty(){
+		return this.roomnumber;
+	}
+	
 	
 	public String getPrice(){
 		return this.price.get();

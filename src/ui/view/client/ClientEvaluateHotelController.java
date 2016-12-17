@@ -50,7 +50,7 @@ public class ClientEvaluateHotelController implements Initializable{
 		
 	}
 	
-	public void setMain(Main main){
+	public void setMain(Main main,int hotelid){
 		this.main = main;
 		scoreSlider.setMin(0.0);
 		scoreSlider.setMax(5.0);
