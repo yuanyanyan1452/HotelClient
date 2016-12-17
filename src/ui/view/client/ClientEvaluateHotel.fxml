@@ -37,7 +37,7 @@
         </rowConstraints>
          <children>
             <Label text="酒店：" />
-            <Label fx:id="hotelnameLabel" prefHeight="15.0" prefWidth="151.0" GridPane.columnIndex="1" />
+            <Label fx:id="hotelnameLabel" alignment="CENTER" prefHeight="30.0" prefWidth="167.0" GridPane.columnIndex="1" />
             <Label text="评分：" GridPane.rowIndex="1" />
             <Label text="评论：" GridPane.rowIndex="2" GridPane.valignment="TOP">
                <GridPane.margin>
@@ -47,7 +47,7 @@
             <TextArea fx:id="commentArea" prefHeight="180.0" prefWidth="259.0" GridPane.columnIndex="1" GridPane.rowIndex="2" />
             <AnchorPane prefHeight="200.0" prefWidth="200.0" GridPane.columnIndex="1" GridPane.rowIndex="1">
                <children>
-                  <Label fx:id="scoreLabel" layoutX="52.0" layoutY="18.0" text="0.0">
+                  <Label fx:id="scoreLabel" alignment="CENTER" layoutX="52.0" layoutY="18.0" text="0.0">
                      <font>
                         <Font size="13.0" />
                      </font>

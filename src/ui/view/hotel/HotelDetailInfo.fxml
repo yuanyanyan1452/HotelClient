@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<?import javafx.scene.text.*?>
 <?import javafx.scene.control.*?>
 <?import javafx.scene.image.*?>
 <?import java.lang.*?>
@@ -30,26 +31,20 @@
                   <Label layoutX="299.0" layoutY="172.0" text="平均评分：" />
                   <Label fx:id="scoreLabel" layoutX="443.0" layoutY="172.0" text="xxx" />
                   <Label fx:id="introductionLabel" alignment="TOP_LEFT" layoutX="206.0" layoutY="252.0" prefHeight="40.0" prefWidth="377.0" text="xxxxxxxxx" />
-                  <Label layoutX="98.0" layoutY="319.0" text="入住" />
-                  <Label layoutX="98.0" layoutY="371.0" text="离店" />
-                  <Label layoutX="104.0" layoutY="397.0" text="月" />
-                  <Label layoutX="183.0" layoutY="397.0" text="日" />
-                  <Label layoutX="104.0" layoutY="345.0" text="月" />
-                  <Label layoutX="183.0" layoutY="345.0" text="日" />
-                  <Label fx:id="totalLabel" layoutX="94.0" layoutY="441.0" text="共2晚" />
-                  <Button layoutX="407.0" layoutY="520.0" mnemonicParsing="false" onAction="#generateOrder" prefHeight="39.0" prefWidth="129.0" text="预定" AnchorPane.leftAnchor="383.0" AnchorPane.rightAnchor="114.0" />
-                  <Button layoutX="114.0" layoutY="520.0" mnemonicParsing="false" onAction="#close" prefHeight="40.0" prefWidth="120.0" text="关闭" AnchorPane.leftAnchor="114.0" AnchorPane.rightAnchor="383.20000000000005" />
+                  <Label layoutX="98.0" layoutY="342.0" text="入住" />
+                  <Label layoutX="98.0" layoutY="405.0" text="离店" />
+                  <Label layoutX="104.0" layoutY="434.0" text="月" />
+                  <Label layoutX="183.0" layoutY="434.0" text="日" />
+                  <Label layoutX="104.0" layoutY="374.0" text="月" />
+                  <Label layoutX="183.0" layoutY="374.0" text="日" />
+                  <Label fx:id="totalLabel" alignment="CENTER" layoutX="70.0" layoutY="479.0" prefHeight="24.0" prefWidth="81.0" text="共0晚">
+                     <font>
+                        <Font size="18.0" />
+                     </font></Label>
+                  <Button fx:id="button2" layoutX="407.0" layoutY="520.0" mnemonicParsing="false" onAction="#generateOrder" prefHeight="39.0" prefWidth="129.0" text="预定" AnchorPane.leftAnchor="383.0" AnchorPane.rightAnchor="114.0" />
+                  <Button fx:id="button1" layoutX="114.0" layoutY="520.0" mnemonicParsing="false" onAction="#close" prefHeight="40.0" prefWidth="120.0" text="关闭" AnchorPane.leftAnchor="114.0" AnchorPane.rightAnchor="383.20000000000005" />
                   <Label layoutX="299.0" layoutY="213.0" text="设施服务：" />
                   <Label fx:id="serviceLabel" layoutX="431.0" layoutY="213.0" text="xxxxxxx" />
-                  <Button layoutX="90.0" layoutY="468.0" mnemonicParsing="false" onAction="#searchHotel">
-                     <graphic>
-                        <ImageView fitHeight="23.0" fitWidth="24.0">
-                           <image>
-                              <Image url="@../../../../resources/搜索.png" />
-                           </image>
-                        </ImageView>
-                     </graphic>
-                  </Button>
                   <TabPane layoutX="205.0" layoutY="298.0" prefHeight="213.0" prefWidth="375.0" tabClosingPolicy="UNAVAILABLE">
                     <tabs>
                       <Tab text="房间列表">
@@ -101,10 +96,10 @@
                       </Tab>
                     </tabs>
                   </TabPane>
-                  <ComboBox fx:id="startMonthBox" layoutX="38.0" layoutY="340.0" prefHeight="25.0" prefWidth="60.0" visibleRowCount="12" />
-                  <ComboBox fx:id="startDayBox" layoutX="121.0" layoutY="340.0" prefHeight="25.0" prefWidth="60.0" visibleRowCount="31" />
-                  <ComboBox fx:id="endMonthBox" layoutX="37.0" layoutY="392.0" prefHeight="25.0" prefWidth="60.0" visibleRowCount="12" />
-                  <ComboBox fx:id="endDayBox" layoutX="121.0" layoutY="392.0" prefHeight="25.0" prefWidth="60.0" visibleRowCount="31" />
+                  <ComboBox fx:id="startMonthBox" layoutX="38.0" layoutY="369.0" prefHeight="25.0" prefWidth="60.0" visibleRowCount="12" />
+                  <ComboBox fx:id="startDayBox" layoutX="121.0" layoutY="369.0" prefHeight="25.0" prefWidth="60.0" visibleRowCount="31" />
+                  <ComboBox fx:id="endMonthBox" layoutX="38.0" layoutY="429.0" prefHeight="25.0" prefWidth="60.0" visibleRowCount="12" />
+                  <ComboBox fx:id="endDayBox" layoutX="121.0" layoutY="429.0" prefHeight="25.0" prefWidth="60.0" visibleRowCount="31" />
                </children>
             </AnchorPane>
         </content>

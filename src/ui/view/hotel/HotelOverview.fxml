@@ -13,15 +13,14 @@
   <items>
       <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="269.0" prefWidth="188.0">
          <children>
-            <VBox layoutX="1.0" layoutY="149.0" prefHeight="244.0" prefWidth="294.0">
+            <VBox layoutX="1.0" layoutY="149.0" prefHeight="250.0" prefWidth="294.0">
                <children>
                   <Label alignment="CENTER" prefHeight="22.0" prefWidth="306.0" style="-fx-border-color: #000000;" text="酒店管理" />
-                  <Button mnemonicParsing="false" onAction="#gotoHotelBasicInfo" prefHeight="57.0" prefWidth="306.0" text="基本信息管理" />
-                  <Button mnemonicParsing="false" onAction="#gotoHotelRoomManage" prefHeight="60.0" prefWidth="322.0" text="可用客房管理" />
-                  <Button mnemonicParsing="false" onAction="#gotoHotelBrowseOrder" prefHeight="64.0" prefWidth="297.0" text="订单浏览" />
-                  <Button mnemonicParsing="false" onAction="#gotoHotelExecuteOrder" prefHeight="67.0" prefWidth="302.0" text="订单执行" />
-                  <Button mnemonicParsing="false" onAction="#gotoHotelCheckIn" prefHeight="69.0" prefWidth="308.0" text="客户入住" />
-                  <Button mnemonicParsing="false" onAction="#gotoHotelStrategyManage" prefHeight="71.0" prefWidth="299.0" text="销售策略管理" />
+                  <Button mnemonicParsing="false" onAction="#gotoHotelBasicInfo" prefHeight="50.0" prefWidth="306.0" text="基本信息管理" />
+                  <Button mnemonicParsing="false" onAction="#gotoHotelRoomManage" prefHeight="50.0" prefWidth="322.0" text="可用客房管理" />
+                  <Button mnemonicParsing="false" onAction="#gotoHotelBrowseOrder" prefHeight="50.0" prefWidth="297.0" text="订单浏览" />
+                  <Button mnemonicParsing="false" onAction="#gotoHotelCheckIn" prefHeight="50.0" prefWidth="308.0" text="客户入住" />
+                  <Button mnemonicParsing="false" onAction="#gotoHotelStrategyManage" prefHeight="50.0" prefWidth="299.0" text="销售策略管理" />
                </children>
             </VBox>
             <GridPane gridLinesVisible="true" layoutX="2.0" prefHeight="149.0" prefWidth="294.0">

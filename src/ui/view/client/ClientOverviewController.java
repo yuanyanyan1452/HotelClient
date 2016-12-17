@@ -47,12 +47,12 @@ public class ClientOverviewController implements Initializable {
 
 	@FXML
 	private void gotoBrowseHotel() throws RemoteException {
-		main.gotoClientBrowseHotel();
+		main.gotoClientBrowseHotel(currentclientvo);
 	}
 
 	@FXML
 	private void gotoEnrollVIP() throws RemoteException {
-		main.gotoClientEnrollVIP(currentclientvo);
+		main.gotoClientEnrollVIP(currentclientvo,this);
 	}
 
 	@FXML

@@ -46,10 +46,10 @@ public class HotelOverviewController implements Initializable {
 	}
 
 
-	@FXML
-	public void gotoHotelExecuteOrder() {
-		main.gotoHotelExecuteOrder();
-	}
+//	@FXML
+//	public void gotoHotelExecuteOrder() {
+//		main.gotoHotelExecuteOrder();
+//	}
 
 
 	@FXML

@@ -188,7 +188,7 @@ public class Main extends Application {
 	}
 
 	// 客户浏览酒店
-	public void gotoClientBrowseHotel() {
+	public void gotoClientBrowseHotel(ClientVO vo) {
 		try {
 			FXMLLoader fxmlLoader = new FXMLLoader();
 			fxmlLoader.setLocation(Main.class.getResource("client/ClientBrowseHotel.fxml"));
@@ -196,7 +196,7 @@ public class Main extends Application {
 			insidePane.setPrefSize(700, 600);
 			rootLayout.getItems().set(1, insidePane);
 			ClientBrowseHotelController controller = (ClientBrowseHotelController) fxmlLoader.getController();
-			controller.setMain(this);
+			controller.setMain(this,vo);
 			stage.centerOnScreen();
 		} catch (Exception e) {
 			Logger.getLogger(Main.class.getName()).log(Level.SEVERE, null, e);
@@ -254,7 +254,7 @@ public class Main extends Application {
 	}
 
 	// 客户注册会员
-	public void gotoClientEnrollVIP(ClientVO vo) {
+	public void gotoClientEnrollVIP(ClientVO vo,ClientOverviewController overviewcontroller) {
 		try {
 			FXMLLoader fxmlLoader = new FXMLLoader();
 			fxmlLoader.setLocation(Main.class.getResource("client/ClientEnrollVIP.fxml"));
@@ -262,7 +262,7 @@ public class Main extends Application {
 			insidePane.setPrefSize(700, 600);
 			rootLayout.getItems().set(1, insidePane);
 			ClientEnrollVIPController controller = (ClientEnrollVIPController) fxmlLoader.getController();
-			controller.setMain(this,vo);
+			controller.setMain(this,vo,overviewcontroller);
 			stage.centerOnScreen();
 		} catch (Exception e) {
 			Logger.getLogger(Main.class.getName()).log(Level.SEVERE, null, e);
@@ -270,14 +270,14 @@ public class Main extends Application {
 	}
 
 	// 客户评价酒店
-	public void gotoClientEvaluateHotel(int hotelid) {
+	public void gotoClientEvaluateHotel(ClientVO client,HotelVO hotel) {
 		try {
 			FXMLLoader fxmlLoader = new FXMLLoader();
 			fxmlLoader.setLocation(Main.class.getResource("client/ClientEvaluateHotel.fxml"));
 			AnchorPane insidePane = (AnchorPane) fxmlLoader.load();
 
 			ClientEvaluateHotelController controller = (ClientEvaluateHotelController) fxmlLoader.getController();
-			controller.setMain(this,hotelid);
+			controller.setMain(this,client,hotel);
 
 			extraStage = new Stage(StageStyle.UNDECORATED);
 			extraStage.setScene(new Scene(insidePane));
@@ -543,13 +543,12 @@ public class Main extends Application {
 
 	// 关闭弹窗
 	public void closeExtraStage() {
-		if (extraStage.isShowing()) {
-			extraStage.hide();
-		}
-		if (extraStage2.isShowing()) {
+		if (extraStage2!=null&&extraStage2.isShowing()) {
 			extraStage2.hide();
 		}
-	
+		else if (extraStage!=null&&extraStage.isShowing()) {
+			extraStage.hide();
+		}
 	}
 
 	public Stage getPrimaryStage() {

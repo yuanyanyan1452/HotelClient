@@ -9,7 +9,7 @@ public class HotelModel {
 	private final SimpleStringProperty address;
 	private final SimpleStringProperty star;
 	private final SimpleStringProperty score;
-	
+	private final SimpleStringProperty orderstate;
 	public HotelModel(){
 		id = new SimpleStringProperty();
 		hotelName = new SimpleStringProperty();
@@ -17,6 +17,7 @@ public class HotelModel {
 		address = new SimpleStringProperty();
 		star = new SimpleStringProperty();
 		score = new SimpleStringProperty();
+		orderstate = new SimpleStringProperty();
 	}
 	
 	public String getID(){
@@ -92,5 +93,17 @@ public class HotelModel {
 	
 	public void setScore(String score){
 		this.score.set(score);
+	}
+	
+	public String getOrderState(){
+		return orderstate.get();
+	}
+	
+	public void setOrderState(String orderstate){
+		this.orderstate.set(orderstate);
+	}
+	
+	public SimpleStringProperty orderStateProperty(){
+		return orderstate;
 	}
 }
