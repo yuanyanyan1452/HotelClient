@@ -20,7 +20,7 @@
          <content>
             <ScrollPane prefHeight="550.0" prefWidth="700.0">
                <content>
-                  <TableView fx:id="orderTable" editable="true" prefHeight="511.0" prefWidth="936.0">
+                  <TableView fx:id="orderTable" prefHeight="511.0" prefWidth="936.0">
                      <columns>
                         <TableColumn fx:id="idColumn" prefWidth="49.0" text="订单号" />
                         <TableColumn fx:id="hotelColumn" prefWidth="120.0" text="酒店" />

@@ -19,7 +19,7 @@
                            <content>
                               <VBox prefHeight="512.0" prefWidth="882.0">
                                  <children>
-                                    <TableView fx:id="orderTable" editable="true" prefHeight="511.0" prefWidth="900.0">
+                                    <TableView fx:id="orderTable" prefHeight="511.0" prefWidth="900.0">
                                        <columns>
                                           <TableColumn fx:id="idColumn" prefWidth="69.0" text="订单号" />
                                           <TableColumn fx:id="executeColumn" prefWidth="88.0" text="执行情况" />
