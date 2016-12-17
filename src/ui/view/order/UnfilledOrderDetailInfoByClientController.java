@@ -113,7 +113,7 @@ public class UnfilledOrderDetailInfoByClientController implements Initializable 
 		starttimelabel.setText(format.format(currentordervo.getstart_time()));
 		endtimelabel.setText(format.format(currentordervo.getend_time()));
 		ArrayList<RoomOrderVO> roomorderlist=currentordervo.getroom_order();
-		String roomtype=null;
+		String roomtype="";
 		int roomnumber=0;
 		for(int i=0;i<roomorderlist.size();i++){
 			roomtype+=(roomorderlist.get(i).getroom_type()+" ");

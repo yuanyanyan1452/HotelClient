@@ -52,11 +52,11 @@
             <Font name="System Bold" size="12.0" />
          </font>
       </TitledPane>
-      <RadioButton fx:id="cancelButton" layoutX="265.0" layoutY="33.0" mnemonicParsing="false" text="撤销" />
-      <RadioButton fx:id="abnormalButton" layoutX="172.0" layoutY="33.0" mnemonicParsing="false" text="异常" />
-      <RadioButton fx:id="normalButton" layoutX="75.0" layoutY="33.0" mnemonicParsing="false" text="正常" />
-      <RadioButton fx:id="unfilledButton" layoutX="172.0" layoutY="7.0" mnemonicParsing="false" text="未执行" />
-      <RadioButton fx:id="filledButton" layoutX="75.0" layoutY="7.0" mnemonicParsing="false" text="已执行" />
+      <RadioButton fx:id="cancelButton" layoutX="265.0" layoutY="33.0" mnemonicParsing="false" onAction="#update_cancelled" text="撤销" />
+      <RadioButton fx:id="abnormalButton" layoutX="172.0" layoutY="33.0" mnemonicParsing="false" onAction="#update_abnormal" text="异常" />
+      <RadioButton fx:id="normalButton" layoutX="75.0" layoutY="33.0" mnemonicParsing="false" onAction="#update_normal" text="正常" />
+      <RadioButton fx:id="unfilledButton" layoutX="172.0" layoutY="7.0" mnemonicParsing="false" onAction="#update_noexecute" text="未执行" />
+      <RadioButton fx:id="filledButton" layoutX="75.0" layoutY="7.0" mnemonicParsing="false" onAction="#update_execute" text="已执行" />
       <Label layoutX="20.0" layoutY="21.0" text="筛选：" />
    </children>
 </AnchorPane>

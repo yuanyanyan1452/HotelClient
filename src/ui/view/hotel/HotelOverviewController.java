@@ -36,7 +36,7 @@ public class HotelOverviewController implements Initializable {
 
 	@FXML
 	public void gotoHotelBrowseOrder() {
-		main.gotoHotelBrowseOrder();
+		main.gotoHotelBrowseOrder(currenthotelvo.getid());
 	}
 
 

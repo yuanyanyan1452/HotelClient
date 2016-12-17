@@ -1,5 +1,6 @@
 package ui.view;
 
+import java.io.IOException;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
@@ -13,7 +14,9 @@ import javafx.scene.control.SplitPane;
 import javafx.scene.layout.AnchorPane;
 import javafx.stage.Stage;
 import javafx.stage.StageStyle;
+import rmi.RemoteHelper;
 import ui.model.HotelModel;
+import ui.model.OrderModel;
 import ui.view.client.ClientBasicInfoController;
 import ui.view.client.ClientBrowseHotelController;
 import ui.view.client.ClientEnrollVIPController;
@@ -32,9 +35,10 @@ import ui.view.market.MarketOverviewController;
 import ui.view.market.MarketStrategyController;
 import ui.view.order.ClientBrowseOrderController;
 import ui.view.order.ClientGenerateOrderController;
+import ui.view.order.FilledOrderDetailInfoByClientController;
 import ui.view.order.HotelBrowseOrderController;
-import ui.view.order.HotelExecuteOrderController;
 import ui.view.order.MarketBrowseAbnormalOrderController;
+import ui.view.order.UnfilledOrderDetailInfoByClientController;
 import ui.view.user.LoginController;
 import ui.view.user.LoginOverviewController;
 import ui.view.user.RegistController;
@@ -42,6 +46,7 @@ import ui.view.user.UpdatePasswordController;
 import vo.ClientVO;
 import vo.HotelVO;
 import vo.HotelWorkerVO;
+import vo.OrderVO;
 import vo.WebManagerVO;
 import vo.WebMarketVO;
 
@@ -59,6 +64,8 @@ public class Main extends Application {
 	private Scene scene;
 	private final double MINIMUM_WINDOW_WIDTH = 400.0;
 	private final double MINIMUM_WINDOW_HEIGHT = 250.0;
+	
+	RemoteHelper helper=RemoteHelper.getInstance();
 
 	/*
 	 * an observable list of hotels.
@@ -211,6 +218,40 @@ public class Main extends Application {
 			Logger.getLogger(Main.class.getName()).log(Level.SEVERE, null, e);
 		}
 	}
+	
+	//客户查看执行了的订单
+	public void gotoClientExecuteOrder(OrderModel order) throws NumberFormatException, IOException{
+		FXMLLoader fxmlLoader = new FXMLLoader();
+		fxmlLoader.setLocation(Main.class.getResource("order/FilledOrderDetailInfoByClient.fxml"));
+		AnchorPane insidePane = (AnchorPane) fxmlLoader.load();
+
+		FilledOrderDetailInfoByClientController controller = (FilledOrderDetailInfoByClientController) fxmlLoader.getController();
+		OrderVO ordervo=helper.getOrderBLService().order_findbyid(Integer.parseInt(order.getOrderid()));
+		controller.setMain(this,ordervo);
+
+		extraStage = new Stage(StageStyle.UNDECORATED);
+		extraStage.setScene(new Scene(insidePane));
+		extraStage.setAlwaysOnTop(true);
+		extraStage.centerOnScreen();
+		extraStage.show();
+	}
+	
+	//客户查看未执行订单
+	public void gotoClientNoExecuteOrder(OrderModel order) throws NumberFormatException, IOException{
+		FXMLLoader fxmlLoader = new FXMLLoader();
+		fxmlLoader.setLocation(Main.class.getResource("order/UnfilledOrderDetailInfoByClient.fxml"));
+		AnchorPane insidePane = (AnchorPane) fxmlLoader.load();
+
+		UnfilledOrderDetailInfoByClientController controller = (UnfilledOrderDetailInfoByClientController) fxmlLoader.getController();
+		OrderVO ordervo=helper.getOrderBLService().order_findbyid(Integer.parseInt(order.getOrderid()));
+		controller.setMain(this,ordervo);
+
+		extraStage = new Stage(StageStyle.UNDECORATED);
+		extraStage.setScene(new Scene(insidePane));
+		extraStage.setAlwaysOnTop(true);
+		extraStage.centerOnScreen();
+		extraStage.show();
+	}
 
 	// 客户注册会员
 	public void gotoClientEnrollVIP(ClientVO vo) {
@@ -352,7 +393,7 @@ public class Main extends Application {
 	}
 
 	// 酒店订单浏览
-	public void gotoHotelBrowseOrder() {
+	public void gotoHotelBrowseOrder(int hotelid) {
 		try {
 			FXMLLoader fxmlLoader = new FXMLLoader();
 			fxmlLoader.setLocation(Main.class.getResource("order/HotelBrowseOrder.fxml"));
@@ -360,26 +401,26 @@ public class Main extends Application {
 			insidePane.setPrefSize(700, 600);
 			rootLayout.getItems().set(1, insidePane);
 			HotelBrowseOrderController controller = (HotelBrowseOrderController) fxmlLoader.getController();
-			controller.setMain(this);
+			controller.setMain(this,hotelid);
 		} catch (Exception e) {
 			Logger.getLogger(Main.class.getName()).log(Level.SEVERE, null, e);
 		}
 	}
 
 	// 酒店订单执行
-	public void gotoHotelExecuteOrder() {
-		try {
-			FXMLLoader fxmlLoader = new FXMLLoader();
-			fxmlLoader.setLocation(Main.class.getResource("order/HotelExecuteOrder.fxml"));
-			AnchorPane insidePane = (AnchorPane) fxmlLoader.load();
-			insidePane.setPrefSize(700, 600);
-			rootLayout.getItems().set(1, insidePane);
-			HotelExecuteOrderController controller = (HotelExecuteOrderController) fxmlLoader.getController();
-			controller.setMain(this);
-		} catch (Exception e) {
-			Logger.getLogger(Main.class.getName()).log(Level.SEVERE, null, e);
-		}
-	}
+//	public void gotoHotelExecuteOrder() {
+//		try {
+//			FXMLLoader fxmlLoader = new FXMLLoader();
+//			fxmlLoader.setLocation(Main.class.getResource("order/HotelExecuteOrder.fxml"));
+//			AnchorPane insidePane = (AnchorPane) fxmlLoader.load();
+//			insidePane.setPrefSize(700, 600);
+//			rootLayout.getItems().set(1, insidePane);
+//			HotelExecuteOrderController controller = (HotelExecuteOrderController) fxmlLoader.getController();
+//			controller.setMain(this);
+//		} catch (Exception e) {
+//			Logger.getLogger(Main.class.getName()).log(Level.SEVERE, null, e);
+//		}
+//	}
 
 	// 酒店房间信息更新
 	public void gotoHotelCheckIn() {

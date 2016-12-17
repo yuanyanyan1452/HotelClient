@@ -1,5 +1,6 @@
 package ui.view.order;
 
+import java.io.IOException;
 import java.net.URL;
 import java.rmi.RemoteException;
 import java.util.ArrayList;
@@ -10,9 +11,13 @@ import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.RadioButton;
+import javafx.scene.control.TableCell;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.scene.control.ToggleGroup;
+import javafx.scene.control.cell.TextFieldTableCell;
+import javafx.scene.input.MouseEvent;
+import javafx.util.Callback;
 import rmi.RemoteHelper;
 import ui.model.OrderModel;
 import ui.view.Main;
@@ -22,9 +27,12 @@ import vo.RoomOrderVO;
 public class ClientBrowseOrderController implements Initializable{
 	private Main main;
 	
+	
 	private ObservableList<OrderModel> orderlist=FXCollections.observableArrayList();
 	
 	private ObservableList<OrderModel> mostorderlist=FXCollections.observableArrayList();
+	
+	private OrderVO currentordervo;
 	
 	RemoteHelper helper=RemoteHelper.getInstance();
 	@FXML
@@ -83,10 +91,10 @@ public class ClientBrowseOrderController implements Initializable{
 		orderlist.clear();
 		orderlist=changeOrderlist(mostorderlist, "正常");
 		if(filledButton.isSelected()){
-			orderlist=changeOrderlist(mostorderlist,"是");
+			orderlist=changeOrderlist(orderlist,"是");
 		}
 		else if(unfilledButton.isSelected()){
-			orderlist=changeOrderlist(mostorderlist,"否");
+			orderlist=changeOrderlist(orderlist,"否");
 		}
 		this.show(orderlist);
 	}
@@ -96,10 +104,10 @@ public class ClientBrowseOrderController implements Initializable{
 		orderlist.clear();
 		orderlist=changeOrderlist(mostorderlist, "异常");
 		if(filledButton.isSelected()){
-			orderlist=changeOrderlist(mostorderlist,"是");
+			orderlist=changeOrderlist(orderlist,"是");
 		}
 		else if(unfilledButton.isSelected()){
-			orderlist=changeOrderlist(mostorderlist,"否");
+			orderlist=changeOrderlist(orderlist,"否");
 		}
 		this.show(orderlist);
 	}
@@ -109,10 +117,10 @@ public class ClientBrowseOrderController implements Initializable{
 		orderlist.clear();
 		orderlist=changeOrderlist(mostorderlist, "撤销");
 		if(filledButton.isSelected()){
-			orderlist=changeOrderlist(mostorderlist,"是");
+			orderlist=changeOrderlist(orderlist,"是");
 		}
 		else if(unfilledButton.isSelected()){
-			orderlist=changeOrderlist(mostorderlist,"否");
+			orderlist=changeOrderlist(orderlist,"否");
 		}
 		this.show(orderlist);
 	}
@@ -160,8 +168,32 @@ public class ClientBrowseOrderController implements Initializable{
 		return neworderlist;
 	}
 	
+//	public void gotodetailorder(OrderModel order){
+//		if(order.getIsExecute().equals("是")){
+//		try {
+//			main.gotoClientExecuteOrder(order);
+//		} catch (NumberFormatException e) {
+//			// TODO Auto-generated catch block
+//			e.printStackTrace();
+//		} catch (IOException e) {
+//			// TODO Auto-generated catch block
+//			e.printStackTrace();
+//		}
+//		}
+//		else{
+//			try {
+//				main.gotoClientNoExecuteOrder(order);
+//			} catch (NumberFormatException e) {
+//				// TODO Auto-generated catch block
+//				e.printStackTrace();
+//			} catch (IOException e) {
+//				// TODO Auto-generated catch block
+//				e.printStackTrace();
+//			}
+//		}
+//	}
+	
 	public void show(ObservableList<OrderModel> orderlist){
-		//没实现根据条件选择
 		
 		idColumn.setCellValueFactory(celldata -> celldata.getValue().orderidProperty());
 		hotelColumn.setCellValueFactory(celldata -> celldata.getValue().hotelnameProperty());
@@ -174,6 +206,338 @@ public class ClientBrowseOrderController implements Initializable{
 		priceColumn.setCellValueFactory(celldata -> celldata.getValue().priceProperty());
 		numberColumn.setCellValueFactory(celldata -> celldata.getValue().numOfPeopleProperty());
 		hasChildColumn.setCellValueFactory(celldata -> celldata.getValue().haveChildProperty());
+		idColumn.setCellFactory(new Callback<TableColumn<OrderModel, String>, TableCell<OrderModel, String>>() {
+			@Override
+			public TableCell<OrderModel, String> call(TableColumn<OrderModel, String> param) {
+				TextFieldTableCell<OrderModel, String> cell = new TextFieldTableCell<>();
+				cell.setOnMouseClicked((MouseEvent t) -> {
+					if (t.getClickCount() == 2) {
+						OrderModel order=orderlist.get(cell.getIndex());
+						if(order.getIsExecute().equals("是")){
+							try {
+								main.gotoClientExecuteOrder(order);
+				
+							} catch (NumberFormatException e) {
+								e.printStackTrace();
+							} catch (IOException e) {
+								e.printStackTrace();
+							}
+							}
+							else{
+								try {
+									main.gotoClientNoExecuteOrder(order);
+								} catch (NumberFormatException e) {
+									e.printStackTrace();
+								} catch (IOException e) {
+									e.printStackTrace();
+								}
+							}
+					}
+				});
+				return cell;
+			}
+		});
+		
+		hotelColumn.setCellFactory(new Callback<TableColumn<OrderModel, String>, TableCell<OrderModel, String>>() {
+			@Override
+			public TableCell<OrderModel, String> call(TableColumn<OrderModel, String> param) {
+				TextFieldTableCell<OrderModel, String> cell = new TextFieldTableCell<>();
+				cell.setOnMouseClicked((MouseEvent t) -> {
+					if (t.getClickCount() == 2) {
+						OrderModel order=orderlist.get(cell.getIndex());
+						if(order.getIsExecute().equals("是")){
+							try {
+								main.gotoClientExecuteOrder(order);
+							} catch (NumberFormatException e) {
+								e.printStackTrace();
+							} catch (IOException e) {
+								e.printStackTrace();
+							}
+							}
+							else{
+								try {
+									main.gotoClientNoExecuteOrder(order);
+								} catch (NumberFormatException e) {
+									e.printStackTrace();
+								} catch (IOException e) {
+									e.printStackTrace();
+								}
+							}					}
+				});
+				return cell;
+			}
+		});
+		
+		executeColumn.setCellFactory(new Callback<TableColumn<OrderModel, String>, TableCell<OrderModel, String>>() {
+			@Override
+			public TableCell<OrderModel, String> call(TableColumn<OrderModel, String> param) {
+				TextFieldTableCell<OrderModel, String> cell = new TextFieldTableCell<>();
+				cell.setOnMouseClicked((MouseEvent t) -> {
+					if (t.getClickCount() == 2) {
+						OrderModel order=orderlist.get(cell.getIndex());
+						if(order.getIsExecute().equals("是")){
+							try {
+								main.gotoClientExecuteOrder(order);
+							} catch (NumberFormatException e) {
+								e.printStackTrace();
+							} catch (IOException e) {
+								e.printStackTrace();
+							}
+							}
+							else{
+								try {
+									main.gotoClientNoExecuteOrder(order);
+								} catch (NumberFormatException e) {
+									e.printStackTrace();
+								} catch (IOException e) {
+									e.printStackTrace();
+								}
+							}					}
+				});
+				return cell;
+			}
+		});
+		
+		stateColumn.setCellFactory(new Callback<TableColumn<OrderModel, String>, TableCell<OrderModel, String>>() {
+			@Override
+			public TableCell<OrderModel, String> call(TableColumn<OrderModel, String> param) {
+				TextFieldTableCell<OrderModel, String> cell = new TextFieldTableCell<>();
+				cell.setOnMouseClicked((MouseEvent t) -> {
+					if (t.getClickCount() == 2) {
+						OrderModel order=orderlist.get(cell.getIndex());
+						if(order.getIsExecute().equals("是")){
+							try {
+								main.gotoClientExecuteOrder(order);
+							} catch (NumberFormatException e) {
+								e.printStackTrace();
+							} catch (IOException e) {
+								e.printStackTrace();
+							}
+							}
+							else{
+								try {
+									main.gotoClientNoExecuteOrder(order);
+								} catch (NumberFormatException e) {
+									e.printStackTrace();
+								} catch (IOException e) {
+									e.printStackTrace();
+								}
+							}					}
+				});
+				return cell;
+			}
+		});
+		
+		startTimeColumn.setCellFactory(new Callback<TableColumn<OrderModel, String>, TableCell<OrderModel, String>>() {
+			@Override
+			public TableCell<OrderModel, String> call(TableColumn<OrderModel, String> param) {
+				TextFieldTableCell<OrderModel, String> cell = new TextFieldTableCell<>();
+				cell.setOnMouseClicked((MouseEvent t) -> {
+					if (t.getClickCount() == 2) {
+						OrderModel order=orderlist.get(cell.getIndex());
+						if(order.getIsExecute().equals("是")){
+							try {
+								main.gotoClientExecuteOrder(order);
+							} catch (NumberFormatException e) {
+								e.printStackTrace();
+							} catch (IOException e) {
+								e.printStackTrace();
+							}
+							}
+							else{
+								try {
+									main.gotoClientNoExecuteOrder(order);
+								} catch (NumberFormatException e) {
+									e.printStackTrace();
+								} catch (IOException e) {
+									e.printStackTrace();
+								}
+							}					}
+				});
+				return cell;
+			}
+		});
+		
+		endTimeColumn.setCellFactory(new Callback<TableColumn<OrderModel, String>, TableCell<OrderModel, String>>() {
+			@Override
+			public TableCell<OrderModel, String> call(TableColumn<OrderModel, String> param) {
+				TextFieldTableCell<OrderModel, String> cell = new TextFieldTableCell<>();
+				cell.setOnMouseClicked((MouseEvent t) -> {
+					if (t.getClickCount() == 2) {
+						OrderModel order=orderlist.get(cell.getIndex());
+						if(order.getIsExecute().equals("是")){
+							try {
+								main.gotoClientExecuteOrder(order);
+							} catch (NumberFormatException e) {
+								e.printStackTrace();
+							} catch (IOException e) {
+								e.printStackTrace();
+							}
+							}
+							else{
+								try {
+									main.gotoClientNoExecuteOrder(order);
+								} catch (NumberFormatException e) {
+									e.printStackTrace();
+								} catch (IOException e) {
+									e.printStackTrace();
+								}
+							}					}
+				});
+				return cell;
+			}
+		});
+		
+		roomTypeColumn.setCellFactory(new Callback<TableColumn<OrderModel, String>, TableCell<OrderModel, String>>() {
+			@Override
+			public TableCell<OrderModel, String> call(TableColumn<OrderModel, String> param) {
+				TextFieldTableCell<OrderModel, String> cell = new TextFieldTableCell<>();
+				cell.setOnMouseClicked((MouseEvent t) -> {
+					if (t.getClickCount() == 2) {
+						OrderModel order=orderlist.get(cell.getIndex());
+						if(order.getIsExecute().equals("是")){
+							try {
+								main.gotoClientExecuteOrder(order);
+							} catch (NumberFormatException e) {
+								e.printStackTrace();
+							} catch (IOException e) {
+								e.printStackTrace();
+							}
+							}
+							else{
+								try {
+									main.gotoClientNoExecuteOrder(order);
+								} catch (NumberFormatException e) {
+									e.printStackTrace();
+								} catch (IOException e) {
+									e.printStackTrace();
+								}
+							}					}
+				});
+				return cell;
+			}
+		});
+		
+		roomAmountColumn.setCellFactory(new Callback<TableColumn<OrderModel, String>, TableCell<OrderModel, String>>() {
+			@Override
+			public TableCell<OrderModel, String> call(TableColumn<OrderModel, String> param) {
+				TextFieldTableCell<OrderModel, String> cell = new TextFieldTableCell<>();
+				cell.setOnMouseClicked((MouseEvent t) -> {
+					if (t.getClickCount() == 2) {
+						OrderModel order=orderlist.get(cell.getIndex());
+						if(order.getIsExecute().equals("是")){
+							try {
+								main.gotoClientExecuteOrder(order);
+							} catch (NumberFormatException e) {
+								e.printStackTrace();
+							} catch (IOException e) {
+								e.printStackTrace();
+							}
+							}
+							else{
+								try {
+									main.gotoClientNoExecuteOrder(order);
+								} catch (NumberFormatException e) {
+									e.printStackTrace();
+								} catch (IOException e) {
+									e.printStackTrace();
+								}
+							}					}
+				});
+				return cell;
+			}
+		});
+		
+		priceColumn.setCellFactory(new Callback<TableColumn<OrderModel, String>, TableCell<OrderModel, String>>() {
+			@Override
+			public TableCell<OrderModel, String> call(TableColumn<OrderModel, String> param) {
+				TextFieldTableCell<OrderModel, String> cell = new TextFieldTableCell<>();
+				cell.setOnMouseClicked((MouseEvent t) -> {
+					if (t.getClickCount() == 2) {
+						OrderModel order=orderlist.get(cell.getIndex());
+						if(order.getIsExecute().equals("是")){
+							try {
+								main.gotoClientExecuteOrder(order);
+							} catch (NumberFormatException e) {
+								e.printStackTrace();
+							} catch (IOException e) {
+								e.printStackTrace();
+							}
+							}
+							else{
+								try {
+									main.gotoClientNoExecuteOrder(order);
+								} catch (NumberFormatException e) {
+									e.printStackTrace();
+								} catch (IOException e) {
+									e.printStackTrace();
+								}
+							}					}
+				});
+				return cell;
+			}
+		});
+		
+		numberColumn.setCellFactory(new Callback<TableColumn<OrderModel, String>, TableCell<OrderModel, String>>() {
+			@Override
+			public TableCell<OrderModel, String> call(TableColumn<OrderModel, String> param) {
+				TextFieldTableCell<OrderModel, String> cell = new TextFieldTableCell<>();
+				cell.setOnMouseClicked((MouseEvent t) -> {
+					if (t.getClickCount() == 2) {
+						OrderModel order=orderlist.get(cell.getIndex());
+						if(order.getIsExecute().equals("是")){
+							try {
+								main.gotoClientExecuteOrder(order);
+							} catch (NumberFormatException e) {
+								e.printStackTrace();
+							} catch (IOException e) {
+								e.printStackTrace();
+							}
+							}
+							else{
+								try {
+									main.gotoClientNoExecuteOrder(order);
+								} catch (NumberFormatException e) {
+									e.printStackTrace();
+								} catch (IOException e) {
+									e.printStackTrace();
+								}
+							}					}
+				});
+				return cell;
+			}
+		});
+		
+		hasChildColumn.setCellFactory(new Callback<TableColumn<OrderModel, String>, TableCell<OrderModel, String>>() {
+			@Override
+			public TableCell<OrderModel, String> call(TableColumn<OrderModel, String> param) {
+				TextFieldTableCell<OrderModel, String> cell = new TextFieldTableCell<>();
+				cell.setOnMouseClicked((MouseEvent t) -> {
+					if (t.getClickCount() == 2) {
+						OrderModel order=orderlist.get(cell.getIndex());
+						if(order.getIsExecute().equals("是")){
+							try {
+								main.gotoClientExecuteOrder(order);
+							} catch (NumberFormatException e) {
+								e.printStackTrace();
+							} catch (IOException e) {
+								e.printStackTrace();
+							}
+							}
+							else{
+								try {
+									main.gotoClientNoExecuteOrder(order);
+								} catch (NumberFormatException e) {
+									e.printStackTrace();
+								} catch (IOException e) {
+									e.printStackTrace();
+								}
+							}					}
+				});
+				return cell;
+			}
+		});
+		
 		
 		orderTable.setItems(orderlist);
 	}
@@ -207,6 +571,7 @@ public class ClientBrowseOrderController implements Initializable{
 			model.setIsExecute(ordervo.getexecute());
 			model.setState(ordervo.getstate());
 			model.setStartTime(ordervo.getstart_time());
+			model.setEndTime(ordervo.getend_time());
 			ArrayList<RoomOrderVO> roomorderlist=ordervo.getroom_order();
 			String roomtype="";
 			int roomnumber=0;
