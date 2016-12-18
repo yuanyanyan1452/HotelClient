@@ -51,13 +51,13 @@ public class ManagerOverviewController implements Initializable {
 			timeLabel.setText(format.format(Calendar.getInstance().getTime()));
 
 			// 实时更新统计数据
-			clientNumLabel.setText(String.valueOf(clientList.size()));
-			hotelNumLabel.setText(String.valueOf(hotelList.size()));
-			 try {
-				orderNumLabel.setText(String.valueOf(remoteHelper.getManageBLService().getordernumber()));
-			} catch (RemoteException e) {
-				e.printStackTrace();
-			}
+//			clientNumLabel.setText(String.valueOf(clientList.size()));
+//			hotelNumLabel.setText(String.valueOf(hotelList.size()));
+//			 try {
+//				orderNumLabel.setText(String.valueOf(remoteHelper.getManageBLService().getordernumber()));
+//			} catch (RemoteException e) {
+//				e.printStackTrace();
+//			}
 		}
 
 	}
@@ -218,8 +218,6 @@ public class ManagerOverviewController implements Initializable {
 	@FXML
 	private TextField updateHotelStarTextField;
 
-	@FXML
-	private TextField updateHotelScoreTextField;
 
 	@FXML
 	private TableView<HotelWorkerModel> hotelWorkerTable;
@@ -390,7 +388,7 @@ public class ManagerOverviewController implements Initializable {
 		}
 		// 添加表格项
 		HotelModel model = new HotelModel();
-		model.setID(hotelList.size() + 1);
+		model.setID(Integer.parseInt(hotelList.get(hotelList.size()-1).getID())+1);
 		model.setHotelName(vo.getname());
 		model.setAddress(vo.getaddress());
 		model.setBusinessAddress(vo.getbussiness_address());
@@ -413,7 +411,6 @@ public class ManagerOverviewController implements Initializable {
 				updateHotelBusinessAddressTextField.setText(model.getBusinessAddress());
 				updateHotelAddressTextField.setText(model.getAddress());
 				updateHotelStarTextField.setText(model.getStar());
-				updateHotelScoreTextField.setText(model.getScore());
 				isSuccess = true;
 			}
 		}
@@ -422,7 +419,6 @@ public class ManagerOverviewController implements Initializable {
 			updateHotelBusinessAddressTextField.setText("");
 			updateHotelAddressTextField.setText("");
 			updateHotelStarTextField.setText("");
-			updateHotelScoreTextField.setText("");
 			AlertUtil.showWarningAlert("不存在该酒店！");
 		}
 	}
@@ -446,7 +442,6 @@ public class ManagerOverviewController implements Initializable {
 			vo.setbussiness_address(updateHotelBusinessAddressTextField.getText());
 			vo.setaddress(updateHotelAddressTextField.getText());
 			vo.setstar(updateHotelStarTextField.getText());
-			vo.setscore(updateHotelScoreTextField.getText());
 			//TODO
 			ResultMessage message = helper.getHotelBLService().hotel_updateInfo(vo);
 			if (message == ResultMessage.Fail) {
@@ -465,7 +460,6 @@ public class ManagerOverviewController implements Initializable {
 				hotelList.get(index).setAddress(updateHotelAddressTextField.getText());
 				hotelList.get(index).setBusinessAddress(updateHotelBusinessAddressTextField.getText());
 				hotelList.get(index).setStar(updateHotelStarTextField.getText());
-				hotelList.get(index).setScore(updateHotelScoreTextField.getText());
 				isSuccess = true;
 				break;
 			}
@@ -768,7 +762,6 @@ public class ManagerOverviewController implements Initializable {
 		hotelBusinessAddressColumn.setCellValueFactory(celldata -> celldata.getValue().businessAddressProperty());
 		hotelAddressColumn.setCellValueFactory(celldata -> celldata.getValue().addressProperty());
 		hotelStarColumn.setCellValueFactory(celldata -> celldata.getValue().starProperty());
-		hotelScoreColumn.setCellValueFactory(celldata -> celldata.getValue().scoreProperty());
 
 		hotelTable.setItems(hotelList);
 	}
