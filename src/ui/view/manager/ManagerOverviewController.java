@@ -53,7 +53,6 @@ public class ManagerOverviewController implements Initializable {
 			// 实时更新统计数据
 			clientNumLabel.setText(String.valueOf(clientList.size()));
 			hotelNumLabel.setText(String.valueOf(hotelList.size()));
-			//TODO
 			 try {
 				orderNumLabel.setText(String.valueOf(remoteHelper.getManageBLService().getordernumber()));
 			} catch (RemoteException e) {

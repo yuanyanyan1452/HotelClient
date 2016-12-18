@@ -2,12 +2,20 @@ package ui.view.client;
 
 import java.net.URL;
 import java.rmi.RemoteException;
+import java.text.DateFormat;
+import java.text.SimpleDateFormat;
+import java.time.LocalDate;
+import java.time.format.DateTimeFormatter;
+import java.util.Date;
 import java.util.ResourceBundle;
-
+import javafx.event.ActionEvent;
+import javafx.event.EventHandler;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.Alert;
 import javafx.scene.control.Alert.AlertType;
+import javafx.scene.control.DatePicker;
+import javafx.scene.control.Label;
 import javafx.scene.control.RadioButton;
 import javafx.scene.control.TextField;
 import javafx.scene.control.ToggleGroup;
@@ -15,12 +23,14 @@ import objects.ResultMessage;
 import objects.VIPInfo;
 import objects.VIPInfo.VIPType;
 import rmi.RemoteHelper;
+import ui.util.AlertUtil;
 import ui.view.Main;
 import vo.ClientVO;
 
 public class ClientEnrollVIPController implements Initializable {
 	private Main main;
 	private ClientVO currentclientvo;
+	private ClientOverviewController controller;
 	RemoteHelper helper= RemoteHelper.getInstance();
 	@FXML
 	private RadioButton normalButton;
@@ -29,27 +39,28 @@ public class ClientEnrollVIPController implements Initializable {
 	private RadioButton companyButton;
 	
 	@FXML
-	private TextField infoTextField;
+	private Label typeLabel;
 	
 	@FXML
-	private void close(){
-		main.closeExtraStage();
-	}
+	private DatePicker birthday;
+	
+	@FXML
+	private TextField infoTextField;
+	
 	
 	@FXML
 	private void enroll() throws RemoteException{
-		if(currentclientvo.getvipinfo().getInfo()!=null){
-			Alert alert = new Alert(AlertType.ERROR);
-			alert.setTitle("null");
-			alert.setHeaderText("null");
-			alert.setContentText("对不起，您已经是会员了");
-			alert.showAndWait();
+		if(currentclientvo.getvipinfo()!=null){
+			AlertUtil.showErrorAlert("您已经是会员啦！");
 		}
 		else{
 			VIPInfo info=new VIPInfo();
 			if(normalButton.isSelected()){
 				info.setType(VIPType.NORMAL);
-				info.setInfo("一级会员"+","+infoTextField.getText());
+				LocalDate date = birthday.getValue();
+				DateTimeFormatter formatter = DateTimeFormatter.ofPattern("MM-dd");
+				String birth = formatter.format(date);
+				info.setInfo("一级会员"+","+birth);
 			}
 			else{
 				info.setType(VIPType.Enterprise);
@@ -58,25 +69,13 @@ public class ClientEnrollVIPController implements Initializable {
 			currentclientvo.setvipinfo(info);
 			ResultMessage result=helper.getClientBLService().client_enrollVIP(info,currentclientvo.getclientid());
 			if(result==ResultMessage.Success){
-				Alert alert = new Alert(AlertType.INFORMATION);
-				alert.setTitle(null);
-				alert.setHeaderText(null);
-				alert.setContentText("注册会员成功");
-				alert.showAndWait();
+				controller.updateVO(currentclientvo);
+				AlertUtil.showInformationAlert("恭喜您成为我们的会员<(￣︶￣)>");
 			}
 			else{
-				Alert alert = new Alert(AlertType.ERROR);
-				alert.setTitle("null");
-				alert.setHeaderText("null");
-				alert.setContentText("对不起，注册会员失败");
-				alert.showAndWait();
+				AlertUtil.showErrorAlert("注册会员失败(°ー°〃)");
 			}
 		}
-	}
-	
-	@FXML
-	private void initialize(){
-		
 	}
 	
 	public ClientEnrollVIPController() {
@@ -88,11 +87,33 @@ public class ClientEnrollVIPController implements Initializable {
 		
 	}
 	
-	public void setMain(Main main,ClientVO vo){
+	public void setMain(Main main,ClientVO vo,ClientOverviewController controller){
+		this.controller = controller;
 		this.main = main;
+		birthday.setVisible(false);
+		infoTextField.setVisible(false);
 		final ToggleGroup group = new ToggleGroup();
 		normalButton.setToggleGroup(group);
 		companyButton.setToggleGroup(group);
 		currentclientvo=vo;
+		
+		normalButton.setOnAction(new EventHandler<ActionEvent>() {
+			
+			@Override
+			public void handle(ActionEvent event) {
+				typeLabel.setText("生日");
+				birthday.setVisible(true);
+				infoTextField.setVisible(false);
+			}
+		});
+		companyButton.setOnAction(new EventHandler<ActionEvent>() {
+
+			@Override
+			public void handle(ActionEvent event) {
+				typeLabel.setText("所属企业");
+				birthday.setVisible(false);
+				infoTextField.setVisible(true);
+			}
+		});
 	}
 }

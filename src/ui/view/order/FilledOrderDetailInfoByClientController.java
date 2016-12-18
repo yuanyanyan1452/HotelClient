@@ -70,7 +70,11 @@ public class FilledOrderDetailInfoByClientController implements Initializable {
 	
 	@FXML
 	public void evaluate(){
-		main.gotoClientEvaluateHotel(currentordervo.gethotelid());
+		try {
+			main.gotoClientEvaluateHotel(helper.getClientBLService().client_checkInfo(currentordervo.getclientid()),helper.getHotelBLService().hotel_checkInfo(currentordervo.gethotelid()));
+		} catch (RemoteException e) {
+			e.printStackTrace();
+		}
 	}
 	
 	public FilledOrderDetailInfoByClientController() {
