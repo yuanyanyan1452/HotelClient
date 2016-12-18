@@ -62,7 +62,7 @@ public class ClientOverviewController implements Initializable {
 
 	@FXML
 	private void gotoSearchHotel() throws RemoteException {
-		main.gotoClientSearchHotel();
+		main.gotoClientSearchHotel(currentclientvo);
 	}
 
 
