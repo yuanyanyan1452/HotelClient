@@ -53,7 +53,7 @@ public class ClientEvaluateHotelController implements Initializable{
 		} catch (RemoteException e) {
 			e.printStackTrace();
 		}
-		
+		main.closeExtraStage();
 		AlertUtil.showInformationAlert("评价成功！");
 	}
 	
