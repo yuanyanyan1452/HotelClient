@@ -106,4 +106,5 @@ public class HotelModel {
 	public SimpleStringProperty orderStateProperty(){
 		return orderstate;
 	}
+	
 }

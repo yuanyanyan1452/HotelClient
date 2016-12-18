@@ -26,10 +26,13 @@ import ui.model.OrderModel;
 import ui.model.RoomModel;
 import ui.util.AlertUtil;
 import ui.view.Main;
+import vo.ClientVO;
+import vo.HotelVO;
 
 public class HotelDetailInfoController implements Initializable {
 	private Main main;
-	private HotelModel hotel;
+	private ClientVO currentClient;
+	private HotelVO currentHotel;
 
 	@FXML
 	private Button button1;
@@ -111,7 +114,7 @@ public class HotelDetailInfoController implements Initializable {
 
 	@FXML
 	private void generateOrder() {
-		main.gotoGenerateOrder(hotel);
+		main.gotoGenerateOrder(currentHotel,currentClient);
 	}
 
 	public HotelDetailInfoController() {
@@ -123,15 +126,17 @@ public class HotelDetailInfoController implements Initializable {
 
 	}
 
-	public void setMain(Main main, HotelModel hotel) {
+	public void setMain(Main main, HotelVO hotel) {
 		this.main = main;
-		this.hotel = hotel;
+		this.currentHotel = hotel;
 
-		hotelnameLabel.setText(hotel.getHotelName());
-		businessaddressLabel.setText(hotel.getBusinessAddress());
-		addressLabel.setText(hotel.getAddress());
-		starLabel.setText(hotel.getStar());
-		scoreLabel.setText(hotel.getScore());
+		hotelnameLabel.setText(hotel.getname());
+		businessaddressLabel.setText(hotel.getbussiness_address());
+		addressLabel.setText(hotel.getaddress());
+		starLabel.setText(hotel.getstar());
+		scoreLabel.setText(hotel.getscore());
+		introductionLabel.setText(hotel.getintroduction());
+		serviceLabel.setText(hotel.getservice());
 		// introductionLabel.setText(hotel.get);
 
 		// 每个月日期不同的现实问题需解决

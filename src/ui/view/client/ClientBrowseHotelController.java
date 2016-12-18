@@ -67,6 +67,7 @@ public class ClientBrowseHotelController implements Initializable{
 			ArrayList<HotelVO> vos = helper.getClientBLService().client_getpreviousHotelList(currentClient.getclientid());
 			for(HotelVO vo : vos){
 				HotelModel model = new HotelModel();
+				model.setID(vo.getid());
 				model.setHotelName(vo.getname());
 				model.setBusinessAddress(vo.getbussiness_address());
 				model.setAddress(vo.getaddress());
@@ -90,7 +91,11 @@ public class ClientBrowseHotelController implements Initializable{
 				TextFieldTableCell<HotelModel, String> cell = new TextFieldTableCell<>();
 				cell.setOnMouseClicked((MouseEvent t) -> {
 					if (t.getClickCount() == 2) {
-						main.gotoHotelDetailInfo(models.get(cell.getIndex()));
+						try {
+							main.gotoHotelDetailInfo(helper.getHotelBLService().hotel_checkInfo(Integer.parseInt(models.get(cell.getIndex()).getID())));
+						} catch (Exception e) {
+							e.printStackTrace();
+						}
 					}
 				});
 				return cell;
@@ -104,7 +109,11 @@ public class ClientBrowseHotelController implements Initializable{
 				TextFieldTableCell<HotelModel, String> cell = new TextFieldTableCell<>();
 				cell.setOnMouseClicked((MouseEvent t) -> {
 					if (t.getClickCount() == 2) {
-						main.gotoHotelDetailInfo(models.get(cell.getIndex()));
+						try {
+							main.gotoHotelDetailInfo(helper.getHotelBLService().hotel_checkInfo(Integer.parseInt(models.get(cell.getIndex()).getID())));
+						} catch (Exception e) {
+							e.printStackTrace();
+						}
 					}
 				});
 				return cell;
@@ -118,7 +127,11 @@ public class ClientBrowseHotelController implements Initializable{
 				TextFieldTableCell<HotelModel, String> cell = new TextFieldTableCell<>();
 				cell.setOnMouseClicked((MouseEvent t) -> {
 					if (t.getClickCount() == 2) {
-						main.gotoHotelDetailInfo(models.get(cell.getIndex()));
+						try {
+							main.gotoHotelDetailInfo(helper.getHotelBLService().hotel_checkInfo(Integer.parseInt(models.get(cell.getIndex()).getID())));
+						} catch (Exception e) {
+							e.printStackTrace();
+						}
 					}
 				});
 				return cell;
@@ -132,7 +145,11 @@ public class ClientBrowseHotelController implements Initializable{
 				TextFieldTableCell<HotelModel, String> cell = new TextFieldTableCell<>();
 				cell.setOnMouseClicked((MouseEvent t) -> {
 					if (t.getClickCount() == 2) {
-						main.gotoHotelDetailInfo(models.get(cell.getIndex()));
+						try {
+							main.gotoHotelDetailInfo(helper.getHotelBLService().hotel_checkInfo(Integer.parseInt(models.get(cell.getIndex()).getID())));
+						} catch (Exception e) {
+							e.printStackTrace();
+						}
 					}
 				});
 				return cell;
@@ -146,7 +163,11 @@ public class ClientBrowseHotelController implements Initializable{
 				TextFieldTableCell<HotelModel, String> cell = new TextFieldTableCell<>();
 				cell.setOnMouseClicked((MouseEvent t) -> {
 					if (t.getClickCount() == 2) {
-						main.gotoHotelDetailInfo(models.get(cell.getIndex()));
+						try {
+							main.gotoHotelDetailInfo(helper.getHotelBLService().hotel_checkInfo(Integer.parseInt(models.get(cell.getIndex()).getID())));
+						} catch (Exception e) {
+							e.printStackTrace();
+						}
 					}
 				});
 				return cell;
@@ -160,7 +181,11 @@ public class ClientBrowseHotelController implements Initializable{
 				TextFieldTableCell<HotelModel, String> cell = new TextFieldTableCell<>();
 				cell.setOnMouseClicked((MouseEvent t) -> {
 					if (t.getClickCount() == 2) {
-						main.gotoHotelDetailInfo(models.get(cell.getIndex()));
+						try {
+							main.gotoHotelDetailInfo(helper.getHotelBLService().hotel_checkInfo(Integer.parseInt(models.get(cell.getIndex()).getID())));
+						} catch (Exception e) {
+							e.printStackTrace();
+						}
 					}
 				});
 				return cell;

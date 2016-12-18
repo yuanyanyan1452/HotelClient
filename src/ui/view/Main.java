@@ -309,7 +309,7 @@ public class Main extends Application {
 	}
 
 	// 客户搜索酒店
-	public void gotoClientSearchHotel() {
+	public void gotoClientSearchHotel(ClientVO clientVO) {
 		try {
 			FXMLLoader fxmlLoader = new FXMLLoader();
 			fxmlLoader.setLocation(Main.class.getResource("client/ClientSearchHotel.fxml"));
@@ -317,7 +317,7 @@ public class Main extends Application {
 			insidePane.setPrefSize(700, 600);
 			rootLayout.getItems().set(1, insidePane);
 			ClientSearchHotelController controller = (ClientSearchHotelController) fxmlLoader.getController();
-			controller.setMain(this);
+			controller.setMain(this,clientVO);
 			stage.centerOnScreen();
 		} catch (Exception e) {
 			Logger.getLogger(Main.class.getName()).log(Level.SEVERE, null, e);
@@ -325,7 +325,7 @@ public class Main extends Application {
 	}
 
 	// 客户查看酒店详细信息
-	public void gotoHotelDetailInfo(HotelModel hotel) {
+	public void gotoHotelDetailInfo(HotelVO hotel) {
 		try {
 			FXMLLoader fxmlLoader = new FXMLLoader();
 			fxmlLoader.setLocation(Main.class.getResource("hotel/HotelDetailInfo.fxml"));
@@ -344,14 +344,14 @@ public class Main extends Application {
 	}
 
 	// 客户生成订单
-	public void gotoGenerateOrder(HotelModel hotel) {
+	public void gotoGenerateOrder(HotelVO hotel,ClientVO client) {
 		try {
 			FXMLLoader fxmlLoader = new FXMLLoader();
 			fxmlLoader.setLocation(Main.class.getResource("order/ClientGenerateOrder.fxml"));
 			AnchorPane insidePane = (AnchorPane) fxmlLoader.load();
 
 			ClientGenerateOrderController controller = (ClientGenerateOrderController) fxmlLoader.getController();
-			controller.setMain(this, hotel);
+			controller.setMain(this, hotel,client);
 
 			extraStage = new Stage(StageStyle.UNDECORATED);
 			extraStage.setScene(new Scene(insidePane));
