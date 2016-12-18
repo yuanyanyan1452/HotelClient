@@ -145,9 +145,8 @@
                                                       <TableColumn fx:id="hotelIDColumn" prefWidth="43.0" text="ID" />
                                                       <TableColumn fx:id="hotelNameColumn" prefWidth="109.0" text="酒店名" />
                                                       <TableColumn fx:id="hotelAddressColumn" prefWidth="160.0" text="地址" />
-                                                      <TableColumn fx:id="hotelBusinessAddressColumn" prefWidth="91.0" text="所属商圈" />
-                                                      <TableColumn fx:id="hotelStarColumn" prefWidth="60.0" text="星级" />
-                                                      <TableColumn fx:id="hotelScoreColumn" prefWidth="73.0" text="平均评分" />
+                                                      <TableColumn fx:id="hotelBusinessAddressColumn" prefWidth="151.0" text="所属商圈" />
+                                                      <TableColumn fx:id="hotelStarColumn" minWidth="0.0" prefWidth="73.0" text="星级" />
                                                    </columns>
                                                 </TableView>
                                              </children>
@@ -197,14 +196,14 @@
                                                                   <Button alignment="CENTER" layoutX="221.0" layoutY="118.0" mnemonicParsing="false" onAction="#updateHotel" prefHeight="24.0" prefWidth="95.0" text="修改" AnchorPane.leftAnchor="222.0" />
                                                                   <GridPane layoutY="14.0" prefHeight="109.0" prefWidth="504.0" AnchorPane.topAnchor="9.0">
                                                                      <children>
-                                                                        <Label text="酒店名：" GridPane.columnIndex="2" />
-                                                                        <Label text="所属商圈：" GridPane.columnIndex="2" GridPane.rowIndex="1" />
-                                                                        <Label text="地址：" GridPane.rowIndex="1" />
-                                                                        <Label text="星级：" GridPane.rowIndex="2" />
-                                                                        <TextField fx:id="updateHotelNameTextField" GridPane.columnIndex="3" />
-                                                                        <TextField fx:id="updateHotelAddressTextField" GridPane.columnIndex="1" GridPane.rowIndex="1" />
-                                                                        <TextField fx:id="updateHotelBusinessAddressTextField" GridPane.columnIndex="3" GridPane.rowIndex="1" />
-                                                                        <TextField fx:id="updateHotelStarTextField" GridPane.columnIndex="1" GridPane.rowIndex="2" />
+                                                                        <Label text="酒店名：" GridPane.rowIndex="1" />
+                                                                        <Label text="所属商圈：" GridPane.rowIndex="2" />
+                                                                        <Label text="地址：" GridPane.columnIndex="2" GridPane.rowIndex="1" />
+                                                                        <Label text="星级：" GridPane.columnIndex="2" GridPane.rowIndex="2" />
+                                                                        <TextField fx:id="updateHotelNameTextField" GridPane.columnIndex="1" GridPane.rowIndex="1" />
+                                                                        <TextField fx:id="updateHotelAddressTextField" GridPane.columnIndex="3" GridPane.rowIndex="1" />
+                                                                        <TextField fx:id="updateHotelBusinessAddressTextField" GridPane.columnIndex="1" GridPane.rowIndex="2" />
+                                                                        <TextField fx:id="updateHotelStarTextField" GridPane.columnIndex="3" GridPane.rowIndex="2" />
                                                                         <Button alignment="CENTER" contentDisplay="CENTER" mnemonicParsing="false" onAction="#updateSearchHotel" prefHeight="18.0" prefWidth="14.0">
                                                                            <graphic>
                                                                               <ImageView fitHeight="19.0" fitWidth="19.0">
@@ -214,19 +213,17 @@
                                                                               </ImageView>
                                                                            </graphic>
                                                                            <GridPane.margin>
-                                                                              <Insets left="80.0" />
+                                                                              <Insets left="60.0" />
                                                                            </GridPane.margin>
                                                                         </Button>
-                                                                        <Label text="平均评分：" GridPane.columnIndex="2" GridPane.rowIndex="2" />
-                                                                        <TextField fx:id="updateHotelScoreTextField" GridPane.columnIndex="3" GridPane.rowIndex="2" />
                                                                         <Label text="ID：" />
                                                                         <TextField fx:id="updateHotelIDTextField" GridPane.columnIndex="1" />
                                                                      </children>
                                                                      <columnConstraints>
+                                                                        <ColumnConstraints halignment="CENTER" hgrow="SOMETIMES" minWidth="10.0" prefWidth="50.0" />
                                                                         <ColumnConstraints halignment="CENTER" hgrow="SOMETIMES" minWidth="10.0" prefWidth="90.0" />
-                                                                        <ColumnConstraints halignment="CENTER" hgrow="SOMETIMES" minWidth="10.0" prefWidth="150.0" />
-                                                                        <ColumnConstraints halignment="CENTER" hgrow="SOMETIMES" minWidth="10.0" prefWidth="90.0" />
-                                                                        <ColumnConstraints halignment="CENTER" hgrow="SOMETIMES" minWidth="10.0" prefWidth="90.0" />
+                                                                        <ColumnConstraints halignment="CENTER" hgrow="SOMETIMES" minWidth="10.0" prefWidth="50.0" />
+                                                                        <ColumnConstraints halignment="CENTER" hgrow="SOMETIMES" minWidth="10.0" prefWidth="130.0" />
                                                                      </columnConstraints>
                                                                      <rowConstraints>
                                                                         <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
