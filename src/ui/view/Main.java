@@ -279,11 +279,11 @@ public class Main extends Application {
 			ClientEvaluateHotelController controller = (ClientEvaluateHotelController) fxmlLoader.getController();
 			controller.setMain(this,client,hotel);
 
-			extraStage = new Stage(StageStyle.UNDECORATED);
-			extraStage.setScene(new Scene(insidePane));
-			extraStage.setAlwaysOnTop(true);
-			extraStage.centerOnScreen();
-			extraStage.show();
+			extraStage2 = new Stage(StageStyle.UNDECORATED);
+			extraStage2.setScene(new Scene(insidePane));
+			extraStage2.setAlwaysOnTop(true);
+			extraStage2.centerOnScreen();
+			extraStage2.show();
 		} catch (Exception e) {
 			Logger.getLogger(Main.class.getName()).log(Level.SEVERE, null, e);
 		}
