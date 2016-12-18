@@ -86,7 +86,7 @@ public class Main extends Application {
 	@Override
 	public void start(Stage primaryStage) throws Exception {
 		stage = primaryStage;
-		// stage.initStyle(StageStyle.UNDECORATED);
+//		stage.initStyle(StageStyle.UNDECORATED);
 		stage.setTitle("Hotel");
 		stage.setMinHeight(MINIMUM_WINDOW_HEIGHT);
 		stage.setMinWidth(MINIMUM_WINDOW_WIDTH);
@@ -107,6 +107,25 @@ public class Main extends Application {
 		}
 	}
 
+	//返回主界面
+	public void backtoMain(){
+		try{
+			FXMLLoader loader = new FXMLLoader();
+			loader.setLocation(Main.class.getResource("user/LoginOverview.fxml"));
+			AnchorPane pane = (AnchorPane) loader.load();
+			this.scene = new Scene(pane);
+			LoginOverviewController overviewController = (LoginOverviewController) loader.getController();
+			overviewController.setMain(this);
+			stage.setScene(scene);
+			stage.sizeToScene();
+			stage.centerOnScreen();
+			stage.setResizable(false);
+			stage.show();
+		} catch (IOException e) {
+			e.printStackTrace();
+		}
+	}
+	
 	// 跳转到登录界面
 	public void gotoLogin(String type) {
 		try {
