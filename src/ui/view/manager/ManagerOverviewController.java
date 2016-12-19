@@ -446,6 +446,7 @@ public class ManagerOverviewController implements Initializable {
 			ResultMessage message = helper.getHotelBLService().hotel_updateInfo(vo);
 			if (message == ResultMessage.Fail) {
 				AlertUtil.showErrorAlert("更新酒店失败！");
+				return;
 			}
 		} catch (RemoteException e) {
 			e.printStackTrace();
@@ -541,6 +542,7 @@ public class ManagerOverviewController implements Initializable {
 			ResultMessage message = helper.getManageBLService().manage_updateHotelWorker(vo);
 			if (message == ResultMessage.Fail) {
 				AlertUtil.showErrorAlert("更新酒店工作人员失败！");
+				return;
 			}
 		} catch (RemoteException e) {
 			e.printStackTrace();
@@ -633,6 +635,7 @@ public class ManagerOverviewController implements Initializable {
 			ResultMessage message = helper.getManageBLService().manage_updateMarketWorker(vo);
 			if (message == ResultMessage.Fail) {
 				AlertUtil.showErrorAlert("更新网站营销人员失败！");
+				return;
 			}
 		} catch (RemoteException e) {
 			e.printStackTrace();

@@ -14,7 +14,7 @@ public class HotelStrategyModel {
 	private final SimpleStringProperty superpositon;
 
 	public HotelStrategyModel(int id, int hotelid, String name, String startTime, String endTime, String discount,
-			String condition, String superposition) {
+			String condition, boolean superposition) {
 		this.id = new SimpleIntegerProperty(id);
 		this.hotelid = new SimpleIntegerProperty(hotelid);
 		this.name = new SimpleStringProperty(name);
@@ -22,7 +22,7 @@ public class HotelStrategyModel {
 		this.endTime = new SimpleStringProperty(endTime);
 		this.discount = new SimpleStringProperty(discount);
 		this.condition = new SimpleStringProperty(condition);
-		this.superpositon = new SimpleStringProperty(superposition);
+		this.superpositon = new SimpleStringProperty(superposition?"是":"否");
 	}
 
 	public int getID() {

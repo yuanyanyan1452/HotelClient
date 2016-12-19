@@ -76,6 +76,7 @@ public class ClientBasicInfoController implements Initializable {
 		ResultMessage result = helper.getClientBLService().client_updateInfo(currentclientvo);
 		if (result == ResultMessage.Success) {
 			AlertUtil.showInformationAlert("更新成功！");
+			//同步更新主界面的label
 			this.controller.updateVO(currentclientvo);
 		} else {
 			AlertUtil.showErrorAlert("对不起，更新失败。");

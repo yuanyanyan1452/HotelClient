@@ -49,6 +49,7 @@ public class ClientEvaluateHotelController implements Initializable{
 			ResultMessage message = helper.getHotelBLService().evalutehotel(evaluation, currentClient.getclientid(),currentHotel.getid());
 			if (message == ResultMessage.Fail) {
 				AlertUtil.showErrorAlert("评价失败。。");
+				return;
 			}
 		} catch (RemoteException e) {
 			e.printStackTrace();

@@ -245,6 +245,7 @@ public class MarketStrategyController implements Initializable {
 			ResultMessage message = helper.getStrategyBLService().webstrategy_update(vo);
 			if (message==ResultMessage.Fail) {
 				AlertUtil.showErrorAlert("更新促销策略失败！");
+				return;
 			}
 		} catch (RemoteException e) {
 			e.printStackTrace();

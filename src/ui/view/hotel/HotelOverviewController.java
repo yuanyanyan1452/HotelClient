@@ -18,6 +18,16 @@ public class HotelOverviewController implements Initializable {
 	private HotelVO currenthotelvo;
 	private HotelWorkerVO currenthotelworkervo;
 	
+	public void updateHotelVO(HotelVO hotelVO){
+		currenthotelvo = hotelVO;
+		hotelnamelabel.setText(currenthotelvo.getname());
+	}
+	public void updateWorkerVO(HotelWorkerVO workerVO){
+		currenthotelworkervo = workerVO;
+		namelabel.setText(currenthotelworkervo.getname());
+		contactlabel.setText(currenthotelworkervo.getcontact());
+	}
+	
 	@FXML
 	private Label hotelnamelabel;
 
@@ -30,8 +40,7 @@ public class HotelOverviewController implements Initializable {
 
 	@FXML
 	public void gotoHotelBasicInfo() throws RemoteException {
-		this.update();
-		main.gotoHotelBasicInfo(currenthotelvo);
+		main.gotoHotelBasicInfo(currenthotelvo,this);
 	}
 
 	@FXML
@@ -59,16 +68,15 @@ public class HotelOverviewController implements Initializable {
 
 	@FXML
 	public void gotoHotelStrategyManage() {
-		main.gotoHotelStrategyManage();
+		main.gotoHotelStrategyManage(currenthotelvo);
 	}
 
 	public HotelOverviewController() {
-		// TODO
+		
 	}
 
 	@Override
 	public void initialize(URL location, ResourceBundle resources) {
-		// TODO 
 
 	}
 
@@ -82,8 +90,8 @@ public class HotelOverviewController implements Initializable {
 		
 	}
 	
-	public void update() throws RemoteException{
-		currenthotelvo=helper.getHotelBLService().hotel_checkInfo(currenthotelvo.getid());
-	}
+//	public void update() throws RemoteException{
+//		currenthotelvo=helper.getHotelBLService().hotel_checkInfo(currenthotelvo.getid());
+//	}
 
 }
