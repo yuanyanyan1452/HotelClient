@@ -382,7 +382,7 @@ public class Main extends Application {
 	}
 
 	// 酒店工作人员管理酒店信息
-	public void gotoHotelBasicInfo(HotelVO vo) {
+	public void gotoHotelBasicInfo(HotelVO vo,HotelOverviewController overviewController) {
 		try {
 			FXMLLoader fxmlLoader = new FXMLLoader();
 			fxmlLoader.setLocation(Main.class.getResource("hotel/HotelBasicInfo.fxml"));
@@ -390,7 +390,7 @@ public class Main extends Application {
 			insidePane.setPrefSize(700, 600);
 			rootLayout.getItems().set(1, insidePane);
 			HotelBasicInfoController controller = (HotelBasicInfoController) fxmlLoader.getController();
-			controller.setMain(this,vo);
+			controller.setMain(this,vo,overviewController);
 		} catch (Exception e) {
 			Logger.getLogger(Main.class.getName()).log(Level.SEVERE, null, e);
 		}
@@ -457,7 +457,7 @@ public class Main extends Application {
 	}
 
 	// 酒店销售策略管理
-	public void gotoHotelStrategyManage() {
+	public void gotoHotelStrategyManage(HotelVO hotelVO) {
 		try {
 			FXMLLoader fxmlLoader = new FXMLLoader();
 			fxmlLoader.setLocation(Main.class.getResource("hotel/HotelStrategy.fxml"));
@@ -465,7 +465,7 @@ public class Main extends Application {
 			insidePane.setPrefSize(700, 600);
 			rootLayout.getItems().set(1, insidePane);
 			HotelStrategyController controller = (HotelStrategyController) fxmlLoader.getController();
-			controller.setMain(this);
+			controller.setMain(this,hotelVO);
 		} catch (Exception e) {
 			Logger.getLogger(Main.class.getName()).log(Level.SEVERE, null, e);
 		}

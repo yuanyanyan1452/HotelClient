@@ -16,6 +16,7 @@ import javafx.scene.control.TextField;
 import objects.ResultMessage;
 import objects.VIPInfo.VIPType;
 import rmi.RemoteHelper;
+import ui.util.AlertUtil;
 import ui.view.Main;
 import vo.ClientVO;
 
@@ -66,30 +67,18 @@ public class CreditChargeController implements Initializable {
 			creditLabel.setText(String.valueOf(currentclientvo.getcredit()));
 			}
 			else{
-				Alert alert = new Alert(AlertType.ERROR);
-				alert.setTitle(null);
-				alert.setHeaderText(null);
-				alert.setContentText("对不起，你输入的用户不存在。");
-				alert.showAndWait();
+				AlertUtil.showErrorAlert("对不起，您输入的用户不存在。");
 			}
 		}
 		else{
-			Alert alert = new Alert(AlertType.ERROR);
-			alert.setTitle(null);
-			alert.setHeaderText(null);
-			alert.setContentText("对不起，请输入客户用户名。");
-			alert.showAndWait();
+			AlertUtil.showWarningAlert("对不起，请输入客户的用户名。");
 		}
 	}
 	
 	@FXML
 	private void chargeCredit(){
 		if (creditTextField.getText().isEmpty()) {
-			Alert alert = new Alert(AlertType.ERROR);
-			alert.setTitle(null);
-			alert.setHeaderText(null);
-			alert.setContentText("对不起，请输入信用值额度。");
-			alert.showAndWait();
+			AlertUtil.showWarningAlert("对不起，请输入信用值额度。");
 			return ;
 		}
 		int charge = Integer.parseInt(creditTextField.getText());
@@ -118,25 +107,13 @@ public class CreditChargeController implements Initializable {
 				helper.getClientBLService().client_updateInfo(currentclientvo);
 				
 				//显示充值成功界面
-				Alert alert = new Alert(AlertType.INFORMATION);
-				alert.setTitle(null);
-				alert.setHeaderText(null);
-				alert.setContentText("充值成功！");
-				alert.showAndWait();
+				AlertUtil.showInformationAlert("充值成功！");
 			}
 			else {
-				Alert alert = new Alert(AlertType.ERROR);
-				alert.setTitle(null);
-				alert.setHeaderText(null);
-				alert.setContentText("充值失败。");
-				alert.showAndWait();
+				AlertUtil.showErrorAlert("充值失败。");
 			}
 		} catch (RemoteException e) {
-			Alert alert = new Alert(AlertType.ERROR);
-			alert.setTitle(null);
-			alert.setHeaderText(null);
-			alert.setContentText("充值失败。与服务器连接异常。");
-			alert.showAndWait();
+			AlertUtil.showErrorAlert("充值失败。与服务器连接异常。");
 			e.printStackTrace();
 		}
 	}

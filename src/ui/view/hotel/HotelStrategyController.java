@@ -1,6 +1,9 @@
 package ui.view.hotel;
 
 import java.net.URL;
+import java.rmi.RemoteException;
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.ResourceBundle;
 
@@ -15,16 +18,23 @@ import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.scene.control.TextField;
 import javafx.scene.control.ToggleGroup;
+import rmi.RemoteHelper;
 import javafx.scene.control.Alert.AlertType;
+import objects.ResultMessage;
 import ui.model.HotelStrategyModel;
 import ui.model.WebStrategyModel;
+import ui.util.AlertUtil;
 import ui.view.Main;
+import vo.HotelStrategyVO;
+import vo.HotelVO;
+import vo.WebStrategyVO;
 
 public class HotelStrategyController implements Initializable {
 	private Main main;
-	private ArrayList<Integer> IDList = new ArrayList<Integer>();
+	private HotelVO currentHotel;
 	private HotelStrategyModel currentStrategy;
-	private int currentHotelID;
+	private SimpleDateFormat format = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
+
 	@FXML
 	private TableView<HotelStrategyModel> strategyTable;
 
@@ -129,6 +139,8 @@ public class HotelStrategyController implements Initializable {
 			deleteDiscountLabel.setText("");
 			deleteConditionLabel.setText("");
 			deleteSuperpositionLabel.setText("");
+
+			AlertUtil.showWarningAlert("不存在该促销策略！");
 		}
 	}
 
@@ -160,23 +172,57 @@ public class HotelStrategyController implements Initializable {
 			updateConditionField.setText("");
 			updateYesButton.setSelected(false);
 			updateNoButton.setSelected(false);
+
+			AlertUtil.showWarningAlert("不存在该促销策略！");
 		}
 	}
 
 	@FXML
 	private void addStrategy() {
-		int id = createID();
-		int hotelid = currentHotelID;
+
 		String name = addNameField.getText();
 		String startTime = addStartTimeField.getText();
 		String endTime = addEndTimeField.getText();
 		String condition = addConditionField.getText();
 		String discount = addDiscountField.getText();
-		String superposition = (addYesButton.isSelected()) ? "是" : "否";
+		boolean superposition = addYesButton.isSelected();
 
-		HotelStrategyModel strategyModel = new HotelStrategyModel(id,hotelid, name, startTime, endTime, discount, condition,
-				superposition);
+		// 检查同名策略
+		ObservableList<HotelStrategyModel> list = strategyTable.getItems();
+		for (HotelStrategyModel model : list) {
+			if (model.getName().equals(name)) {
+				AlertUtil.showErrorAlert("已存在同名的促销策略！");
+				return;
+			}
+		}
+
+		// 更新表格
+		HotelStrategyModel strategyModel = new HotelStrategyModel(0, currentHotel.getid(), name, startTime, endTime,
+				discount, condition, superposition);
 		strategyTable.getItems().add(strategyModel);
+
+		// 更新底层数据
+
+		try {
+			RemoteHelper helper = RemoteHelper.getInstance();
+			HotelStrategyVO vo = new HotelStrategyVO();
+			vo.setname(name);
+			vo.sethotelid(currentHotel.getid());
+			vo.setcondition(condition);
+			vo.setstart_time(format.parse(startTime));
+			vo.setend_time(format.parse(endTime));
+			vo.setexecuteway(discount);
+			vo.setsuperposition(superposition);
+			ResultMessage message = helper.getStrategyBLService().hotelstrategy_make(vo);
+			if (message == ResultMessage.Fail) {
+				AlertUtil.showErrorAlert("添加促销策略失败！");
+				return;
+			}
+		} catch (ParseException | RemoteException e1) {
+			e1.printStackTrace();
+		}
+
+		AlertUtil.showInformationAlert("添加促销策略成功！");
 	}
 
 	@FXML
@@ -203,19 +249,10 @@ public class HotelStrategyController implements Initializable {
 	private void deleteStrategy() {
 		if (strategyTable.getItems().contains(currentStrategy)) {
 			strategyTable.getItems().remove(currentStrategy);
-			IDList.remove(IDList.indexOf(currentStrategy.getID()));
 		} else {
-			Alert alert = new Alert(AlertType.ERROR);
-			alert.setContentText("不存在该促销策略！");
-			alert.setHeaderText("出错了！");
-			alert.show();
-		}
-	}
 
-	// 创建strategID
-	public int createID() {
-		int newID = IDList.size() + 1;
-		return newID;
+			AlertUtil.showErrorAlert("不存在该促销策略！");
+		}
 	}
 
 	public HotelStrategyController() {
@@ -227,23 +264,34 @@ public class HotelStrategyController implements Initializable {
 
 	}
 
-	public void setMain(Main main) {
+	public void setMain(Main main, HotelVO hotelVO) {
 		this.main = main;
-		
+		currentHotel = hotelVO;
+
 		final ToggleGroup addGroup = new ToggleGroup();
 		addYesButton.setToggleGroup(addGroup);
 		addNoButton.setToggleGroup(addGroup);
 		final ToggleGroup updateGroup = new ToggleGroup();
 		updateYesButton.setToggleGroup(updateGroup);
 		updateNoButton.setToggleGroup(updateGroup);
-		
-		ObservableList<HotelStrategyModel> hotelStrategyData = FXCollections.observableArrayList();
-		hotelStrategyData.add(new HotelStrategyModel(1,1, "双十一优惠", "11/11", "11/12", "0.5", "无条件", "是"));
-		hotelStrategyData.add(new HotelStrategyModel(2, 1,"会员折扣", "01/01", "12/31", "0.8", "会员适用", "是"));
 
-		for (HotelStrategyModel model : hotelStrategyData) {
-			IDList.add(model.getID());
+		// 导入当前酒店的所有策略
+		ObservableList<HotelStrategyModel> hotelStrategyData = FXCollections.observableArrayList();
+		RemoteHelper helper = RemoteHelper.getInstance();
+		try {
+			ArrayList<HotelStrategyVO> vos = helper.getStrategyBLService().getHotelStrategy(currentHotel.getid());
+			for (HotelStrategyVO strategyVO : vos) {
+				HotelStrategyModel model = new HotelStrategyModel(strategyVO.getid(), strategyVO.gethotelid(),
+						strategyVO.getname(), format.format(strategyVO.getstart_time()),
+						format.format(strategyVO.getend_time()), strategyVO.getexecuteway(), strategyVO.getcondition(),
+						strategyVO.getsuperposition());
+				hotelStrategyData.add(model);
+			}
+
+		} catch (RemoteException e) {
+			e.printStackTrace();
 		}
+
 		nameColumn.setCellValueFactory(celldata -> celldata.getValue().nameProperty());
 		startColumn.setCellValueFactory(celldata -> celldata.getValue().startTimeProperty());
 		endColumn.setCellValueFactory(celldata -> celldata.getValue().endTimeProperty());
