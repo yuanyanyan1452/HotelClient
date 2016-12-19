@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<?import javafx.scene.text.*?>
 <?import javafx.scene.image.*?>
 <?import javafx.geometry.*?>
 <?import javafx.scene.control.*?>
@@ -9,26 +10,42 @@
 
 <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="600.0" prefWidth="700.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="ui.view.hotel.HotelCheckInController">
    <children>
-      <TableView fx:id="orderTable" prefHeight="409.0" prefWidth="700.0">
-         <columns>
-            <TableColumn fx:id="idColumn" prefWidth="50.0" text="订单号" />
-            <TableColumn fx:id="executeColumn" prefWidth="70.0" text="执行情况" />
-            <TableColumn fx:id="stateColumn" prefWidth="58.0" text="当前状态" />
-            <TableColumn fx:id="latestExecuteTimeColumn" prefWidth="143.0" text="最晚执行时间" />
-            <TableColumn fx:id="overExecuteTimeColumn" prefWidth="90.0" text="超过时间(小时)" />
-            <TableColumn fx:id="predictLeaveTimeColumn" prefWidth="143.0" text="预计离开时间" />
-            <TableColumn fx:id="leaveTimeColumn" prefWidth="143.0" text="退房时间" />
-         </columns>
-      </TableView>
-      <Button layoutX="529.0" layoutY="436.0" mnemonicParsing="false" onAction="#checkOut" prefHeight="38.0" prefWidth="114.0" text="退房" />
-      <Button layoutX="225.0" layoutY="436.0" mnemonicParsing="false" onAction="#checkIn" prefHeight="38.0" prefWidth="114.0" text="入住" />
-      <Button layoutX="380.0" layoutY="436.0" mnemonicParsing="false" onAction="#checkIn" prefHeight="38.0" prefWidth="114.0" text="延迟入住" />
-      <ImageView fitHeight="162.0" fitWidth="166.0" layoutY="424.0">
-         <image>
-            <Image url="@../../../../resources/酒店入住.png" />
-         </image>
-      </ImageView>
-      <Button layoutX="293.0" layoutY="511.0" mnemonicParsing="false" onAction="#checkIn" prefHeight="38.0" prefWidth="114.0" text="线下入住" />
-      <Button layoutX="454.0" layoutY="511.0" mnemonicParsing="false" onAction="#checkIn" prefHeight="38.0" prefWidth="114.0" text="线下退房" />
+      <SplitPane dividerPositions="0.7040133779264214" orientation="VERTICAL" prefHeight="600.0" prefWidth="700.0">
+        <items>
+          <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="100.0" prefWidth="160.0">
+               <children>
+                  <TableView fx:id="orderTable" prefHeight="418.0" prefWidth="700.0">
+                     <columns>
+                        <TableColumn fx:id="idColumn" prefWidth="50.0" text="订单号" />
+                        <TableColumn fx:id="roomTypeColumn" prefWidth="85.0" text="房间类型" />
+                        <TableColumn fx:id="executeColumn" prefWidth="75.0" text="执行情况" />
+                        <TableColumn fx:id="stateColumn" text="当前状态" />
+                        <TableColumn fx:id="latestExecuteTimeColumn" prefWidth="160.0" text="最晚执行时间" />
+                        <TableColumn fx:id="overExecuteTimeColumn" prefWidth="90.0" text="超过时间(小时)" />
+                        <TableColumn fx:id="predictLeaveTimeColumn" prefWidth="160.0" text="预计离开时间" />
+                     </columns>
+                  </TableView>
+               </children>
+            </AnchorPane>
+          <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="235.0" prefWidth="698.0">
+               <children>
+                  <Button layoutX="465.0" layoutY="68.0" mnemonicParsing="false" onAction="#downlinecheckin" prefHeight="38.0" prefWidth="114.0" text="线下入住" />
+                  <ImageView fitHeight="153.0" fitWidth="163.0" layoutX="14.0" layoutY="21.0">
+                     <image>
+                        <Image url="@../../../../resources/酒店入住.png" />
+                     </image>
+                  </ImageView>
+                  <Button layoutX="465.0" layoutY="115.0" mnemonicParsing="false" onAction="#downlinecheckout" prefHeight="38.0" prefWidth="114.0" text="线下退房" />
+                  <Label layoutX="206.0" layoutY="21.0" prefHeight="27.0" prefWidth="460.0" text="亲：直接双击订单即可完成线上订单的入住、退房操作哦！">
+                     <font>
+                        <Font size="15.0" />
+                     </font>
+                  </Label>
+                  <Label layoutX="260.0" layoutY="101.0" text="房间类型：" />
+                  <ComboBox fx:id="roomtypeComboBox" layoutX="333.0" layoutY="97.0" prefHeight="23.0" prefWidth="114.0" />
+               </children>
+            </AnchorPane>
+        </items>
+      </SplitPane>
    </children>
 </AnchorPane>

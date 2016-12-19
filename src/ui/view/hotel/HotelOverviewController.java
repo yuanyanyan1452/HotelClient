@@ -51,7 +51,7 @@ public class HotelOverviewController implements Initializable {
 
 	@FXML
 	public void gotoHotelCheckIn() {
-		main.gotoHotelCheckIn();
+		main.gotoHotelCheckIn(currenthotelvo);
 	}
 
 

@@ -227,6 +227,10 @@ public class HotelStrategyController implements Initializable {
 
 	@FXML
 	private void updateStrategy() {
+		if (updateNameField.getText().isEmpty()) {
+			AlertUtil.showWarningAlert("未指定促销策略！");
+			return;
+		}
 		String name = updateNameField.getText();
 		String startTime = updateStartTimeField.getText();
 		String endTime = updateEndTimeField.getText();
@@ -235,22 +239,64 @@ public class HotelStrategyController implements Initializable {
 		String superposition = (updateYesButton.isSelected()) ? "是" : "否";
 
 		ObservableList<HotelStrategyModel> list = strategyTable.getItems();
-		list.remove(currentStrategy);
-		currentStrategy.setName(name);
-		currentStrategy.setStartTime(startTime);
-		currentStrategy.setEndTime(endTime);
-		currentStrategy.setDiscount(discount);
-		currentStrategy.setCondition(condition);
-		currentStrategy.setSuperposition(superposition);
-		list.add(currentStrategy);
+		
+		//拒绝更新一个不存在的策略
+		if(!list.contains(currentStrategy)){
+			AlertUtil.showErrorAlert("不存在该促销策略！");
+			return;
+		}
+		
+		//更新表格
+		int index;
+		for(index = 0;index<list.size();index++){
+			if (list.get(index).getName().equals(currentStrategy.getName())) {
+				list.get(index).setName(name);
+				list.get(index).setStartTime(startTime);
+				list.get(index).setEndTime(endTime);
+				list.get(index).setCondition(condition);
+				list.get(index).setDiscount(discount);
+				list.get(index).setCondition(condition);
+				list.get(index).setSuperposition(superposition);
+			}
+		}
+		
+		//更新底层数据
+		try {
+			RemoteHelper helper = RemoteHelper.getInstance();
+			HotelStrategyVO vo = helper.getStrategyBLService().gethotelstrategybyname(currentStrategy.getName());
+			ResultMessage message = helper.getStrategyBLService().hotelstrategy_update(vo);
+			if (message == ResultMessage.Fail) {
+				AlertUtil.showErrorAlert("更新促销策略失败！");
+				return;
+			}
+		} catch (RemoteException e) {
+			e.printStackTrace();
+		}
+		
+		AlertUtil.showInformationAlert("更新促销策略成功！");
 	}
 
 	@FXML
 	private void deleteStrategy() {
+		if (deleteNameField.getText().isEmpty()) {
+				AlertUtil.showWarningAlert("未指定促销策略！");
+				return;
+		}
 		if (strategyTable.getItems().contains(currentStrategy)) {
 			strategyTable.getItems().remove(currentStrategy);
+			RemoteHelper helper = RemoteHelper.getInstance();
+			try {
+				ResultMessage message = helper.getStrategyBLService().hotelstrategy_delete(helper.getStrategyBLService().gethotelstrategybyname(currentStrategy.getName()));
+				if (message == ResultMessage.Fail) {
+					AlertUtil.showErrorAlert("删除促销策略失败！");
+				}
+				else {
+					AlertUtil.showInformationAlert("删除促销策略成功！");
+				}
+			} catch (RemoteException e) {
+				e.printStackTrace();
+			}
 		} else {
-
 			AlertUtil.showErrorAlert("不存在该促销策略！");
 		}
 	}
