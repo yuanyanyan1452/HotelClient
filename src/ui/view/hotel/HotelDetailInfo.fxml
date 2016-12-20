@@ -45,8 +45,8 @@
                                              <children>
                                                 <TableView fx:id="roomTable" editable="true" layoutX="1.0" prefHeight="182.0" prefWidth="372.0">
                                                    <columns>
-                                                      <TableColumn fx:id="roomtypeColumn" prefWidth="217.0" text="类型" />
-                                                      <TableColumn fx:id="priceColumn" prefWidth="154.0" text="价格（元/间）" />
+                                                      <TableColumn fx:id="roomtypeColumn" prefWidth="187.0" text="类型" />
+                                                      <TableColumn fx:id="priceColumn" prefWidth="184.0" text="价格（元/间）" />
                                                    </columns>
                                                 </TableView>
                                              </children>

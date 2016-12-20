@@ -2,7 +2,6 @@ package ui.view.hotel;
 
 import java.net.URL;
 import java.util.Calendar;
-import java.util.Date;
 import java.util.ResourceBundle;
 
 import javafx.collections.FXCollections;
@@ -14,14 +13,9 @@ import javafx.fxml.Initializable;
 import javafx.scene.control.Button;
 import javafx.scene.control.ComboBox;
 import javafx.scene.control.Label;
-import javafx.scene.control.ListCell;
-import javafx.scene.control.ListView;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
-import javafx.scene.effect.Effect;
-import javafx.scene.input.MouseEvent;
-import javafx.util.Callback;
-import ui.model.HotelModel;
+import rmi.RemoteHelper;
 import ui.model.OrderModel;
 import ui.model.RoomModel;
 import ui.util.AlertUtil;
@@ -39,6 +33,7 @@ public class HotelDetailInfoController implements Initializable {
 
 	@FXML
 	private Button button2;
+	
 	@FXML
 	private Label hotelnameLabel;
 
@@ -103,11 +98,6 @@ public class HotelDetailInfoController implements Initializable {
 	private Label totalLabel;
 
 	@FXML
-	private void searchHotel() {
-		// TODO
-	}
-
-	@FXML
 	public void close() {
 		main.closeExtraStage();
 	}
@@ -129,7 +119,8 @@ public class HotelDetailInfoController implements Initializable {
 	public void setMain(Main main, HotelVO hotel) {
 		this.main = main;
 		this.currentHotel = hotel;
-
+		RemoteHelper helper = RemoteHelper.getInstance();
+		//酒店基本信息初始化
 		hotelnameLabel.setText(hotel.getname());
 		businessaddressLabel.setText(hotel.getbussiness_address());
 		addressLabel.setText(hotel.getaddress());
@@ -137,9 +128,8 @@ public class HotelDetailInfoController implements Initializable {
 		scoreLabel.setText(hotel.getscore());
 		introductionLabel.setText(hotel.getintroduction());
 		serviceLabel.setText(hotel.getservice());
-		// introductionLabel.setText(hotel.get);
 
-		// 每个月日期不同的现实问题需解决
+		// 入住日期选择初始化
 		String[] months = { "1", "2", "3", "4", "5", "6", "7", "8", "9", "10", "11", "12" };
 		String[] days = { "1", "2", "3", "4", "5", "6", "7", "8", "9", "10", "11", "12", "13", "14", "15", "16", "17",
 				"18", "19", "20", "21", "22", "23", "24", "25", "26", "27", "28", "29", "30", "31" };
@@ -203,11 +193,27 @@ public class HotelDetailInfoController implements Initializable {
 						} else {
 							totalLabel.setText(
 									"共" + String.valueOf((endmonth - startmonth) * 30 / 100 + endday - startday) + "晚");
-							//TODO
+							//TODO 更新右侧表格
 						}
 					}
 			}
 
 		});
+		
+		ObservableList<RoomModel> rooms = roomTable.getItems();
+		//TODO 得到当前酒店所有可用房间的方法
+//		ArrayList<RoomOrderVO> roomVOs = helper.
+		roomtypeColumn.setCellValueFactory(celldata -> celldata.getValue().roomTypeProperty());
+		priceColumn.setCellValueFactory(celldata -> celldata.getValue().roomPriceProperty());
+		
+		roomTable.setItems(rooms);
+		ObservableList<OrderModel> orders = orderTable.getItems();
+		//TODO 根据客户id和酒店id查订单（客户在酒店的所有订单）
+//		ArrayList<OrderVO> orderVOs = helper.getOrderBLService()
+		orderidColumn.setCellValueFactory(celldata -> celldata.getValue().orderidProperty());
+		orderRoomtypeColumn.setCellValueFactory(celldata -> celldata.getValue().roomtypeProperty());
+		orderRoomamountColumn.setCellValueFactory(celldata -> celldata.getValue().roomnumberProperty());
+		orderPriceColumn.setCellValueFactory(celldata -> celldata.getValue().priceProperty());
+		orderStateColumn.setCellValueFactory(celldata -> celldata.getValue().stateProperty());
 	}
 }
