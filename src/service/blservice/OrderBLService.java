@@ -110,4 +110,10 @@ public interface OrderBLService extends Remote{
 	
 	//通过id寻找订单
 	public OrderVO order_findbyid(int orderid)throws RemoteException;
+	
+	public ResultMessage order_checkout(int orderid)throws RemoteException;
+	
+	public ResultMessage offline_checkin(int hotelid,ArrayList<RoomOrderVO> room_order)throws RemoteException;
+	
+	public ResultMessage offline_checkout(int hotelid,ArrayList<RoomOrderVO> room_order)throws RemoteException;
 }
