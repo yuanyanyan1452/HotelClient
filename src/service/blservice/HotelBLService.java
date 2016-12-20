@@ -129,4 +129,7 @@ public interface HotelBLService extends Remote{
 	
 	//评价酒店
 	public ResultMessage evalutehotel(EvaluationVO e, int clientid,int hotelid) throws RemoteException;
+
+	public ArrayList<RoomVO> getallroom(int hotelid)throws RemoteException;
+	
 }
