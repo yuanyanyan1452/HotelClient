@@ -67,12 +67,31 @@ public class HotelCheckInController implements Initializable {
 
 	@FXML
 	private ComboBox<String> roomtypeComboBox;
+	
+	@FXML
+	private TextField roomNumTextField;
+	
+	@FXML
+	private TextField daysTextField;
 
 	@FXML
 	private void downlinecheckin() {
 		if (roomtypeComboBox.getValue() == null) {
 			AlertUtil.showWarningAlert("未为线下操作选择房间类型！");
-		} else {
+		}
+		else if (roomNumTextField.getText().isEmpty()) {
+			AlertUtil.showWarningAlert("未输入房间数量！");
+		}
+		else if (Character.isDigit(roomNumTextField.getText().charAt(0))) {
+			AlertUtil.showWarningAlert("房间数量应输入数字！");
+		}
+		else if (daysTextField.getText().isEmpty()) {
+			AlertUtil.showWarningAlert("未输入入住天数！");
+		}
+		else if (Character.isDigit(daysTextField.getText().charAt(0))) {
+			AlertUtil.showWarningAlert("入住天数应输入数字！");
+		}
+		else {
 			RemoteHelper helper = RemoteHelper.getInstance();
 			String roomtype = roomtypeComboBox.getValue();
 			// TODO 线下入住
@@ -83,7 +102,20 @@ public class HotelCheckInController implements Initializable {
 	private void downlinecheckout() {
 		if (roomtypeComboBox.getValue() == null) {
 			AlertUtil.showWarningAlert("未为线下操作选择房间类型！");
-		} else {
+		}
+		else if (roomNumTextField.getText().isEmpty()) {
+			AlertUtil.showWarningAlert("未输入房间数量！");
+		}
+		else if (Character.isDigit(roomNumTextField.getText().charAt(0))) {
+			AlertUtil.showWarningAlert("房间数量应输入数字！");
+		}
+		else if (daysTextField.getText().isEmpty()) {
+			AlertUtil.showWarningAlert("未输入入住天数！");
+		}
+		else if (Character.isDigit(daysTextField.getText().charAt(0))) {
+			AlertUtil.showWarningAlert("入住天数应输入数字！");
+		}
+		else {
 			RemoteHelper helper = RemoteHelper.getInstance();
 			String roomtype = roomtypeComboBox.getValue();
 			// TODO 线下退房
