@@ -14,6 +14,8 @@ import objects.ResultMessage;
 import rmi.RemoteHelper;
 import ui.model.OrderModel;
 import ui.util.AlertUtil;
+import ui.util.OrderUtil;
+import ui.util.RecordActionUtil;
 import ui.view.Main;
 import vo.AccommodationVO;
 import vo.OrderVO;
@@ -24,9 +26,6 @@ public class HotelCheckInChoiceController implements Initializable {
 	private OrderModel currentOrder;
 	private SimpleDateFormat format = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
 
-	private static final String ISEXECUTE = "是";
-	private static final String NORMAL = "正常";
-	private static final String ABNORMAL = "异常";
 	@FXML
 	private Label orderIdLabel;
 
@@ -60,19 +59,44 @@ public class HotelCheckInChoiceController implements Initializable {
 			currentOrder.setPredictLeaveTime(predictTime);
 			currentOrder.setIsExecute(true);
 
-			// 更新底层数据
+			
 			RemoteHelper helper = RemoteHelper.getInstance();
 			int orderid = Integer.parseInt(currentOrder.getOrderid());
+			int clientid = Integer.parseInt(currentOrder.getClientid());
+			int price =Integer.parseInt(currentOrder.getPrice());
 			AccommodationVO info = new AccommodationVO("001号房", new Date(), predictDate, new Date());
+			//订单状态更新为已执行
 			ResultMessage message1 = helper.getOrderBLService().order_hotel_execute(orderid);
-			ResultMessage message2 = helper.getHotelBLService().hotel_updateAccomodation(info, orderid);
-
-			if (message1 == ResultMessage.Fail || message2 == ResultMessage.Fail) {
+			if (message1 == ResultMessage.Fail ) {
 				AlertUtil.showErrorAlert("操作失败。。");
 				return;
 			}
-
-			//TODO 更新信用记录
+			
+			//酒店更新入住信息
+			ResultMessage message2 = helper.getHotelBLService().hotel_updateAccomodation(info, orderid);
+			if (message2 == ResultMessage.Fail ) {
+				AlertUtil.showErrorAlert("操作失败。。");
+				return;
+			}
+			
+			//客户信用值增加
+			ResultMessage message3 = helper.getClientBLService().updateClientCredit(clientid, price, 1);
+			if (message3 == ResultMessage.Fail ) {
+				AlertUtil.showErrorAlert("操作失败。。");
+				return;
+			}
+			
+			//添加信用记录
+			Date now = new Date();
+			String nowtime = format.format(now);
+			int nowCredit = helper.getClientBLService().client_checkCredit(clientid);
+			String newRecord = "'"+nowtime+"'"+","+orderid+","+RecordActionUtil.getExecute()+","+price+","+nowCredit;
+			ResultMessage message4 = helper.getClientBLService().client_updateClientCreditList(clientid, newRecord);
+			if (message4 == ResultMessage.Fail) {
+				AlertUtil.showErrorAlert("操作失败。。");
+				return;
+			}
+			
 			// 更新checkin界面
 			checkInController.updateTable(currentOrder);
 
@@ -90,20 +114,46 @@ public class HotelCheckInChoiceController implements Initializable {
 			Date predictDate = format.parse(predictTime);
 			currentOrder.setPredictLeaveTime(predictTime);
 			currentOrder.setIsExecute(true);
-			currentOrder.setState(NORMAL);
+			currentOrder.setState(OrderUtil.getNormal());
 			
 			// 更新底层数据
 			RemoteHelper helper = RemoteHelper.getInstance();
 			int orderid = Integer.parseInt(currentOrder.getOrderid());
+			int clientid = Integer.parseInt(currentOrder.getClientid());
+			int price =Integer.parseInt(currentOrder.getPrice());
 			AccommodationVO info = new AccommodationVO("002号房", new Date(), predictDate, new Date());
+			//订单状态更新为已执行
 			ResultMessage message1 = helper.getOrderBLService().order_hotel_execute(orderid);
-			ResultMessage message2 = helper.getHotelBLService().hotel_updateAccomodation(info, orderid);
-			
-			if (message1 == ResultMessage.Fail || message2 == ResultMessage.Fail) {
+			if (message1 == ResultMessage.Fail ) {
 				AlertUtil.showErrorAlert("操作失败。。");
 				return;
 			}
-			//TODO 更新信用记录
+			
+			//酒店更新入住信息
+			ResultMessage message2 = helper.getHotelBLService().hotel_updateAccomodation(info, orderid);
+			if (message2 == ResultMessage.Fail ) {
+				AlertUtil.showErrorAlert("操作失败。。");
+				return;
+			}
+			
+			//客户信用值增加
+			ResultMessage message3 = helper.getClientBLService().updateClientCredit(clientid, price, 1);
+			if (message3 == ResultMessage.Fail ) {
+				AlertUtil.showErrorAlert("操作失败。。");
+				return;
+			}
+			
+			//添加信用记录
+			Date now = new Date();
+			String nowtime = format.format(now);
+			int nowCredit = helper.getClientBLService().client_checkCredit(clientid);
+			String newRecord = "'"+nowtime+"'"+","+orderid+","+RecordActionUtil.getExecute()+","+price+","+nowCredit;
+			ResultMessage message4 = helper.getClientBLService().client_updateClientCreditList(clientid, newRecord);
+			if (message4 == ResultMessage.Fail) {
+				AlertUtil.showErrorAlert("操作失败。。");
+				return;
+			}
+			
 			// 更新checkin界面
 			checkInController.updateTable(currentOrder);
 			
@@ -116,24 +166,24 @@ public class HotelCheckInChoiceController implements Initializable {
 
 	@FXML
 	public void checkout() {
-		//TODO 退房
-//		try {
-//			// 更新底层数据
-//			RemoteHelper helper = RemoteHelper.getInstance();
-//			AccommodationVO info = new AccommodationVO("003号房", checkInDate, predictDate, new Date());
-//			ResultMessage message1 = helper.getHotelBLService().hotel_updateAccomodation(info, Integer.parseInt(currentOrder.getOrderid()));
-//			if (message1 == ResultMessage.Fail) {
-//				AlertUtil.showErrorAlert("操作失败。。");
-//				return;
-//			}
-//			// 更新checkin界面
-//			checkInController.removeTable(currentOrder);
-//			
-//			AlertUtil.showInformationAlert("退房成功！");
-//		} catch (ParseException | RemoteException e) {
-//			e.printStackTrace();
-//		}
-//		
+		try {
+			// 退房
+			RemoteHelper helper = RemoteHelper.getInstance();
+			int orderid = Integer.parseInt(currentOrder.getOrderid());
+			ResultMessage message = helper.getOrderBLService().order_checkout(orderid);
+			if (message == ResultMessage.Fail) {
+				AlertUtil.showErrorAlert("操作失败。。");
+				return;
+			}
+			
+			// checkin界面删除这个订单
+			checkInController.removeTable(currentOrder);
+			
+			AlertUtil.showInformationAlert("退房成功！");
+		} catch ( RemoteException e) {
+			e.printStackTrace();
+		}
+		
 	}
 
 	public HotelCheckInChoiceController() {
@@ -151,7 +201,7 @@ public class HotelCheckInChoiceController implements Initializable {
 		currentOrder = checkInController.currentOrder;
 
 		// 已执行订单显示退房
-		if (currentOrder.getIsExecute().equals(ISEXECUTE)) {
+		if (currentOrder.getIsExecute().equals(OrderUtil.getIsexecute())) {
 			predictLabel.setVisible(false);
 			predictTextField.setVisible(false);
 			checkinButton.setVisible(false);
@@ -159,7 +209,7 @@ public class HotelCheckInChoiceController implements Initializable {
 			checkoutButton.setVisible(true);
 		}
 		// 未执行正常订单显示入住
-		else if (currentOrder.getState().equals(NORMAL)) {
+		else if (currentOrder.getState().equals(OrderUtil.getNormal())) {
 			predictLabel.setVisible(true);
 			predictTextField.setVisible(true);
 			checkinButton.setVisible(true);

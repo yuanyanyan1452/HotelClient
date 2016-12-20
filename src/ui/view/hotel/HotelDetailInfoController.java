@@ -1,6 +1,8 @@
 package ui.view.hotel;
 
 import java.net.URL;
+import java.rmi.RemoteException;
+import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.ResourceBundle;
 
@@ -22,6 +24,9 @@ import ui.util.AlertUtil;
 import ui.view.Main;
 import vo.ClientVO;
 import vo.HotelVO;
+import vo.OrderVO;
+import vo.RoomOrderVO;
+import vo.RoomVO;
 
 public class HotelDetailInfoController implements Initializable {
 	private Main main;
@@ -200,20 +205,63 @@ public class HotelDetailInfoController implements Initializable {
 
 		});
 		
+		// 将当前酒店的所有可用房间录入到表格内
 		ObservableList<RoomModel> rooms = roomTable.getItems();
-		//TODO 得到当前酒店所有可用房间的方法
-//		ArrayList<RoomOrderVO> roomVOs = helper.
+		try {
+			ArrayList<RoomVO> roomVOs = helper.getHotelBLService().getallroom(currentHotel.getid());
+			for(RoomVO roomVO : roomVOs){
+				RoomModel roomModel = new RoomModel();
+				roomModel.setRoomNum(roomVO.getavailable_num());
+				roomModel.setRoomPrice(roomVO.getprice());
+				roomModel.setRoomType(roomVO.getroom_type());
+				rooms.add(roomModel);
+			}
+		} catch (RemoteException e) {
+			e.printStackTrace();
+		}
 		roomtypeColumn.setCellValueFactory(celldata -> celldata.getValue().roomTypeProperty());
 		priceColumn.setCellValueFactory(celldata -> celldata.getValue().roomPriceProperty());
 		
 		roomTable.setItems(rooms);
+		
+		//导入当前客户在这个酒店的历史订单
 		ObservableList<OrderModel> orders = orderTable.getItems();
-		//TODO 根据客户id和酒店id查订单（客户在酒店的所有订单）
-//		ArrayList<OrderVO> orderVOs = helper.getOrderBLService()
+		try {
+			ArrayList<OrderVO> orderVOs = helper.getOrderBLService().get_client_hotel_order(currentClient.getclientid(), currentHotel.getid());
+			for(OrderVO vo: orderVOs){
+				OrderModel orderModel = new OrderModel();
+				orderModel.setOrderid(vo.getid());
+				ArrayList<RoomOrderVO> roomOrderVOs = vo.getroom_order();
+				String roomtype = "";
+				String roomnumber = "";
+				for(int i=0;i<roomOrderVOs.size();i++){
+					if (i==roomOrderVOs.size()-1){
+						roomtype+=roomOrderVOs.get(i).getroom_type();
+						roomnumber+=roomOrderVOs.get(i).getroom_number();
+					}
+					else{
+						roomtype+=roomOrderVOs.get(i).getroom_type()+",";
+						roomnumber+=roomOrderVOs.get(i).getroom_number()+",";
+					}
+				}
+				orderModel.setRoomType(roomtype);
+				orderModel.setRoomNumber(roomnumber);
+				orderModel.setPrice(vo.getprice());
+				orderModel.setState(vo.getstate());
+				
+				orders.add(orderModel);
+			}
+				
+			
+		} catch (RemoteException e) {
+			e.printStackTrace();
+		}
 		orderidColumn.setCellValueFactory(celldata -> celldata.getValue().orderidProperty());
 		orderRoomtypeColumn.setCellValueFactory(celldata -> celldata.getValue().roomtypeProperty());
 		orderRoomamountColumn.setCellValueFactory(celldata -> celldata.getValue().roomnumberProperty());
 		orderPriceColumn.setCellValueFactory(celldata -> celldata.getValue().priceProperty());
 		orderStateColumn.setCellValueFactory(celldata -> celldata.getValue().stateProperty());
+		
+		orderTable.setItems(orders);
 	}
 }

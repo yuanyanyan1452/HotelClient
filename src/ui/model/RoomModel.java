@@ -29,8 +29,8 @@ public class RoomModel {
 		return roomprice.get();
 	}
 	
-	public void setRoomPrice(String roomprice){
-		this.roomprice.set(roomprice);
+	public void setRoomPrice(int roomprice){
+		this.roomprice.set(String.valueOf(roomprice));
 	}
 	
 	public SimpleStringProperty roomPriceProperty(){
@@ -41,8 +41,8 @@ public class RoomModel {
 		return roomnum.get();
 	}
 	
-	public void setRoomNum(String roomnum){
-		this.roomnum.set(roomnum);
+	public void setRoomNum(int roomnum){
+		this.roomnum.set(String.valueOf(roomnum));
 	}
 	
 	public SimpleStringProperty roomNumProperty(){
