@@ -398,7 +398,7 @@ public class Main extends Application {
 	}
 
 	// 酒店可用房间管理
-	public void gotoHotelRoomManage() {
+	public void gotoHotelRoomManage(HotelVO hotelVO) {
 		try {
 			FXMLLoader fxmlLoader = new FXMLLoader();
 			fxmlLoader.setLocation(Main.class.getResource("hotel/HotelRoomManage.fxml"));
@@ -406,7 +406,7 @@ public class Main extends Application {
 			insidePane.setPrefSize(700, 600);
 			rootLayout.getItems().set(1, insidePane);
 			HotelRoomManageController controller = (HotelRoomManageController) fxmlLoader.getController();
-			controller.setMain(this);
+			controller.setMain(this,hotelVO);
 		} catch (Exception e) {
 			Logger.getLogger(Main.class.getName()).log(Level.SEVERE, null, e);
 		}

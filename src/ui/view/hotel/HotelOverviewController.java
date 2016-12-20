@@ -63,7 +63,7 @@ public class HotelOverviewController implements Initializable {
 
 	@FXML
 	public void gotoHotelRoomManage() {
-		main.gotoHotelRoomManage();
+		main.gotoHotelRoomManage(currenthotelvo);
 	}
 
 	@FXML
