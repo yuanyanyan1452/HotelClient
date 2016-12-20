@@ -40,6 +40,7 @@ public interface HotelBLService extends Remote{
 	 */
 	public ResultMessage hotel_importRoom(RoomVO room)throws RemoteException;
 
+	public ResultMessage hotel_updateRoom(RoomVO room)throws RemoteException;
 	/**
 	 * @param info
 	 * @return 酒店更新入住信息
