@@ -25,6 +25,9 @@ public class OrderModel {
 	private final SimpleStringProperty haveChild;
 	private final SimpleStringProperty overTime;
 	private final SimpleStringProperty punishCredit;
+	private final SimpleStringProperty predictLeaveTime;
+	private static final String ISEXECUTE = "是";
+	private static final String NOEXECUTE = "否";
 	private SimpleDateFormat format = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
 
 	public OrderModel() {
@@ -46,6 +49,7 @@ public class OrderModel {
 		haveChild = new SimpleStringProperty();
 		overTime = new SimpleStringProperty();
 		punishCredit = new SimpleStringProperty();
+		predictLeaveTime = new SimpleStringProperty();
 	}
 
 	public String getOrderid() {
@@ -125,7 +129,7 @@ public class OrderModel {
 	}
 
 	public void setIsExecute(boolean isExecute) {
-		this.isExecute.set(isExecute ? "是" : "否");
+		this.isExecute.set(isExecute ? ISEXECUTE :NOEXECUTE);
 	}
 	
 	public SimpleStringProperty isExecuteProperty(){
@@ -246,12 +250,17 @@ public class OrderModel {
 	}
 	
 	public void setOverTime(Date now){
-		long overTime;
-		try {
-			overTime = (now.getTime() - format.parse(latestExecuteTime.get()).getTime())/(1000*3600);
-			this.overTime.set(overTime+"");
-		} catch (ParseException e) {
-			e.printStackTrace();
+		if (this.isExecute.get().equals(ISEXECUTE)) {
+			overTime.set("已入住");
+		}
+		else{
+			long overTime;
+			try {
+				overTime = (now.getTime() - format.parse(latestExecuteTime.get()).getTime())/(1000*3600);
+				this.overTime.set(overTime+"");
+			} catch (ParseException e) {
+				e.printStackTrace();
+			}
 		}
 	}
 	
@@ -270,4 +279,17 @@ public class OrderModel {
 	public SimpleStringProperty punishCreditProperty(){
 		return this.punishCredit;
 	}
+	
+	public String getPredictLeaveTime(){
+		return predictLeaveTime.get();
+	}
+	
+	public void setPredictLeaveTime(String time){
+		predictLeaveTime.set(time);
+	}
+	
+	public SimpleStringProperty predictLeaveTimeProperty(){
+		return predictLeaveTime;
+	}
+	
 }

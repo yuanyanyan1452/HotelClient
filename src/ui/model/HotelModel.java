@@ -10,6 +10,7 @@ public class HotelModel {
 	private final SimpleStringProperty star;
 	private final SimpleStringProperty score;
 	private final SimpleStringProperty orderstate;
+	
 	public HotelModel(){
 		id = new SimpleStringProperty();
 		hotelName = new SimpleStringProperty();
