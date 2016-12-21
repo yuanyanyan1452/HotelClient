@@ -147,8 +147,6 @@ public class ManagerOverviewController implements Initializable {
 	@FXML
 	private TableColumn<ClientModel, String> clientVipInfoColumn;
 
-	@FXML
-	private TableColumn<ClientModel, String> clientCreditColumn;
 
 	@FXML
 	private TableColumn<ClientModel, String> clientVipTypeColumn;
@@ -164,9 +162,6 @@ public class ManagerOverviewController implements Initializable {
 
 	@FXML
 	private TextField updateClientVIPTextField;
-
-	@FXML
-	private TextField updateClientCreditTextField;
 
 	@FXML
 	private ComboBox<String> updatevipTypeCombobox;
@@ -309,7 +304,6 @@ public class ManagerOverviewController implements Initializable {
 				updateClientContactTextField.setText(client.getContact());
 				updatevipTypeCombobox.setValue(client.getVIPType());
 				updateClientVIPTextField.setText(client.getVipInfo());
-				updateClientCreditTextField.setText(client.getCredit());
 
 				isSuccess = true;
 			}
@@ -317,9 +311,9 @@ public class ManagerOverviewController implements Initializable {
 		if (!isSuccess) {
 			updateClientNameTextField.setText("");
 			updateClientContactTextField.setText("");
+			updatevipTypeCombobox.setValue("");
 			updateClientVIPTextField.setText("");
-			updateClientCreditTextField.setText("");
-
+			
 			AlertUtil.showWarningAlert("不存在该客户！");
 		}
 	}
@@ -335,7 +329,6 @@ public class ManagerOverviewController implements Initializable {
 				clientList.get(index).setContact(updateClientContactTextField.getText());
 				clientList.get(index).setVIPtype(updatevipTypeCombobox.getValue());
 				clientList.get(index).setVipInfo(updateClientVIPTextField.getText());
-				clientList.get(index).setCredit(Integer.parseInt(updateClientCreditTextField.getText()));
 				isSuccess = true;
 				break;
 			}
@@ -350,7 +343,6 @@ public class ManagerOverviewController implements Initializable {
 			ClientVO vo = helper.getClientBLService().client_checkInfo(Integer.parseInt(currentClientModel.getID()));
 			vo.setclient_name(updateClientNameTextField.getText());
 			vo.setcontact(updateClientContactTextField.getText());
-			vo.setcredit(Integer.parseInt(updateClientCreditTextField.getText()));
 			VIPInfo info = new VIPInfo();
 			if (updatevipTypeCombobox.getValue().equals("非会员")) {
 				info = null;
@@ -359,7 +351,6 @@ public class ManagerOverviewController implements Initializable {
 				info.setInfo(updateClientVIPTextField.getText());
 			}
 			vo.setvipinfo(info);
-			//TODO
 			ResultMessage message = helper.getClientBLService().client_updateInfo(vo);
 			if (message == ResultMessage.Success) {
 				AlertUtil.showInformationAlert("修改客户信息成功！");
@@ -386,7 +377,6 @@ public class ManagerOverviewController implements Initializable {
 
 		RemoteHelper helper = RemoteHelper.getInstance();
 		try {
-			//TODO
 			ResultMessage message = helper.getManageBLService().manage_addHotel(vo);
 			if (message == ResultMessage.Fail) {
 				AlertUtil.showErrorAlert("添加酒店失败！");
@@ -451,7 +441,6 @@ public class ManagerOverviewController implements Initializable {
 			vo.setbussiness_address(updateHotelBusinessAddressTextField.getText());
 			vo.setaddress(updateHotelAddressTextField.getText());
 			vo.setstar(updateHotelStarTextField.getText());
-			//TODO
 			ResultMessage message = helper.getHotelBLService().hotel_updateInfo(vo);
 			if (message == ResultMessage.Fail) {
 				AlertUtil.showErrorAlert("更新酒店失败！");
@@ -738,7 +727,6 @@ public class ManagerOverviewController implements Initializable {
 		clientContactColumn.setCellValueFactory(celldata -> celldata.getValue().contactProperty());
 		clientVipTypeColumn.setCellValueFactory(celldata -> celldata.getValue().vipTypeProperty());
 		clientVipInfoColumn.setCellValueFactory(celldata -> celldata.getValue().vipInfoProperty());
-		clientCreditColumn.setCellValueFactory(celldata -> celldata.getValue().creditProperty());
 
 		clientTable.setItems(clientList);
 	}

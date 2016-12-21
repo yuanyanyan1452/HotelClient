@@ -34,47 +34,77 @@
             <Label text="结束时间：" GridPane.rowIndex="2" />
             <Label text="最晚订单执行时间：" GridPane.rowIndex="3" />
             <Label text="房间类型：" GridPane.rowIndex="4" />
-            <Label text="房间数量：" GridPane.rowIndex="5" />
-            <Label text="预计入住人数：" GridPane.rowIndex="6" />
+            <Label text="房间数量(与类型对应)：" GridPane.rowIndex="5" />
+            <Label text="入住人数：" GridPane.rowIndex="6" />
             <Label text="有无儿童：" GridPane.rowIndex="7" />
             <Label text="总价值：" GridPane.rowIndex="8" />
             <Label text="使用的促销策略：" GridPane.rowIndex="9" />
-            <AnchorPane GridPane.columnIndex="1" GridPane.rowIndex="2">
-               <children>
-                  <Label layoutX="108.0" layoutY="15.0" text="月" />
-                  <Label layoutX="228.0" layoutY="15.0" text="日" />
-                  <ComboBox fx:id="endMonth" layoutX="31.0" layoutY="11.0" prefHeight="23.0" prefWidth="50.0" />
-                  <ComboBox fx:id="endDay" layoutX="156.0" layoutY="11.0" prefHeight="23.0" prefWidth="50.0" />
-               </children>
-            </AnchorPane>
-            <ComboBox fx:id="roomType" prefHeight="25.0" prefWidth="132.0" GridPane.columnIndex="1" GridPane.rowIndex="4" />
-            <ComboBox fx:id="hasChild" prefHeight="25.0" prefWidth="72.0" GridPane.columnIndex="1" GridPane.rowIndex="7" />
-            <ComboBox fx:id="strategy" prefHeight="25.0" prefWidth="249.0" GridPane.columnIndex="1" GridPane.rowIndex="9" />
             <AnchorPane GridPane.columnIndex="1" GridPane.rowIndex="1">
                <children>
-                  <Label layoutX="108.0" layoutY="15.0" text="月" />
-                  <Label layoutX="228.0" layoutY="15.0" text="日" />
-                  <ComboBox fx:id="startMonth" layoutX="31.0" layoutY="11.0" prefHeight="23.0" prefWidth="50.0" />
-                  <ComboBox fx:id="startDay" layoutX="156.0" layoutY="11.0" prefHeight="23.0" prefWidth="50.0" />
+                  <DatePicker fx:id="startDatePicker" layoutX="45.0" layoutY="11.0" />
                </children>
             </AnchorPane>
-            <ComboBox fx:id="deadHour" prefHeight="25.0" prefWidth="163.0" GridPane.columnIndex="1" GridPane.rowIndex="3" />
-            <AnchorPane prefHeight="200.0" prefWidth="200.0" GridPane.columnIndex="1" GridPane.rowIndex="5">
-               <children>
-                  <TextField layoutX="105.0" layoutY="11.0" prefHeight="23.0" prefWidth="67.0" />
-               </children>
-            </AnchorPane>
-            <AnchorPane prefHeight="200.0" prefWidth="200.0" GridPane.columnIndex="1" GridPane.rowIndex="6">
-               <children>
-                  <TextField alignment="CENTER" layoutX="105.0" layoutY="11.0" prefHeight="15.0" prefWidth="67.0" />
-               </children>
-            </AnchorPane>
+            <ComboBox fx:id="latestHourComboBox" prefHeight="25.0" prefWidth="110.0" GridPane.columnIndex="1" GridPane.rowIndex="3" />
             <AnchorPane prefHeight="200.0" prefWidth="200.0" GridPane.columnIndex="1" GridPane.rowIndex="8">
                <children>
                   <Label layoutX="174.0" layoutY="15.0" text="元" />
                   <Label fx:id="priceLabel" alignment="CENTER" layoutX="108.0" layoutY="8.0" prefHeight="29.0" prefWidth="60.0" />
                </children>
             </AnchorPane>
+            <DatePicker fx:id="endDatePicker" GridPane.columnIndex="1" GridPane.rowIndex="2" />
+            <ComboBox fx:id="peopleNumComboBox" prefHeight="23.0" prefWidth="110.0" GridPane.columnIndex="1" GridPane.rowIndex="6" />
+            <RadioButton fx:id="hasChildButton" mnemonicParsing="false" text="有" GridPane.columnIndex="1" GridPane.rowIndex="7">
+               <GridPane.margin>
+                  <Insets right="80.0" />
+               </GridPane.margin>
+            </RadioButton>
+            <RadioButton fx:id="hasNoChildButton" mnemonicParsing="false" text="无" GridPane.columnIndex="1" GridPane.rowIndex="7">
+               <GridPane.margin>
+                  <Insets left="80.0" />
+               </GridPane.margin>
+            </RadioButton>
+            <Label fx:id="strategyLabel" alignment="CENTER" prefHeight="30.0" prefWidth="271.0" GridPane.columnIndex="1" GridPane.rowIndex="9" />
+            <GridPane GridPane.columnIndex="1" GridPane.rowIndex="4">
+              <columnConstraints>
+                <ColumnConstraints halignment="CENTER" hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+                <ColumnConstraints halignment="CENTER" hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+                  <ColumnConstraints halignment="CENTER" hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+              </columnConstraints>
+              <rowConstraints>
+                <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                  <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+              </rowConstraints>
+               <children>
+                  <CheckBox mnemonicParsing="false" text="商务房" GridPane.rowIndex="1" />
+                  <CheckBox mnemonicParsing="false" text="大床房" GridPane.columnIndex="1" />
+                  <CheckBox mnemonicParsing="false" text="双人房" GridPane.columnIndex="2" />
+                  <CheckBox mnemonicParsing="false" text="标准间" />
+                  <CheckBox mnemonicParsing="false" text="豪华房" GridPane.columnIndex="1" GridPane.rowIndex="1" />
+                  <CheckBox mnemonicParsing="false" text="海景房" GridPane.columnIndex="2" GridPane.rowIndex="1" />
+               </children>
+            </GridPane>
+            <GridPane hgap="30.0" GridPane.columnIndex="1" GridPane.halignment="CENTER" GridPane.rowIndex="5" GridPane.valignment="CENTER">
+               <columnConstraints>
+                  <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+                  <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+                  <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+               </columnConstraints>
+               <rowConstraints>
+                  <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                  <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+               </rowConstraints>
+               <children>
+                  <ComboBox prefWidth="150.0" />
+                  <ComboBox prefWidth="150.0" GridPane.columnIndex="1" />
+                  <ComboBox prefWidth="150.0" GridPane.columnIndex="2" />
+                  <ComboBox prefWidth="150.0" GridPane.rowIndex="1" />
+                  <ComboBox prefWidth="150.0" GridPane.columnIndex="1" GridPane.rowIndex="1" />
+                  <ComboBox prefWidth="150.0" GridPane.columnIndex="2" GridPane.rowIndex="1" />
+               </children>
+               <GridPane.margin>
+                  <Insets left="20.0" right="20.0" />
+               </GridPane.margin>
+            </GridPane>
          </children>
       </GridPane>
       <Label layoutX="256.0" layoutY="14.0" text="您的订单">

@@ -197,7 +197,7 @@ public class ClientSearchHotelController implements Initializable {
 			}
 		});
 
-		roomtypeButton.getItems().addAll("不限", "单人房", "大床房", "双人房");
+		roomtypeButton.getItems().addAll("不限", "标准间", "大床房", "双人房","商务房","豪华房","海景房");
 		roomtypeButton.setValue("不限");
 
 		starButton.getItems().addAll("不限", "一星级", "二星级", "三星级", "四星级", "五星级");
