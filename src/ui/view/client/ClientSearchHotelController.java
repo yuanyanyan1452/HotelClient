@@ -291,7 +291,7 @@ public class ClientSearchHotelController implements Initializable {
 				cell.setOnMouseClicked((MouseEvent t) -> {
 					if (t.getClickCount() == 2) {
 						try {
-							main.gotoHotelDetailInfo(helper.getHotelBLService().hotel_checkInfo(Integer.parseInt(hotelTable.getItems().get(cell.getIndex()).getID())));
+							main.gotoHotelDetailInfo(helper.getHotelBLService().hotel_getInfo(Integer.parseInt(hotelTable.getItems().get(cell.getIndex()).getID())));
 						} catch (Exception e) {
 							e.printStackTrace();
 						}
@@ -310,7 +310,7 @@ public class ClientSearchHotelController implements Initializable {
 						cell.setOnMouseClicked((MouseEvent t) -> {
 							if (t.getClickCount() == 2) {
 								try {
-									main.gotoHotelDetailInfo(helper.getHotelBLService().hotel_checkInfo(Integer.parseInt(hotelTable.getItems().get(cell.getIndex()).getID())));
+									main.gotoHotelDetailInfo(helper.getHotelBLService().hotel_getInfo(Integer.parseInt(hotelTable.getItems().get(cell.getIndex()).getID())));
 								} catch (Exception e) {
 									e.printStackTrace();
 								}
@@ -328,7 +328,7 @@ public class ClientSearchHotelController implements Initializable {
 				cell.setOnMouseClicked((MouseEvent t) -> {
 					if (t.getClickCount() == 2) {
 						try {
-							main.gotoHotelDetailInfo(helper.getHotelBLService().hotel_checkInfo(Integer.parseInt(hotelTable.getItems().get(cell.getIndex()).getID())));
+							main.gotoHotelDetailInfo(helper.getHotelBLService().hotel_getInfo(Integer.parseInt(hotelTable.getItems().get(cell.getIndex()).getID())));
 						} catch (Exception e) {
 							e.printStackTrace();
 						}
@@ -346,7 +346,7 @@ public class ClientSearchHotelController implements Initializable {
 				cell.setOnMouseClicked((MouseEvent t) -> {
 					if (t.getClickCount() == 2) {
 						try {
-							main.gotoHotelDetailInfo(helper.getHotelBLService().hotel_checkInfo(Integer.parseInt(hotelTable.getItems().get(cell.getIndex()).getID())));
+							main.gotoHotelDetailInfo(helper.getHotelBLService().hotel_getInfo(Integer.parseInt(hotelTable.getItems().get(cell.getIndex()).getID())));
 						} catch (Exception e) {
 							e.printStackTrace();
 						}
@@ -364,7 +364,7 @@ public class ClientSearchHotelController implements Initializable {
 				cell.setOnMouseClicked((MouseEvent t) -> {
 					if (t.getClickCount() == 2) {
 						try {
-							main.gotoHotelDetailInfo(helper.getHotelBLService().hotel_checkInfo(Integer.parseInt(hotelTable.getItems().get(cell.getIndex()).getID())));
+							main.gotoHotelDetailInfo(helper.getHotelBLService().hotel_getInfo(Integer.parseInt(hotelTable.getItems().get(cell.getIndex()).getID())));
 						} catch (Exception e) {
 							e.printStackTrace();
 						}
@@ -382,7 +382,7 @@ public class ClientSearchHotelController implements Initializable {
 				cell.setOnMouseClicked((MouseEvent t) -> {
 					if (t.getClickCount() == 2) {
 						try {
-							main.gotoHotelDetailInfo(helper.getHotelBLService().hotel_checkInfo(Integer.parseInt(hotelTable.getItems().get(cell.getIndex()).getID())));
+							main.gotoHotelDetailInfo(helper.getHotelBLService().hotel_getInfo(Integer.parseInt(hotelTable.getItems().get(cell.getIndex()).getID())));
 						} catch (Exception e) {
 							e.printStackTrace();
 						}
@@ -403,7 +403,7 @@ public class ClientSearchHotelController implements Initializable {
 			model.setAddress(vo.getaddress());
 			model.setStar(vo.getstar());
 			model.setScore(vo.getscore().split(",")[0]);
-			ArrayList<OrderVO> orders = helper.getOrderBLService().order_hotel_browse(vo.getid());
+			ArrayList<OrderVO> orders = helper.getOrderBLService().findorderByHotelid(vo.getid());
 			model.setOrderState(orders.get(orders.size() - 1).getstate());
 		} catch (Exception e) {
 			e.printStackTrace();

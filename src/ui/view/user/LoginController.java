@@ -77,7 +77,7 @@ public class LoginController implements Initializable {
 				if(helper.getHotelBLService().hotelworker_login(usernameTextField.getText(), passwordField.getText())
 						==ResultMessage.Success){
 					HotelWorkerVO hotelworkervo=helper.getHotelBLService().hotelworker_getvo(usernameTextField.getText());
-					HotelVO hotelvo=helper.getHotelBLService().hotel_checkInfo(hotelworkervo.gethotelid());
+					HotelVO hotelvo=helper.getHotelBLService().hotel_getInfo(hotelworkervo.gethotelid());
 					main.gotoHotelOverview(hotelworkervo,hotelvo);
 				}
 				else {

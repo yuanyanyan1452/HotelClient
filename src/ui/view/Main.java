@@ -34,6 +34,7 @@ import ui.view.manager.ManagerOverviewController;
 import ui.view.market.CreditChargeController;
 import ui.view.market.MarketOverviewController;
 import ui.view.market.MarketStrategyController;
+import ui.view.order.AbnormalOrderDetailInfoByClientController;
 import ui.view.order.ClientBrowseOrderController;
 import ui.view.order.ClientGenerateOrderController;
 import ui.view.order.FilledOrderDetailInfoByClientController;
@@ -263,6 +264,23 @@ public class Main extends Application {
 		AnchorPane insidePane = (AnchorPane) fxmlLoader.load();
 
 		UnfilledOrderDetailInfoByClientController controller = (UnfilledOrderDetailInfoByClientController) fxmlLoader.getController();
+		OrderVO ordervo=helper.getOrderBLService().order_findbyid(Integer.parseInt(order.getOrderid()));
+		controller.setMain(this,ordervo);
+
+		extraStage = new Stage(StageStyle.UNDECORATED);
+		extraStage.setScene(new Scene(insidePane));
+		extraStage.setAlwaysOnTop(true);
+		extraStage.centerOnScreen();
+		extraStage.show();
+	}
+	
+	//客户查看异常或撤销订单
+	public void gotoClientAbnormalOrder(OrderModel order) throws NumberFormatException, IOException{
+		FXMLLoader fxmlLoader = new FXMLLoader();
+		fxmlLoader.setLocation(Main.class.getResource("order/AbnormalOrderDetailInfoByClient.fxml"));
+		AnchorPane insidePane = (AnchorPane) fxmlLoader.load();
+
+		AbnormalOrderDetailInfoByClientController controller = (AbnormalOrderDetailInfoByClientController) fxmlLoader.getController();
 		OrderVO ordervo=helper.getOrderBLService().order_findbyid(Integer.parseInt(order.getOrderid()));
 		controller.setMain(this,ordervo);
 

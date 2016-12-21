@@ -71,7 +71,7 @@ public class FilledOrderDetailInfoByClientController implements Initializable {
 	@FXML
 	public void evaluate(){
 		try {
-			main.gotoClientEvaluateHotel(helper.getClientBLService().client_checkInfo(currentordervo.getclientid()),helper.getHotelBLService().hotel_checkInfo(currentordervo.gethotelid()));
+			main.gotoClientEvaluateHotel(helper.getClientBLService().client_checkInfo(currentordervo.getclientid()),helper.getHotelBLService().hotel_getInfo(currentordervo.gethotelid()));
 		} catch (RemoteException e) {
 			e.printStackTrace();
 		}
@@ -89,7 +89,7 @@ public class FilledOrderDetailInfoByClientController implements Initializable {
 		this.main = main;
 		currentordervo=ordervo;
 		clientnamelabel.setText(helper.getClientBLService().checkClientInfo(currentordervo.getclientid()).getclient_name());
-		hotelnamelabel.setText(helper.getHotelBLService().hotel_checkInfo(currentordervo.gethotelid()).getname());
+		hotelnamelabel.setText(helper.getHotelBLService().hotel_getInfo(currentordervo.gethotelid()).getname());
 		orderidlabel.setText(String.valueOf(currentordervo.getid()));
 		orderstatelabel.setText(currentordervo.getstate());
 		if(currentordervo.getexecute()){

@@ -499,7 +499,7 @@ public class HotelBrowseOrderController implements Initializable {
 		normalButton.setToggleGroup(group2);
 		abnormalButton.setToggleGroup(group2);
 		cancelButton.setToggleGroup(group2);
-		ObservableList<OrderVO> ordervolist=FXCollections.observableArrayList(helper.getOrderBLService().order_hotel_browse(hotelid));
+		ObservableList<OrderVO> ordervolist=FXCollections.observableArrayList(helper.getOrderBLService().findorderByHotelid(hotelid));
 		mostorderlist.clear();
 		for(OrderVO ordervo:ordervolist){
 			OrderModel model=new OrderModel();
