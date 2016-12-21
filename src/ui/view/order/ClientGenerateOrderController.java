@@ -7,12 +7,16 @@ import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.ComboBox;
 import javafx.scene.control.Label;
+import javafx.scene.control.TextField;
 import ui.model.HotelModel;
 import ui.view.Main;
+import vo.ClientVO;
+import vo.HotelVO;
 
 public class ClientGenerateOrderController implements Initializable {
 	private Main main;
-	
+	private HotelVO currentHotel;
+	private ClientVO currentClient;
 	@FXML
 	private Label hotelnameLabel;
 	
@@ -44,6 +48,12 @@ public class ClientGenerateOrderController implements Initializable {
 	private ComboBox<String> strategy;
 	
 	@FXML
+	private TextField roomNumTextField;
+	
+	@FXML
+	private TextField predictCheckinNumTextField;
+	
+	@FXML
 	private void close(){
 		main.closeExtraStage();
 	}
@@ -63,9 +73,11 @@ public class ClientGenerateOrderController implements Initializable {
 	}
 
 
-	public void setMain(Main main , HotelModel hotel) {
+	public void setMain(Main main , HotelVO hotel,ClientVO client) {
 		this.main = main;
-		hotelnameLabel.setText(hotel.getHotelName());
+		currentClient = client;
+		currentHotel =hotel;
+		hotelnameLabel.setText(hotel.getname());
 	}
 
 }

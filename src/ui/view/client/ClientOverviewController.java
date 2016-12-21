@@ -15,11 +15,20 @@ import vo.ClientVO;
 public class ClientOverviewController implements Initializable {
 	private Main main;
 	private ClientVO currentclientvo;
-	RemoteHelper helper= RemoteHelper.getInstance();
 	
-	@FXML
-	private void initialize() {
-
+	public ClientOverviewController(){
+		
+	}
+	
+	public void updateVO(ClientVO vo){
+		currentclientvo = vo;
+		nameLabel.setText(vo.getclient_name());
+		contactLabel.setText(vo.getcontact());
+		if (vo.getvipinfo()==null) {
+			vipLabel.setText("非会员");
+		}
+		else
+			vipLabel.setText(vo.getvipinfo().getType()==VIPType.NORMAL?"普通会员":"企业会员");
 	}
 	
 	@FXML
@@ -33,33 +42,29 @@ public class ClientOverviewController implements Initializable {
 
 	@FXML
 	private void gotoBasicInfo() throws RemoteException {
-		this.updateVO();
-		main.gotoClientBasicInfo(currentclientvo);
+		main.gotoClientBasicInfo(currentclientvo,this);
 	}
 
 	@FXML
 	private void gotoBrowseHotel() throws RemoteException {
-		main.gotoClientBrowseHotel();
+		main.gotoClientBrowseHotel(currentclientvo);
 	}
 
 	@FXML
 	private void gotoEnrollVIP() throws RemoteException {
-		main.gotoClientEnrollVIP(currentclientvo);
+		main.gotoClientEnrollVIP(currentclientvo,this);
 	}
 
 	@FXML
 	private void gotoBrowseOrder() throws RemoteException {
-		main.gotoClientBrowseOrder();
+		main.gotoClientBrowseOrder(currentclientvo.getclientid());
 	}
 
 	@FXML
 	private void gotoSearchHotel() throws RemoteException {
-		main.gotoClientSearchHotel();
+		main.gotoClientSearchHotel(currentclientvo);
 	}
 
-	public ClientOverviewController() {
-
-	}
 
 	@Override
 	public void initialize(URL location, ResourceBundle resources) {
@@ -79,15 +84,16 @@ public class ClientOverviewController implements Initializable {
 		}
 	}
 	
-	public void updateVO() throws RemoteException{
-		this.currentclientvo = helper.getClientBLService().client_checkInfo(currentclientvo.getclientid());
-		nameLabel.setText(currentclientvo.getclient_name());
-		contactLabel.setText(currentclientvo.getcontact());
-		if(currentclientvo.getvipinfo()==null){
-			vipLabel.setText("非会员");
-		}
-		else {
-			vipLabel.setText(currentclientvo.getvipinfo().getType()==VIPType.NORMAL? "普通会员":"企业会员");
-		}
-	}
+//	public void updateVO() throws RemoteException{
+//		RemoteHelper helper= RemoteHelper.getInstance();
+//		this.currentclientvo = helper.getClientBLService().client_checkInfo(currentclientvo.getclientid());
+//		nameLabel.setText(currentclientvo.getclient_name());
+//		contactLabel.setText(currentclientvo.getcontact());
+//		if(currentclientvo.getvipinfo()==null){
+//			vipLabel.setText("非会员");
+//		}
+//		else {
+//			vipLabel.setText(currentclientvo.getvipinfo().getType()==VIPType.NORMAL? "普通会员":"企业会员");
+//		}
+//	}
 }

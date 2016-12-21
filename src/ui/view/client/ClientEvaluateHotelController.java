@@ -1,6 +1,7 @@
 package ui.view.client;
 
 import java.net.URL;
+import java.rmi.RemoteException;
 import java.util.ResourceBundle;
 
 import javafx.beans.value.ChangeListener;
@@ -10,10 +11,19 @@ import javafx.fxml.Initializable;
 import javafx.scene.control.Label;
 import javafx.scene.control.Slider;
 import javafx.scene.control.TextArea;
+import objects.ResultMessage;
+import rmi.RemoteHelper;
+import ui.util.AlertUtil;
 import ui.view.Main;
+import vo.ClientVO;
+import vo.EvaluationVO;
+import vo.HotelVO;
 
 public class ClientEvaluateHotelController implements Initializable{
 	private Main main;
+	private ClientVO currentClient;
+	private HotelVO currentHotel;
+	
 	@FXML
 	private Label hotelnameLabel;
 	
@@ -33,12 +43,19 @@ public class ClientEvaluateHotelController implements Initializable{
 	
 	@FXML
 	private void evaluate(){
-		
-		//TODO
-	}
-	@FXML
-	private void initialize(){
-		
+		EvaluationVO evaluation = new EvaluationVO(Double.parseDouble(scoreLabel.getText()), commentArea.getText());
+		RemoteHelper helper = RemoteHelper.getInstance();
+		try {
+			ResultMessage message = helper.getHotelBLService().evalutehotel(evaluation, currentClient.getclientid(),currentHotel.getid());
+			if (message == ResultMessage.Fail) {
+				AlertUtil.showErrorAlert("评价失败。。");
+				return;
+			}
+		} catch (RemoteException e) {
+			e.printStackTrace();
+		}
+		main.closeExtraStage();
+		AlertUtil.showInformationAlert("评价成功！");
 	}
 	
 	public ClientEvaluateHotelController() {
@@ -50,8 +67,11 @@ public class ClientEvaluateHotelController implements Initializable{
 		
 	}
 	
-	public void setMain(Main main){
+	public void setMain(Main main,ClientVO clientvo,HotelVO hotelvo){
 		this.main = main;
+		currentClient = clientvo;
+		currentHotel = hotelvo;
+		hotelnameLabel.setText(hotelvo.getname());
 		scoreSlider.setMin(0.0);
 		scoreSlider.setMax(5.0);
 		scoreSlider.setValue(4.0);
@@ -64,6 +84,8 @@ public class ClientEvaluateHotelController implements Initializable{
 			public void changed(ObservableValue<? extends Number> observable, Number oldValue, Number newValue) {
 				scoreLabel.setText(String.format("%.1f", newValue));
 			}
+			
 		});
 	}
+	
 }

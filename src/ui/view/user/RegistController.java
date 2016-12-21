@@ -50,6 +50,7 @@ public class RegistController implements Initializable {
 					passwordTextField1.getText());
 			if (result == ResultMessage.Success) {
 				AlertUtil.showInformationAlert("注册成功！");
+				main.gotoLogin("client");
 			} else {
 				AlertUtil.showErrorAlert("对不起，注册失败，可能是用户名冲突或者网络问题。");
 			}

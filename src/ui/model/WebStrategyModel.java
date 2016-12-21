@@ -6,10 +6,11 @@ import java.util.Date;
 
 import javafx.beans.property.SimpleIntegerProperty;
 import javafx.beans.property.SimpleStringProperty;
+import javafx.beans.value.ObservableValue;
 import vo.WebStrategyVO;
 
 public class WebStrategyModel {
-	private final SimpleIntegerProperty id;
+	private final SimpleStringProperty id;
 	private final SimpleStringProperty name;
 	private final SimpleStringProperty startTime;
 	private final SimpleStringProperty endTime;
@@ -18,7 +19,7 @@ public class WebStrategyModel {
 	private final SimpleStringProperty superpositon;
 	
 	public WebStrategyModel(int id,String name,String startTime,String endTime,String discount,String condition,String superposition){
-		this.id = new SimpleIntegerProperty(id);
+		this.id = new SimpleStringProperty(String.valueOf(id));
 		this.name = new SimpleStringProperty(name);
 		this.startTime = new SimpleStringProperty(startTime);
 		this.endTime = new SimpleStringProperty(endTime);
@@ -27,15 +28,15 @@ public class WebStrategyModel {
 		this.superpositon = new SimpleStringProperty(superposition);
 	}
 	
-	public int getID(){
+	public String getID(){
 		return id.get();
 	}
 	
 	public void setID(int id){
-		this.id.set(id);
+		this.id.set(String.valueOf(id));
 	}
 	
-	public SimpleIntegerProperty idProperty(){
+	public SimpleStringProperty idProperty(){
 		return id;
 	}
 	
@@ -115,7 +116,7 @@ public class WebStrategyModel {
 		SimpleDateFormat format = new SimpleDateFormat("yyyy-MM-dd hh:mm:ss");
 		WebStrategyVO vo = new WebStrategyVO();
 		Date time;
-		vo.setid(id.get());
+		vo.setid(Integer.parseInt(id.get()));
 		vo.setname(name.get());
 		try {
 			time = format.parse(startTime.get());
@@ -123,7 +124,6 @@ public class WebStrategyModel {
 			time = format.parse(endTime.get());
 			vo.setend_time(time);
 		} catch (ParseException e) {
-			// TODO 自动生成的 catch 块
 			e.printStackTrace();
 		}
 		vo.setexecuteway(discount.get());

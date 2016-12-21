@@ -46,6 +46,16 @@ public class LoginController implements Initializable {
 	private Button updatepasswordButton;
 	
 	@FXML
+	public void backtooverview(){
+		main.backtoMain();
+	}
+	
+	@FXML
+	public void exit(){
+		main.getPrimaryStage().close();
+	}
+	
+	@FXML
 	public void gotoOverview() {
 		RemoteHelper helper =  RemoteHelper.getInstance();
 		switch (type) {

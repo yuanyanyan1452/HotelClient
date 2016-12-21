@@ -4,25 +4,25 @@ import javafx.beans.property.SimpleIntegerProperty;
 import javafx.beans.property.SimpleStringProperty;
 
 public class MarketModel {
-	private final SimpleIntegerProperty id;
+	private final SimpleStringProperty id;
 	private final SimpleStringProperty name;
 	private final SimpleStringProperty contact;
 	
-	public MarketModel(int id,String name,String contact){
-		this.id = new SimpleIntegerProperty(id);
-		this.name = new SimpleStringProperty(name);
-		this.contact=new SimpleStringProperty(contact);
+	public MarketModel(){
+		this.id = new SimpleStringProperty();
+		this.name = new SimpleStringProperty();
+		this.contact=new SimpleStringProperty();
 	}
 	
-	public int getID(){
+	public String getID(){
 		return id.get();
 	}
 	
 	public void setID(int id){
-		this.id.set(id);
+		this.id.set(String.valueOf(id));
 	}
 	
-	public SimpleIntegerProperty idProperty(){
+	public SimpleStringProperty idProperty(){
 		return id;
 	}
 	
@@ -39,11 +39,11 @@ public class MarketModel {
 	}
 	
 	public String getContact(){
-		return name.get();
+		return contact.get();
 	}
 	
 	public void setContact(String contact){
-		this.name.set(contact);
+		this.contact.set(contact);
 	}
 	
 	public SimpleStringProperty contactProperty(){

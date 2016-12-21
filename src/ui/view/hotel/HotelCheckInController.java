@@ -8,11 +8,13 @@ import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.Alert;
 import javafx.scene.control.Alert.AlertType;
+import objects.Order;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.scene.control.TextField;
 import rmi.RemoteHelper;
 import ui.model.OrderModel;
+import ui.util.AlertUtil;
 import ui.view.Main;
 import vo.OrderVO;
 
@@ -24,9 +26,6 @@ public class HotelCheckInController implements Initializable {
 	OrderVO currentordervo;
 	
 	@FXML
-	private TextField orderIdTextField;
-	
-	@FXML
 	private TableView<OrderModel> orderTable;
 	
 	@FXML
@@ -36,23 +35,19 @@ public class HotelCheckInController implements Initializable {
 	private TableColumn<OrderModel, String> stateColumn;
 	
 	@FXML
-	private TableColumn<OrderModel, String> checkInTimeColumn;
+	private TableColumn<OrderModel, String> executeColumn;
 	
 	@FXML
-	private void search() throws NumberFormatException, RemoteException{
-		currentordervo=helper.getOrderBLService().order_findbyid(Integer.parseInt(orderIdTextField.getText()));
-		if(currentordervo.getstate()==null){
-			Alert alert = new Alert(AlertType.ERROR);
-			alert.setTitle(null);
-			alert.setHeaderText(null);
-			alert.setContentText("对不起，您输入的订单号不存在");
-			alert.showAndWait();
-		}
-		else{
-			//显示
-		}
-		
-	}
+	private TableColumn<OrderModel, String> latestExecuteTimeColumn;
+	
+	@FXML
+	private TableColumn<OrderModel, String> overExecuteTimeColumn;
+	
+	@FXML
+	private TableColumn<OrderModel, String> predictLeaveTimeColumn;
+	
+	@FXML
+	private TableColumn<OrderModel, String> leaveTimeColumn;
 	
 	@FXML
 	private void checkIn(){

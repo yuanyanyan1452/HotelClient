@@ -8,25 +8,18 @@ public class ClientModel {
 	private final SimpleStringProperty clientid;
 	private final SimpleStringProperty clientName;
 	private final SimpleStringProperty contact;
-	private final SimpleStringProperty vipinfo;
+	private final SimpleStringProperty vipType;
+	private final SimpleStringProperty vipInfo;
 	private final SimpleStringProperty credit;
-
-	public ClientModel(int clientid, String clientName, String contact, VIPInfo info, int credit) {
-		this.clientid = new SimpleStringProperty(clientid + "");
-		this.clientName = new SimpleStringProperty(clientName);
-		this.contact = new SimpleStringProperty(contact);
-		String vipinfo = "非会员";
-		if (info != null) {
-			if (info.getType().equals(VIPType.NORMAL)) {
-				vipinfo = "普通会员";
-			} else {
-				vipinfo = "企业会员";
-			}
-			vipinfo += "//";
-			vipinfo += info.getInfo();
-		}
-		this.vipinfo = new SimpleStringProperty(vipinfo);
-		this.credit = new SimpleStringProperty(credit + "");
+//	private final SimpleStringProperty username; 
+	public ClientModel() {
+		clientid = new SimpleStringProperty();
+		clientName  = new SimpleStringProperty();
+		contact = new SimpleStringProperty();
+		vipType = new SimpleStringProperty();
+		vipInfo = new SimpleStringProperty();
+		credit = new SimpleStringProperty();
+//		username = new SimpleStringProperty();
 	}
 
 	public String getID() {
@@ -65,22 +58,30 @@ public class ClientModel {
 		return contact;
 	}
 
-	public String getVIPinfo() {
-		return vipinfo.get();
+	public String getVIPType() {
+		return vipType.get();
 	}
 
-	public void setVIPinfo(VIPInfo info) {
-		if (info == null) {
-			this.vipinfo.set("非会员");
-		}
-		String type = info.getType() == VIPType.NORMAL ? "普通会员" : "企业会员";
-		this.vipinfo.set(type + "//" + info.getInfo());
+	public void setVIPtype(String type) {
+		vipType.set(type);
 	}
 
-	public SimpleStringProperty viProperty() {
-		return vipinfo;
+	public SimpleStringProperty vipTypeProperty() {
+		return vipType;
 	}
 
+	public String getVipInfo(){
+		return vipInfo.get();
+	}
+	
+	public void setVipInfo(String vipInfo){
+		this.vipInfo.set(vipInfo);
+	}
+	
+	public SimpleStringProperty vipInfoProperty(){
+		return vipInfo;
+	}
+	
 	public String getCredit() {
 		return credit.get();
 	}
@@ -93,4 +94,11 @@ public class ClientModel {
 		return credit;
 	}
 
+//	public String getUsername(){
+//		return username.get();
+//	}
+//	
+//	public void setUsername(String username){
+//		this.username.set(username);
+//	}
 }

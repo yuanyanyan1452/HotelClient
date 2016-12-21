@@ -28,6 +28,7 @@ import ui.model.ClientModel;
 import ui.model.HotelModel;
 import ui.model.OrderModel;
 import ui.util.AlertUtil;
+import ui.util.ComboBoxUtil;
 import ui.view.Main;
 import vo.ClientVO;
 import vo.OrderVO;
@@ -59,6 +60,10 @@ public class MarketBrowseAbnormalOrderController implements Initializable {
 
 	@FXML
 	private void cancelAbnormalOrder() {
+		if (currentOrder==null) {
+			AlertUtil.showWarningAlert("未选中任何异常订单！");
+			return;
+		}
 		int recover = Integer.parseInt(currentOrder.getPunishCredit());
 		if (choiceComboBox.getValue().equals("一半信用值")) {
 			recover /= 2;
@@ -110,20 +115,7 @@ public class MarketBrowseAbnormalOrderController implements Initializable {
 
 		ObservableList<String> choiceList = choiceComboBox.getItems();
 		choiceList.addAll("全部信用值", "一半信用值");
-		choiceComboBox.setCellFactory(new Callback<ListView<String>, ListCell<String>>() {
-
-			@Override
-			public ListCell<String> call(ListView<String> param) {
-				final ListCell<String> cell = new ListCell<String>() {
-					@Override
-					public void updateItem(String item, boolean empty) {
-						super.updateItem(item, empty);
-						setText(item);
-					}
-				};
-				return cell;
-			}
-		});
+		ComboBoxUtil.initialize(choiceComboBox);
 
 		// vo转成可以在tableview中显示的model
 		ObservableList<OrderModel> orderList = orderTable.getItems();

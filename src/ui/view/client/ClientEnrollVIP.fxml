@@ -9,22 +9,37 @@
 
 <AnchorPane prefHeight="600.0" prefWidth="700.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="ui.view.client.ClientEnrollVIPController">
    <children>
-      <Label layoutX="149.0" layoutY="202.0" text="会员类型选择" />
-      <Label layoutX="146.0" layoutY="329.0" text="生日/所属企业" />
-      <ImageView fitHeight="115.0" fitWidth="145.0" layoutX="87.0" layoutY="21.0">
+      <Label layoutX="149.0" layoutY="202.0" text="会员类型选择">
+         <font>
+            <Font size="15.0" />
+         </font></Label>
+      <Label fx:id="typeLabel" alignment="CENTER" layoutX="146.0" layoutY="327.0" prefHeight="20.0" prefWidth="90.0">
+         <font>
+            <Font size="15.0" />
+         </font></Label>
+      <ImageView fitHeight="115.0" fitWidth="145.0" layoutX="136.0" layoutY="22.0">
          <image>
             <Image url="@../../../../resources/会员.png" />
          </image>
       </ImageView>
-      <Label layoutX="368.0" layoutY="58.0" text="注册会员">
+      <Label layoutX="341.0" layoutY="80.0" text="注册会员">
          <font>
             <Font name="AR LisuGB Medium" size="32.0" />
          </font>
       </Label>
-      <RadioButton fx:id="normalButton" layoutX="341.0" layoutY="201.0" mnemonicParsing="false" text="普通会员" />
-      <RadioButton fx:id="companyButton" layoutX="509.0" layoutY="201.0" mnemonicParsing="false" text="企业会员" />
-      <TextField fx:id="infoTextField" layoutX="341.0" layoutY="322.0" prefHeight="30.0" prefWidth="238.0" />
-      <Button layoutX="111.0" layoutY="467.0" mnemonicParsing="false" onAction="#close" prefHeight="42.0" prefWidth="121.0" text="取消" />
-      <Button layoutX="473.0" layoutY="467.0" mnemonicParsing="false" onAction="#enroll" prefHeight="42.0" prefWidth="121.0" text="确认" />
+      <RadioButton fx:id="normalButton" layoutX="362.0" layoutY="201.0" mnemonicParsing="false" text="普通会员">
+         <font>
+            <Font size="15.0" />
+         </font></RadioButton>
+      <RadioButton fx:id="companyButton" layoutX="469.0" layoutY="202.0" mnemonicParsing="false" text="企业会员">
+         <font>
+            <Font size="15.0" />
+         </font></RadioButton>
+      <TextField fx:id="infoTextField" layoutX="367.0" layoutY="325.0" prefHeight="15.0" prefWidth="186.0" />
+      <Button layoutX="281.0" layoutY="457.0" mnemonicParsing="false" onAction="#enroll" prefHeight="42.0" prefWidth="121.0" text="确认">
+         <font>
+            <Font size="15.0" />
+         </font></Button>
+      <DatePicker fx:id="birthday" layoutX="367.0" layoutY="325.0" />
    </children>
 </AnchorPane>

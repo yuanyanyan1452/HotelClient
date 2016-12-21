@@ -11,12 +11,14 @@ import javafx.scene.control.Alert.AlertType;
 import javafx.scene.control.TextArea;
 import objects.ResultMessage;
 import rmi.RemoteHelper;
+import ui.util.AlertUtil;
 import ui.view.Main;
 import vo.HotelVO;
 
 public class HotelBasicInfoController implements Initializable {
 	private Main main;
 	private HotelVO currenthotelvo;
+	private HotelOverviewController overviewController;
 	RemoteHelper helper=RemoteHelper.getInstance();
 	
 	@FXML
@@ -44,18 +46,12 @@ public class HotelBasicInfoController implements Initializable {
 		currenthotelvo.setstar(starTextField.getText());
 		ResultMessage result=helper.getHotelBLService().hotel_updateInfo(currenthotelvo);
 		if(result==ResultMessage.Success){
-			Alert alert = new Alert(AlertType.INFORMATION);
-			alert.setTitle(null);
-			alert.setHeaderText(null);
-			alert.setContentText("更新酒店基本信息成功");
-			alert.showAndWait();
+			//同步更新主界面的label
+			overviewController.updateHotelVO(currenthotelvo);
+			AlertUtil.showInformationAlert("更新酒店基本信息成功！");
 		}
 		else{
-			Alert alert = new Alert(AlertType.ERROR);
-			alert.setTitle(null);
-			alert.setHeaderText(null);
-			alert.setContentText("对不起，更新失败");
-			alert.showAndWait();
+			AlertUtil.showErrorAlert("对不起，更新失败。");
 		}
 	}
 	
@@ -68,9 +64,10 @@ public class HotelBasicInfoController implements Initializable {
 
 	}
 
-	public void setMain(Main main,HotelVO hotelvo) {
-		currenthotelvo=hotelvo;
+	public void setMain(Main main,HotelVO hotelvo,HotelOverviewController overviewController) {
 		this.main = main;
+		currenthotelvo=hotelvo;
+		this.overviewController = overviewController;
 		addressTextField.setText(hotelvo.getaddress());
 		business_adressTextField.setText(hotelvo.getbussiness_address());
 		introductionTextField.setText(hotelvo.getintroduction());

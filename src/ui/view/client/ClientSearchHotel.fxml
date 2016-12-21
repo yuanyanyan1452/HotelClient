@@ -35,12 +35,12 @@
                               </SplitPane>
                               <TabPane layoutY="56.0" prefHeight="172.0" prefWidth="373.0" tabClosingPolicy="UNAVAILABLE">
                                 <tabs>
-                                  <Tab text="酒店名称查找">
+                                  <Tab text="酒店名称">
                                     <content>
                                       <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="150.0" prefWidth="367.0">
                                              <children>
                                                 <Label layoutX="89.0" layoutY="63.0" text="名称：" />
-                                                <TextField layoutX="151.0" layoutY="60.0" />
+                                                <TextField fx:id="hotelnameTextField" layoutX="151.0" layoutY="60.0" />
                                                 <ImageView fitHeight="36.0" fitWidth="35.0" layoutX="26.0" layoutY="53.0">
                                                    <image>
                                                       <Image url="@../../../../resources/酒店名称.png" />
@@ -50,12 +50,12 @@
                                           </AnchorPane>
                                     </content>
                                   </Tab>
-                                    <Tab text="房间类型查找">
+                                    <Tab text="房间类型">
                                        <content>
                                           <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
                                              <children>
-                                                <Label layoutX="92.0" layoutY="64.0" text="房间类型：" />
-                                                <ImageView fitHeight="45.0" fitWidth="42.0" layoutX="22.0" layoutY="50.0">
+                                                <Label layoutX="107.0" layoutY="64.0" text="房间类型：" />
+                                                <ImageView fitHeight="45.0" fitWidth="42.0" layoutX="38.0" layoutY="49.0">
                                                    <image>
                                                       <Image url="@../../../../resources/房型.png" />
                                                    </image>
@@ -65,12 +65,12 @@
                                           </AnchorPane>
                                        </content>
                                     </Tab>
-                                    <Tab text="星级查找">
+                                    <Tab text="星级">
                                        <content>
                                           <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
                                              <children>
-                                                <Label layoutX="102.0" layoutY="64.0" text="星级：" />
-                                                <ImageView fitHeight="36.0" fitWidth="35.0" layoutX="29.0" layoutY="52.0">
+                                                <Label layoutX="119.0" layoutY="64.0" text="星级：" />
+                                                <ImageView fitHeight="36.0" fitWidth="35.0" layoutX="44.0" layoutY="54.0">
                                                    <image>
                                                       <Image url="@../../../../resources/星级.png" />
                                                    </image>
@@ -80,24 +80,43 @@
                                           </AnchorPane>
                                        </content>
                                     </Tab>
-                                    <Tab text="评分查找">
+                                    <Tab text="价格区间">
+                                      <content>
+                                        <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
+                                             <children>
+                                                <ComboBox fx:id="lowpriceButton" layoutX="72.0" layoutY="77.0" prefWidth="70.0" />
+                                                <ComboBox fx:id="highpriceButton" layoutX="217.0" layoutY="77.0" prefWidth="70.0" />
+                                                <Label layoutX="175.0" layoutY="81.0" text="至" />
+                                                <Label layoutX="181.0" layoutY="29.0" text="价格区间：" />
+                                                <ImageView fitHeight="36.0" fitWidth="35.0" layoutX="117.0" layoutY="19.0">
+                                                   <image>
+                                                      <Image url="@../../../../resources/价格.png" />
+                                                   </image>
+                                                </ImageView>
+                                                <Label layoutX="152.0" layoutY="81.0" text="元" />
+                                                <Label layoutX="300.0" layoutY="81.0" text="元" />
+                                             </children>
+                                          </AnchorPane>
+                                      </content>
+                                    </Tab>
+                                    <Tab text="评分区间">
                                        <content>
                                           <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
                                              <children>
-                                                <Label layoutX="166.0" layoutY="20.0" text="评分区间：" />
-                                                <Label layoutX="184.0" layoutY="66.0" text="至" />
-                                                <ImageView fitHeight="36.0" fitWidth="35.0" layoutX="89.0" layoutY="10.0">
+                                                <Label layoutX="188.0" layoutY="30.0" text="评分区间：" />
+                                                <Label layoutX="181.0" layoutY="78.0" text="至" />
+                                                <ImageView fitHeight="36.0" fitWidth="35.0" layoutX="120.0" layoutY="18.0">
                                                    <image>
                                                       <Image url="@../../../../resources/评分.png" />
                                                    </image>
                                                 </ImageView>
-                                                <ComboBox fx:id="lowscoreButton" layoutX="59.0" layoutY="62.0" prefHeight="23.0" prefWidth="96.0" />
-                                                <ComboBox fx:id="highscoreButton" layoutX="233.0" layoutY="62.0" prefHeight="23.0" prefWidth="95.0" />
+                                                <ComboBox fx:id="lowscoreButton" layoutX="89.0" layoutY="74.0" prefHeight="23.0" prefWidth="61.0" />
+                                                <ComboBox fx:id="highscoreButton" layoutX="236.0" layoutY="74.0" prefHeight="23.0" prefWidth="61.0" />
                                              </children>
                                           </AnchorPane>
                                        </content>
                                     </Tab>
-                                  <Tab text="其它查找">
+                                  <Tab text="其它">
                                     <content>
                                       <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
                                              <children>
@@ -133,15 +152,13 @@
                <children>
                   <TableView fx:id="hotelTable" fixedCellSize="0.0" prefHeight="321.0" prefWidth="700.0">
                     <columns>
-                      <TableColumn fx:id="hotelnamecolumn" prefWidth="107.0" text="酒店名称" />
-                      <TableColumn fx:id="businessaddresscolumn" minWidth="0.0" prefWidth="140.0" text="所属商圈" />
-                        <TableColumn fx:id="addresscolumn" minWidth="0.0" prefWidth="296.0" text="地址" />
-                        <TableColumn fx:id="starcolumn" prefWidth="76.0" text="星级" />
-                        <TableColumn fx:id="scorecolumn" minWidth="7.0" text="评分" />
+                      <TableColumn fx:id="hotelnamecolumn" prefWidth="112.0" text="酒店名称" />
+                      <TableColumn fx:id="businessaddresscolumn" minWidth="0.0" prefWidth="102.0" text="所属商圈" />
+                        <TableColumn fx:id="addresscolumn" minWidth="0.0" prefWidth="257.0" text="地址" />
+                        <TableColumn fx:id="starcolumn" prefWidth="66.0" text="星级" />
+                        <TableColumn fx:id="scorecolumn" minWidth="0.0" prefWidth="58.0" text="评分" />
+                        <TableColumn fx:id="orderstatecolumn" minWidth="0.0" prefWidth="103.0" text="最近一次订单状态" />
                     </columns>
-                     <columnResizePolicy>
-                        <TableView fx:constant="CONSTRAINED_RESIZE_POLICY" />
-                     </columnResizePolicy>
                   </TableView>
                   <Button layoutX="273.0" layoutY="323.0" mnemonicParsing="false" onAction="#gotoGenerateOrder" prefHeight="36.0" prefWidth="155.0" text="预订酒店" />
                </children>
