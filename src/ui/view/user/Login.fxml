@@ -32,6 +32,6 @@
       <Button fx:id="registButton" layoutX="204.0" layoutY="315.0" mnemonicParsing="false" onAction="#gotoRegist" prefHeight="40.0" prefWidth="92.0" text="注册" />
       <Button fx:id="updatepasswordButton" layoutX="78.0" layoutY="315.0" mnemonicParsing="false" onAction="#gotoUpdatePassword" prefHeight="40.0" prefWidth="92.0" text="修改密码" />
       <Button alignment="CENTER" mnemonicParsing="false" onAction="#backtooverview" prefHeight="28.0" prefWidth="70.0" text="返回" />
-      <Button layoutX="430.0" mnemonicParsing="false" onAction="#exit" prefHeight="28.0" prefWidth="70.0" text="退出" />
+      <Button alignment="CENTER" layoutX="430.0" mnemonicParsing="false" onAction="#exit" prefHeight="28.0" prefWidth="70.0" text="退出" />
    </children>
 </AnchorPane>

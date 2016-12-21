@@ -16,39 +16,62 @@ import vo.ClientVO;
 public class ClientOverviewController implements Initializable {
 	private Main main;
 	private ClientVO currentclientvo;
-	
-	
-	
-	public void updateVO(ClientVO vo){
+
+	public void updateVO(ClientVO vo) {
 		currentclientvo = vo;
 		nameLabel.setText(vo.getclient_name());
 		contactLabel.setText(vo.getcontact());
-		if (vo.getvipinfo()==null) {
+		if (vo.getvipinfo() == null) {
 			vipLabel.setText("非会员");
+		} else {
+			vipLabel.setText(vo.getvipinfo().getType() == VIPType.NORMAL ? "普通会员" : "企业会员");
 		}
-		else
-			vipLabel.setText(vo.getvipinfo().getType()==VIPType.NORMAL?"普通会员":"企业会员");
+		//客户完善基本信息后，恢复正常功能
+		tipLabel.setText("您可以。。。");
+		searchhotelButton.setDisable(false);
+		browsehotelButton.setDisable(false);
+		browseorderButton.setDisable(false);
+		enrollvipButton.setDisable(false);
 	}
+
+	@FXML
+	private Button basicinfoButton;
+
+	@FXML
+	private Button searchhotelButton;
+
+	@FXML
+	private Button browsehotelButton;
+
+	@FXML
+	private Button browseorderButton;
+
+	@FXML
+	private Button enrollvipButton;
+
 	@FXML
 	private Button exitButton;
-	
+
+	@FXML
+	private Label tipLabel;
+
 	@FXML
 	private Label nameLabel;
-	
+
 	@FXML
 	private Label contactLabel;
-	
+
 	@FXML
 	private Label vipLabel;
 
 	@FXML
-	private void exit(){
+	private void exit() {
 		main.exitSystem();
 	}
-	
+
 	@FXML
 	private void gotoBasicInfo() throws RemoteException {
-		main.gotoClientBasicInfo(currentclientvo,this);
+		main.gotoClientBasicInfo(currentclientvo, this);
 	}
 
 	@FXML
@@ -58,7 +81,7 @@ public class ClientOverviewController implements Initializable {
 
 	@FXML
 	private void gotoEnrollVIP() throws RemoteException {
-		main.gotoClientEnrollVIP(currentclientvo,this);
+		main.gotoClientEnrollVIP(currentclientvo, this);
 	}
 
 	@FXML
@@ -71,39 +94,40 @@ public class ClientOverviewController implements Initializable {
 		main.gotoClientSearchHotel(currentclientvo);
 	}
 
-
 	@Override
 	public void initialize(URL location, ResourceBundle resources) {
 
 	}
-	
-	public ClientOverviewController(){
-		
+
+	public ClientOverviewController() {
+
 	}
 
-	public void setMain(Main main,ClientVO vo) {
+	public void setMain(Main main, ClientVO vo) {
 		this.main = main;
 		this.currentclientvo = vo;
-		nameLabel.setText(vo.getclient_name());
-		contactLabel.setText(vo.getcontact());
-		if(vo.getvipinfo()==null){
-			vipLabel.setText("非会员");
+		// 如果是刚注册的用户，只开放维护基本信息按钮
+		if (currentclientvo.getclient_name()==null || currentclientvo.getcontact()==null
+				||currentclientvo.getclient_name().isEmpty()||currentclientvo.getcontact().isEmpty()) {
+			tipLabel.setText("您是刚注册的客户，请先完善您的基本信息~");
+			basicinfoButton.setDisable(false);
+			searchhotelButton.setDisable(true);
+			browsehotelButton.setDisable(true);
+			browseorderButton.setDisable(true);
+			enrollvipButton.setDisable(true);
+		} else {
+			nameLabel.setText(vo.getclient_name());
+			contactLabel.setText(vo.getcontact());
+			if (vo.getvipinfo() == null) {
+				vipLabel.setText("非会员");
+				enrollvipButton.setDisable(false);
+			} else {
+				vipLabel.setText(vo.getvipinfo().getType() == VIPType.NORMAL ? "普通会员" : "企业会员");
+				// 会员无法再注册会员
+				enrollvipButton.setDisable(true);
+			}
 		}
-		else {
-			vipLabel.setText(vo.getvipinfo().getType()==VIPType.NORMAL? "普通会员":"企业会员");
-		}
+
 	}
-	
-//	public void updateVO() throws RemoteException{
-//		RemoteHelper helper= RemoteHelper.getInstance();
-//		this.currentclientvo = helper.getClientBLService().client_checkInfo(currentclientvo.getclientid());
-//		nameLabel.setText(currentclientvo.getclient_name());
-//		contactLabel.setText(currentclientvo.getcontact());
-//		if(currentclientvo.getvipinfo()==null){
-//			vipLabel.setText("非会员");
-//		}
-//		else {
-//			vipLabel.setText(currentclientvo.getvipinfo().getType()==VIPType.NORMAL? "普通会员":"企业会员");
-//		}
-//	}
+
 }

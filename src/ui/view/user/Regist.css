@@ -1,6 +1,7 @@
 .root{
-	-fx-background-color: rgb(93,93,93);
+	-fx-background-color:radial-gradient( focus-angle 0.0deg, focus-distance 0.0%, center 50.0% 30.0%, radius 40.0%, rgb(255,255,255) 0.0, rgb(93,93,93) 100.0 )
 }
+
 .button{
 	-fx-background-color: rgb(93,93,93);
 	-fx-border-color: white;
@@ -8,7 +9,7 @@
 	-fx-text-fill: white;
 }
 .button:hover{
-	-fx-text-alignment: center;
+	-fx-alignment: center;
 	-fx-background-color: lightgray;
 }
 

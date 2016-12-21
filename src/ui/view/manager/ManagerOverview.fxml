@@ -61,12 +61,11 @@
                                              <children>
                                                 <TableView fx:id="clientTable" layoutX="-1.0" prefHeight="377.0" prefWidth="537.0">
                                                   <columns>
-                                                      <TableColumn fx:id="clientIDColumn" prefWidth="63.0" text="ID" />
-                                                    <TableColumn fx:id="clientNameColumn" prefWidth="68.0" text="姓名" />
-                                                      <TableColumn fx:id="clientContactColumn" prefWidth="105.0" text="手机号" />
-                                                      <TableColumn fx:id="clientCreditColumn" prefWidth="72.0" text="信用值" />
-                                                      <TableColumn fx:id="clientVipTypeColumn" prefWidth="108.0" text="会员类型" />
-                                                    <TableColumn fx:id="clientVipInfoColumn" prefWidth="120.0" text="会员信息" />
+                                                      <TableColumn fx:id="clientIDColumn" prefWidth="54.0" text="ID" />
+                                                    <TableColumn fx:id="clientNameColumn" prefWidth="95.0" text="姓名" />
+                                                      <TableColumn fx:id="clientContactColumn" prefWidth="116.0" text="手机号" />
+                                                      <TableColumn fx:id="clientVipTypeColumn" prefWidth="116.0" text="会员类型" />
+                                                    <TableColumn fx:id="clientVipInfoColumn" prefWidth="155.0" text="会员信息" />
                                                   </columns>
                                                 </TableView>
                                              </children>
@@ -82,14 +81,12 @@
                                                                   <Button alignment="CENTER" contentDisplay="CENTER" layoutX="221.0" layoutY="118.0" mnemonicParsing="false" onAction="#updateClient" prefHeight="24.0" prefWidth="95.0" text="修改" AnchorPane.leftAnchor="222.0" />
                                                                   <GridPane layoutY="14.0" prefHeight="109.0" prefWidth="504.0" AnchorPane.topAnchor="9.0">
                                                                      <children>
-                                                                        <Label text="姓名：" GridPane.columnIndex="2" />
+                                                                        <Label text="姓名：" GridPane.rowIndex="1" />
                                                                         <Label text="会员信息：" GridPane.columnIndex="2" GridPane.rowIndex="2" />
-                                                                        <Label text="手机号：" GridPane.rowIndex="1" />
-                                                                        <Label text="信用值：" GridPane.columnIndex="2" GridPane.rowIndex="1" />
+                                                                        <Label text="手机号：" GridPane.columnIndex="2" GridPane.rowIndex="1" />
                                                                         <TextField fx:id="updateClientIDTextField" GridPane.columnIndex="1" />
-                                                                        <TextField fx:id="updateClientNameTextField" GridPane.columnIndex="3" />
-                                                                        <TextField fx:id="updateClientContactTextField" GridPane.columnIndex="1" GridPane.rowIndex="1" />
-                                                                        <TextField fx:id="updateClientCreditTextField" GridPane.columnIndex="3" GridPane.rowIndex="1" />
+                                                                        <TextField fx:id="updateClientNameTextField" GridPane.columnIndex="1" GridPane.rowIndex="1" />
+                                                                        <TextField fx:id="updateClientContactTextField" GridPane.columnIndex="3" GridPane.rowIndex="1" />
                                                                         <Button alignment="CENTER" contentDisplay="CENTER" mnemonicParsing="false" onAction="#updateSearchClient" prefHeight="18.0" prefWidth="14.0">
                                                                            <graphic>
                                                                               <ImageView fitHeight="19.0" fitWidth="19.0">
