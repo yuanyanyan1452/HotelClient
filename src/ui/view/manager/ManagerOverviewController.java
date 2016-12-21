@@ -437,7 +437,7 @@ public class ManagerOverviewController implements Initializable {
 				return;
 			}
 			int id = Integer.parseInt(currentHotelModel.getID());
-			HotelVO vo = helper.getHotelBLService().hotel_checkInfo(id);
+			HotelVO vo = helper.getHotelBLService().hotel_getInfo(id);
 			vo.setname(updateHotelNameTextField.getText());
 			vo.setbussiness_address(updateHotelBusinessAddressTextField.getText());
 			vo.setaddress(updateHotelAddressTextField.getText());
@@ -536,7 +536,7 @@ public class ManagerOverviewController implements Initializable {
 				return;
 			}
 			int id = Integer.parseInt(currentHotelWorkerModel.getHotelid());
-			HotelWorkerVO vo = helper.getManageBLService().manage_searchHotelWorker(id);
+			HotelWorkerVO vo = helper.getManageBLService().manage_searchHotelWorkerByHotelid(id);
 			vo.setname(updateWorkerNameTextField.getText());
 			vo.setcontact(updateWorkerContactTextField.getText());
 			ResultMessage message = helper.getManageBLService().manage_updateHotelWorker(vo);
@@ -629,7 +629,7 @@ public class ManagerOverviewController implements Initializable {
 				return;
 			}
 			int id = Integer.parseInt(currentMarketModel.getID());
-			WebMarketVO vo = helper.getManageBLService().manage_searchMarketWorker(id);
+			WebMarketVO vo = helper.getManageBLService().manage_searchMarketWorkerByWebmarketid(id);
 			vo.setname(updateMarketNameTextField.getText());
 			vo.setcontact(updateMarketContactTextField.getText());
 			ResultMessage message = helper.getManageBLService().manage_updateMarketWorker(vo);

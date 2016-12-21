@@ -73,7 +73,7 @@ public class HotelCheckInChoiceController implements Initializable {
 			}
 			
 			//酒店更新入住信息
-			ResultMessage message2 = helper.getHotelBLService().hotel_updateAccomodation(info, orderid);
+			ResultMessage message2 = helper.getOrderBLService().order_checkin(info, orderid);
 			if (message2 == ResultMessage.Fail ) {
 				AlertUtil.showErrorAlert("操作失败。。");
 				return;
@@ -130,7 +130,7 @@ public class HotelCheckInChoiceController implements Initializable {
 			}
 			
 			//酒店更新入住信息
-			ResultMessage message2 = helper.getHotelBLService().hotel_updateAccomodation(info, orderid);
+			ResultMessage message2 = helper.getOrderBLService().order_checkin(info, orderid);
 			if (message2 == ResultMessage.Fail ) {
 				AlertUtil.showErrorAlert("操作失败。。");
 				return;

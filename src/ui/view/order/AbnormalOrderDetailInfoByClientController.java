@@ -73,7 +73,7 @@ public class AbnormalOrderDetailInfoByClientController implements Initializable 
 	public void setMain(Main main,OrderVO ordervo) throws RemoteException {
 		this.main = main;
 		clientnamelabel.setText(helper.getClientBLService().checkClientInfo(ordervo.getclientid()).getclient_name());
-		hotelnamelabel.setText(helper.getHotelBLService().hotel_checkInfo(ordervo.gethotelid()).getname());
+		hotelnamelabel.setText(helper.getHotelBLService().hotel_getInfo(ordervo.gethotelid()).getname());
 		orderidlabel.setText(String.valueOf(ordervo.getid()));
 		orderstatelabel.setText(ordervo.getstate());
 		if(ordervo.getexecute()){

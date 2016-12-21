@@ -1,3 +1,4 @@
+
 package service.blservice;
 
 import java.rmi.Remote;
@@ -9,51 +10,83 @@ import vo.HotelStrategyVO;
 import vo.WebStrategyVO;
 
 public interface StrategyBLService extends Remote{
-	// 提供给界面调用的接口
 
 	/**
-	 * @param input
-	 * @return 酒店添加促销策略
+	 * 酒店制定促销策略
+	 * @param strategyvo
+	 * @return 
+	 * @throws RemoteException
 	 */
 	public ResultMessage hotelstrategy_make(HotelStrategyVO strategyvo)throws RemoteException;
 
 	/**
-	 * @param strategy
-	 * @return 酒店更新促销策略
+	 * 酒店更新促销策略
+	 * @param strategyvo
+	 * @return 
+	 * @throws RemoteException
 	 */
 	public ResultMessage hotelstrategy_update(HotelStrategyVO strategyvo)throws RemoteException;
 
 	/**
-	 * @param strategy
-	 * @return 网站营销人员添加促销策略
+	 * 网站制定促销策略
+	 * @param strategyvo
+	 * @return 
+	 * @throws RemoteException
 	 */
 	public ResultMessage webstrategy_make(WebStrategyVO strategyvo)throws RemoteException;
 
 	/**
-	 * @param strategy
-	 * @return 网站营销人员更新促销策略
+	 * 网站更新促销策略
+	 * @param strategyvo
+	 * @return 
+	 * @throws RemoteException
 	 */
 	public ResultMessage webstrategy_update(WebStrategyVO strategyvo)throws RemoteException;
 
 	/**
+	 * 获得对应酒店的促销策略列表
 	 * @param hotelid
-	 * @param clientid
-	 * @return 得到对应客户适用的对应酒店的促销策略列表
+	 * @return 
+	 * @throws RemoteException
 	 */
 	public ArrayList<HotelStrategyVO> getHotelStrategy(int hotelid)throws RemoteException;
 
 	/**
-	 * @param clientid
-	 * @return 得到对应客户使用的网站的促销策略列表
+	 * 获得网站的促销策略列表
+	 * @return
+	 * @throws RemoteException
 	 */
 	public ArrayList<WebStrategyVO> getWebStrategy()throws RemoteException;
 
+	/**
+	 * 通过名字获得酒店销售策略
+	 * @param name
+	 * @return
+	 * @throws RemoteException
+	 */
 	public HotelStrategyVO gethotelstrategybyname(String name)throws RemoteException;
 	
+	/**
+	 * 通过名字获得网站销售策略
+	 * @param name
+	 * @return
+	 * @throws RemoteException
+	 */
 	public WebStrategyVO getwebstrategybyname(String name)throws RemoteException;
 
+	/**
+	 * 删除酒店销售策略
+	 * @param hotelstrategyvo
+	 * @return
+	 * @throws RemoteException
+	 */
 	public ResultMessage hotelstrategy_delete(HotelStrategyVO hotelstrategyvo)throws RemoteException;
 	
+	/**
+	 * 删除网站销售策略
+	 * @param webstrategyvo
+	 * @return
+	 * @throws RemoteException
+	 */
 	public ResultMessage webstrategy_delete(WebStrategyVO webstrategyvo)throws RemoteException;
-
 }

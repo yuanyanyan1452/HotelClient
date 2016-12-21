@@ -32,9 +32,8 @@ public class ClientBrowseOrderController implements Initializable{
 	
 	private ObservableList<OrderModel> mostorderlist=FXCollections.observableArrayList();
 	
-	private OrderVO currentordervo;
-	
 	RemoteHelper helper=RemoteHelper.getInstance();
+	
 	@FXML
 	private RadioButton filledButton;
 	
@@ -206,6 +205,7 @@ public class ClientBrowseOrderController implements Initializable{
 		priceColumn.setCellValueFactory(celldata -> celldata.getValue().priceProperty());
 		numberColumn.setCellValueFactory(celldata -> celldata.getValue().numOfPeopleProperty());
 		hasChildColumn.setCellValueFactory(celldata -> celldata.getValue().haveChildProperty());
+		
 		idColumn.setCellFactory(new Callback<TableColumn<OrderModel, String>, TableCell<OrderModel, String>>() {
 			@Override
 			public TableCell<OrderModel, String> call(TableColumn<OrderModel, String> param) {
@@ -213,6 +213,7 @@ public class ClientBrowseOrderController implements Initializable{
 				cell.setOnMouseClicked((MouseEvent t) -> {
 					if (t.getClickCount() == 2) {
 						OrderModel order=orderlist.get(cell.getIndex());
+						if(order.getState().equals("正常")){
 						if(order.getIsExecute().equals("是")){
 							try {
 								main.gotoClientExecuteOrder(order);
@@ -232,6 +233,16 @@ public class ClientBrowseOrderController implements Initializable{
 									e.printStackTrace();
 								}
 							}
+						}
+						else{
+							try {
+								main.gotoClientAbnormalOrder(order);
+							} catch (NumberFormatException e) {
+								e.printStackTrace();
+							} catch (IOException e) {
+								e.printStackTrace();
+							}
+						}
 					}
 				});
 				return cell;
@@ -245,9 +256,11 @@ public class ClientBrowseOrderController implements Initializable{
 				cell.setOnMouseClicked((MouseEvent t) -> {
 					if (t.getClickCount() == 2) {
 						OrderModel order=orderlist.get(cell.getIndex());
+						if(order.getState().equals("正常")){
 						if(order.getIsExecute().equals("是")){
 							try {
 								main.gotoClientExecuteOrder(order);
+				
 							} catch (NumberFormatException e) {
 								e.printStackTrace();
 							} catch (IOException e) {
@@ -262,7 +275,18 @@ public class ClientBrowseOrderController implements Initializable{
 								} catch (IOException e) {
 									e.printStackTrace();
 								}
-							}					}
+							}
+						}
+						else{
+							try {
+								main.gotoClientAbnormalOrder(order);
+							} catch (NumberFormatException e) {
+								e.printStackTrace();
+							} catch (IOException e) {
+								e.printStackTrace();
+							}
+						}
+					}
 				});
 				return cell;
 			}
@@ -275,9 +299,11 @@ public class ClientBrowseOrderController implements Initializable{
 				cell.setOnMouseClicked((MouseEvent t) -> {
 					if (t.getClickCount() == 2) {
 						OrderModel order=orderlist.get(cell.getIndex());
+						if(order.getState().equals("正常")){
 						if(order.getIsExecute().equals("是")){
 							try {
 								main.gotoClientExecuteOrder(order);
+				
 							} catch (NumberFormatException e) {
 								e.printStackTrace();
 							} catch (IOException e) {
@@ -292,7 +318,18 @@ public class ClientBrowseOrderController implements Initializable{
 								} catch (IOException e) {
 									e.printStackTrace();
 								}
-							}					}
+							}
+						}
+						else{
+							try {
+								main.gotoClientAbnormalOrder(order);
+							} catch (NumberFormatException e) {
+								e.printStackTrace();
+							} catch (IOException e) {
+								e.printStackTrace();
+							}
+						}
+					}
 				});
 				return cell;
 			}
@@ -305,9 +342,11 @@ public class ClientBrowseOrderController implements Initializable{
 				cell.setOnMouseClicked((MouseEvent t) -> {
 					if (t.getClickCount() == 2) {
 						OrderModel order=orderlist.get(cell.getIndex());
+						if(order.getState().equals("正常")){
 						if(order.getIsExecute().equals("是")){
 							try {
 								main.gotoClientExecuteOrder(order);
+				
 							} catch (NumberFormatException e) {
 								e.printStackTrace();
 							} catch (IOException e) {
@@ -322,7 +361,18 @@ public class ClientBrowseOrderController implements Initializable{
 								} catch (IOException e) {
 									e.printStackTrace();
 								}
-							}					}
+							}
+						}
+						else{
+							try {
+								main.gotoClientAbnormalOrder(order);
+							} catch (NumberFormatException e) {
+								e.printStackTrace();
+							} catch (IOException e) {
+								e.printStackTrace();
+							}
+						}
+					}
 				});
 				return cell;
 			}
@@ -335,9 +385,11 @@ public class ClientBrowseOrderController implements Initializable{
 				cell.setOnMouseClicked((MouseEvent t) -> {
 					if (t.getClickCount() == 2) {
 						OrderModel order=orderlist.get(cell.getIndex());
+						if(order.getState().equals("正常")){
 						if(order.getIsExecute().equals("是")){
 							try {
 								main.gotoClientExecuteOrder(order);
+				
 							} catch (NumberFormatException e) {
 								e.printStackTrace();
 							} catch (IOException e) {
@@ -352,7 +404,18 @@ public class ClientBrowseOrderController implements Initializable{
 								} catch (IOException e) {
 									e.printStackTrace();
 								}
-							}					}
+							}
+						}
+						else{
+							try {
+								main.gotoClientAbnormalOrder(order);
+							} catch (NumberFormatException e) {
+								e.printStackTrace();
+							} catch (IOException e) {
+								e.printStackTrace();
+							}
+						}
+					}
 				});
 				return cell;
 			}
@@ -365,9 +428,11 @@ public class ClientBrowseOrderController implements Initializable{
 				cell.setOnMouseClicked((MouseEvent t) -> {
 					if (t.getClickCount() == 2) {
 						OrderModel order=orderlist.get(cell.getIndex());
+						if(order.getState().equals("正常")){
 						if(order.getIsExecute().equals("是")){
 							try {
 								main.gotoClientExecuteOrder(order);
+				
 							} catch (NumberFormatException e) {
 								e.printStackTrace();
 							} catch (IOException e) {
@@ -382,7 +447,18 @@ public class ClientBrowseOrderController implements Initializable{
 								} catch (IOException e) {
 									e.printStackTrace();
 								}
-							}					}
+							}
+						}
+						else{
+							try {
+								main.gotoClientAbnormalOrder(order);
+							} catch (NumberFormatException e) {
+								e.printStackTrace();
+							} catch (IOException e) {
+								e.printStackTrace();
+							}
+						}
+					}
 				});
 				return cell;
 			}
@@ -395,9 +471,11 @@ public class ClientBrowseOrderController implements Initializable{
 				cell.setOnMouseClicked((MouseEvent t) -> {
 					if (t.getClickCount() == 2) {
 						OrderModel order=orderlist.get(cell.getIndex());
+						if(order.getState().equals("正常")){
 						if(order.getIsExecute().equals("是")){
 							try {
 								main.gotoClientExecuteOrder(order);
+				
 							} catch (NumberFormatException e) {
 								e.printStackTrace();
 							} catch (IOException e) {
@@ -412,7 +490,18 @@ public class ClientBrowseOrderController implements Initializable{
 								} catch (IOException e) {
 									e.printStackTrace();
 								}
-							}					}
+							}
+						}
+						else{
+							try {
+								main.gotoClientAbnormalOrder(order);
+							} catch (NumberFormatException e) {
+								e.printStackTrace();
+							} catch (IOException e) {
+								e.printStackTrace();
+							}
+						}
+					}
 				});
 				return cell;
 			}
@@ -425,9 +514,11 @@ public class ClientBrowseOrderController implements Initializable{
 				cell.setOnMouseClicked((MouseEvent t) -> {
 					if (t.getClickCount() == 2) {
 						OrderModel order=orderlist.get(cell.getIndex());
+						if(order.getState().equals("正常")){
 						if(order.getIsExecute().equals("是")){
 							try {
 								main.gotoClientExecuteOrder(order);
+				
 							} catch (NumberFormatException e) {
 								e.printStackTrace();
 							} catch (IOException e) {
@@ -442,7 +533,18 @@ public class ClientBrowseOrderController implements Initializable{
 								} catch (IOException e) {
 									e.printStackTrace();
 								}
-							}					}
+							}
+						}
+						else{
+							try {
+								main.gotoClientAbnormalOrder(order);
+							} catch (NumberFormatException e) {
+								e.printStackTrace();
+							} catch (IOException e) {
+								e.printStackTrace();
+							}
+						}
+					}
 				});
 				return cell;
 			}
@@ -455,9 +557,11 @@ public class ClientBrowseOrderController implements Initializable{
 				cell.setOnMouseClicked((MouseEvent t) -> {
 					if (t.getClickCount() == 2) {
 						OrderModel order=orderlist.get(cell.getIndex());
+						if(order.getState().equals("正常")){
 						if(order.getIsExecute().equals("是")){
 							try {
 								main.gotoClientExecuteOrder(order);
+				
 							} catch (NumberFormatException e) {
 								e.printStackTrace();
 							} catch (IOException e) {
@@ -472,7 +576,18 @@ public class ClientBrowseOrderController implements Initializable{
 								} catch (IOException e) {
 									e.printStackTrace();
 								}
-							}					}
+							}
+						}
+						else{
+							try {
+								main.gotoClientAbnormalOrder(order);
+							} catch (NumberFormatException e) {
+								e.printStackTrace();
+							} catch (IOException e) {
+								e.printStackTrace();
+							}
+						}
+					}
 				});
 				return cell;
 			}
@@ -485,9 +600,11 @@ public class ClientBrowseOrderController implements Initializable{
 				cell.setOnMouseClicked((MouseEvent t) -> {
 					if (t.getClickCount() == 2) {
 						OrderModel order=orderlist.get(cell.getIndex());
+						if(order.getState().equals("正常")){
 						if(order.getIsExecute().equals("是")){
 							try {
 								main.gotoClientExecuteOrder(order);
+				
 							} catch (NumberFormatException e) {
 								e.printStackTrace();
 							} catch (IOException e) {
@@ -502,7 +619,18 @@ public class ClientBrowseOrderController implements Initializable{
 								} catch (IOException e) {
 									e.printStackTrace();
 								}
-							}					}
+							}
+						}
+						else{
+							try {
+								main.gotoClientAbnormalOrder(order);
+							} catch (NumberFormatException e) {
+								e.printStackTrace();
+							} catch (IOException e) {
+								e.printStackTrace();
+							}
+						}
+					}
 				});
 				return cell;
 			}
@@ -515,9 +643,11 @@ public class ClientBrowseOrderController implements Initializable{
 				cell.setOnMouseClicked((MouseEvent t) -> {
 					if (t.getClickCount() == 2) {
 						OrderModel order=orderlist.get(cell.getIndex());
+						if(order.getState().equals("正常")){
 						if(order.getIsExecute().equals("是")){
 							try {
 								main.gotoClientExecuteOrder(order);
+				
 							} catch (NumberFormatException e) {
 								e.printStackTrace();
 							} catch (IOException e) {
@@ -532,12 +662,22 @@ public class ClientBrowseOrderController implements Initializable{
 								} catch (IOException e) {
 									e.printStackTrace();
 								}
-							}					}
+							}
+						}
+						else{
+							try {
+								main.gotoClientAbnormalOrder(order);
+							} catch (NumberFormatException e) {
+								e.printStackTrace();
+							} catch (IOException e) {
+								e.printStackTrace();
+							}
+						}
+					}
 				});
 				return cell;
 			}
 		});
-		
 		
 		orderTable.setItems(orderlist);
 	}
@@ -562,12 +702,12 @@ public class ClientBrowseOrderController implements Initializable{
 		normalButton.setToggleGroup(group2);
 		abnormalButton.setToggleGroup(group2);
 		cancelButton.setToggleGroup(group2);
-		ObservableList<OrderVO> ordervolist=FXCollections.observableArrayList(helper.getOrderBLService().order_client_browse(clientid));
+		ObservableList<OrderVO> ordervolist=FXCollections.observableArrayList(helper.getOrderBLService().findorderByClientid(clientid));
 		mostorderlist.clear();
 		for(OrderVO ordervo:ordervolist){
 			OrderModel model=new OrderModel();
 			model.setOrderid(ordervo.getid());
-			model.setHotelname(helper.getHotelBLService().hotel_checkInfo(ordervo.gethotelid()).getname());
+			model.setHotelname(helper.getHotelBLService().hotel_getInfo(ordervo.gethotelid()).getname());
 			model.setIsExecute(ordervo.getexecute());
 			model.setState(ordervo.getstate());
 			model.setStartTime(ordervo.getstart_time());

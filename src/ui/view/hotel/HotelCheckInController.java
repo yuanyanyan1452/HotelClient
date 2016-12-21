@@ -198,7 +198,7 @@ public class HotelCheckInController implements Initializable {
 
 		ObservableList<OrderModel> models = FXCollections.observableArrayList();
 		try {
-			ArrayList<OrderVO> orderVOs = helper.getOrderBLService().order_hotel_browse(currentHotel.getid(), false);
+			ArrayList<OrderVO> orderVOs = helper.getOrderBLService().findorderBy_Hotelid_Execute(currentHotel.getid(), false);
 			for (OrderVO vo : orderVOs) {
 				OrderModel model = new OrderModel();
 				model.setOrderid(vo.getid());

@@ -101,7 +101,7 @@ public class UnfilledOrderDetailInfoByClientController implements Initializable 
 	
 	public void update() throws RemoteException{
 		clientnamelabel.setText(helper.getClientBLService().checkClientInfo(currentordervo.getclientid()).getclient_name());
-		hotelnamelabel.setText(helper.getHotelBLService().hotel_checkInfo(currentordervo.gethotelid()).getname());
+		hotelnamelabel.setText(helper.getHotelBLService().hotel_getInfo(currentordervo.gethotelid()).getname());
 		orderidlabel.setText(String.valueOf(currentordervo.getid()));
 		orderstatelabel.setText(currentordervo.getstate());
 		if(currentordervo.getexecute()){
