@@ -213,6 +213,10 @@ public class MarketStrategyController implements Initializable {
 
 	@FXML
 	private void updateStrategy() {
+		if (updateNameField.getText().isEmpty()) {
+			AlertUtil.showWarningAlert("未指定促销策略！");
+			return;
+		}
 		String name = updateNameField.getText();
 		String startTime = updateStartTimeField.getText();
 		String endTime = updateEndTimeField.getText();
@@ -227,9 +231,11 @@ public class MarketStrategyController implements Initializable {
 			AlertUtil.showErrorAlert("不存在该促销策略！");
 			return;
 		}
+		
+		//更新表格
 		int index;
 		for(index = 0;index<list.size();index++){
-			if (list.get(index).getID().equals(currentStrategy.getID())) {
+			if (list.get(index).getName().equals(currentStrategy.getName())) {
 				list.get(index).setName(name);
 				list.get(index).setStartTime(startTime);
 				list.get(index).setEndTime(endTime);
@@ -239,9 +245,10 @@ public class MarketStrategyController implements Initializable {
 			}
 		}
 		
-		RemoteHelper helper = RemoteHelper.getInstance();
+		//更新底层数据
 		try {
-			WebStrategyVO vo = currentStrategy.changeToVO();
+			RemoteHelper helper = RemoteHelper.getInstance();
+			WebStrategyVO vo = helper.getStrategyBLService().getwebstrategybyname(currentStrategy.getName());
 			ResultMessage message = helper.getStrategyBLService().webstrategy_update(vo);
 			if (message==ResultMessage.Fail) {
 				AlertUtil.showErrorAlert("更新促销策略失败！");
@@ -256,6 +263,10 @@ public class MarketStrategyController implements Initializable {
 
 	@FXML
 	private void deleteStrategy() {
+		if (deleteNameField.getText().isEmpty()) {
+			AlertUtil.showWarningAlert("未指定促销策略！");
+			return;
+		}
 		if (strategyTable.getItems().contains(currentStrategy)) {
 			strategyTable.getItems().remove(currentStrategy);
 			RemoteHelper helper = RemoteHelper.getInstance();
@@ -265,10 +276,12 @@ public class MarketStrategyController implements Initializable {
 				if (message==ResultMessage.Fail) {
 					AlertUtil.showErrorAlert("删除促销策略失败！");
 				}
+				else{
+					AlertUtil.showInformationAlert("删除促销策略成功！");
+				}
 			} catch (RemoteException e) {
 				e.printStackTrace();
 			}
-			AlertUtil.showInformationAlert("删除促销策略成功！");
 		} else {
 			AlertUtil.showErrorAlert("不存在该促销策略！");
 		}

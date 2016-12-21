@@ -24,6 +24,7 @@ import ui.view.client.ClientEvaluateHotelController;
 import ui.view.client.ClientOverviewController;
 import ui.view.client.ClientSearchHotelController;
 import ui.view.hotel.HotelBasicInfoController;
+import ui.view.hotel.HotelCheckInChoiceController;
 import ui.view.hotel.HotelCheckInController;
 import ui.view.hotel.HotelDetailInfoController;
 import ui.view.hotel.HotelOverviewController;
@@ -397,7 +398,7 @@ public class Main extends Application {
 	}
 
 	// 酒店可用房间管理
-	public void gotoHotelRoomManage() {
+	public void gotoHotelRoomManage(HotelVO hotelVO) {
 		try {
 			FXMLLoader fxmlLoader = new FXMLLoader();
 			fxmlLoader.setLocation(Main.class.getResource("hotel/HotelRoomManage.fxml"));
@@ -405,7 +406,7 @@ public class Main extends Application {
 			insidePane.setPrefSize(700, 600);
 			rootLayout.getItems().set(1, insidePane);
 			HotelRoomManageController controller = (HotelRoomManageController) fxmlLoader.getController();
-			controller.setMain(this);
+			controller.setMain(this,hotelVO);
 		} catch (Exception e) {
 			Logger.getLogger(Main.class.getName()).log(Level.SEVERE, null, e);
 		}
@@ -442,7 +443,7 @@ public class Main extends Application {
 //	}
 
 	// 酒店房间信息更新
-	public void gotoHotelCheckIn() {
+	public void gotoHotelCheckIn(HotelVO hotelVO) {
 		try {
 			FXMLLoader fxmlLoader = new FXMLLoader();
 			fxmlLoader.setLocation(Main.class.getResource("hotel/HotelCheckIn.fxml"));
@@ -450,10 +451,34 @@ public class Main extends Application {
 			insidePane.setPrefSize(700, 600);
 			rootLayout.getItems().set(1, insidePane);
 			HotelCheckInController controller = (HotelCheckInController) fxmlLoader.getController();
-			controller.setMain(this);
+			controller.setMain(this,hotelVO);
 		} catch (Exception e) {
 			Logger.getLogger(Main.class.getName()).log(Level.SEVERE, null, e);
 		}
+	}
+	
+	//入住退房弹窗
+	public void gotoHotelCheckInChoice(HotelCheckInController hotelCheckInController){
+		
+		try {
+			FXMLLoader fxmlLoader = new FXMLLoader();
+			fxmlLoader.setLocation(Main.class.getResource("hotel/HotelCheckInChoiceController.fxml"));
+			AnchorPane pane;
+			pane = (AnchorPane) fxmlLoader.load();
+			pane.setPrefSize(300,200);
+			
+			HotelCheckInChoiceController controller = (HotelCheckInChoiceController) fxmlLoader.getController();
+			controller.setMain(this, hotelCheckInController);
+			
+			Scene scene = new Scene(pane);
+			extraStage = new Stage(StageStyle.UNDECORATED);
+			extraStage.setScene(new Scene(pane));
+			extraStage.centerOnScreen();
+			extraStage.show();
+		} catch (IOException e) {
+			e.printStackTrace();
+		}
+		
 	}
 
 	// 酒店销售策略管理

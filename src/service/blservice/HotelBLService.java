@@ -40,6 +40,7 @@ public interface HotelBLService extends Remote{
 	 */
 	public ResultMessage hotel_importRoom(RoomVO room)throws RemoteException;
 
+	public ResultMessage hotel_updateRoom(RoomVO room)throws RemoteException;
 	/**
 	 * @param info
 	 * @return 酒店更新入住信息
@@ -129,4 +130,7 @@ public interface HotelBLService extends Remote{
 	
 	//评价酒店
 	public ResultMessage evalutehotel(EvaluationVO e, int clientid,int hotelid) throws RemoteException;
+
+	public ArrayList<RoomVO> getallroom(int hotelid)throws RemoteException;
+	
 }
