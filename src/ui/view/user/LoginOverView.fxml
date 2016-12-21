@@ -9,7 +9,7 @@
 <?import javafx.scene.layout.*?>
 <?import javafx.scene.layout.AnchorPane?>
 
-<AnchorPane prefHeight="400.0" prefWidth="500.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="ui.view.user.LoginOverviewController">
+<AnchorPane prefHeight="400.0" prefWidth="500.0" stylesheets="@LoginOverview.css" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="ui.view.user.LoginOverviewController">
    <children>
       <GridPane prefHeight="400.0" prefWidth="500.0">
         <columnConstraints>
@@ -22,65 +22,42 @@
           <RowConstraints maxHeight="215.0" minHeight="10.0" prefHeight="186.0" vgrow="SOMETIMES" />
         </rowConstraints>
          <children>
-            <Button fx:id="clientButton" alignment="BOTTOM_CENTER" contentDisplay="TOP" mnemonicParsing="false" onAction="#clientgotoLogin" prefHeight="184.0" prefWidth="254.0" text="客户" GridPane.rowIndex="1" GridPane.valignment="TOP">
+            <Button fx:id="clientButton" alignment="BOTTOM_CENTER" contentDisplay="TOP" mnemonicParsing="false" onAction="#clientgotoLogin" prefHeight="229.0" prefWidth="250.0" text="客户" GridPane.rowIndex="1" GridPane.valignment="TOP">
                <font>
                   <Font name="Microsoft JhengHei Light" size="22.0" />
                </font>
-               <graphic>
-                  <ImageView fitHeight="135.0" fitWidth="183.0">
-                     <image>
-                        <Image url="@../../../../resources/客户.png" />
-                     </image>
-                     <viewport>
-                        <Rectangle2D />
-                     </viewport>
-                  </ImageView>
-               </graphic>
             </Button>
             <Button fx:id="hotelButton" alignment="BOTTOM_CENTER" contentDisplay="TOP" graphicTextGap="0.0" mnemonicParsing="false" onAction="#hotelgotoLogin" prefHeight="192.0" prefWidth="250.0" text="酒店" GridPane.columnIndex="1" GridPane.rowIndex="1">
                <font>
                   <Font name="Microsoft JhengHei Light" size="22.0" />
                </font>
-               <graphic>
-                  <ImageView fitHeight="134.0" fitWidth="160.0">
-                     <image>
-                        <Image url="@../../../../resources/酒店.png" />
-                     </image>
-                  </ImageView>
-               </graphic>
             </Button>
-            <Button fx:id="marketButton" alignment="BOTTOM_CENTER" contentDisplay="TOP" mnemonicParsing="false" onAction="#marketgotoLogin" prefHeight="129.0" prefWidth="250.0" text="网站营销" GridPane.rowIndex="2">
+            <Button fx:id="marketButton" alignment="BOTTOM_CENTER" contentDisplay="TOP" mnemonicParsing="false" onAction="#marketgotoLogin" prefHeight="196.0" prefWidth="250.0" text="网站营销" GridPane.rowIndex="2">
                <font>
                   <Font name="Microsoft JhengHei" size="22.0" />
                </font>
-               <graphic>
-                  <ImageView fitHeight="135.0" fitWidth="160.0">
-                     <image>
-                        <Image url="@../../../../resources/销售开单-营业员.png" />
-                     </image>
-                  </ImageView>
-               </graphic>
             </Button>
-            <Button fx:id="managerButton" alignment="BOTTOM_CENTER" contentDisplay="TOP" mnemonicParsing="false" onAction="#managergotoLogin" prefHeight="0.0" prefWidth="250.0" text="网站管理" GridPane.columnIndex="1" GridPane.rowIndex="2">
+            <Button fx:id="managerButton" alignment="BOTTOM_CENTER" contentDisplay="TOP" mnemonicParsing="false" onAction="#managergotoLogin" prefHeight="222.0" prefWidth="250.0" text="网站管理" GridPane.columnIndex="1" GridPane.rowIndex="2">
                <font>
                   <Font name="Microsoft JhengHei Light" size="22.0" />
                </font>
-               <graphic>
-                  <ImageView fitHeight="135.0" fitWidth="160.0">
-                     <image>
-                        <Image url="@../../../../resources/管理员.png" />
-                     </image>
-                  </ImageView>
-               </graphic>
             </Button>
-            <Label fx:id="welcomeLabel" alignment="CENTER" prefHeight="60.0" prefWidth="500.0" style="-fx-background-color: #878787;" text="欢迎！" textFill="WHITE">
+            <Label fx:id="welcomeLabel" alignment="CENTER" prefHeight="60.0" prefWidth="500.0" text="欢迎！">
                <font>
-                  <Font name="YouYuan" size="22.0" />
+                  <Font name="System Bold" size="22.0" />
                </font>
                <GridPane.margin>
                   <Insets right="-250.0" />
                </GridPane.margin>
             </Label>
+            <Button fx:id="exitButton" alignment="CENTER" mnemonicParsing="false" onAction="#exit" prefHeight="28.0" prefWidth="65.0" text="退出" GridPane.columnIndex="1">
+               <GridPane.margin>
+                  <Insets left="185.0" />
+               </GridPane.margin>
+               <font>
+                  <Font name="System Bold" size="12.0" />
+               </font>
+            </Button>
          </children>
       </GridPane>
    </children>

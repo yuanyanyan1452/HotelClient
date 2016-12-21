@@ -11,18 +11,18 @@
 
 <AnchorPane prefHeight="400.0" prefWidth="500.0" stylesheets="@Login.css" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="ui.view.user.LoginController">
    <children>
-      <Label fx:id="loginLabel" alignment="CENTER" layoutX="216.0" layoutY="33.0" prefHeight="38.0" prefWidth="69.0" text="登录" textFill="SNOW">
+      <Label fx:id="loginLabel" alignment="CENTER" layoutX="216.0" layoutY="33.0" prefHeight="38.0" prefWidth="69.0" text="登录">
          <font>
             <Font name="Microsoft JhengHei Bold" size="29.0" />
          </font>
       </Label>
-      <Label fx:id="usernameLabel" layoutX="108.0" layoutY="126.0" prefHeight="31.0" prefWidth="69.0" text="账号:" textFill="SNOW" AnchorPane.leftAnchor="108.0">
+      <Label fx:id="usernameLabel" layoutX="108.0" layoutY="126.0" prefHeight="31.0" prefWidth="69.0" text="账号:" AnchorPane.leftAnchor="108.0">
          <font>
             <Font name="Microsoft JhengHei" size="22.0" />
          </font>
       </Label>
       <TextField fx:id="usernameTextField" layoutX="240.0" layoutY="126.0" prefHeight="31.0" prefWidth="178.0" />
-      <Label fx:id="passwordLabel" layoutX="108.0" layoutY="209.0" prefHeight="31.0" prefWidth="69.0" text="密码:" textFill="SNOW" AnchorPane.leftAnchor="108.0">
+      <Label fx:id="passwordLabel" layoutX="108.0" layoutY="209.0" prefHeight="31.0" prefWidth="69.0" text="密码:" AnchorPane.leftAnchor="108.0">
          <font>
             <Font name="Microsoft JhengHei" size="22.0" />
          </font>
@@ -31,6 +31,7 @@
       <PasswordField fx:id="passwordField" layoutX="240.0" layoutY="209.0" prefHeight="31.0" prefWidth="178.0" />
       <Button fx:id="registButton" layoutX="204.0" layoutY="315.0" mnemonicParsing="false" onAction="#gotoRegist" prefHeight="40.0" prefWidth="92.0" text="注册" />
       <Button fx:id="updatepasswordButton" layoutX="78.0" layoutY="315.0" mnemonicParsing="false" onAction="#gotoUpdatePassword" prefHeight="40.0" prefWidth="92.0" text="修改密码" />
-      <Button mnemonicParsing="false" onAction="#backtooverview" prefHeight="31.0" prefWidth="69.0" text="返回" />
+      <Button alignment="CENTER" mnemonicParsing="false" onAction="#backtooverview" prefHeight="28.0" prefWidth="70.0" text="返回" />
+      <Button layoutX="430.0" mnemonicParsing="false" onAction="#exit" prefHeight="28.0" prefWidth="70.0" text="退出" />
    </children>
 </AnchorPane>
