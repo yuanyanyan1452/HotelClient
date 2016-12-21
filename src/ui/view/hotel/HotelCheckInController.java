@@ -20,6 +20,7 @@ import javafx.scene.control.cell.TextFieldTableCell;
 import javafx.scene.input.MouseEvent;
 import javafx.util.Callback;
 import objects.Order;
+import objects.ResultMessage;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableColumn.CellDataFeatures;
 import javafx.scene.control.TableView;
@@ -27,6 +28,7 @@ import javafx.scene.control.TextField;
 import rmi.RemoteHelper;
 import ui.model.OrderModel;
 import ui.util.AlertUtil;
+import ui.util.OrderUtil;
 import ui.view.Main;
 import vo.HotelVO;
 import vo.OrderVO;
@@ -37,8 +39,6 @@ public class HotelCheckInController implements Initializable {
 	private HotelVO currentHotel;
 	private HotelCheckInController controller;
 	OrderModel currentOrder;
-	private static final String ISEXECUTE = "是";
-	private static final String NOEXECUTE = "未入住";
 	private SimpleDateFormat format = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
 
 	@FXML
@@ -67,10 +67,10 @@ public class HotelCheckInController implements Initializable {
 
 	@FXML
 	private ComboBox<String> roomtypeComboBox;
-	
+
 	@FXML
 	private TextField roomNumTextField;
-	
+
 	@FXML
 	private TextField daysTextField;
 
@@ -78,23 +78,36 @@ public class HotelCheckInController implements Initializable {
 	private void downlinecheckin() {
 		if (roomtypeComboBox.getValue() == null) {
 			AlertUtil.showWarningAlert("未为线下操作选择房间类型！");
-		}
-		else if (roomNumTextField.getText().isEmpty()) {
+		} else if (roomNumTextField.getText().isEmpty()) {
 			AlertUtil.showWarningAlert("未输入房间数量！");
-		}
-		else if (Character.isDigit(roomNumTextField.getText().charAt(0))) {
+		} else if (Character.isDigit(roomNumTextField.getText().charAt(0))) {
 			AlertUtil.showWarningAlert("房间数量应输入数字！");
-		}
-		else if (daysTextField.getText().isEmpty()) {
+		} else if (daysTextField.getText().isEmpty()) {
 			AlertUtil.showWarningAlert("未输入入住天数！");
-		}
-		else if (Character.isDigit(daysTextField.getText().charAt(0))) {
+		} else if (Character.isDigit(daysTextField.getText().charAt(0))) {
 			AlertUtil.showWarningAlert("入住天数应输入数字！");
-		}
-		else {
-			RemoteHelper helper = RemoteHelper.getInstance();
-			String roomtype = roomtypeComboBox.getValue();
-			// TODO 线下入住
+		} else {
+			try {
+				RemoteHelper helper = RemoteHelper.getInstance();
+				String roomtype = roomtypeComboBox.getValue();
+				int roomnum = Integer.parseInt(roomNumTextField.getText());
+				int days = Integer.parseInt(daysTextField.getText());
+
+				ArrayList<RoomOrderVO> roomOrderVOs = new ArrayList<>();
+				RoomOrderVO roomOrderVO = new RoomOrderVO();
+				roomOrderVO.setnum_of_days(days);
+				roomOrderVO.setroom_number(roomnum);
+				roomOrderVO.setroom_type(roomtype);
+
+				ResultMessage message = helper.getOrderBLService().offline_checkin(currentHotel.getid(), roomOrderVOs);
+				if (message == ResultMessage.Fail) {
+					AlertUtil.showWarningAlert("线下入住失败。。可能是由于网络问题");
+				} else {
+					AlertUtil.showInformationAlert("线下入住成功！");
+				}
+			} catch (RemoteException e) {
+				e.printStackTrace();
+			}
 		}
 	}
 
@@ -102,23 +115,38 @@ public class HotelCheckInController implements Initializable {
 	private void downlinecheckout() {
 		if (roomtypeComboBox.getValue() == null) {
 			AlertUtil.showWarningAlert("未为线下操作选择房间类型！");
-		}
-		else if (roomNumTextField.getText().isEmpty()) {
+		} else if (roomNumTextField.getText().isEmpty()) {
 			AlertUtil.showWarningAlert("未输入房间数量！");
-		}
-		else if (Character.isDigit(roomNumTextField.getText().charAt(0))) {
+		} else if (Character.isDigit(roomNumTextField.getText().charAt(0))) {
 			AlertUtil.showWarningAlert("房间数量应输入数字！");
-		}
-		else if (daysTextField.getText().isEmpty()) {
+		} else if (daysTextField.getText().isEmpty()) {
 			AlertUtil.showWarningAlert("未输入入住天数！");
-		}
-		else if (Character.isDigit(daysTextField.getText().charAt(0))) {
+		} else if (Character.isDigit(daysTextField.getText().charAt(0))) {
 			AlertUtil.showWarningAlert("入住天数应输入数字！");
-		}
-		else {
-			RemoteHelper helper = RemoteHelper.getInstance();
-			String roomtype = roomtypeComboBox.getValue();
-			// TODO 线下退房
+		} else {
+			try {
+				RemoteHelper helper = RemoteHelper.getInstance();
+
+				String roomtype = roomtypeComboBox.getValue();
+				int roomnum = Integer.parseInt(roomNumTextField.getText());
+				int days = Integer.parseInt(daysTextField.getText());
+
+				ArrayList<RoomOrderVO> roomOrderVOs = new ArrayList<>();
+				RoomOrderVO roomOrderVO = new RoomOrderVO();
+				roomOrderVO.setnum_of_days(days);
+				roomOrderVO.setroom_number(roomnum);
+				roomOrderVO.setroom_type(roomtype);
+
+				ResultMessage message = helper.getOrderBLService().offline_checkout(currentHotel.getid(), roomOrderVOs);
+				if (message == ResultMessage.Fail) {
+					AlertUtil.showWarningAlert("线下退房失败。。可能是由于网络问题");
+				} else {
+					AlertUtil.showInformationAlert("线下退房成功！");
+				}
+			} catch (RemoteException e) {
+				e.printStackTrace();
+			}
+
 		}
 	}
 
@@ -126,23 +154,28 @@ public class HotelCheckInController implements Initializable {
 
 	}
 
-	// 用于入住结束后的表格更新
+	/*
+	 * 用于入住结束后的表格更新
+	 */
 	public void updateTable(OrderModel changedOrder) {
 
 		for (int index = 0; index < orderTable.getItems().size(); index++) {
 			if (orderTable.getItems().get(index).getOrderid().equals(changedOrder.getOrderid())) {
-				orderTable.getItems().get(index).setIsExecute(changedOrder.getIsExecute().equals(ISEXECUTE));
+				orderTable.getItems().get(index)
+						.setIsExecute(changedOrder.getIsExecute().equals(OrderUtil.getIsexecute()));
 				orderTable.getItems().get(index).setState(changedOrder.getState());
 				orderTable.getItems().get(index).setOverTime(new Date());
-				if (!changedOrder.getPredictLeaveTime().equals(NOEXECUTE)) {
+				if (!changedOrder.getPredictLeaveTime().equals(OrderUtil.getNoexecute())) {
 					orderTable.getItems().get(index).setPredictLeaveTime(changedOrder.getPredictLeaveTime());
 				}
 			}
 		}
 	}
-	
-	//用于退房后的表格删除
-	public void removeTable(OrderModel finishedOrder){
+
+	/*
+	 * 用于退房后的表格项删除
+	 */
+	public void removeTable(OrderModel finishedOrder) {
 		for (int index = 0; index < orderTable.getItems().size(); index++) {
 			if (orderTable.getItems().get(index).getOrderid().equals(finishedOrder.getOrderid())) {
 				orderTable.getItems().remove(index);
@@ -183,7 +216,7 @@ public class HotelCheckInController implements Initializable {
 				model.setState(vo.getstate());
 				model.setLatestExecuteTime(vo.getlatest_execute_time());
 				model.setOverTime(new Date());
-				model.setPredictLeaveTime(NOEXECUTE);
+				model.setPredictLeaveTime(OrderUtil.getNoexecute());
 				models.add(model);
 			}
 
