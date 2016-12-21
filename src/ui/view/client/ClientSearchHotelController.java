@@ -112,7 +112,6 @@ public class ClientSearchHotelController implements Initializable {
 			if (!hotelnameTextField.getText().isEmpty()) {
 				currentHotelList = helper.getHotelBLService().searchHotelByname(currentHotelList,
 						hotelnameTextField.getText());
-				System.out.println("cfvghj");
 			}
 			// 按房间类型查找
 			if ( !roomtypeButton.getValue().equals("不限")) {
