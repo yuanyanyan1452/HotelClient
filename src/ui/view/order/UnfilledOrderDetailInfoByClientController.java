@@ -14,6 +14,7 @@ import javafx.scene.control.Label;
 import objects.ResultMessage;
 import rmi.RemoteHelper;
 import ui.util.AlertUtil;
+import ui.util.RecordActionUtil;
 import ui.view.Main;
 import vo.OrderVO;
 import vo.RoomOrderVO;
@@ -81,7 +82,7 @@ public class UnfilledOrderDetailInfoByClientController implements Initializable 
 			Date date=new Date();
 			if(currentordervo.getlatest_execute_time().getTime()-date.getTime()<6*60*60*1000){
 				helper.getClientBLService().updateClientCredit(currentordervo.getclientid(), currentordervo.getprice()/2, 0);
-				String creditinfo=format.format(date)+","+String.valueOf(currentordervo.getid())+","+"订单撤销,"+"-"+String.valueOf(currentordervo.getprice()/2)+","+String.valueOf(helper.getClientBLService().client_checkCredit(currentordervo.getclientid()));
+				String creditinfo=format.format(date)+","+String.valueOf(currentordervo.getid())+","+RecordActionUtil.getClientCancel()+","+"-"+String.valueOf(currentordervo.getprice()/2)+","+String.valueOf(helper.getClientBLService().client_checkCredit(currentordervo.getclientid()));
 				helper.getClientBLService().client_updateClientCreditList(currentordervo.getclientid(), creditinfo);
 			}
 		}

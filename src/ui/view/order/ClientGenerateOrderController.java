@@ -1,6 +1,9 @@
 package ui.view.order;
 
 import java.net.URL;
+import java.rmi.RemoteException;
+import java.util.ArrayList;
+import java.util.Date;
 import java.util.ResourceBundle;
 
 import javafx.fxml.FXML;
@@ -9,17 +12,21 @@ import javafx.scene.control.ComboBox;
 import javafx.scene.control.DatePicker;
 import javafx.scene.control.Label;
 import javafx.scene.control.RadioButton;
-import javafx.scene.control.TextField;
 import javafx.scene.control.ToggleGroup;
-import ui.model.HotelModel;
+import rmi.RemoteHelper;
+import ui.util.OrderUtil;
 import ui.view.Main;
 import vo.ClientVO;
 import vo.HotelVO;
+import vo.OrderVO;
+import vo.RoomOrderVO;
 
 public class ClientGenerateOrderController implements Initializable {
 	private Main main;
 	private HotelVO currentHotel;
 	private ClientVO currentClient;
+	
+	RemoteHelper helper=RemoteHelper.getInstance();
 	@FXML
 	private Label hotelnameLabel;
 	
@@ -54,8 +61,29 @@ public class ClientGenerateOrderController implements Initializable {
 	}
 	
 	@FXML
-	private void generate(){
+	private void generate() throws RemoteException{
 		//TODO
+		OrderVO order=new OrderVO();
+		order.setclientid(currentClient.getclientid());
+		order.sethotelid(currentHotel.getid());
+		order.setstate(OrderUtil.getNormal());
+		order.setexecute(false);
+		//
+		Date start_time=new Date();
+		Date end_time=new Date();
+		Date latest_execute_time=new Date();
+		order.setstart_time(start_time);
+		order.setend_time(end_time);
+		order.setlatest_execute_time(latest_execute_time);
+		ArrayList<RoomOrderVO> roomlist=new ArrayList<RoomOrderVO>();
+		order.setprice((int)helper.getOrderBLService().calculateTotalwithStrategy(roomlist,currentHotel.getid(),currentClient.getclientid()));
+		order.setexpect_number_of_people(Integer.parseInt(peopleNumComboBox.getValue()));
+		if(hasChildButton.isSelected()){
+		order.sethave_child(true);
+		}
+		else if(hasNoChildButton.isSelected()){
+			order.sethave_child(false);
+		}
 	}
 	public ClientGenerateOrderController() {
 		
