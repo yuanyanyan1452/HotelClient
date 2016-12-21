@@ -191,6 +191,7 @@ public class HotelCheckInController implements Initializable {
 	public void setMain(Main main, HotelVO hotelVO) {
 		this.main = main;
 		controller = this;
+		currentHotel = hotelVO;
 		RemoteHelper helper = RemoteHelper.getInstance();
 
 		// 初始化房间类型combobox
