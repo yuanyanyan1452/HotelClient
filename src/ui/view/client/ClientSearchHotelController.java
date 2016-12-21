@@ -106,20 +106,21 @@ public class ClientSearchHotelController implements Initializable {
 			}
 			// 只搜索自己预定过的酒店
 			if (everBookedButton.isSelected()) {
-				currentHotelList = helper.getClientBLService().client_getpreviousHotelList(currentClient.getclientid());
+				currentHotelList = helper.getHotelBLService().searchpreviousHotelList(currentHotelList,currentClient.getclientid());
 			}
 			// 按酒店名称搜索
 			if (!hotelnameTextField.getText().isEmpty()) {
 				currentHotelList = helper.getHotelBLService().searchHotelByname(currentHotelList,
 						hotelnameTextField.getText());
+				System.out.println("cfvghj");
 			}
 			// 按房间类型查找
-			if (roomtypeButton.getValue() != null || !roomtypeButton.getValue().equals("不限")) {
+			if ( !roomtypeButton.getValue().equals("不限")) {
 				currentHotelList = helper.getHotelBLService().searchHotelByroom(currentHotelList,
 						roomtypeButton.getValue());
 			}
 			// 按星级查找
-			if (starButton.getValue() != null || !starButton.getValue().equals("不限")) {
+			if ( !starButton.getValue().equals("不限")) {
 				currentHotelList = helper.getHotelBLService().searchHotelBystar(currentHotelList,
 						starButton.getValue());
 			}

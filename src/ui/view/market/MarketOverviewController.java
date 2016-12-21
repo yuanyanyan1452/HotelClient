@@ -5,6 +5,7 @@ import java.util.ResourceBundle;
 
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
+import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import ui.view.Main;
 import vo.WebMarketVO;
@@ -18,7 +19,14 @@ public class MarketOverviewController implements Initializable {
 	
 	@FXML
 	private Label contactLabel;
-
+	
+	@FXML
+	private Button exitButton;
+	
+	@FXML
+	private void exit(){
+		main.exitSystem();
+	}
 	@FXML
 	public void gotoCreditCharge(){
 		main.gotoMarketCreditCharge();

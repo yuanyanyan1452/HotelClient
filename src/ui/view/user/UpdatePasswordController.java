@@ -11,6 +11,7 @@ import javafx.scene.control.TextField;
 import javafx.scene.control.Alert.AlertType;
 import objects.ResultMessage;
 import rmi.RemoteHelper;
+import ui.util.AlertUtil;
 import ui.view.Main;
 
 public class UpdatePasswordController implements Initializable{
@@ -32,102 +33,70 @@ public class UpdatePasswordController implements Initializable{
 	private TextField newpasswordTextField2;
 	
 	@FXML
-	public void back(){
+	private void back(){
 		main.gotoLogin(type);
 	}
 	
 	@FXML
-	public void changepassword() throws RemoteException{
+	private void exit(){
+		main.exitSystem();
+	}
+	
+	@FXML
+	private void changepassword() throws RemoteException{
 		if(newpasswordTextField1.getText().equals(newpasswordTextField2.getText())){
 		switch(type){
 		case "client":
 		ResultMessage result1=helper.getClientBLService().client_change_password(usernameTextField.getText(), oldpasswordTextField.getText(), newpasswordTextField1.getText());
 		if(result1==ResultMessage.Success){
-			Alert alert = new Alert(AlertType.INFORMATION);
-			alert.setTitle(null);
-			alert.setHeaderText(null);
-			alert.setContentText("更新密码成功");
-			alert.showAndWait();
+			AlertUtil.showInformationAlert("更新密码成功！");
 			main.gotoLogin(type);
 		}
 		else{
-			Alert alert = new Alert(AlertType.ERROR);
-			alert.setTitle(null);
-			alert.setHeaderText(null);
-			alert.setContentText("对不起，更新密码失败，可能是用户名或密码输入错误或网络原因");
-			alert.showAndWait();
+			AlertUtil.showErrorAlert("对不起。更新密码失败。/n可能是由于用户名不存在或旧密码输入错误。");
 		}
 			break;
 		case "hotel":
 			ResultMessage result2=helper.getHotelBLService().hotelworker_change_password(usernameTextField.getText(), oldpasswordTextField.getText(), newpasswordTextField1.getText());
 			if(result2==ResultMessage.Success){
-				Alert alert = new Alert(AlertType.INFORMATION);
-				alert.setTitle(null);
-				alert.setHeaderText(null);
-				alert.setContentText("更新密码成功");
-				alert.showAndWait();
+				AlertUtil.showInformationAlert("更新密码成功！");
 				main.gotoLogin(type);
 			}
 			else{
-				Alert alert = new Alert(AlertType.ERROR);
-				alert.setTitle(null);
-				alert.setHeaderText(null);
-				alert.setContentText("对不起，更新密码失败，可能是用户名或密码输入错误或网络原因");
-				alert.showAndWait();
+				AlertUtil.showErrorAlert("对不起。更新密码失败。/n可能是由于用户名不存在或旧密码输入错误。");
 			}
 			break;
 		case "market":
 			ResultMessage result3=helper.getManageBLService().webmarket_change_password(usernameTextField.getText(), oldpasswordTextField.getText(), newpasswordTextField1.getText());
 			if(result3==ResultMessage.Success){
-				Alert alert = new Alert(AlertType.INFORMATION);
-				alert.setTitle(null);
-				alert.setHeaderText(null);
-				alert.setContentText("更新密码成功");
-				alert.showAndWait();
+				AlertUtil.showInformationAlert("更新密码成功！");
 				main.gotoLogin(type);
 			}
 			else{
-				Alert alert = new Alert(AlertType.ERROR);
-				alert.setTitle(null);
-				alert.setHeaderText(null);
-				alert.setContentText("对不起，更新密码失败，可能是用户名或密码输入错误或网络原因");
-				alert.showAndWait();
+				AlertUtil.showErrorAlert("对不起。更新密码失败。/n可能是由于用户名不存在或旧密码输入错误。");
 			}
 			break;
 		case "manager":
 			ResultMessage result4=helper.getManageBLService().webmanager_change_password(usernameTextField.getText(), oldpasswordTextField.getText(), newpasswordTextField1.getText());
 			if(result4==ResultMessage.Success){
-				Alert alert = new Alert(AlertType.INFORMATION);
-				alert.setTitle(null);
-				alert.setHeaderText(null);
-				alert.setContentText("更新密码成功");
-				alert.showAndWait();
+				AlertUtil.showInformationAlert("更新密码成功！");
 				main.gotoLogin(type);
 			}
 			else{
-				Alert alert = new Alert(AlertType.ERROR);
-				alert.setTitle(null);
-				alert.setHeaderText(null);
-				alert.setContentText("对不起，更新密码失败，可能是用户名或密码输入错误或网络原因");
-				alert.showAndWait();
+				AlertUtil.showErrorAlert("对不起。更新密码失败。/n可能是由于用户名不存在或旧密码输入错误。");
 			}
 		}
 		}
 		else{
-			Alert alert = new Alert(AlertType.ERROR);
-			alert.setTitle(null);
-			alert.setHeaderText(null);
-			alert.setContentText("对不起，您两次输入的新密码不一致");
-			alert.showAndWait();
+			AlertUtil.showWarningAlert("两次输入的新密码不一致。");
 		}
 	}
 	public UpdatePasswordController() {
-		// TODO 
+
 	}
 
 	@Override
 	public void initialize(URL arg0, ResourceBundle arg1) {
-		// TODO 
 		
 	}
 	

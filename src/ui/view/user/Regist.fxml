@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<?import javafx.scene.image.*?>
 <?import javafx.scene.text.*?>
 <?import javafx.scene.control.*?>
 <?import java.lang.*?>
@@ -9,17 +10,17 @@
 <AnchorPane maxHeight="400.0" maxWidth="500.0" minHeight="400.0" minWidth="500.0" prefHeight="400.0" prefWidth="500.0" stylesheets="@Regist.css" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="ui.view.user.RegistController">
    <children>
       <TextField fx:id="usernameTextField" layoutX="250.0" layoutY="119.0" prefHeight="31.0" prefWidth="178.0" />
-      <Label layoutX="107.0" layoutY="119.0" prefHeight="31.0" prefWidth="56.0" text="账号" textFill="SNOW">
+      <Label layoutX="97.0" layoutY="119.0" prefHeight="31.0" prefWidth="70.0" text="账号：" textFill="SNOW">
          <font>
             <Font name="Microsoft JhengHei" size="22.0" />
          </font>
       </Label>
-      <Label layoutX="107.0" layoutY="191.0" prefHeight="31.0" prefWidth="56.0" text="密码" textFill="SNOW">
+      <Label layoutX="97.0" layoutY="191.0" prefHeight="31.0" prefWidth="70.0" text="密码：" textFill="SNOW">
          <font>
             <Font name="Microsoft JhengHei" size="22.0" />
          </font>
       </Label>
-      <Label layoutX="89.0" layoutY="261.0" prefHeight="31.0" prefWidth="93.0" text="确认密码" textFill="SNOW">
+      <Label layoutX="74.0" layoutY="261.0" prefHeight="31.0" prefWidth="115.0" text="确认密码：" textFill="SNOW">
          <font>
             <Font name="Microsoft JhengHei" size="22.0" />
          </font>
@@ -29,9 +30,23 @@
             <Font name="Microsoft JhengHei Bold" size="29.0" />
          </font>
       </Label>
-      <Button layoutX="88.0" layoutY="325.0" mnemonicParsing="false" onAction="#cancelRegist" prefHeight="40.0" prefWidth="92.0" text="取消" />
-      <Button layoutX="330.0" layoutY="325.0" mnemonicParsing="false" onAction="#register" prefHeight="40.0" prefWidth="92.0" text="注册" />
-      <PasswordField fx:id="passwordTextField1" layoutX="250.0" layoutY="185.0" prefHeight="31.0" prefWidth="178.0" />
-      <PasswordField fx:id="passwordTextField2" layoutX="250.0" layoutY="246.0" prefHeight="31.0" prefWidth="178.0" />
+      <Button alignment="CENTER" mnemonicParsing="false" onAction="#cancelRegist" prefHeight="28.0" prefWidth="70.0" text="返回" />
+      <Button fx:id="registButton" alignment="CENTER" layoutX="205.0" layoutY="328.0" mnemonicParsing="false" onAction="#register" prefHeight="40.0" prefWidth="92.0" text="确认注册" />
+      <PasswordField fx:id="passwordTextField1" layoutX="250.0" layoutY="191.0" prefHeight="31.0" prefWidth="178.0" />
+      <PasswordField fx:id="passwordTextField2" layoutX="250.0" layoutY="261.0" prefHeight="31.0" prefWidth="178.0" />
+      <Label fx:id="noLabel" layoutX="285.0" layoutY="161.0" text="该账号已被注册！">
+         <font>
+            <Font size="14.0" />
+         </font></Label>
+      <ImageView fx:id="yesImage" fitHeight="40.0" fitWidth="45.0" layoutX="434.0" layoutY="115.0">
+         <image>
+            <Image url="@../../../../resources/可用.png" />
+         </image>
+      </ImageView>
+      <ImageView fx:id="noImage" fitHeight="40.0" fitWidth="45.0" layoutX="434.0" layoutY="115.0">
+         <image>
+            <Image url="@../../../../resources/不可用.png" />
+         </image>
+      </ImageView>
    </children>
 </AnchorPane>

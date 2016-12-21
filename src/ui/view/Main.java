@@ -88,7 +88,7 @@ public class Main extends Application {
 	@Override
 	public void start(Stage primaryStage) throws Exception {
 		stage = primaryStage;
-//		stage.initStyle(StageStyle.UNDECORATED);
+		stage.initStyle(StageStyle.UNDECORATED);
 		stage.setTitle("Hotel");
 		stage.setMinHeight(MINIMUM_WINDOW_HEIGHT);
 		stage.setMinWidth(MINIMUM_WINDOW_WIDTH);
@@ -109,6 +109,10 @@ public class Main extends Application {
 		}
 	}
 
+	//退出系统
+	public void exitSystem(){
+		stage.close();
+	}
 	//返回主界面
 	public void backtoMain(){
 		try{

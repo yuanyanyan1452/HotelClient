@@ -17,6 +17,7 @@ import javafx.event.EventHandler;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.Alert;
+import javafx.scene.control.Button;
 import javafx.scene.control.ComboBox;
 import javafx.scene.control.Alert.AlertType;
 import javafx.scene.control.Label;
@@ -115,7 +116,10 @@ public class ManagerOverviewController implements Initializable {
 
 	@FXML
 	private Label orderNumLabel;
-
+	
+	@FXML
+	private Button exitButton;
+	
 	@FXML
 	private Tab clientTab;
 
@@ -288,6 +292,11 @@ public class ManagerOverviewController implements Initializable {
 	@FXML
 	private TextField updateMarketContactTextField;
 
+	@FXML
+	private void exit(){
+		main.exitSystem();
+	}
+	
 	@FXML
 	private void updateSearchClient() {
 		String id = updateClientIDTextField.getText();

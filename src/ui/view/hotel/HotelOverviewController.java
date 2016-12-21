@@ -6,6 +6,7 @@ import java.util.ResourceBundle;
 
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
+import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import rmi.RemoteHelper;
 import ui.view.Main;
@@ -38,6 +39,14 @@ public class HotelOverviewController implements Initializable {
 	private Label contactlabel;
 	
 
+	@FXML
+	private Button exitButton;
+	
+	@FXML
+	private void exit(){
+		main.exitSystem();
+	}
+	
 	@FXML
 	public void gotoHotelBasicInfo() throws RemoteException {
 		main.gotoHotelBasicInfo(currenthotelvo,this);
