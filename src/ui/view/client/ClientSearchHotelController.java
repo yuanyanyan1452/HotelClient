@@ -106,7 +106,7 @@ public class ClientSearchHotelController implements Initializable {
 			}
 			// 只搜索自己预定过的酒店
 			if (everBookedButton.isSelected()) {
-				currentHotelList = helper.getClientBLService().client_getpreviousHotelList(currentClient.getclientid());
+				currentHotelList = helper.getHotelBLService().searchpreviousHotelList(currentHotelList,currentClient.getclientid());
 			}
 			// 按酒店名称搜索
 			if (!hotelnameTextField.getText().isEmpty()) {
