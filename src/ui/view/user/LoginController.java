@@ -52,7 +52,7 @@ public class LoginController implements Initializable {
 	
 	@FXML
 	public void exit(){
-		main.getPrimaryStage().close();
+		main.exitSystem();
 	}
 	
 	@FXML

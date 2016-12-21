@@ -6,6 +6,7 @@ import java.util.ResourceBundle;
 
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
+import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import objects.VIPInfo.VIPType;
 import rmi.RemoteHelper;
@@ -16,9 +17,7 @@ public class ClientOverviewController implements Initializable {
 	private Main main;
 	private ClientVO currentclientvo;
 	
-	public ClientOverviewController(){
-		
-	}
+	
 	
 	public void updateVO(ClientVO vo){
 		currentclientvo = vo;
@@ -30,6 +29,8 @@ public class ClientOverviewController implements Initializable {
 		else
 			vipLabel.setText(vo.getvipinfo().getType()==VIPType.NORMAL?"普通会员":"企业会员");
 	}
+	@FXML
+	private Button exitButton;
 	
 	@FXML
 	private Label nameLabel;
@@ -40,6 +41,11 @@ public class ClientOverviewController implements Initializable {
 	@FXML
 	private Label vipLabel;
 
+	@FXML
+	private void exit(){
+		main.exitSystem();
+	}
+	
 	@FXML
 	private void gotoBasicInfo() throws RemoteException {
 		main.gotoClientBasicInfo(currentclientvo,this);
@@ -69,6 +75,10 @@ public class ClientOverviewController implements Initializable {
 	@Override
 	public void initialize(URL location, ResourceBundle resources) {
 
+	}
+	
+	public ClientOverviewController(){
+		
 	}
 
 	public void setMain(Main main,ClientVO vo) {

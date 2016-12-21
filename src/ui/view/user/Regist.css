@@ -1,7 +1,14 @@
 .root{
-	-fx-background-size: stretch stretch;
-    -fx-background-position: center center;
+	-fx-background-color: rgb(93,93,93);
 }
-.label{
-	-fx-text-fill: black;
+.button{
+	-fx-background-color: rgb(93,93,93);
+	-fx-border-color: white;
+	-fx-border-width: 2.0;
+	-fx-text-fill: white;
 }
+.button:hover{
+	-fx-text-alignment: center;
+	-fx-background-color: lightgray;
+}
+
