@@ -203,10 +203,13 @@ public class HotelCheckInController implements Initializable {
 			for (OrderVO vo : orderVOs) {
 				OrderModel model = new OrderModel();
 				model.setOrderid(vo.getid());
+				model.setClientid(vo.getclientid());
+				model.setHotelid(vo.gethotelid());
+				model.setPrice(vo.getprice());
 				ArrayList<RoomOrderVO> roomOrder = vo.getroom_order();
 				String roomtype = "";
 				for (int i = 0; i < roomOrder.size(); i++) {
-					if (i != roomOrder.size() - 1) {
+					if (i == roomOrder.size() - 1) {
 						roomtype += roomOrder.get(i).getroom_type();
 					} else {
 						roomtype += roomOrder.get(i).getroom_type() + ",";
@@ -234,6 +237,22 @@ public class HotelCheckInController implements Initializable {
 				TextFieldTableCell<OrderModel, String> cell = new TextFieldTableCell<>();
 				cell.setOnMouseClicked((MouseEvent e) -> {
 					if (e.getClickCount() == 2) {
+						currentOrder = orderTable.getItems().get(cell.getIndex());
+						main.gotoHotelCheckInChoice(controller);
+					}
+				});
+				return cell;
+			}
+		});
+		roomTypeColumn.setCellValueFactory(celldata ->celldata.getValue().roomtypeProperty());
+		roomTypeColumn.setCellFactory(new Callback<TableColumn<OrderModel, String>, TableCell<OrderModel, String>>() {
+
+			@Override
+			public TableCell<OrderModel, String> call(TableColumn<OrderModel, String> param) {
+				TextFieldTableCell<OrderModel, String> cell = new TextFieldTableCell<>();
+				cell.setOnMouseClicked((MouseEvent e) -> {
+					if (e.getClickCount() == 2) {
+						currentOrder = orderTable.getItems().get(cell.getIndex());
 						main.gotoHotelCheckInChoice(controller);
 					}
 				});
@@ -248,6 +267,7 @@ public class HotelCheckInController implements Initializable {
 				TextFieldTableCell<OrderModel, String> cell = new TextFieldTableCell<>();
 				cell.setOnMouseClicked((MouseEvent e) -> {
 					if (e.getClickCount() == 2) {
+						currentOrder = orderTable.getItems().get(cell.getIndex());
 						main.gotoHotelCheckInChoice(controller);
 					}
 				});
@@ -262,6 +282,7 @@ public class HotelCheckInController implements Initializable {
 				TextFieldTableCell<OrderModel, String> cell = new TextFieldTableCell<>();
 				cell.setOnMouseClicked((MouseEvent e) -> {
 					if (e.getClickCount() == 2) {
+						currentOrder = orderTable.getItems().get(cell.getIndex());
 						main.gotoHotelCheckInChoice(controller);
 					}
 				});
@@ -277,6 +298,7 @@ public class HotelCheckInController implements Initializable {
 						TextFieldTableCell<OrderModel, String> cell = new TextFieldTableCell<>();
 						cell.setOnMouseClicked((MouseEvent e) -> {
 							if (e.getClickCount() == 2) {
+								currentOrder = orderTable.getItems().get(cell.getIndex());
 								main.gotoHotelCheckInChoice(controller);
 							}
 						});
@@ -292,6 +314,7 @@ public class HotelCheckInController implements Initializable {
 						TextFieldTableCell<OrderModel, String> cell = new TextFieldTableCell<>();
 						cell.setOnMouseClicked((MouseEvent e) -> {
 							if (e.getClickCount() == 2) {
+								currentOrder = orderTable.getItems().get(cell.getIndex());
 								main.gotoHotelCheckInChoice(controller);
 							}
 						});
@@ -307,6 +330,7 @@ public class HotelCheckInController implements Initializable {
 						TextFieldTableCell<OrderModel, String> cell = new TextFieldTableCell<>();
 						cell.setOnMouseClicked((MouseEvent e) -> {
 							if (e.getClickCount() == 2) {
+								currentOrder = orderTable.getItems().get(cell.getIndex());
 								main.gotoHotelCheckInChoice(controller);
 							}
 						});

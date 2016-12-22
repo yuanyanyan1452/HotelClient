@@ -128,6 +128,7 @@ public class MarketBrowseAbnormalOrderController implements Initializable {
 					model.setOrderid(vo.getid());
 					model.setClientid(vo.getclientid());
 					model.setLatestExecuteTime(vo.getlatest_execute_time());
+					model.setIsExecute(false);
 					model.setOverTime(new Date());
 					model.setPunishCredit(vo.getprice());
 					orderList.add(model);

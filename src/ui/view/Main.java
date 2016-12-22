@@ -559,7 +559,7 @@ public class Main extends Application {
 		
 		try {
 			FXMLLoader fxmlLoader = new FXMLLoader();
-			fxmlLoader.setLocation(Main.class.getResource("hotel/HotelCheckInChoiceController.fxml"));
+			fxmlLoader.setLocation(Main.class.getResource("hotel/HotelCheckInChoice.fxml"));
 			AnchorPane pane;
 			pane = (AnchorPane) fxmlLoader.load();
 			pane.setPrefSize(300,200);
@@ -567,7 +567,6 @@ public class Main extends Application {
 			HotelCheckInChoiceController controller = (HotelCheckInChoiceController) fxmlLoader.getController();
 			controller.setMain(this, hotelCheckInController);
 			
-			Scene scene = new Scene(pane);
 			extraStage = new Stage(StageStyle.UNDECORATED);
 			extraStage.setScene(new Scene(pane));
 			extraStage.centerOnScreen();

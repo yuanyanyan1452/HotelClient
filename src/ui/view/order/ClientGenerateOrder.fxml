@@ -41,7 +41,7 @@
             <Label text="使用的促销策略：" GridPane.rowIndex="9" />
             <AnchorPane GridPane.columnIndex="1" GridPane.rowIndex="1">
                <children>
-                  <DatePicker fx:id="startDatePicker" layoutX="45.0" layoutY="11.0" />
+                  <DatePicker fx:id="startDatePicker" layoutX="45.0" layoutY="11.0" onAction="#updateendtime" />
                </children>
             </AnchorPane>
             <ComboBox fx:id="latestHourComboBox" prefHeight="25.0" prefWidth="110.0" GridPane.columnIndex="1" GridPane.rowIndex="3" />
