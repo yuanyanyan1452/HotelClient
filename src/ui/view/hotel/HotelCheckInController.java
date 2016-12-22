@@ -206,7 +206,11 @@ public class HotelCheckInController implements Initializable {
 
 		// 初始化房间类型combobox
 		roomtypeComboBox.getItems().addAll("标准间", "大床房", "双人房","商务房","豪华房","海景房");
-
+		roomNumComboBox.getItems().addAll(1,2,3,4,5,6,7,8,9,10);
+		roomNumComboBox.setVisibleRowCount(5);
+		daysComboBox.getItems().addAll(1,2,3,4,5,6,7,8,9,10);
+		daysComboBox.setVisibleRowCount(5);
+		
 		ObservableList<OrderModel> models = FXCollections.observableArrayList();
 		try {
 			//取出未执行的所有订单
