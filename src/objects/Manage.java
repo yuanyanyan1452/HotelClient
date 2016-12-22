@@ -6,6 +6,7 @@ public class Manage {
 	String contact;
 	String username;
 	String password;
+	boolean logged;
 	
 	public Manage(){
 		webmanagerid=0;
@@ -13,6 +14,7 @@ public class Manage {
 		contact=null;
 		username=null;
 		password=null;
+		logged=false;
 	}
 	
 	public Manage(int i,String n,String c,String u,String p){
@@ -21,6 +23,7 @@ public class Manage {
 		contact=c;
 		username=u;
 		password=p;
+		logged=false;
 	}
 	public int getwebmanagerid() {
 		return webmanagerid;
@@ -56,6 +59,13 @@ public class Manage {
 	}
 	public void setpassword(String password) {
 		this.password = password;
+	}
+	
+	public boolean getlogged() {
+		return logged;
+	}
+	public void setlogged(boolean logged) {
+		this.logged = logged;
 	}
 
 }
