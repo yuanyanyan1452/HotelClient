@@ -200,6 +200,9 @@ public class HotelCheckInChoiceController implements Initializable {
 		this.checkInController = checkInController;
 		currentOrder = checkInController.currentOrder;
 
+		orderIdLabel.setText(currentOrder.getOrderid());
+		orderExecuteLabel.setText(currentOrder.getIsExecute());
+		orderStateLabel.setText(currentOrder.getState());
 		// 已执行订单显示退房
 		if (currentOrder.getIsExecute().equals(OrderUtil.getIsexecute())) {
 			predictLabel.setVisible(false);
