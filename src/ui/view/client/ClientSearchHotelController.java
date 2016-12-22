@@ -291,7 +291,7 @@ public class ClientSearchHotelController implements Initializable {
 				cell.setOnMouseClicked((MouseEvent t) -> {
 					if (t.getClickCount() == 2) {
 						try {
-							main.gotoHotelDetailInfo(helper.getHotelBLService().hotel_getInfo(Integer.parseInt(hotelTable.getItems().get(cell.getIndex()).getID())));
+							main.gotoHotelDetailInfo(helper.getHotelBLService().hotel_getInfo(Integer.parseInt(hotelTable.getItems().get(cell.getIndex()).getID())),currentClient.getclientid());
 						} catch (Exception e) {
 							e.printStackTrace();
 						}
@@ -310,7 +310,7 @@ public class ClientSearchHotelController implements Initializable {
 						cell.setOnMouseClicked((MouseEvent t) -> {
 							if (t.getClickCount() == 2) {
 								try {
-									main.gotoHotelDetailInfo(helper.getHotelBLService().hotel_getInfo(Integer.parseInt(hotelTable.getItems().get(cell.getIndex()).getID())));
+									main.gotoHotelDetailInfo(helper.getHotelBLService().hotel_getInfo(Integer.parseInt(hotelTable.getItems().get(cell.getIndex()).getID())),currentClient.getclientid());
 								} catch (Exception e) {
 									e.printStackTrace();
 								}
@@ -328,7 +328,7 @@ public class ClientSearchHotelController implements Initializable {
 				cell.setOnMouseClicked((MouseEvent t) -> {
 					if (t.getClickCount() == 2) {
 						try {
-							main.gotoHotelDetailInfo(helper.getHotelBLService().hotel_getInfo(Integer.parseInt(hotelTable.getItems().get(cell.getIndex()).getID())));
+							main.gotoHotelDetailInfo(helper.getHotelBLService().hotel_getInfo(Integer.parseInt(hotelTable.getItems().get(cell.getIndex()).getID())),currentClient.getclientid());
 						} catch (Exception e) {
 							e.printStackTrace();
 						}
@@ -346,7 +346,7 @@ public class ClientSearchHotelController implements Initializable {
 				cell.setOnMouseClicked((MouseEvent t) -> {
 					if (t.getClickCount() == 2) {
 						try {
-							main.gotoHotelDetailInfo(helper.getHotelBLService().hotel_getInfo(Integer.parseInt(hotelTable.getItems().get(cell.getIndex()).getID())));
+							main.gotoHotelDetailInfo(helper.getHotelBLService().hotel_getInfo(Integer.parseInt(hotelTable.getItems().get(cell.getIndex()).getID())),currentClient.getclientid());
 						} catch (Exception e) {
 							e.printStackTrace();
 						}
@@ -364,7 +364,7 @@ public class ClientSearchHotelController implements Initializable {
 				cell.setOnMouseClicked((MouseEvent t) -> {
 					if (t.getClickCount() == 2) {
 						try {
-							main.gotoHotelDetailInfo(helper.getHotelBLService().hotel_getInfo(Integer.parseInt(hotelTable.getItems().get(cell.getIndex()).getID())));
+							main.gotoHotelDetailInfo(helper.getHotelBLService().hotel_getInfo(Integer.parseInt(hotelTable.getItems().get(cell.getIndex()).getID())),currentClient.getclientid());
 						} catch (Exception e) {
 							e.printStackTrace();
 						}
@@ -382,7 +382,7 @@ public class ClientSearchHotelController implements Initializable {
 				cell.setOnMouseClicked((MouseEvent t) -> {
 					if (t.getClickCount() == 2) {
 						try {
-							main.gotoHotelDetailInfo(helper.getHotelBLService().hotel_getInfo(Integer.parseInt(hotelTable.getItems().get(cell.getIndex()).getID())));
+							main.gotoHotelDetailInfo(helper.getHotelBLService().hotel_getInfo(Integer.parseInt(hotelTable.getItems().get(cell.getIndex()).getID())),currentClient.getclientid());
 						} catch (Exception e) {
 							e.printStackTrace();
 						}

@@ -3,13 +3,13 @@ package ui.view.order;
 import java.net.URL;
 import java.rmi.RemoteException;
 import java.time.LocalDate;
-import java.time.chrono.ChronoLocalDate;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.ResourceBundle;
 
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
+import javafx.scene.control.CheckBox;
 import javafx.scene.control.ComboBox;
 import javafx.scene.control.DateCell;
 import javafx.scene.control.DatePicker;
@@ -58,6 +58,44 @@ public class ClientGenerateOrderController implements Initializable {
 	
 	@FXML
 	private Label strategyLabel;
+	
+	@FXML 
+	private CheckBox shangwufang;
+	
+	@FXML
+	private ComboBox<Integer> shangwufangnumber;
+	
+	@FXML
+	private CheckBox dachuangfang;
+	
+	@FXML
+	private ComboBox<Integer> dachuangfangnumber;
+	
+	@FXML
+	private CheckBox shuangrenfang;
+	
+	@FXML
+	private ComboBox<Integer> shuangrenfangnumber;
+	
+	@FXML
+	private CheckBox biaozhunjian;
+	
+	@FXML
+	private ComboBox<Integer> biaozhunjiannumber;
+	
+	@FXML
+	private CheckBox haohuafang;
+	
+	@FXML
+	private ComboBox<Integer> haohuafangnumber;
+	
+	@FXML
+	private CheckBox haijingfang;
+	
+	@FXML
+	private ComboBox<Integer> haijingfangnumber;
+	
+	
 	
 	@FXML
 	private void close(){
@@ -120,6 +158,8 @@ public class ClientGenerateOrderController implements Initializable {
 		hasChildButton.setToggleGroup(toggleGroup);
 		hasNoChildButton.setToggleGroup(toggleGroup);
 		//TODO datepicker无法点选之前的日期；enddatepicker无法点选startdatepicker之前的日期
+		
+		LocalDate today=LocalDate.now();
 		final Callback<DatePicker, DateCell> dayCellFactory = 
 	            new Callback<DatePicker, DateCell>() {
 	                @Override
@@ -130,8 +170,8 @@ public class ClientGenerateOrderController implements Initializable {
 	                            super.updateItem(item, empty);
 
 	                            if (item.isBefore(
-	                                    startDatePicker.getValue().plusDays(1))
-	                                ) {
+	                                    today
+	                                )) {
 	                                    setDisable(true);
 	                                    setStyle("-fx-background-color: #ffc0cb;");
 	                            }   
@@ -139,11 +179,9 @@ public class ClientGenerateOrderController implements Initializable {
 	                };
 	            }
 	        };
-	        endDatePicker.setDayCellFactory(dayCellFactory);
-	        
-	        final Callback<DatePicker, DateCell> dayCellFactory2 = 
+	        startDatePicker.setDayCellFactory(dayCellFactory);
+	        final Callback<DatePicker, DateCell> dayCellFactory1 = 
 	                new Callback<DatePicker, DateCell>() {
-	        	LocalDate today=LocalDate.now();
 	                    @Override
 	                    public DateCell call(final DatePicker datePicker) {
 	                        return new DateCell() {
@@ -152,8 +190,8 @@ public class ClientGenerateOrderController implements Initializable {
 	                                super.updateItem(item, empty);
 
 	                                if (item.isBefore(
-	                                        today
-	                                    )) {
+	                                        startDatePicker.getValue().plusDays(1))
+	                                    ) {
 	                                        setDisable(true);
 	                                        setStyle("-fx-background-color: #ffc0cb;");
 	                                }   
@@ -161,10 +199,12 @@ public class ClientGenerateOrderController implements Initializable {
 	                    };
 	                }
 	            };
-	            startDatePicker.setDayCellFactory(dayCellFactory2);
+	            endDatePicker.setDayCellFactory(dayCellFactory);
 
 		
 		//TODO 房间类型及其对应数量的选择
+	          
+	    
 	}
 
 }

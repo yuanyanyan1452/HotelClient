@@ -75,12 +75,12 @@
                   <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
               </rowConstraints>
                <children>
-                  <CheckBox mnemonicParsing="false" text="商务房" GridPane.rowIndex="1" />
-                  <CheckBox mnemonicParsing="false" text="大床房" GridPane.columnIndex="1" />
-                  <CheckBox mnemonicParsing="false" text="双人房" GridPane.columnIndex="2" />
-                  <CheckBox mnemonicParsing="false" text="标准间" />
-                  <CheckBox mnemonicParsing="false" text="豪华房" GridPane.columnIndex="1" GridPane.rowIndex="1" />
-                  <CheckBox mnemonicParsing="false" text="海景房" GridPane.columnIndex="2" GridPane.rowIndex="1" />
+                  <CheckBox fx:id="shangwufang" mnemonicParsing="false" text="商务房" GridPane.rowIndex="1" />
+                  <CheckBox fx:id="dachuangfang" mnemonicParsing="false" text="大床房" GridPane.columnIndex="1" />
+                  <CheckBox fx:id="shuangrenfang" mnemonicParsing="false" text="双人房" GridPane.columnIndex="2" />
+                  <CheckBox fx:id="biaozhunjian" mnemonicParsing="false" text="标准间" />
+                  <CheckBox fx:id="haohuafang" mnemonicParsing="false" text="豪华房" GridPane.columnIndex="1" GridPane.rowIndex="1" />
+                  <CheckBox fx:id="haijingfang" mnemonicParsing="false" text="海景房" GridPane.columnIndex="2" GridPane.rowIndex="1" />
                </children>
             </GridPane>
             <GridPane hgap="30.0" GridPane.columnIndex="1" GridPane.halignment="CENTER" GridPane.rowIndex="5" GridPane.valignment="CENTER">
@@ -94,12 +94,12 @@
                   <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
                </rowConstraints>
                <children>
-                  <ComboBox prefWidth="150.0" />
-                  <ComboBox prefWidth="150.0" GridPane.columnIndex="1" />
-                  <ComboBox prefWidth="150.0" GridPane.columnIndex="2" />
-                  <ComboBox prefWidth="150.0" GridPane.rowIndex="1" />
-                  <ComboBox prefWidth="150.0" GridPane.columnIndex="1" GridPane.rowIndex="1" />
-                  <ComboBox prefWidth="150.0" GridPane.columnIndex="2" GridPane.rowIndex="1" />
+                  <ComboBox fx:id="biaozhunjiannumber" prefWidth="150.0" />
+                  <ComboBox fx:id="dachuangfangnumber" prefWidth="150.0" GridPane.columnIndex="1" />
+                  <ComboBox fx:id="shuangrenfangnumber" prefWidth="150.0" GridPane.columnIndex="2" />
+                  <ComboBox fx:id="shangwufangnumber" prefWidth="150.0" GridPane.rowIndex="1" />
+                  <ComboBox fx:id="haohuafangnumber" prefWidth="150.0" GridPane.columnIndex="1" GridPane.rowIndex="1" />
+                  <ComboBox fx:id="haijingfangnumber" prefWidth="150.0" GridPane.columnIndex="2" GridPane.rowIndex="1" />
                </children>
                <GridPane.margin>
                   <Insets left="20.0" right="20.0" />
