@@ -52,13 +52,13 @@ public class ManagerOverviewController implements Initializable {
 			timeLabel.setText(format.format(Calendar.getInstance().getTime()));
 
 			// 实时更新统计数据
-//			clientNumLabel.setText(String.valueOf(clientList.size()));
-//			hotelNumLabel.setText(String.valueOf(hotelList.size()));
-//			 try {
-//				orderNumLabel.setText(String.valueOf(remoteHelper.getManageBLService().getordernumber()));
-//			} catch (RemoteException e) {
-//				e.printStackTrace();
-//			}
+			clientNumLabel.setText(String.valueOf(clientList.size()));
+			hotelNumLabel.setText(String.valueOf(hotelList.size()));
+			 try {
+				orderNumLabel.setText(String.valueOf(remoteHelper.getManageBLService().getordernumber()));
+			} catch (RemoteException e) {
+				e.printStackTrace();
+			}
 		}
 
 	}
@@ -289,6 +289,7 @@ public class ManagerOverviewController implements Initializable {
 
 	@FXML
 	private void exit(){
+		misfire();
 		main.exitSystem();
 	}
 	
@@ -683,14 +684,6 @@ public class ManagerOverviewController implements Initializable {
 		Updatable renderer = new Updatable();
 		advance(renderer);
 
-		// 退出时结束进程
-		stage.setOnCloseRequest(new EventHandler<WindowEvent>() {
-
-			@Override
-			public void handle(WindowEvent event) {
-				misfire();
-			}
-		});
 	}
 
 	public void updateClientTable() {

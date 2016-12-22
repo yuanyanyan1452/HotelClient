@@ -39,6 +39,7 @@ public class ClientSearchHotelController implements Initializable {
 
 	@FXML
 	private TableView<HotelModel> hotelTable;
+	
 	@FXML
 	private TableColumn<HotelModel, String> hotelnamecolumn;
 
@@ -403,8 +404,14 @@ public class ClientSearchHotelController implements Initializable {
 			model.setAddress(vo.getaddress());
 			model.setStar(vo.getstar());
 			model.setScore(vo.getscore().split(",")[0]);
+			model.setOrderState("未曾入住");
 			ArrayList<OrderVO> orders = helper.getOrderBLService().findorderByHotelid(vo.getid());
-			model.setOrderState(orders.get(orders.size() - 1).getstate());
+			for(int i=orders.size()-1;i>=0;i--){
+				if (orders.get(i).getclientid()==currentClient.getclientid()) {
+					model.setOrderState(orders.get(i).getstate());
+				}
+			}
+			
 		} catch (Exception e) {
 			e.printStackTrace();
 		}

@@ -70,6 +70,9 @@ public class HotelDetailInfoController implements Initializable {
 	private TableColumn<RoomModel, String> priceColumn;
 
 	@FXML
+	private TableColumn<RoomModel, String> avaliableColumn;
+	
+	@FXML
 	private TableView<OrderModel> orderTable;
 
 	@FXML
@@ -87,17 +90,6 @@ public class HotelDetailInfoController implements Initializable {
 	@FXML
 	private TableColumn<OrderModel, String> orderStateColumn;
 
-	@FXML
-	private ComboBox<String> startMonthBox;
-
-	@FXML
-	private ComboBox<String> startDayBox;
-
-	@FXML
-	private ComboBox<String> endMonthBox;
-
-	@FXML
-	private ComboBox<String> endDayBox;
 
 	@FXML
 	private Label totalLabel;
@@ -129,7 +121,6 @@ public class HotelDetailInfoController implements Initializable {
 		try {
 			currentClient=helper.getClientBLService().client_checkInfo(clientid);
 		} catch (RemoteException e1) {
-			// TODO Auto-generated catch block
 			e1.printStackTrace();
 		}
 		//酒店基本信息初始化
@@ -137,80 +128,16 @@ public class HotelDetailInfoController implements Initializable {
 		businessaddressLabel.setText(hotel.getbussiness_address());
 		addressLabel.setText(hotel.getaddress());
 		starLabel.setText(hotel.getstar());
-		scoreLabel.setText(hotel.getscore());
+		
+		if (hotel.getscore().contains(",")) {//屏蔽酒店评分人数
+			scoreLabel.setText(hotel.getscore().split(",")[0]);
+		}
+		else{
+			scoreLabel.setText(hotel.getscore());
+		}
 		introductionLabel.setText(hotel.getintroduction());
 		serviceLabel.setText(hotel.getservice());
 
-		// 入住日期选择初始化
-		String[] months = { "1", "2", "3", "4", "5", "6", "7", "8", "9", "10", "11", "12" };
-		String[] days = { "1", "2", "3", "4", "5", "6", "7", "8", "9", "10", "11", "12", "13", "14", "15", "16", "17",
-				"18", "19", "20", "21", "22", "23", "24", "25", "26", "27", "28", "29", "30", "31" };
-		startMonthBox.getItems().addAll(months);
-		endMonthBox.getItems().addAll(months);
-		startMonthBox.setVisibleRowCount(5);
-		endMonthBox.setVisibleRowCount(5);
-		startDayBox.setVisibleRowCount(5);
-		endDayBox.setVisibleRowCount(5);
-		startMonthBox.setOnAction(new EventHandler<ActionEvent>() {
-
-			@Override
-			public void handle(ActionEvent event) {
-				ObservableList<String> daylist = FXCollections.observableArrayList(days);
-				if (startMonthBox.getValue().equals("2")) {
-					Calendar calendar = Calendar.getInstance();
-					if (calendar.get(Calendar.DAY_OF_YEAR) == 366) {
-						daylist.removeAll("30", "31");
-					} else
-						daylist.removeAll("29", "30", "31");
-				}
-				if (startMonthBox.getValue().equals("4") && startMonthBox.getValue().equals("6")
-						&& startMonthBox.getValue().equals("9") && startMonthBox.getValue().equals("11")) {
-					daylist.remove("31");
-				}
-
-				startDayBox.setItems(daylist);
-			}
-		});
-		endMonthBox.setOnAction(new EventHandler<ActionEvent>() {
-
-			@Override
-			public void handle(ActionEvent event) {
-				ObservableList<String> daylist = FXCollections.observableArrayList(days);
-				if (endMonthBox.getValue().equals("2")) {
-					Calendar calendar = Calendar.getInstance();
-					if (calendar.get(Calendar.DAY_OF_YEAR) == 366) {
-						daylist.removeAll("30", "31");
-					} else
-						daylist.removeAll("29", "30", "31");
-				}
-				if (endMonthBox.getValue().equals("4") && endMonthBox.getValue().equals("6")
-						&& endMonthBox.getValue().equals("9") && endMonthBox.getValue().equals("11")) {
-					daylist.remove("31");
-				}
-				endDayBox.setItems(daylist);
-			}
-		});
-		endDayBox.setOnAction(new EventHandler<ActionEvent>() {
-
-			@Override
-			public void handle(ActionEvent event) {
-					if (startMonthBox.getValue() != null && startDayBox.getValue() != null
-							&& endMonthBox.getValue() != null && endDayBox.getValue() != null) {
-						int startmonth = Integer.parseInt(startMonthBox.getValue()) * 100;
-						int endmonth = Integer.parseInt(endMonthBox.getValue()) * 100;
-						int startday = Integer.parseInt(startDayBox.getValue());
-						int endday = Integer.parseInt(endDayBox.getValue());
-						if ((startmonth + startday) >= (endmonth + endday)) {
-							AlertUtil.showWarningAlert("离开时间应晚于入住时间！");
-						} else {
-							totalLabel.setText(
-									"共" + String.valueOf((endmonth - startmonth) * 30 / 100 + endday - startday) + "晚");
-							//TODO 更新右侧表格
-						}
-					}
-			}
-
-		});
 		
 		// 将当前酒店的所有可用房间录入到表格内
 		ObservableList<RoomModel> rooms = roomTable.getItems();
@@ -228,6 +155,7 @@ public class HotelDetailInfoController implements Initializable {
 		}
 		roomtypeColumn.setCellValueFactory(celldata -> celldata.getValue().roomTypeProperty());
 		priceColumn.setCellValueFactory(celldata -> celldata.getValue().roomPriceProperty());
+		avaliableColumn.setCellValueFactory(celldata -> celldata.getValue().roomNumProperty());
 		
 		roomTable.setItems(rooms);
 		
