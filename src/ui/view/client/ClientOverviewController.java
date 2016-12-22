@@ -1,13 +1,18 @@
 package ui.view.client;
 
+import java.net.MalformedURLException;
 import java.net.URL;
 import java.rmi.RemoteException;
 import java.util.ResourceBundle;
 
+import javafx.event.EventHandler;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
+import javafx.scene.image.Image;
+import javafx.scene.image.ImageView;
+import javafx.scene.input.MouseEvent;
 import objects.VIPInfo.VIPType;
 import rmi.RemoteHelper;
 import ui.view.Main;
@@ -17,23 +22,31 @@ public class ClientOverviewController implements Initializable {
 	private Main main;
 	private ClientVO currentclientvo;
 
+	//用于头像切换
+	private static int count = 1;
+	
 	public void updateVO(ClientVO vo) {
 		currentclientvo = vo;
 		nameLabel.setText(vo.getclient_name());
 		contactLabel.setText(vo.getcontact());
 		if (vo.getvipinfo() == null) {
 			vipLabel.setText("非会员");
+			enrollvipButton.setDisable(false);
 		} else {
 			vipLabel.setText(vo.getvipinfo().getType() == VIPType.NORMAL ? "普通会员" : "企业会员");
+			enrollvipButton.setDisable(true);
 		}
 		//客户完善基本信息后，恢复正常功能
 		tipLabel.setText("您可以。。。");
 		searchhotelButton.setDisable(false);
 		browsehotelButton.setDisable(false);
 		browseorderButton.setDisable(false);
-		enrollvipButton.setDisable(false);
+		
 	}
 
+	@FXML
+	private ImageView head;
+	
 	@FXML
 	private Button basicinfoButton;
 
@@ -127,7 +140,23 @@ public class ClientOverviewController implements Initializable {
 				enrollvipButton.setDisable(true);
 			}
 		}
+		
+		//点击切换头像
+		Image[] heads = new Image[5];
+		heads[0] = new Image("ui/view/client/heads/client_boy.png");
+		heads[1] = new Image("ui/view/client/heads/client_girl.png");
+		heads[2] = new Image("ui/view/client/heads/client_father.png");
+		heads[3] = new Image("ui/view/client/heads/client_mother.png");
+		heads[4] = new Image("ui/view/client/heads/client_baby.png");
+		head.setOnMouseClicked(new EventHandler<MouseEvent>() {
 
+			@Override
+			public void handle(MouseEvent event) {
+				head.setImage(heads[count%5]);
+				count++;
+			}
+		
+		});
 	}
 
 }

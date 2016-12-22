@@ -1,5 +1,5 @@
 .root{
-	-fx-background-color:radial-gradient( focus-angle 0.0deg, focus-distance 0.0%, center 50.0% 30.0%, radius 40.0%, rgb(255,255,255) 0.0, rgb(93,93,93) 100.0 )
+	-fx-background-color:radial-gradient( focus-angle 0.0deg, focus-distance 0.0%, center 50.0% 30.0%, radius 40.0%, rgb(242,242,242) 0.0, rgb(93,93,93) 100.0 )
 }
 
 .label{
