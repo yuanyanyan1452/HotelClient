@@ -40,6 +40,7 @@ import ui.view.order.ClientGenerateOrderController;
 import ui.view.order.FilledOrderDetailInfoByClientController;
 import ui.view.order.HotelBrowseOrderController;
 import ui.view.order.MarketBrowseAbnormalOrderController;
+import ui.view.order.OrderDetailInfoByHotelController;
 import ui.view.order.UnfilledOrderDetailInfoByClientController;
 import ui.view.user.LoginController;
 import ui.view.user.LoginOverviewController;
@@ -518,20 +519,28 @@ public class Main extends Application {
 		}
 	}
 
-	// 酒店订单执行
-//	public void gotoHotelExecuteOrder() {
-//		try {
-//			FXMLLoader fxmlLoader = new FXMLLoader();
-//			fxmlLoader.setLocation(Main.class.getResource("order/HotelExecuteOrder.fxml"));
-//			AnchorPane insidePane = (AnchorPane) fxmlLoader.load();
-//			insidePane.setPrefSize(700, 600);
-//			rootLayout.getItems().set(1, insidePane);
-//			HotelExecuteOrderController controller = (HotelExecuteOrderController) fxmlLoader.getController();
-//			controller.setMain(this);
-//		} catch (Exception e) {
-//			Logger.getLogger(Main.class.getName()).log(Level.SEVERE, null, e);
-//		}
-//	}
+	/**
+	 * 酒店查看订单详细信息
+	 * @param orderVO
+	 */
+	public void gotoHotelDetailOrder(OrderModel order){
+		try {
+			FXMLLoader fxmlLoader = new FXMLLoader();
+			fxmlLoader.setLocation(Main.class.getResource("order/OrderDetailInfoByHotel.fxml"));
+			AnchorPane insidePane = (AnchorPane) fxmlLoader.load();
+
+			OrderDetailInfoByHotelController controller = (OrderDetailInfoByHotelController) fxmlLoader.getController();
+			OrderVO orderVO=helper.getOrderBLService().order_findbyid(Integer.parseInt(order.getOrderid()));
+			controller.setMain(this,orderVO);
+
+			extraStage = new Stage(StageStyle.UNDECORATED);
+			extraStage.setScene(new Scene(insidePane));
+			extraStage.centerOnScreen();
+			extraStage.show();
+		} catch (Exception e) {
+			Logger.getLogger(Main.class.getName()).log(Level.SEVERE, null, e);
+		}
+	}
 
 	/**
 	 *  酒店房间信息更新

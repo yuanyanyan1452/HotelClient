@@ -28,12 +28,6 @@ public class OrderDetailInfoByHotelController implements Initializable{
 	private Button closebutton;
 	
 	@FXML
-	private Button delaybutton;
-	
-	@FXML
-	private Button executebutton;
-	
-	@FXML
 	private Label clientnamelabel;
 	
 	@FXML
@@ -71,49 +65,49 @@ public class OrderDetailInfoByHotelController implements Initializable{
 		main.closeExtraStage();
 	}
 	
-	@FXML
-	public void dealy() throws RemoteException{
-		Date date=new Date();
-		ResultMessage result1=helper.getOrderBLService().order_hotel_execute(currentordervo.getid());
-		ResultMessage result2=helper.getClientBLService().updateClientCredit(currentordervo.getclientid(),currentordervo.getprice(),1);
-		int credit=helper.getClientBLService().client_checkCredit(currentordervo.getclientid());
-		String CreditInfo=format.format(date)+","+String.valueOf(currentordervo.getid())+","+"订单延迟入住信用值返还,"+String.valueOf(currentordervo.getprice())+","+String.valueOf(credit);
-		ResultMessage result3=helper.getClientBLService().client_updateClientCreditList(currentordervo.getclientid(), CreditInfo);
-		if(result1==ResultMessage.Success&&result2==ResultMessage.Success&&result3==ResultMessage.Success){
-			AlertUtil.showInformationAlert("延迟入住成功");
-		}
-		else if(result1==ResultMessage.Fail){
-			AlertUtil.showErrorAlert("对不起，订单状态改变失败");
-		}
-		else if(result2==ResultMessage.Fail){
-			AlertUtil.showErrorAlert("对不起，，客户信用值返还失败");
-		}
-		else if(result3==ResultMessage.Fail){
-			AlertUtil.showErrorAlert("对不起，用户信用记录添加失败");
-		}
-	}
-	
-	@FXML 
-	public void execute() throws RemoteException{
-		Date date=new Date();
-		ResultMessage result1=helper.getOrderBLService().order_hotel_execute(currentordervo.getid());
-		ResultMessage result2=helper.getClientBLService().updateClientCredit(currentordervo.getclientid(),currentordervo.getprice(),1);
-		int credit=helper.getClientBLService().client_checkCredit(currentordervo.getclientid());
-		String CreditInfo=format.format(date)+","+String.valueOf(currentordervo.getid())+","+"订单执行,"+String.valueOf(currentordervo.getprice())+","+String.valueOf(credit);
-		ResultMessage result3=helper.getClientBLService().client_updateClientCreditList(currentordervo.getclientid(), CreditInfo);
-		if(result1==ResultMessage.Success&&result2==ResultMessage.Success&&result3==ResultMessage.Success){
-			AlertUtil.showInformationAlert("延迟入住成功");
-		}
-		else if(result1==ResultMessage.Fail){
-			AlertUtil.showErrorAlert("对不起，订单状态改变失败");
-		}
-		else if(result2==ResultMessage.Fail){
-			AlertUtil.showErrorAlert("对不起，，客户信用值增加失败");
-		}
-		else if(result3==ResultMessage.Fail){
-			AlertUtil.showErrorAlert("对不起，用户信用记录添加失败");
-		}
-	}
+//	@FXML
+//	public void dealy() throws RemoteException{
+//		Date date=new Date();
+//		ResultMessage result1=helper.getOrderBLService().order_hotel_execute(currentordervo.getid());
+//		ResultMessage result2=helper.getClientBLService().updateClientCredit(currentordervo.getclientid(),currentordervo.getprice(),1);
+//		int credit=helper.getClientBLService().client_checkCredit(currentordervo.getclientid());
+//		String CreditInfo=format.format(date)+","+String.valueOf(currentordervo.getid())+","+"订单延迟入住信用值返还,"+String.valueOf(currentordervo.getprice())+","+String.valueOf(credit);
+//		ResultMessage result3=helper.getClientBLService().client_updateClientCreditList(currentordervo.getclientid(), CreditInfo);
+//		if(result1==ResultMessage.Success&&result2==ResultMessage.Success&&result3==ResultMessage.Success){
+//			AlertUtil.showInformationAlert("延迟入住成功");
+//		}
+//		else if(result1==ResultMessage.Fail){
+//			AlertUtil.showErrorAlert("对不起，订单状态改变失败");
+//		}
+//		else if(result2==ResultMessage.Fail){
+//			AlertUtil.showErrorAlert("对不起，，客户信用值返还失败");
+//		}
+//		else if(result3==ResultMessage.Fail){
+//			AlertUtil.showErrorAlert("对不起，用户信用记录添加失败");
+//		}
+//	}
+//	
+//	@FXML 
+//	public void execute() throws RemoteException{
+//		Date date=new Date();
+//		ResultMessage result1=helper.getOrderBLService().order_hotel_execute(currentordervo.getid());
+//		ResultMessage result2=helper.getClientBLService().updateClientCredit(currentordervo.getclientid(),currentordervo.getprice(),1);
+//		int credit=helper.getClientBLService().client_checkCredit(currentordervo.getclientid());
+//		String CreditInfo=format.format(date)+","+String.valueOf(currentordervo.getid())+","+"订单执行,"+String.valueOf(currentordervo.getprice())+","+String.valueOf(credit);
+//		ResultMessage result3=helper.getClientBLService().client_updateClientCreditList(currentordervo.getclientid(), CreditInfo);
+//		if(result1==ResultMessage.Success&&result2==ResultMessage.Success&&result3==ResultMessage.Success){
+//			AlertUtil.showInformationAlert("延迟入住成功");
+//		}
+//		else if(result1==ResultMessage.Fail){
+//			AlertUtil.showErrorAlert("对不起，订单状态改变失败");
+//		}
+//		else if(result2==ResultMessage.Fail){
+//			AlertUtil.showErrorAlert("对不起，，客户信用值增加失败");
+//		}
+//		else if(result3==ResultMessage.Fail){
+//			AlertUtil.showErrorAlert("对不起，用户信用记录添加失败");
+//		}
+//	}
 	
 	public OrderDetailInfoByHotelController() {
 	}
@@ -138,7 +132,7 @@ public class OrderDetailInfoByHotelController implements Initializable{
 		starttimelabel.setText(format.format(currentordervo.getstart_time()));
 		endtimelabel.setText(format.format(currentordervo.getend_time()));
 		ArrayList<RoomOrderVO> roomorderlist=currentordervo.getroom_order();
-		String roomtype=null;
+		String roomtype="";
 		int roomnumber=0;
 		for(int i=0;i<roomorderlist.size();i++){
 			roomtype+=(roomorderlist.get(i).getroom_type()+" ");

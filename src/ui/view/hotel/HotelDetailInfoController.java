@@ -101,7 +101,12 @@ public class HotelDetailInfoController implements Initializable {
 
 	@FXML
 	private void generateOrder() {
+		if(currentClient.getcredit()>=0){
 		main.gotoGenerateOrder(currentHotel,currentClient);
+		}
+		else{
+			AlertUtil.showWarningAlert("对不起，您的信用值不足");
+		}
 	}
 
 	public HotelDetailInfoController() {

@@ -5,6 +5,8 @@ import java.rmi.RemoteException;
 import java.util.ArrayList;
 import java.util.ResourceBundle;
 
+import org.omg.CORBA.PUBLIC_MEMBER;
+
 import javafx.beans.Observable;
 import javafx.beans.value.ObservableValue;
 import javafx.collections.FXCollections;
@@ -35,7 +37,9 @@ import vo.OrderVO;
 public class ClientSearchHotelController implements Initializable {
 	private Main main;
 	private ClientVO currentClient;
+	private HotelVO currentHotel;
 	private ArrayList<HotelVO> currentHotelList;
+	RemoteHelper helper = RemoteHelper.getInstance();
 
 	@FXML
 	private TableView<HotelModel> hotelTable;
@@ -157,7 +161,12 @@ public class ClientSearchHotelController implements Initializable {
 	// 直接跳转到生成订单界面
 	@FXML
 	private void gotoGenerateOrder() {
-		main.gotoGenerateOrder(new HotelVO(),currentClient);
+		if(currentClient.getcredit()>=0){
+		main.gotoGenerateOrder(currentHotel,currentClient);
+		}
+		else{
+			AlertUtil.showWarningAlert("对不起，您的信用值不足");
+		}
 	}
 
 	public ClientSearchHotelController() {
@@ -169,6 +178,13 @@ public class ClientSearchHotelController implements Initializable {
 
 	}
 
+	public void gotodetailinfo(int  hotelid){
+		try {
+			main.gotoHotelDetailInfo(helper.getHotelBLService().hotel_getInfo(hotelid),currentClient.getclientid());
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+	}
 	public void setMain(Main main, ClientVO clientVO) {
 		this.main = main;
 		currentClient = clientVO;
@@ -257,7 +273,7 @@ public class ClientSearchHotelController implements Initializable {
 		});
 
 		// 设置城市,商圈完毕后得到一个list
-		RemoteHelper helper = RemoteHelper.getInstance();
+		
 		businessAddressButton.setOnAction(new EventHandler<ActionEvent>() {
 
 			@Override
@@ -283,6 +299,7 @@ public class ClientSearchHotelController implements Initializable {
 		// 初始化hotelTable
 		ObservableList<HotelModel> models = FXCollections.observableArrayList();
 		hotelTable.setItems(models);
+		//监听
 		hotelnamecolumn.setCellValueFactory(celldata -> celldata.getValue().hotelNameProperty());
 		hotelnamecolumn.setCellFactory(new Callback<TableColumn<HotelModel, String>, TableCell<HotelModel, String>>() {
 
@@ -291,9 +308,14 @@ public class ClientSearchHotelController implements Initializable {
 				TextFieldTableCell<HotelModel, String> cell = new TextFieldTableCell<>();
 				cell.setOnMouseClicked((MouseEvent t) -> {
 					if (t.getClickCount() == 2) {
+						int hotelid=(Integer.parseInt(hotelTable.getItems().get(cell.getIndex()).getID()));
+						gotodetailinfo(hotelid);
+					}
+					else if(t.getClickCount() == 1){
 						try {
-							main.gotoHotelDetailInfo(helper.getHotelBLService().hotel_getInfo(Integer.parseInt(hotelTable.getItems().get(cell.getIndex()).getID())),currentClient.getclientid());
-						} catch (Exception e) {
+							currentHotel=helper.getHotelBLService().hotel_getInfo(Integer.parseInt(models.get(cell.getIndex()).getID()));
+						} catch (NumberFormatException | RemoteException e) {
+							// TODO Auto-generated catch block
 							e.printStackTrace();
 						}
 					}
@@ -310,9 +332,14 @@ public class ClientSearchHotelController implements Initializable {
 						TextFieldTableCell<HotelModel, String> cell = new TextFieldTableCell<>();
 						cell.setOnMouseClicked((MouseEvent t) -> {
 							if (t.getClickCount() == 2) {
+								int hotelid=(Integer.parseInt(hotelTable.getItems().get(cell.getIndex()).getID()));
+								gotodetailinfo(hotelid);
+							}
+							else if(t.getClickCount() == 1){
 								try {
-									main.gotoHotelDetailInfo(helper.getHotelBLService().hotel_getInfo(Integer.parseInt(hotelTable.getItems().get(cell.getIndex()).getID())),currentClient.getclientid());
-								} catch (Exception e) {
+									currentHotel=helper.getHotelBLService().hotel_getInfo(Integer.parseInt(hotelTable.getItems().get(cell.getIndex()).getID()));
+								} catch (NumberFormatException | RemoteException e) {
+									// TODO Auto-generated catch block
 									e.printStackTrace();
 								}
 							}
@@ -328,9 +355,14 @@ public class ClientSearchHotelController implements Initializable {
 				TextFieldTableCell<HotelModel, String> cell = new TextFieldTableCell<>();
 				cell.setOnMouseClicked((MouseEvent t) -> {
 					if (t.getClickCount() == 2) {
+						int hotelid=(Integer.parseInt(hotelTable.getItems().get(cell.getIndex()).getID()));
+						gotodetailinfo(hotelid);
+					}
+					else if(t.getClickCount() == 1){
 						try {
-							main.gotoHotelDetailInfo(helper.getHotelBLService().hotel_getInfo(Integer.parseInt(hotelTable.getItems().get(cell.getIndex()).getID())),currentClient.getclientid());
-						} catch (Exception e) {
+							currentHotel=helper.getHotelBLService().hotel_getInfo(Integer.parseInt(hotelTable.getItems().get(cell.getIndex()).getID()));
+						} catch (NumberFormatException | RemoteException e) {
+							// TODO Auto-generated catch block
 							e.printStackTrace();
 						}
 					}
@@ -346,9 +378,14 @@ public class ClientSearchHotelController implements Initializable {
 				TextFieldTableCell<HotelModel, String> cell = new TextFieldTableCell<>();
 				cell.setOnMouseClicked((MouseEvent t) -> {
 					if (t.getClickCount() == 2) {
+						int hotelid=(Integer.parseInt(hotelTable.getItems().get(cell.getIndex()).getID()));
+						gotodetailinfo(hotelid);
+					}
+					else if(t.getClickCount() == 1){
 						try {
-							main.gotoHotelDetailInfo(helper.getHotelBLService().hotel_getInfo(Integer.parseInt(hotelTable.getItems().get(cell.getIndex()).getID())),currentClient.getclientid());
-						} catch (Exception e) {
+							currentHotel=helper.getHotelBLService().hotel_getInfo(Integer.parseInt(hotelTable.getItems().get(cell.getIndex()).getID()));
+						} catch (NumberFormatException | RemoteException e) {
+							// TODO Auto-generated catch block
 							e.printStackTrace();
 						}
 					}
@@ -364,9 +401,14 @@ public class ClientSearchHotelController implements Initializable {
 				TextFieldTableCell<HotelModel, String> cell = new TextFieldTableCell<>();
 				cell.setOnMouseClicked((MouseEvent t) -> {
 					if (t.getClickCount() == 2) {
+						int hotelid=(Integer.parseInt(hotelTable.getItems().get(cell.getIndex()).getID()));
+						gotodetailinfo(hotelid);
+					}
+					else if(t.getClickCount() == 1){
 						try {
-							main.gotoHotelDetailInfo(helper.getHotelBLService().hotel_getInfo(Integer.parseInt(hotelTable.getItems().get(cell.getIndex()).getID())),currentClient.getclientid());
-						} catch (Exception e) {
+							currentHotel=helper.getHotelBLService().hotel_getInfo(Integer.parseInt(hotelTable.getItems().get(cell.getIndex()).getID()));
+						} catch (NumberFormatException | RemoteException e) {
+							// TODO Auto-generated catch block
 							e.printStackTrace();
 						}
 					}
@@ -382,9 +424,14 @@ public class ClientSearchHotelController implements Initializable {
 				TextFieldTableCell<HotelModel, String> cell = new TextFieldTableCell<>();
 				cell.setOnMouseClicked((MouseEvent t) -> {
 					if (t.getClickCount() == 2) {
+						int hotelid=(Integer.parseInt(hotelTable.getItems().get(cell.getIndex()).getID()));
+						gotodetailinfo(hotelid);
+					}
+					else if(t.getClickCount() == 1){
 						try {
-							main.gotoHotelDetailInfo(helper.getHotelBLService().hotel_getInfo(Integer.parseInt(hotelTable.getItems().get(cell.getIndex()).getID())),currentClient.getclientid());
-						} catch (Exception e) {
+							currentHotel=helper.getHotelBLService().hotel_getInfo(Integer.parseInt(hotelTable.getItems().get(cell.getIndex()).getID()));
+						} catch (NumberFormatException | RemoteException e) {
+							// TODO Auto-generated catch block
 							e.printStackTrace();
 						}
 					}
