@@ -26,10 +26,10 @@
             <Label text="订单状态：" GridPane.rowIndex="2" />
             <Label fx:id="orderIdLabel" alignment="CENTER" prefHeight="12.0" prefWidth="91.0" GridPane.columnIndex="1" />
             <Label fx:id="orderStateLabel" alignment="CENTER" prefHeight="14.0" prefWidth="95.0" GridPane.columnIndex="1" GridPane.rowIndex="2" />
-            <Label fx:id="predictLabel" text="请输入预计离开时间：（格式为2000-01-01 00:00)）" wrapText="true" GridPane.rowIndex="3" />
-            <TextField fx:id="predictTextField" GridPane.columnIndex="1" GridPane.rowIndex="3" />
+            <Label fx:id="predictLabel" text="请选择预计离开日期：" wrapText="true" GridPane.rowIndex="3" />
             <Label text="订单执行情况：" GridPane.rowIndex="1" />
             <Label fx:id="orderExecuteLabel" alignment="CENTER" prefHeight="10.0" prefWidth="132.0" GridPane.columnIndex="1" GridPane.rowIndex="1" />
+            <DatePicker fx:id="predictLeaveDatePicker" GridPane.columnIndex="1" GridPane.rowIndex="3" />
          </children>
       </GridPane>
    </children>
