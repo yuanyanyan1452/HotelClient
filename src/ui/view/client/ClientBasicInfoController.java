@@ -71,16 +71,25 @@ public class ClientBasicInfoController implements Initializable {
 
 	@FXML
 	private void update() throws RemoteException {
-		currentclientvo.setclient_name(nameTextField.getText());
-		currentclientvo.setcontact(contactTextField.getText());
-		ResultMessage result = helper.getClientBLService().client_updateInfo(currentclientvo);
-		if (result == ResultMessage.Success) {
-			AlertUtil.showInformationAlert("更新成功！");
-			//同步更新主界面的label
-			this.controller.updateVO(currentclientvo);
-		} else {
-			AlertUtil.showErrorAlert("对不起，更新失败。");
+		if (nameTextField.getText().isEmpty()) {
+			AlertUtil.showWarningAlert("姓名不能为空！");
 		}
+		else if (contactTextField.getText().isEmpty()) {
+			AlertUtil.showWarningAlert("联系方式不能为空！");
+		}
+		else{
+			currentclientvo.setclient_name(nameTextField.getText());
+			currentclientvo.setcontact(contactTextField.getText());
+			ResultMessage result = helper.getClientBLService().client_updateInfo(currentclientvo);
+			if (result == ResultMessage.Success) {
+				AlertUtil.showInformationAlert("更新成功！");
+				//同步更新主界面的label
+				this.controller.updateVO(currentclientvo);
+			} else {
+				AlertUtil.showErrorAlert("对不起，更新失败。");
+			}
+		}
+		
 		
 	}
 
@@ -140,8 +149,10 @@ public class ClientBasicInfoController implements Initializable {
 			ObservableList<CreditRecordModel> creditRecordList = FXCollections.observableArrayList();
 			ArrayList<String> records = helper.getClientBLService().client_checkCreditList(clientvo.getclientid());
 			for(int i=0;i<records.size();i++){
-				CreditRecordModel model = new CreditRecordModel(records.get(i));
-				creditRecordList.add(model);
+				if (!records.get(i).isEmpty()) {
+					CreditRecordModel model = new CreditRecordModel(records.get(i));
+					creditRecordList.add(model);
+				}
 			}
 			creditTable.setItems(creditRecordList);
 		} catch (RemoteException e) {

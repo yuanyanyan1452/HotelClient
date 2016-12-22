@@ -14,7 +14,7 @@
 	-fx-border-width: 2.0;
 }
 #exitButton.button:hover{
-	-fx-text-alignment: center;
+	-fx-alignment: center;
 	-fx-background-color:lightgray ;
 }
 

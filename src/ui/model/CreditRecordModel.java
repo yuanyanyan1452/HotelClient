@@ -11,13 +11,23 @@ public class CreditRecordModel {
 	private final SimpleStringProperty result;
 	
 	public CreditRecordModel(String record){
-		record = record.replace('，', ',');
-		String[] records = record.split(",");
-		time = new SimpleStringProperty(records[0].split("'")[1]);
-		orderid = new SimpleStringProperty(records[1]);
-		action = new SimpleStringProperty(records[2]);
-		change = new SimpleStringProperty(records[3]);
-		result = new SimpleStringProperty(records[4]);
+		if (record!=null&&!record.isEmpty()) {
+			record = record.replace('，', ',');
+			String[] records = record.split(",");
+			time = new SimpleStringProperty(records[0].split("'")[1]);
+			orderid = new SimpleStringProperty(records[1]);
+			action = new SimpleStringProperty(records[2]);
+			change = new SimpleStringProperty(records[3]);
+			result = new SimpleStringProperty(records[4]);
+		}
+		else{
+			time = new SimpleStringProperty();
+			orderid = new SimpleStringProperty();
+			action = new SimpleStringProperty();
+			change = new SimpleStringProperty();
+			result = new SimpleStringProperty();
+		}
+		
 	}
 	
 	public SimpleStringProperty timeProperty(){

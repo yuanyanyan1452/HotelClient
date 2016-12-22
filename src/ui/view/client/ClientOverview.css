@@ -1,3 +1,11 @@
+#head.image-view{
+	-fx-image: url(../../../../resources/client_boy.png);
+}
+
+
+
+
+
 #exitButton.button{
 	-fx-background-color:rgb(242,242,242);
 	-fx-background-image: url(../../../../resources/exit_system.png);

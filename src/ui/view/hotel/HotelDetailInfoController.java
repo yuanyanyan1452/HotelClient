@@ -121,10 +121,12 @@ public class HotelDetailInfoController implements Initializable {
 
 	}
 
-	public void setMain(Main main, HotelVO hotel) {
+	public void setMain(Main main, HotelVO hotel,int clientid) {
 		this.main = main;
 		this.currentHotel = hotel;
+		
 		RemoteHelper helper = RemoteHelper.getInstance();
+		
 		//酒店基本信息初始化
 		hotelnameLabel.setText(hotel.getname());
 		businessaddressLabel.setText(hotel.getbussiness_address());
@@ -227,7 +229,7 @@ public class HotelDetailInfoController implements Initializable {
 		//导入当前客户在这个酒店的历史订单
 		ObservableList<OrderModel> orders = orderTable.getItems();
 		try {
-			ArrayList<OrderVO> orderVOs = helper.getOrderBLService().get_client_hotel_order(currentClient.getclientid(), currentHotel.getid());
+			ArrayList<OrderVO> orderVOs = helper.getOrderBLService().get_client_hotel_order(clientid, currentHotel.getid());
 			for(OrderVO vo: orderVOs){
 				OrderModel orderModel = new OrderModel();
 				orderModel.setOrderid(vo.getid());

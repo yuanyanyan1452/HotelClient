@@ -75,10 +75,7 @@ public class Main extends Application {
 	private ObservableList<HotelModel> hotelData = FXCollections.observableArrayList();
 
 	public Main() {
-		// hotelData.add(new HotelModel("ww","新街口","xx广场xx号",3,4.5));
-		// hotelData.add(new HotelModel("ss","马群","xx广场xx号",4,4.7));
-		// hotelData.add(new HotelModel("ww","仙林","xx广场xx号",1,4.0));
-		// hotelData.add(new HotelModel("xx","旧街口","xx广场xx号",2,4.2));
+		
 	}
 
 	public ObservableList<HotelModel> getHotelData() {
@@ -97,7 +94,9 @@ public class Main extends Application {
 		stage.show();
 	}
 
-	// 初始界面
+	/**
+	 * 初始界面
+	 */
 	public void initUI() {
 		try {
 
@@ -109,11 +108,15 @@ public class Main extends Application {
 		}
 	}
 
-	//退出系统
+	/**
+	 * 退出系统
+	 */
 	public void exitSystem(){
 		stage.close();
 	}
-	//返回主界面
+	/**
+	 * 返回主界面
+	 */
 	public void backtoMain(){
 		try{
 			FXMLLoader loader = new FXMLLoader();
@@ -132,7 +135,10 @@ public class Main extends Application {
 		}
 	}
 	
-	// 跳转到登录界面
+	/**
+	 *  跳转到登录界面
+	 * @param type
+	 */
 	public void gotoLogin(String type) {
 		try {
 			FXMLLoader loader = new FXMLLoader();
@@ -157,7 +163,10 @@ public class Main extends Application {
 		}
 	}
 
-	// 跳转到注册界面
+	/**
+	 *  跳转到注册界面
+	 * @param type
+	 */
 	public void gotoRegist(String type) {
 		try {
 			RegistController registController = (RegistController) replaceSceneContent("user/Regist.fxml");
@@ -167,7 +176,10 @@ public class Main extends Application {
 		}
 	}
 
-	// 跳转到修改密码界面
+	/**
+	 * 跳转到修改密码界面
+	 * @param type
+	 */
 	public void gotoUpdatePassword(String type) {
 		try {
 			UpdatePasswordController controller = (UpdatePasswordController) replaceSceneContent(
@@ -178,8 +190,11 @@ public class Main extends Application {
 		}
 	}
 
-	// 跳转到客户主界面
-	public void gotoClientOverview(ClientVO vo) {
+	/**
+	 *  跳转到客户主界面
+	 * @param clientVO
+	 */
+	public void gotoClientOverview(ClientVO clientVO) {
 		try {
 			FXMLLoader fxmlLoader = new FXMLLoader();
 			fxmlLoader.setLocation(Main.class.getResource("client/ClientOverview.fxml"));
@@ -187,7 +202,7 @@ public class Main extends Application {
 			rootLayout.setPrefSize(1000, 600);
 			rootLayout.setDividerPositions(0.3f);
 			ClientOverviewController controller = (ClientOverviewController) fxmlLoader.getController();
-			controller.setMain(this,vo);
+			controller.setMain(this,clientVO);
 			Scene scene = new Scene(rootLayout);
 			stage.setScene(scene);
 			stage.centerOnScreen();
@@ -197,8 +212,12 @@ public class Main extends Application {
 		}
 	}
 
-	// 客户查看基本信息
-	public void gotoClientBasicInfo(ClientVO vo,ClientOverviewController clientOverviewController) {
+	/**
+	 *  客户查看基本信息
+	 * @param clientVO
+	 * @param clientOverviewController
+	 */
+	public void gotoClientBasicInfo(ClientVO clientVO,ClientOverviewController clientOverviewController) {
 		try {
 			FXMLLoader fxmlLoader = new FXMLLoader();
 			fxmlLoader.setLocation(Main.class.getResource("client/ClientBasicInfo.fxml"));
@@ -206,14 +225,17 @@ public class Main extends Application {
 			insidePane.setPrefSize(700, 600);
 			rootLayout.getItems().set(1, insidePane);
 			ClientBasicInfoController controller = (ClientBasicInfoController) fxmlLoader.getController();
-			controller.setMain(this,vo,clientOverviewController);
+			controller.setMain(this,clientVO,clientOverviewController);
 		} catch (Exception e) {
 			Logger.getLogger(Main.class.getName()).log(Level.SEVERE, null, e);
 		}
 	}
 
-	// 客户浏览酒店
-	public void gotoClientBrowseHotel(ClientVO vo) {
+	/**
+	 * 客户浏览酒店
+	 * @param clientVO
+	 */
+	public void gotoClientBrowseHotel(ClientVO clientVO) {
 		try {
 			FXMLLoader fxmlLoader = new FXMLLoader();
 			fxmlLoader.setLocation(Main.class.getResource("client/ClientBrowseHotel.fxml"));
@@ -221,14 +243,17 @@ public class Main extends Application {
 			insidePane.setPrefSize(700, 600);
 			rootLayout.getItems().set(1, insidePane);
 			ClientBrowseHotelController controller = (ClientBrowseHotelController) fxmlLoader.getController();
-			controller.setMain(this,vo);
+			controller.setMain(this,clientVO);
 			stage.centerOnScreen();
 		} catch (Exception e) {
 			Logger.getLogger(Main.class.getName()).log(Level.SEVERE, null, e);
 		}
 	}
 
-	// 客户浏览订单
+	/**
+	 *  客户浏览订单
+	 * @param clientid
+	 */
 	public void gotoClientBrowseOrder(int clientid) {
 		try {
 			FXMLLoader fxmlLoader = new FXMLLoader();
@@ -244,7 +269,12 @@ public class Main extends Application {
 		}
 	}
 	
-	//客户查看执行了的订单
+	/**
+	 * 客户查看已执行的订单
+	 * @param order
+	 * @throws NumberFormatException
+	 * @throws IOException
+	 */
 	public void gotoClientExecuteOrder(OrderModel order) throws NumberFormatException, IOException{
 		FXMLLoader fxmlLoader = new FXMLLoader();
 		fxmlLoader.setLocation(Main.class.getResource("order/FilledOrderDetailInfoByClient.fxml"));
@@ -261,7 +291,12 @@ public class Main extends Application {
 		extraStage.show();
 	}
 	
-	//客户查看未执行订单
+	/**
+	 * 客户查看未执行订单
+	 * @param order
+	 * @throws NumberFormatException
+	 * @throws IOException
+	 */
 	public void gotoClientNoExecuteOrder(OrderModel order) throws NumberFormatException, IOException{
 		FXMLLoader fxmlLoader = new FXMLLoader();
 		fxmlLoader.setLocation(Main.class.getResource("order/UnfilledOrderDetailInfoByClient.fxml"));
@@ -278,7 +313,12 @@ public class Main extends Application {
 		extraStage.show();
 	}
 	
-	//客户查看异常或撤销订单
+	/**
+	 * 客户查看异常或撤销订单
+	 * @param order
+	 * @throws NumberFormatException
+	 * @throws IOException
+	 */
 	public void gotoClientAbnormalOrder(OrderModel order) throws NumberFormatException, IOException{
 		FXMLLoader fxmlLoader = new FXMLLoader();
 		fxmlLoader.setLocation(Main.class.getResource("order/AbnormalOrderDetailInfoByClient.fxml"));
@@ -295,7 +335,11 @@ public class Main extends Application {
 		extraStage.show();
 	}
 
-	// 客户注册会员
+	/**
+	 *  客户注册会员
+	 * @param vo
+	 * @param overviewcontroller
+	 */
 	public void gotoClientEnrollVIP(ClientVO vo,ClientOverviewController overviewcontroller) {
 		try {
 			FXMLLoader fxmlLoader = new FXMLLoader();
@@ -311,7 +355,11 @@ public class Main extends Application {
 		}
 	}
 
-	// 客户评价酒店
+	/**
+	 * 客户评价酒店
+	 * @param client
+	 * @param hotel
+	 */
 	public void gotoClientEvaluateHotel(ClientVO client,HotelVO hotel) {
 		try {
 			FXMLLoader fxmlLoader = new FXMLLoader();
@@ -331,7 +379,10 @@ public class Main extends Application {
 		}
 	}
 
-	// 客户搜索酒店
+	/**
+	 *  客户搜索酒店
+	 * @param clientVO
+	 */
 	public void gotoClientSearchHotel(ClientVO clientVO) {
 		try {
 			FXMLLoader fxmlLoader = new FXMLLoader();
@@ -347,15 +398,18 @@ public class Main extends Application {
 		}
 	}
 
-	// 客户查看酒店详细信息
-	public void gotoHotelDetailInfo(HotelVO hotel) {
+	/**
+	 * 客户查看酒店详细信息
+	 * @param hotel
+	 */
+	public void gotoHotelDetailInfo(HotelVO hotel,int clientid) {
 		try {
 			FXMLLoader fxmlLoader = new FXMLLoader();
 			fxmlLoader.setLocation(Main.class.getResource("hotel/HotelDetailInfo.fxml"));
 			AnchorPane insidePane = (AnchorPane) fxmlLoader.load();
 
 			HotelDetailInfoController controller = (HotelDetailInfoController) fxmlLoader.getController();
-			controller.setMain(this,hotel);
+			controller.setMain(this,hotel,clientid);
 
 			extraStage2 = new Stage(StageStyle.UNDECORATED);
 			extraStage2.setScene(new Scene(insidePane));
@@ -385,7 +439,11 @@ public class Main extends Application {
 		}
 	}
 
-	// 跳转到酒店主界面
+	/**
+	 * 跳转到酒店主界面
+	 * @param hotelworkervo
+	 * @param hotelvo
+	 */
 	public void gotoHotelOverview(HotelWorkerVO hotelworkervo,HotelVO hotelvo) {
 		try {
 			FXMLLoader fxmlLoader = new FXMLLoader();
@@ -404,7 +462,12 @@ public class Main extends Application {
 		}
 	}
 
-	// 酒店工作人员管理酒店信息
+	
+	 /**
+	  * 酒店工作人员管理酒店信息
+	  * @param vo
+	  * @param overviewController
+	  */
 	public void gotoHotelBasicInfo(HotelVO vo,HotelOverviewController overviewController) {
 		try {
 			FXMLLoader fxmlLoader = new FXMLLoader();
@@ -419,7 +482,10 @@ public class Main extends Application {
 		}
 	}
 
-	// 酒店可用房间管理
+	/**
+	 *  酒店可用房间管理
+	 * @param hotelVO
+	 */
 	public void gotoHotelRoomManage(HotelVO hotelVO) {
 		try {
 			FXMLLoader fxmlLoader = new FXMLLoader();
@@ -434,7 +500,10 @@ public class Main extends Application {
 		}
 	}
 
-	// 酒店订单浏览
+	/**
+	 *  酒店订单浏览
+	 * @param hotelid
+	 */
 	public void gotoHotelBrowseOrder(int hotelid) {
 		try {
 			FXMLLoader fxmlLoader = new FXMLLoader();
@@ -464,7 +533,10 @@ public class Main extends Application {
 //		}
 //	}
 
-	// 酒店房间信息更新
+	/**
+	 *  酒店房间信息更新
+	 * @param hotelVO
+	 */
 	public void gotoHotelCheckIn(HotelVO hotelVO) {
 		try {
 			FXMLLoader fxmlLoader = new FXMLLoader();
@@ -479,7 +551,10 @@ public class Main extends Application {
 		}
 	}
 	
-	//入住退房弹窗
+	/**
+	 * 入住退房弹窗
+	 * @param hotelCheckInController
+	 */
 	public void gotoHotelCheckInChoice(HotelCheckInController hotelCheckInController){
 		
 		try {
@@ -503,7 +578,10 @@ public class Main extends Application {
 		
 	}
 
-	// 酒店销售策略管理
+	/**
+	 * 酒店销售策略管理
+	 * @param hotelVO
+	 */
 	public void gotoHotelStrategyManage(HotelVO hotelVO) {
 		try {
 			FXMLLoader fxmlLoader = new FXMLLoader();
@@ -518,7 +596,10 @@ public class Main extends Application {
 		}
 	}
 
-	// 跳转到网站营销人员主界面
+	/**
+	 *  跳转到网站营销人员主界面
+	 * @param vo
+	 */
 	public void gotoMarketOverview(WebMarketVO vo) {
 		try {
 			FXMLLoader fxmlLoader = new FXMLLoader();
@@ -537,7 +618,9 @@ public class Main extends Application {
 		}
 	}
 
-	// 网站销售策略管理
+	/**
+	 *  网站销售策略管理
+	 */
 	public void gotoWebStrategyManage() {
 		try {
 			FXMLLoader fxmlLoader = new FXMLLoader();
@@ -552,7 +635,9 @@ public class Main extends Application {
 		}
 	}
 
-	// 网站营销人员浏览异常订单
+	/**
+	 *  网站营销人员浏览异常订单
+	 */
 	public void gotoMarketAbnormalOrder() {
 		try {
 			FXMLLoader fxmlLoader = new FXMLLoader();
@@ -568,7 +653,9 @@ public class Main extends Application {
 		}
 	}
 
-	// 信用充值
+	/**
+	 *  信用充值
+	 */
 	public void gotoMarketCreditCharge() {
 		try {
 			FXMLLoader fxmlLoader = new FXMLLoader();
@@ -583,7 +670,10 @@ public class Main extends Application {
 		}
 	}
 
-	// 跳转到网站管理人员主界面
+	/**
+	 *  跳转到网站管理人员主界面
+	 * @param vo
+	 */
 	public void gotoManagerOverview(WebManagerVO vo) {
 		try {
 			ManagerOverviewController ManagerOverviewController = (ManagerOverviewController) replaceSceneContent(
@@ -594,7 +684,12 @@ public class Main extends Application {
 		}
 	}
 
-	// 界面跳转主要方法
+	/**
+	 *  界面跳转
+	 * @param fxml
+	 * @return
+	 * @throws Exception
+	 */
 	private Initializable replaceSceneContent(String fxml) throws Exception {
 		FXMLLoader loader = new FXMLLoader();
 		loader.setLocation(Main.class.getResource(fxml));
@@ -607,7 +702,9 @@ public class Main extends Application {
 		return (Initializable) loader.getController();
 	}
 
-	// 关闭弹窗
+	/**
+	 *  关闭弹窗
+	 */
 	public void closeExtraStage() {
 		if (extraStage2!=null&&extraStage2.isShowing()) {
 			extraStage2.hide();
