@@ -8,6 +8,7 @@ public class WebMarket {
 	String contact;
 	String username;
 	String password;
+	boolean logged;
 	
 	public WebMarket(){
 		webmarketid = 0;
@@ -15,6 +16,7 @@ public class WebMarket {
 		contact=null;
 		username=null;
 		password=null;
+		logged=false;
 	}
 	
 	public WebMarket(int id,String n,String c,String u,String p){
@@ -23,6 +25,7 @@ public class WebMarket {
 		contact=c;
 		username=u;
 		password=p;
+		logged=false;
 	}
 
 	public int getwebmarketid() {
@@ -65,15 +68,12 @@ public class WebMarket {
 		this.password = password;
 	}
 	
-	
-	public WebMarketVO changetowebmarketvo(){
-		WebMarketVO vo=new WebMarketVO();
-		vo.setwebmarketid(this.webmarketid);
-		vo.setname(this.name);
-		vo.setcontact(this.contact);
-		vo.setusername(this.username);
-		vo.setpassword(this.password);
-		return vo;
+	public boolean getlogged() {
+		return logged;
 	}
+	public void setlogged(boolean logged) {
+		this.logged = logged;
+	}
+	
 }
 

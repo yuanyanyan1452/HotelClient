@@ -26,6 +26,7 @@ public class ObjectChange {
 		vo.setvipinfo(client.info);
 		vo.setusername(client.username);
 		vo.setpassword(client.password);
+		vo.setlogged(client.logged);
 		return vo;
 	}
 	
@@ -70,6 +71,7 @@ public class ObjectChange {
 		vo.setcontact(worker.contact);
 		vo.setusername(worker.username);
 		vo.setpassword(worker.password);
+		vo.setlogged(worker.logged);
 		return vo;
 	}
 	
@@ -82,6 +84,7 @@ public class ObjectChange {
 		vo.setcontact(manager.contact);
 		vo.setusername(manager.username);
 		vo.setpassword(manager.password);
+		vo.setlogged(manager.logged);
 		return vo;
 	}
 	
@@ -140,6 +143,7 @@ public class ObjectChange {
 		vo.setcontact(market.contact);
 		vo.setusername(market.username);
 		vo.setpassword(market.password);
+		vo.setlogged(market.logged);
 		return vo;
 	}
 	

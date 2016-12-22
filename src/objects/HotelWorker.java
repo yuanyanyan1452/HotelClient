@@ -6,6 +6,7 @@ public class HotelWorker {
 	String contact;
 	String username;
 	String password;
+	boolean logged;
 	
 	public HotelWorker(){
 		hotelid=0;
@@ -13,6 +14,7 @@ public class HotelWorker {
 		contact=null;
 		username=null;
 		password=null;
+		logged=false;
 	}
 	
 	public HotelWorker(int id,String n,String c,String u,String p){
@@ -21,6 +23,7 @@ public class HotelWorker {
 		contact=c;
 		username=u;
 		password=p;
+		logged=false;
 	}
 	
 	public int gethotelid() {
@@ -58,5 +61,11 @@ public class HotelWorker {
 		this.password = password;
 	}
 	
+	public boolean getlogged() {
+		return logged;
+	}
+	public void setlogged(boolean logged) {
+		this.logged = logged;
+	}
 	
 }

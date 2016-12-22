@@ -14,6 +14,7 @@ public class ClientVO implements Serializable {
 	int credit;
 	ArrayList<String> credit_record;
 	VIPInfo info;
+	boolean logged;
 
 	
 	public ClientVO(int clientid, String client_name, String contact, int credit, ArrayList<String> credit_record,
@@ -27,6 +28,7 @@ public class ClientVO implements Serializable {
 		this.info = info;
 		this.username=username;
 		this.password=password;
+		this.logged=false;
 	}
 
 	public int getclientid() {
@@ -91,6 +93,14 @@ public class ClientVO implements Serializable {
 
 	public void setvipinfo(VIPInfo info) {
 		this.info = info;
+	}
+	
+	public boolean getlogged() {
+		return logged;
+	}
+
+	public void setlogged(boolean logged) {
+		this.logged = logged;
 	}
 
 }

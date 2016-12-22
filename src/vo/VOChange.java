@@ -38,6 +38,7 @@ public class VOChange implements Serializable{
 		client.setcredit(clientvo.getcredit());
 		client.setcredit_record(clientvo.getcredit_record());
 		client.setvipinfo(clientvo.getvipinfo());
+		client.setlogged(clientvo.getlogged());
 		return client;
 	}
 
@@ -115,6 +116,7 @@ public class VOChange implements Serializable{
 		hw.setpassword(vo.getpassword());
 		hw.setname(vo.getname());
 		hw.setcontact(vo.getcontact());
+		hw.setlogged(vo.getlogged());
 		return hw;
 	}
 
@@ -125,6 +127,7 @@ public class VOChange implements Serializable{
 		wm.setpassword(vo.getpassword());
 		wm.setname(vo.getname());
 		wm.setcontact(vo.getcontact());
+		wm.setlogged(vo.getlogged());
 		return wm;
 	}
 
@@ -135,6 +138,7 @@ public class VOChange implements Serializable{
 		wm.setpassword(vo.getpassword());
 		wm.setname(vo.getname());
 		wm.setcontact(vo.getcontact());
+		wm.setlogged(vo.getlogged());
 		return wm;
 	}
 

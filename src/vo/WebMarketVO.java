@@ -8,6 +8,7 @@ public class WebMarketVO implements Serializable{
 	String contact;
 	String username;
 	String password;
+	boolean logged;
 	
 	public WebMarketVO(){
 		webmarketid = 0;
@@ -15,6 +16,7 @@ public class WebMarketVO implements Serializable{
 		contact=null;
 		username=null;
 		password=null;
+		logged=false;
 	}
 	
 	public WebMarketVO(int id,String n,String c,String u,String p){
@@ -23,6 +25,7 @@ public class WebMarketVO implements Serializable{
 		contact=c;
 		username=u;
 		password=p;
+		logged=false;
 	}
 
 	public int getwebmarketid() {
@@ -64,4 +67,12 @@ public class WebMarketVO implements Serializable{
 	public void setpassword(String password) {
 		this.password = password;
 	}
+	
+	public boolean getlogged() {
+		return logged;
+	}
+	public void setlogged(boolean logged) {
+		this.logged = logged;
+	}
+	
 }

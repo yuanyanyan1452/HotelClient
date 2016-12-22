@@ -8,6 +8,7 @@ public class WebManagerVO implements Serializable{
 	String contact;
 	String username;
 	String password;
+	boolean logged;
 	
 	public WebManagerVO(){
 		webmanagerid=0;
@@ -15,6 +16,7 @@ public class WebManagerVO implements Serializable{
 		contact=null;
 		username=null;
 		password=null;
+		logged=false;
 	}
 	
 	public WebManagerVO(int i,String n,String c,String u,String p){
@@ -23,6 +25,7 @@ public class WebManagerVO implements Serializable{
 		contact=c;
 		username=u;
 		password=p;
+		logged=false;
 //		id=i;
 	}
 	public int getwebmanagerid() {
@@ -60,4 +63,12 @@ public class WebManagerVO implements Serializable{
 	public void setpassword(String password) {
 		this.password = password;
 	}
+	
+	public boolean getlogged() {
+		return logged;
+	}
+	public void setlogged(boolean logged) {
+		this.logged = logged;
+	}
+	
 }
