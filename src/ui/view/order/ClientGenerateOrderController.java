@@ -2,6 +2,8 @@ package ui.view.order;
 
 import java.net.URL;
 import java.rmi.RemoteException;
+import java.time.LocalDate;
+import java.time.chrono.ChronoLocalDate;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.ResourceBundle;
@@ -9,10 +11,12 @@ import java.util.ResourceBundle;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.ComboBox;
+import javafx.scene.control.DateCell;
 import javafx.scene.control.DatePicker;
 import javafx.scene.control.Label;
 import javafx.scene.control.RadioButton;
 import javafx.scene.control.ToggleGroup;
+import javafx.util.Callback;
 import rmi.RemoteHelper;
 import ui.util.OrderUtil;
 import ui.view.Main;
@@ -116,7 +120,49 @@ public class ClientGenerateOrderController implements Initializable {
 		hasChildButton.setToggleGroup(toggleGroup);
 		hasNoChildButton.setToggleGroup(toggleGroup);
 		//TODO datepicker无法点选之前的日期；enddatepicker无法点选startdatepicker之前的日期
-		
+		final Callback<DatePicker, DateCell> dayCellFactory = 
+	            new Callback<DatePicker, DateCell>() {
+	                @Override
+	                public DateCell call(final DatePicker datePicker) {
+	                    return new DateCell() {
+	                        @Override
+	                        public void updateItem(LocalDate item, boolean empty) {
+	                            super.updateItem(item, empty);
+
+	                            if (item.isBefore(
+	                                    startDatePicker.getValue().plusDays(1))
+	                                ) {
+	                                    setDisable(true);
+	                                    setStyle("-fx-background-color: #ffc0cb;");
+	                            }   
+	                    }
+	                };
+	            }
+	        };
+	        endDatePicker.setDayCellFactory(dayCellFactory);
+	        
+	        final Callback<DatePicker, DateCell> dayCellFactory2 = 
+	                new Callback<DatePicker, DateCell>() {
+	        	LocalDate today=LocalDate.now();
+	                    @Override
+	                    public DateCell call(final DatePicker datePicker) {
+	                        return new DateCell() {
+	                            @Override
+	                            public void updateItem(LocalDate item, boolean empty) {
+	                                super.updateItem(item, empty);
+
+	                                if (item.isBefore(
+	                                        today
+	                                    )) {
+	                                        setDisable(true);
+	                                        setStyle("-fx-background-color: #ffc0cb;");
+	                                }   
+	                        }
+	                    };
+	                }
+	            };
+	            startDatePicker.setDayCellFactory(dayCellFactory2);
+
 		
 		//TODO 房间类型及其对应数量的选择
 	}
