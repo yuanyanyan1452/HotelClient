@@ -8,7 +8,7 @@
 
 <AnchorPane prefHeight="600.0" prefWidth="700.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="ui.view.client.ClientBrowseHotelController">
    <children>
-      <TitledPane alignment="CENTER" animated="false" collapsible="false" prefHeight="600.0" prefWidth="700.0" text="酒店列表" textAlignment="RIGHT">
+      <TitledPane alignment="CENTER" animated="false" collapsible="false" prefHeight="600.0" prefWidth="700.0" text="历史酒店列表" textAlignment="RIGHT">
         <content>
           <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
                <children>
