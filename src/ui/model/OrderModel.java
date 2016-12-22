@@ -141,7 +141,8 @@ public class OrderModel {
 	}
 	
 	public void setStartTime(Date startTime){
-		this.startTime.set(format.format(startTime));
+		if(startTime!=null)
+			this.startTime.set(format.format(startTime));
 	}
 	
 	public SimpleStringProperty startTimeProperty(){
@@ -153,7 +154,8 @@ public class OrderModel {
 	}
 	
 	public void setEndTime(Date endTime){
-		this.endTime.set(format.format(endTime));
+		if(endTime!=null)
+			this.endTime.set(format.format(endTime));
 	}
 	
 	public SimpleStringProperty endTimeProperty(){
@@ -165,7 +167,8 @@ public class OrderModel {
 	}
 	
 	public void setLatestExecuteTime(Date time){
-		this.latestExecuteTime.set(format.format(time));
+		if(time!=null)
+			this.latestExecuteTime.set(format.format(time));
 	}
 	
 	public SimpleStringProperty latestExecuteTimeProperty(){
@@ -250,17 +253,21 @@ public class OrderModel {
 	}
 	
 	public void setOverTime(Date now){
-		if (this.isExecute.get().equals(ISEXECUTE)) {
-			overTime.set("已入住");
-		}
-		else{
-			long overTime;
-			try {
+		try {
+			if (now.before(format.parse(startTime.get()))) {
+				this.overTime.set("未逾期");
+			}
+			else if (this.isExecute.get().equals(ISEXECUTE)) {
+				this.overTime.set("已入住");
+			}
+			else{
+				long overTime;
 				overTime = (now.getTime() - format.parse(latestExecuteTime.get()).getTime())/(1000*3600);
 				this.overTime.set(overTime+"");
-			} catch (ParseException e) {
-				e.printStackTrace();
+				
 			}
+		} catch (ParseException e) {
+			e.printStackTrace();
 		}
 	}
 	
@@ -284,8 +291,10 @@ public class OrderModel {
 		return predictLeaveTime.get();
 	}
 	
-	public void setPredictLeaveTime(String time){
-		predictLeaveTime.set(time);
+	public void setPredictLeaveTime(Date time){
+		if (time!=null) {
+			predictLeaveTime.set(format.format(time));
+		}
 	}
 	
 	public SimpleStringProperty predictLeaveTimeProperty(){
