@@ -126,7 +126,12 @@ public class HotelDetailInfoController implements Initializable {
 		this.currentHotel = hotel;
 		
 		RemoteHelper helper = RemoteHelper.getInstance();
-		
+		try {
+			currentClient=helper.getClientBLService().client_checkInfo(clientid);
+		} catch (RemoteException e1) {
+			// TODO Auto-generated catch block
+			e1.printStackTrace();
+		}
 		//酒店基本信息初始化
 		hotelnameLabel.setText(hotel.getname());
 		businessaddressLabel.setText(hotel.getbussiness_address());
