@@ -2,8 +2,10 @@ package ui.view.hotel;
 
 import java.net.URL;
 import java.rmi.RemoteException;
+import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Calendar;
 import java.util.Date;
 import java.util.ResourceBundle;
 
@@ -69,29 +71,28 @@ public class HotelCheckInController implements Initializable {
 	private ComboBox<String> roomtypeComboBox;
 
 	@FXML
-	private TextField roomNumTextField;
+	private ComboBox<Integer> roomNumComboBox;
 
 	@FXML
-	private TextField daysTextField;
+	private ComboBox<Integer> daysComboBox;
 
+	/**
+	 * 线下入住
+	 */
 	@FXML
 	private void downlinecheckin() {
 		if (roomtypeComboBox.getValue() == null) {
 			AlertUtil.showWarningAlert("未为线下操作选择房间类型！");
-		} else if (roomNumTextField.getText().isEmpty()) {
-			AlertUtil.showWarningAlert("未输入房间数量！");
-		} else if (Character.isDigit(roomNumTextField.getText().charAt(0))) {
-			AlertUtil.showWarningAlert("房间数量应输入数字！");
-		} else if (daysTextField.getText().isEmpty()) {
-			AlertUtil.showWarningAlert("未输入入住天数！");
-		} else if (Character.isDigit(daysTextField.getText().charAt(0))) {
-			AlertUtil.showWarningAlert("入住天数应输入数字！");
+		} else if (roomNumComboBox.getValue() == null) {
+			AlertUtil.showWarningAlert("未选择房间数量！");
+		} else if( daysComboBox.getValue()==null) {
+			AlertUtil.showWarningAlert("未选择入住天数！");
 		} else {
 			try {
 				RemoteHelper helper = RemoteHelper.getInstance();
 				String roomtype = roomtypeComboBox.getValue();
-				int roomnum = Integer.parseInt(roomNumTextField.getText());
-				int days = Integer.parseInt(daysTextField.getText());
+				int roomnum = roomNumComboBox.getValue();
+				int days = daysComboBox.getValue();
 
 				ArrayList<RoomOrderVO> roomOrderVOs = new ArrayList<>();
 				RoomOrderVO roomOrderVO = new RoomOrderVO();
@@ -110,26 +111,28 @@ public class HotelCheckInController implements Initializable {
 			}
 		}
 	}
-
+	
+	
+	
+	
+	/**
+	 * 线下退房
+	 */
 	@FXML
 	private void downlinecheckout() {
 		if (roomtypeComboBox.getValue() == null) {
 			AlertUtil.showWarningAlert("未为线下操作选择房间类型！");
-		} else if (roomNumTextField.getText().isEmpty()) {
-			AlertUtil.showWarningAlert("未输入房间数量！");
-		} else if (Character.isDigit(roomNumTextField.getText().charAt(0))) {
-			AlertUtil.showWarningAlert("房间数量应输入数字！");
-		} else if (daysTextField.getText().isEmpty()) {
-			AlertUtil.showWarningAlert("未输入入住天数！");
-		} else if (Character.isDigit(daysTextField.getText().charAt(0))) {
-			AlertUtil.showWarningAlert("入住天数应输入数字！");
+		} else if (roomNumComboBox.getValue() == null) {
+			AlertUtil.showWarningAlert("未选择房间数量！");
+		} else if( daysComboBox.getValue()==null) {
+			AlertUtil.showWarningAlert("未选择入住天数！");
 		} else {
 			try {
 				RemoteHelper helper = RemoteHelper.getInstance();
 
 				String roomtype = roomtypeComboBox.getValue();
-				int roomnum = Integer.parseInt(roomNumTextField.getText());
-				int days = Integer.parseInt(daysTextField.getText());
+				int roomnum = roomNumComboBox.getValue();
+				int days = daysComboBox.getValue();
 
 				ArrayList<RoomOrderVO> roomOrderVOs = new ArrayList<>();
 				RoomOrderVO roomOrderVO = new RoomOrderVO();
@@ -154,8 +157,9 @@ public class HotelCheckInController implements Initializable {
 
 	}
 
-	/*
-	 * 用于入住结束后的表格更新
+	/**
+	 * 用于入住结束后的更新表格
+	 * @param changedOrder
 	 */
 	public void updateTable(OrderModel changedOrder) {
 
@@ -166,14 +170,20 @@ public class HotelCheckInController implements Initializable {
 				orderTable.getItems().get(index).setState(changedOrder.getState());
 				orderTable.getItems().get(index).setOverTime(new Date());
 				if (!changedOrder.getPredictLeaveTime().equals(OrderUtil.getNoexecute())) {
-					orderTable.getItems().get(index).setPredictLeaveTime(changedOrder.getPredictLeaveTime());
+					try {
+						orderTable.getItems().get(index).setPredictLeaveTime(format.parse(changedOrder.getPredictLeaveTime()));
+					} catch (ParseException e) {
+						e.printStackTrace();
+					}
 				}
 			}
 		}
 	}
 
-	/*
+
+	/**
 	 * 用于退房后的表格项删除
+	 * @param finishedOrder
 	 */
 	public void removeTable(OrderModel finishedOrder) {
 		for (int index = 0; index < orderTable.getItems().size(); index++) {
@@ -195,10 +205,11 @@ public class HotelCheckInController implements Initializable {
 		RemoteHelper helper = RemoteHelper.getInstance();
 
 		// 初始化房间类型combobox
-		roomtypeComboBox.getItems().addAll("单人间", "大床房", "双人房");
+		roomtypeComboBox.getItems().addAll("标准间", "大床房", "双人房","商务房","豪华房","海景房");
 
 		ObservableList<OrderModel> models = FXCollections.observableArrayList();
 		try {
+			//取出未执行的所有订单
 			ArrayList<OrderVO> orderVOs = helper.getOrderBLService().findorderBy_Hotelid_Execute(currentHotel.getid(), false);
 			for (OrderVO vo : orderVOs) {
 				OrderModel model = new OrderModel();
@@ -220,10 +231,40 @@ public class HotelCheckInController implements Initializable {
 				model.setState(vo.getstate());
 				model.setLatestExecuteTime(vo.getlatest_execute_time());
 				model.setOverTime(new Date());
-				model.setPredictLeaveTime(OrderUtil.getNoexecute());
+				//未执行订单设置预计离开时间为未入住
+				model.setPredictLeaveTime(null);
 				models.add(model);
 			}
-
+			//取出执行了但未退房的所有订单
+			orderVOs = helper.getOrderBLService().findorderBy_Hotelid_Execute(currentHotel.getid(), true);
+			String flag = "12:00:00";
+			for(OrderVO vo: orderVOs){
+				String endtime = format.format(vo.getend_time());
+				if (endtime.contains(flag)) {
+					OrderModel model = new OrderModel();
+					model.setOrderid(vo.getid());
+					model.setClientid(vo.getclientid());
+					model.setHotelid(vo.gethotelid());
+					model.setPrice(vo.getprice());
+					ArrayList<RoomOrderVO> roomOrder = vo.getroom_order();
+					String roomtype = "";
+					for (int i = 0; i < roomOrder.size(); i++) {
+						if (i == roomOrder.size() - 1) {
+							roomtype += roomOrder.get(i).getroom_type();
+						} else {
+							roomtype += roomOrder.get(i).getroom_type() + ",";
+						}
+					}
+					model.setRoomType(roomtype);
+					model.setIsExecute(vo.getexecute());
+					model.setState(vo.getstate());
+					model.setLatestExecuteTime(vo.getlatest_execute_time());
+					model.setOverTime(new Date());
+					//未退房的实际离开时间现在存的是预计离开时间
+					model.setPredictLeaveTime(vo.getend_time());
+					models.add(model);
+				}
+			}
 		} catch (RemoteException e1) {
 			e1.printStackTrace();
 		}
