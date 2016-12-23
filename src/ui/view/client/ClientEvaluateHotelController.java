@@ -72,6 +72,8 @@ public class ClientEvaluateHotelController implements Initializable{
 		currentClient = clientvo;
 		currentHotel = hotelvo;
 		hotelnameLabel.setText(hotelvo.getname());
+		
+		//初始化滑动条
 		scoreSlider.setMin(0.0);
 		scoreSlider.setMax(5.0);
 		scoreSlider.setValue(4.0);
@@ -86,6 +88,8 @@ public class ClientEvaluateHotelController implements Initializable{
 			}
 			
 		});
+		
+		
 	}
 	
 }

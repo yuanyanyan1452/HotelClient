@@ -36,7 +36,6 @@ import objects.VIPInfo.*;
 import rmi.RemoteHelper;
 import ui.model.*;
 import ui.util.AlertUtil;
-import ui.util.ComboBoxUtil;
 import ui.view.Main;
 import vo.*;
 
@@ -672,7 +671,6 @@ public class ManagerOverviewController implements Initializable {
 		// 初始化combobox
 		ObservableList<String> viptypeList = updatevipTypeCombobox.getItems();
 		viptypeList.addAll("非会员", "普通会员", "企业会员");
-		ComboBoxUtil.initialize(updatevipTypeCombobox);
 
 		// 初始化所有表格
 		updateClientTable();

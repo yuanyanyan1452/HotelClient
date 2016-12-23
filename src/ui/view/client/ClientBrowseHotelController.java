@@ -25,7 +25,7 @@ import vo.OrderVO;
 public class ClientBrowseHotelController implements Initializable{
 	private Main main;
 	private ClientVO currentClient;
-	private HotelModel currentHotel;
+	private HotelVO currentHotel;
 	@FXML
 	private TableView<HotelModel> hotelTable;
 	
@@ -97,6 +97,7 @@ public class ClientBrowseHotelController implements Initializable{
 							e.printStackTrace();
 						}
 					}
+					
 				});
 				return cell;
 			}

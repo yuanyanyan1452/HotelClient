@@ -14,10 +14,13 @@ import javafx.scene.control.PasswordField;
 import javafx.scene.control.TextField;
 import objects.ResultMessage;
 import rmi.RemoteHelper;
+import ui.util.AlertUtil;
 import ui.view.Main;
+import vo.ClientVO;
 import vo.HotelVO;
 import vo.HotelWorkerVO;
 import vo.WebManagerVO;
+import vo.WebMarketVO;
 
 public class LoginController implements Initializable {
 	private String type;
@@ -63,7 +66,15 @@ public class LoginController implements Initializable {
 			try {
 				if(helper.getClientBLService().client_login(usernameTextField.getText(), passwordField.getText())
 						==ResultMessage.Success){
-					main.gotoClientOverview(helper.getClientBLService().client_getclientvo(usernameTextField.getText()));
+					ClientVO clientVO=helper.getClientBLService().client_getclientvo(usernameTextField.getText());
+					if(!clientVO.getlogged()){
+					main.gotoClientOverview(clientVO);
+					clientVO.setlogged(true);
+					helper.getClientBLService().client_updateInfo(clientVO);
+					}
+					else{
+						AlertUtil.showWarningAlert("对不起，该账户已被登录");
+					}
 				}
 				else{
 					warning();
@@ -78,7 +89,14 @@ public class LoginController implements Initializable {
 						==ResultMessage.Success){
 					HotelWorkerVO hotelworkervo=helper.getHotelBLService().hotelworker_getvo(usernameTextField.getText());
 					HotelVO hotelvo=helper.getHotelBLService().hotel_getInfo(hotelworkervo.gethotelid());
-					main.gotoHotelOverview(hotelworkervo,hotelvo);
+					if(!hotelworkervo.getlogged()){
+						main.gotoHotelOverview(hotelworkervo,hotelvo);
+						hotelworkervo.setlogged(true);
+						helper.getManageBLService().manage_updateHotelWorker(hotelworkervo);
+					}
+					else{
+						AlertUtil.showWarningAlert("对不起，该账户已被登录");
+					}
 				}
 				else {
 					warning();
@@ -91,11 +109,20 @@ public class LoginController implements Initializable {
 			try {
 				if(helper.getManageBLService().webmarket_login(usernameTextField.getText(), passwordField.getText())
 						==ResultMessage.Success){
-					main.gotoMarketOverview(helper.getManageBLService().webmarket_getvo(usernameTextField.getText()));
+					WebMarketVO webMarketVO=helper.getManageBLService().webmarket_getvo(usernameTextField.getText());
+					if(!webMarketVO.getlogged()){
+						main.gotoMarketOverview(webMarketVO);
+						webMarketVO.setlogged(true);
+						helper.getManageBLService().manage_updateMarketWorker(webMarketVO);
+					}
+					else {
+						AlertUtil.showWarningAlert("对不起，该账户已被登录");
+					}
 				}
-				else {
+				else{
 					warning();
 				}
+				
 			} catch (RemoteException e) {
 				e.printStackTrace();
 			}
@@ -104,12 +131,12 @@ public class LoginController implements Initializable {
 			try {
 				if(helper.getManageBLService().webmanager_login(usernameTextField.getText(), passwordField.getText())
 						==ResultMessage.Success){
-//					ClientVO clientvo=
-//					HotelWorkerVO hotelworkervo=
-//					HotelVO hotelvo=
-//					WebManagerVO webmanagervo=
 					WebManagerVO webmanagervo=helper.getManageBLService().webmanager_getvo(usernameTextField.getText());
+					if(!webmanagervo.getlogged()){
 					main.gotoManagerOverview(webmanagervo);
+					webmanagervo.setlogged(true);
+//					helper.getManageBLService().
+					}
 				}
 				else {
 					warning();

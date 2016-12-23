@@ -3,16 +3,22 @@ package ui.view.market;
 import java.net.URL;
 import java.rmi.RemoteException;
 import java.text.SimpleDateFormat;
+import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.Calendar;
+import java.util.Date;
 import java.util.ResourceBundle;
 
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
+import javafx.event.ActionEvent;
+import javafx.event.EventHandler;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.Alert;
 import javafx.scene.control.Alert.AlertType;
+import javafx.scene.control.ComboBox;
+import javafx.scene.control.DatePicker;
 import objects.ResultMessage;
 import rmi.RemoteHelper;
 import javafx.scene.control.Label;
@@ -56,16 +62,16 @@ public class MarketStrategyController implements Initializable {
 	private TextField addNameField;
 
 	@FXML
-	private TextField addStartTimeField;
+	private DatePicker addStartTimeDatePicker;
 
 	@FXML
-	private TextField addEndTimeField;
+	private DatePicker addEndTimeDatePicker;
 
 	@FXML
-	private TextField addConditionField;
+	private ComboBox<String> addConditionComboBox;
 
 	@FXML
-	private TextField addDiscountField;
+	private ComboBox<String> addDiscountComboBox;
 
 	@FXML
 	private RadioButton addYesButton;
@@ -77,16 +83,16 @@ public class MarketStrategyController implements Initializable {
 	private TextField updateNameField;
 
 	@FXML
-	private TextField updateStartTimeField;
+	private DatePicker updateStartTimeDatePicker;
 
 	@FXML
-	private TextField updateEndTimeField;
+	private DatePicker updateEndTimeDatePicker;
 
 	@FXML
-	private TextField updateConditionField;
+	private ComboBox<String> updateConditionComboBox;
 
 	@FXML
-	private TextField updateDiscountField;
+	private ComboBox<String> updateDiscountComboBox;
 
 	@FXML
 	private RadioButton updateYesButton;
@@ -148,10 +154,10 @@ public class MarketStrategyController implements Initializable {
 		for (WebStrategyModel strategy : list) {
 			if (strategy.getName().equals(name)) {
 				currentStrategy = strategy;
-				updateStartTimeField.setText(strategy.getStartTime());
-				updateEndTimeField.setText(strategy.getEndTime());
-				updateDiscountField.setText(strategy.getDiscount());
-				updateConditionField.setText(strategy.getCondition());
+				updateStartTimeDatePicker.setValue(strategy.getStartTime());
+				updateEndTimeDatePicker.setValue(strategy.getEndTime());
+				updateDiscountComboBox.setValue(strategy.getDiscount());
+				updateConditionComboBox.setValue(strategy.getCondition());
 				if (strategy.getSuperposition().equals("是")) {
 					updateYesButton.setSelected(true);
 				} else {
@@ -177,10 +183,10 @@ public class MarketStrategyController implements Initializable {
 	private void addStrategy() {
 
 		String name = addNameField.getText();
-		String startTime = addStartTimeField.getText();
-		String endTime = addEndTimeField.getText();
-		String condition = addConditionField.getText();
-		String discount = addDiscountField.getText();
+		LocalDate startDate = addStartTimeDatePicker.getValue();
+		LocalDate endDate = addEndTimeDatePicker.getValue();
+		String condition = addConditionComboBox.getValue();
+		String discount = addDiscountComboBox.getValue();
 		String superposition = (addYesButton.isSelected()) ? "是" : "否";
 
 		
@@ -192,12 +198,14 @@ public class MarketStrategyController implements Initializable {
 				return;
 			}
 		}
-		WebStrategyModel strategyModel = new WebStrategyModel(0, name, startTime, endTime, discount, condition,
+		
+		//更新策略表格
+		WebStrategyModel strategyModel = new WebStrategyModel(0, name, startDate.toString(), endDate.toString(), discount, condition,
 				superposition);
 		strategyTable.getItems().add(strategyModel);
 
+		//更新底层数据
 		WebStrategyVO vo = strategyModel.changeToVO();
-
 		RemoteHelper helper = RemoteHelper.getInstance();
 		try {
 			ResultMessage message = helper.getStrategyBLService().webstrategy_make(vo);
@@ -300,6 +308,7 @@ public class MarketStrategyController implements Initializable {
 		this.main = main;
 		RemoteHelper helper = RemoteHelper.getInstance();
 
+		//单选键的初始化
 		final ToggleGroup addGroup = new ToggleGroup();
 		addYesButton.setToggleGroup(addGroup);
 		addNoButton.setToggleGroup(addGroup);
@@ -307,6 +316,13 @@ public class MarketStrategyController implements Initializable {
 		updateYesButton.setToggleGroup(updateGroup);
 		updateNoButton.setToggleGroup(updateGroup);
 
+		//单选框的初始化
+		
+		
+		
+		
+		
+		
 		ObservableList<WebStrategyModel> webStrategyData = FXCollections.observableArrayList();
 		try {
 			ArrayList<WebStrategyVO> webdata = helper.getStrategyBLService().getWebStrategy();

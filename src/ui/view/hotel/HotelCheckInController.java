@@ -233,6 +233,8 @@ public class HotelCheckInController implements Initializable {
 				model.setRoomType(roomtype);
 				model.setIsExecute(vo.getexecute());
 				model.setState(vo.getstate());
+				model.setStartTime(vo.getstart_time());
+				model.setEndTime(vo.getend_time());
 				model.setLatestExecuteTime(vo.getlatest_execute_time());
 				model.setOverTime(new Date());
 				//未执行订单设置预计离开时间为未入住
