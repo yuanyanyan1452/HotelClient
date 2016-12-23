@@ -18,10 +18,10 @@
                         <TableView fx:id="strategyTable" prefHeight="200.0" prefWidth="698.0">
                           <columns>
                             <TableColumn fx:id="nameColumn" prefWidth="118.0" text="名称" />
+                              <TableColumn fx:id="conditionColumn" prefWidth="171.0" text="策略类型" />
                               <TableColumn fx:id="startColumn" prefWidth="133.0" text="起始时间" />
                               <TableColumn fx:id="endColumn" prefWidth="133.0" text="结束时间" />
                               <TableColumn fx:id="discountColumn" prefWidth="66.0" text="折扣" />
-                              <TableColumn fx:id="conditionColumn" prefWidth="171.0" text="使用条件" />
                               <TableColumn fx:id="superpositionColumn" prefWidth="82.0" text="是否可叠加" />
                           </columns>
                         </TableView>
@@ -77,11 +77,6 @@
                                           <DatePicker fx:id="addEndTimeDatePicker" GridPane.columnIndex="3" GridPane.rowIndex="1" />
                                           <ComboBox fx:id="addConditionComboBox" prefHeight="23.0" prefWidth="183.0" GridPane.columnIndex="3" />
                                           <ComboBox fx:id="addDiscountComboBox" prefHeight="23.0" prefWidth="85.0" GridPane.columnIndex="1" GridPane.rowIndex="2" />
-                                          <Label text="折" GridPane.columnIndex="1" GridPane.rowIndex="2">
-                                             <GridPane.margin>
-                                                <Insets left="110.0" />
-                                             </GridPane.margin>
-                                          </Label>
                                        </children>
                                     </GridPane>
                                  </children>
@@ -130,13 +125,8 @@
                                           </RadioButton>
                                           <ComboBox fx:id="updateDiscountComboBox" prefHeight="23.0" prefWidth="85.0" GridPane.columnIndex="1" GridPane.rowIndex="2" />
                                           <ComboBox fx:id="updateConditionComboBox" prefHeight="23.0" prefWidth="180.0" GridPane.columnIndex="3" />
-                                          <DatePicker fx:id="updateEndTimeDatePicker" GridPane.columnIndex="1" GridPane.rowIndex="1" />
-                                          <DatePicker fx:id="updateStartTimeDatePicker" GridPane.columnIndex="3" GridPane.rowIndex="1" />
-                                          <Label text="折" GridPane.columnIndex="1" GridPane.rowIndex="2">
-                                             <GridPane.margin>
-                                                <Insets left="110.0" />
-                                             </GridPane.margin>
-                                          </Label>
+                                          <DatePicker fx:id="updateStartTimeDatePicker" GridPane.columnIndex="1" GridPane.rowIndex="1" />
+                                          <DatePicker fx:id="updateEndTimeDatePicker" GridPane.columnIndex="3" GridPane.rowIndex="1" />
                                        </children>
                                        <columnConstraints>
                                           <ColumnConstraints halignment="CENTER" hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />

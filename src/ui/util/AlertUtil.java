@@ -3,6 +3,11 @@ package ui.util;
 import javafx.scene.control.Alert;
 import javafx.scene.control.Alert.AlertType;
 
+/**
+ * 抽象弹窗显示
+ * @author Ferriswheel
+ *
+ */
 public class AlertUtil  {
 
 	public static void showInformationAlert(String text){
