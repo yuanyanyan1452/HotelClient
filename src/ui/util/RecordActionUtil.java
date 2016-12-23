@@ -1,7 +1,7 @@
 package ui.util;
 
 /*
- * 信用记录动作名称辅助类
+ * 抽象信用记录动作名称的字面值常量
  */
 public class RecordActionUtil {
 	private static final String EXECUTE = "订单执行";

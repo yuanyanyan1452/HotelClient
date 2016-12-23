@@ -258,6 +258,7 @@ public class HotelCheckInChoiceController implements Initializable {
 				};
 			}
 		};
+		predictLeaveDatePicker.setDayCellFactory(dayCellFactory);
 	}
 
 }

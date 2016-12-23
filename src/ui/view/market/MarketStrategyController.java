@@ -3,7 +3,9 @@ package ui.view.market;
 import java.net.URL;
 import java.rmi.RemoteException;
 import java.text.SimpleDateFormat;
+import java.time.Instant;
 import java.time.LocalDate;
+import java.time.ZoneId;
 import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.Date;
@@ -17,7 +19,9 @@ import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.Alert;
 import javafx.scene.control.Alert.AlertType;
+import javafx.util.Callback;
 import javafx.scene.control.ComboBox;
+import javafx.scene.control.DateCell;
 import javafx.scene.control.DatePicker;
 import objects.ResultMessage;
 import rmi.RemoteHelper;
@@ -29,14 +33,15 @@ import javafx.scene.control.TextField;
 import javafx.scene.control.ToggleGroup;
 import ui.model.*;
 import ui.util.AlertUtil;
+import ui.util.StrategyUtil;
 import ui.view.Main;
 import vo.WebStrategyVO;
 
 public class MarketStrategyController implements Initializable {
 	private Main main;
 	private WebStrategyModel currentStrategy;
-	private SimpleDateFormat format = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
-	
+	private SimpleDateFormat format = new SimpleDateFormat("yyyy-MM-dd");
+
 	@FXML
 	private TableView<WebStrategyModel> strategyTable;
 
@@ -154,8 +159,8 @@ public class MarketStrategyController implements Initializable {
 		for (WebStrategyModel strategy : list) {
 			if (strategy.getName().equals(name)) {
 				currentStrategy = strategy;
-				updateStartTimeDatePicker.setValue(strategy.getStartTime());
-				updateEndTimeDatePicker.setValue(strategy.getEndTime());
+				updateStartTimeDatePicker.setValue(LocalDate.parse(strategy.getStartTime()));
+				updateEndTimeDatePicker.setValue(LocalDate.parse(strategy.getEndTime()));
 				updateDiscountComboBox.setValue(strategy.getDiscount());
 				updateConditionComboBox.setValue(strategy.getCondition());
 				if (strategy.getSuperposition().equals("是")) {
@@ -168,10 +173,10 @@ public class MarketStrategyController implements Initializable {
 			}
 		}
 		if (!isSuccess) {
-			updateStartTimeField.setText("");
-			updateEndTimeField.setText("");
-			updateDiscountField.setText("");
-			updateConditionField.setText("");
+			updateStartTimeDatePicker.setValue(null);
+			updateEndTimeDatePicker.setValue(null);
+			updateDiscountComboBox.setValue(null);
+			updateConditionComboBox.setValue(null);
 			updateYesButton.setSelected(false);
 			updateNoButton.setSelected(false);
 
@@ -189,33 +194,32 @@ public class MarketStrategyController implements Initializable {
 		String discount = addDiscountComboBox.getValue();
 		String superposition = (addYesButton.isSelected()) ? "是" : "否";
 
-		
 		// 检查同名策略
 		ObservableList<WebStrategyModel> list = strategyTable.getItems();
 		for (WebStrategyModel model : list) {
-			if (model.getName().equals(name)) {
-				AlertUtil.showErrorAlert("已存在同名的促销策略！");
+			if (model.getCondition().equals(condition)) {
+				AlertUtil.showErrorAlert("已存在同类型的促销策略！");
 				return;
 			}
 		}
-		
-		//更新策略表格
-		WebStrategyModel strategyModel = new WebStrategyModel(0, name, startDate.toString(), endDate.toString(), discount, condition,
-				superposition);
+
+		// 更新策略表格
+		WebStrategyModel strategyModel = new WebStrategyModel(0, name, startDate.toString(), endDate.toString(),
+				discount, condition, superposition);
 		strategyTable.getItems().add(strategyModel);
 
-		//更新底层数据
+		// 更新底层数据
 		WebStrategyVO vo = strategyModel.changeToVO();
 		RemoteHelper helper = RemoteHelper.getInstance();
 		try {
 			ResultMessage message = helper.getStrategyBLService().webstrategy_make(vo);
-			if (message==ResultMessage.Fail) {
+			if (message == ResultMessage.Fail) {
 				AlertUtil.showErrorAlert("添加促销策略失败！");
 			}
 		} catch (RemoteException e) {
 			e.printStackTrace();
 		}
-		
+
 		AlertUtil.showInformationAlert("添加促销策略成功！");
 	}
 
@@ -226,10 +230,10 @@ public class MarketStrategyController implements Initializable {
 			return;
 		}
 		String name = updateNameField.getText();
-		String startTime = updateStartTimeField.getText();
-		String endTime = updateEndTimeField.getText();
-		String condition = updateConditionField.getText();
-		String discount = updateDiscountField.getText();
+		LocalDate startTime = updateStartTimeDatePicker.getValue();
+		LocalDate endTime = updateEndTimeDatePicker.getValue();
+		String condition = updateConditionComboBox.getValue();
+		String discount = updateDiscountComboBox.getValue();
 		String superposition = (updateYesButton.isSelected()) ? "是" : "否";
 
 		ObservableList<WebStrategyModel> list = strategyTable.getItems();
@@ -239,33 +243,43 @@ public class MarketStrategyController implements Initializable {
 			AlertUtil.showErrorAlert("不存在该促销策略！");
 			return;
 		}
-		
-		//更新表格
+
+		// 更新表格
 		int index;
-		for(index = 0;index<list.size();index++){
+		for (index = 0; index < list.size(); index++) {
 			if (list.get(index).getName().equals(currentStrategy.getName())) {
 				list.get(index).setName(name);
-				list.get(index).setStartTime(startTime);
-				list.get(index).setEndTime(endTime);
+				list.get(index).setStartTime(startTime.toString());
+				list.get(index).setEndTime(endTime.toString());
 				list.get(index).setDiscount(discount);
 				list.get(index).setCondition(condition);
 				list.get(index).setSuperposition(superposition);
 			}
 		}
-		
-		//更新底层数据
+
+		// 更新底层数据
 		try {
 			RemoteHelper helper = RemoteHelper.getInstance();
 			WebStrategyVO vo = helper.getStrategyBLService().getwebstrategybyname(currentStrategy.getName());
+			vo.setname(name);
+			vo.setcondition(condition);
+			vo.setexecuteway(discount);
+			// localdate转date
+			ZoneId zoneId = ZoneId.systemDefault();
+			Instant instant = startTime.atStartOfDay().atZone(zoneId).toInstant();
+			vo.setstart_time(Date.from(instant));
+			instant = endTime.atStartOfDay().atZone(zoneId).toInstant();
+			vo.setend_time(Date.from(instant));
+			vo.setsuperposition(updateYesButton.isSelected());
 			ResultMessage message = helper.getStrategyBLService().webstrategy_update(vo);
-			if (message==ResultMessage.Fail) {
+			if (message == ResultMessage.Fail) {
 				AlertUtil.showErrorAlert("更新促销策略失败！");
 				return;
 			}
 		} catch (RemoteException e) {
 			e.printStackTrace();
 		}
-		
+
 		AlertUtil.showInformationAlert("更新促销策略成功！");
 	}
 
@@ -281,10 +295,9 @@ public class MarketStrategyController implements Initializable {
 			try {
 				ResultMessage message = helper.getStrategyBLService().webstrategy_delete(
 						helper.getStrategyBLService().getwebstrategybyname(currentStrategy.getName()));
-				if (message==ResultMessage.Fail) {
+				if (message == ResultMessage.Fail) {
 					AlertUtil.showErrorAlert("删除促销策略失败！");
-				}
-				else{
+				} else {
 					AlertUtil.showInformationAlert("删除促销策略成功！");
 				}
 			} catch (RemoteException e) {
@@ -308,7 +321,7 @@ public class MarketStrategyController implements Initializable {
 		this.main = main;
 		RemoteHelper helper = RemoteHelper.getInstance();
 
-		//单选键的初始化
+		// 单选键的初始化
 		final ToggleGroup addGroup = new ToggleGroup();
 		addYesButton.setToggleGroup(addGroup);
 		addNoButton.setToggleGroup(addGroup);
@@ -316,13 +329,33 @@ public class MarketStrategyController implements Initializable {
 		updateYesButton.setToggleGroup(updateGroup);
 		updateNoButton.setToggleGroup(updateGroup);
 
-		//单选框的初始化
-		
-		
-		
-		
-		
-		
+		// 单选框的初始化
+		addDiscountComboBox.getItems().addAll(StrategyUtil.getDiscounts());
+		addConditionComboBox.getItems().addAll(StrategyUtil.getWebAllConditions());
+		updateDiscountComboBox.getItems().addAll(StrategyUtil.getDiscounts());
+		updateConditionComboBox.getItems().addAll(StrategyUtil.getWebAllConditions());
+
+		// 结束日期不得早于开始日期
+		addEndTimeDatePicker.setDayCellFactory(new Callback<DatePicker, DateCell>() {
+
+			@Override
+			public DateCell call(DatePicker param) {
+				DateCell cell = new DateCell() {
+					@Override
+					public void updateItem(LocalDate item, boolean empty) {
+						super.updateItem(item, empty);
+
+						if (item.isBefore(addStartTimeDatePicker.getValue())) {
+							setDisable(true);
+							setStyle("-fx-background-color: #ffc0cb;");
+						}
+					}
+				};
+				return cell;
+			}
+		});
+
+		//导入网站所有的策略
 		ObservableList<WebStrategyModel> webStrategyData = FXCollections.observableArrayList();
 		try {
 			ArrayList<WebStrategyVO> webdata = helper.getStrategyBLService().getWebStrategy();
@@ -347,5 +380,4 @@ public class MarketStrategyController implements Initializable {
 		strategyTable.setItems(webStrategyData);
 	}
 
-	
 }

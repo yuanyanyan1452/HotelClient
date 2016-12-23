@@ -1,7 +1,7 @@
 package ui.util;
 
 /*
- * 订单状态和执行情况辅助类
+ * 抽象订单相关的字面值常量
  */
 public class OrderUtil {
 
