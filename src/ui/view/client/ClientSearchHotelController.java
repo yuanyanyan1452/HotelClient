@@ -165,6 +165,8 @@ public class ClientSearchHotelController implements Initializable {
 	private void gotoGenerateOrder() {
 		if(currentClient.getcredit()>=0){
 		main.gotoGenerateOrder(currentHotel,currentClient);
+		System.out.println(currentClient.getclientid());
+		//System.out.println(currentClient.getvipinfo().getInfo());
 		}
 		else{
 			AlertUtil.showWarningAlert("对不起，您的信用值不足");
