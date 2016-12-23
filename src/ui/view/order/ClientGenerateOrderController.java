@@ -140,7 +140,7 @@ public class ClientGenerateOrderController implements Initializable {
 		LocalDate end_time=endDatePicker.getValue();
 		    Instant instant1 = end_time.atStartOfDay().atZone(zone).toInstant();
 		    Date enddate = Date.from(instant1);
-		LocalDate latest_execute_time=start_time.plusDays(1);
+		LocalDate latest_execute_time=start_time;
 		    Instant instant2 = latest_execute_time.atStartOfDay().atZone(zone).toInstant();
 		    Date latestdate = Date.from(instant2);
 		latestdate.setTime(Integer.parseInt(latestHourComboBox.getValue().toString().substring(0,2))*60*60*1000+latestdate.getTime());

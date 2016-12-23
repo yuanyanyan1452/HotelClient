@@ -361,14 +361,14 @@ public class Main extends Application {
 	 * @param client
 	 * @param hotel
 	 */
-	public void gotoClientEvaluateHotel(ClientVO client,HotelVO hotel) {
+	public void gotoClientEvaluateHotel(ClientVO client,HotelVO hotel,OrderVO order) {
 		try {
 			FXMLLoader fxmlLoader = new FXMLLoader();
 			fxmlLoader.setLocation(Main.class.getResource("client/ClientEvaluateHotel.fxml"));
 			AnchorPane insidePane = (AnchorPane) fxmlLoader.load();
 
 			ClientEvaluateHotelController controller = (ClientEvaluateHotelController) fxmlLoader.getController();
-			controller.setMain(this,client,hotel);
+			controller.setMain(this,client,hotel,order);
 
 			extraStage2 = new Stage(StageStyle.UNDECORATED);
 			extraStage2.setScene(new Scene(insidePane));

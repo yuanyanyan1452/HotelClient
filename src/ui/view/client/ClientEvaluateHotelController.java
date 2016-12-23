@@ -18,11 +18,14 @@ import ui.view.Main;
 import vo.ClientVO;
 import vo.EvaluationVO;
 import vo.HotelVO;
+import vo.OrderVO;
 
 public class ClientEvaluateHotelController implements Initializable{
 	private Main main;
 	private ClientVO currentClient;
 	private HotelVO currentHotel;
+	private OrderVO currentorder;
+	RemoteHelper helper=RemoteHelper.getInstance();
 	
 	@FXML
 	private Label hotelnameLabel;
@@ -67,11 +70,15 @@ public class ClientEvaluateHotelController implements Initializable{
 		
 	}
 	
-	public void setMain(Main main,ClientVO clientvo,HotelVO hotelvo){
+	public void setMain(Main main,ClientVO clientvo,HotelVO hotelvo,OrderVO orderVO){
 		this.main = main;
 		currentClient = clientvo;
 		currentHotel = hotelvo;
+		currentorder=orderVO;
 		hotelnameLabel.setText(hotelvo.getname());
+		
+		//初始化评价
+		commentArea.setText(currentorder.getevaluation());
 		
 		//初始化滑动条
 		scoreSlider.setMin(0.0);
