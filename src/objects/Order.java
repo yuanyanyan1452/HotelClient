@@ -21,6 +21,7 @@ public class Order {
 	int price;
 	int expect_number_of_people;
 	boolean havechild;
+	String evaluation;
 	
 	public Order(){
 		id=0;
@@ -36,8 +37,9 @@ public class Order {
 		price=0;
 		expect_number_of_people=0;
 		havechild=false;
+		evaluation=null;
 	}
-	public Order(int i,int cid,int hid,String s,Date cancel,boolean e,Date st,Date et,Date lt,ArrayList<RoomOrder>list,int p,int en,boolean child){
+	public Order(int i,int cid,int hid,String s,Date cancel,boolean e,Date st,Date et,Date lt,ArrayList<RoomOrder>list,int p,int en,boolean child,String eva){
 		id=i;
 		clientid=cid;
 		hotelid=hid;
@@ -51,6 +53,7 @@ public class Order {
 		price=p;
 		expect_number_of_people=en;
 		havechild=child;
+		evaluation=eva;
 	}
 	
 	public void setid(int id){
@@ -142,6 +145,13 @@ public class Order {
 	}
 	public boolean gethave_child(){
 		return havechild;
+	}
+	
+	public void setevaluation(String evaluation){
+		this.evaluation=evaluation;
+	}
+	public String getevaluation(){
+		return evaluation;
 	}
 	
 }
