@@ -2,7 +2,6 @@ package ui.view.hotel;
 
 import java.net.URL;
 import java.rmi.RemoteException;
-import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.time.Instant;
 import java.time.LocalDate;
@@ -12,7 +11,10 @@ import java.util.ResourceBundle;
 
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
-import javafx.scene.control.*;
+import javafx.scene.control.Button;
+import javafx.scene.control.DateCell;
+import javafx.scene.control.DatePicker;
+import javafx.scene.control.Label;
 import javafx.util.Callback;
 import objects.ResultMessage;
 import rmi.RemoteHelper;
@@ -22,7 +24,6 @@ import ui.util.OrderUtil;
 import ui.util.RecordActionUtil;
 import ui.view.Main;
 import vo.AccommodationVO;
-import vo.OrderVO;
 
 public class HotelCheckInChoiceController implements Initializable {
 	private Main main;
@@ -107,7 +108,7 @@ public class HotelCheckInChoiceController implements Initializable {
 
 			// 更新checkin界面
 			checkInController.updateTable(currentOrder);
-
+			main.closeExtraStage();
 			AlertUtil.showInformationAlert("入住成功！");
 		} catch ( RemoteException e) {
 			e.printStackTrace();
@@ -164,7 +165,7 @@ public class HotelCheckInChoiceController implements Initializable {
 				AlertUtil.showErrorAlert("操作失败。。");
 				return;
 			}
-
+			main.closeExtraStage();
 			// 更新checkin界面
 			checkInController.updateTable(currentOrder);
 
@@ -189,7 +190,7 @@ public class HotelCheckInChoiceController implements Initializable {
 
 			// checkin界面删除这个订单
 			checkInController.removeTable(currentOrder);
-
+			main.closeExtraStage();
 			AlertUtil.showInformationAlert("退房成功！");
 		} catch (RemoteException e) {
 			e.printStackTrace();

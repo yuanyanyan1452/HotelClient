@@ -254,7 +254,7 @@ public class OrderModel {
 	
 	public void setOverTime(Date now){
 		try {
-			if (now.before(format.parse(startTime.get()))) {
+			if (now.before(format.parse(latestExecuteTime.get()))) {
 				this.overTime.set("未逾期");
 			}
 			else if (this.isExecute.get().equals(ISEXECUTE)) {
