@@ -42,7 +42,7 @@
                                         <ColumnConstraints halignment="CENTER" hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
                                         <ColumnConstraints halignment="CENTER" hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
                                           <ColumnConstraints halignment="CENTER" hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
-                                          <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+                                          <ColumnConstraints halignment="CENTER" hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
                                       </columnConstraints>
                                       <rowConstraints>
                                         <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
@@ -52,31 +52,36 @@
                                       </rowConstraints>
                                        <children>
                                           <Label text="名称：" />
-                                          <Label text="结束时间：" GridPane.rowIndex="1" />
+                                          <Label text="结束时间：" GridPane.columnIndex="2" GridPane.rowIndex="1" />
                                           <Label text="促销折扣：" GridPane.rowIndex="2" />
-                                          <Label text="起始时间：" GridPane.columnIndex="2" />
-                                          <Label text="使用条件：" GridPane.columnIndex="2" GridPane.rowIndex="1" />
+                                          <Label text="起始时间：" GridPane.rowIndex="1" />
+                                          <Label text="策略类型：" GridPane.columnIndex="2" />
                                           <Button alignment="CENTER" contentDisplay="CENTER" mnemonicParsing="false" onAction="#addStrategy" prefHeight="36.0" prefWidth="122.0" text="确认" GridPane.columnIndex="2" GridPane.rowIndex="3">
                                              <GridPane.margin>
                                                 <Insets left="-170.0" />
                                              </GridPane.margin>
                                           </Button>
                                           <TextField fx:id="addNameField" GridPane.columnIndex="1" />
-                                          <TextField fx:id="addEndTimeField" GridPane.columnIndex="1" GridPane.rowIndex="1" />
-                                          <TextField fx:id="addDiscountField" GridPane.columnIndex="1" GridPane.rowIndex="2" />
-                                          <TextField fx:id="addStartTimeField" GridPane.columnIndex="3" />
-                                          <TextField fx:id="addConditionField" GridPane.columnIndex="3" GridPane.rowIndex="1" />
                                           <Label text="是否可叠加使用：" GridPane.columnIndex="2" GridPane.rowIndex="2" />
                                           <RadioButton fx:id="addNoButton" mnemonicParsing="false" text="否" GridPane.columnIndex="3" GridPane.rowIndex="2">
                                              <GridPane.margin>
-                                                <Insets left="110.0" />
+                                                <Insets left="60.0" />
                                              </GridPane.margin>
                                           </RadioButton>
                                           <RadioButton fx:id="addYesButton" mnemonicParsing="false" text="是" GridPane.columnIndex="3" GridPane.rowIndex="2">
                                              <GridPane.margin>
-                                                <Insets left="40.0" />
+                                                <Insets left="-60.0" />
                                              </GridPane.margin>
                                           </RadioButton>
+                                          <DatePicker fx:id="addStartTimeDatePicker" GridPane.columnIndex="1" GridPane.rowIndex="1" />
+                                          <DatePicker fx:id="addEndTimeDatePicker" GridPane.columnIndex="3" GridPane.rowIndex="1" />
+                                          <ComboBox fx:id="addConditionComboBox" prefHeight="23.0" prefWidth="183.0" GridPane.columnIndex="3" />
+                                          <ComboBox fx:id="addDiscountComboBox" prefHeight="23.0" prefWidth="85.0" GridPane.columnIndex="1" GridPane.rowIndex="2" />
+                                          <Label text="折" GridPane.columnIndex="1" GridPane.rowIndex="2">
+                                             <GridPane.margin>
+                                                <Insets left="110.0" />
+                                             </GridPane.margin>
+                                          </Label>
                                        </children>
                                     </GridPane>
                                  </children>
@@ -90,20 +95,16 @@
                                     <GridPane prefHeight="181.0" prefWidth="680.0">
                                        <children>
                                           <Label text="名称：" />
-                                          <Label text="结束时间：" GridPane.rowIndex="1" />
+                                          <Label text="结束时间：" GridPane.columnIndex="2" GridPane.rowIndex="1" />
                                           <Label text="促销折扣：" GridPane.rowIndex="2" />
-                                          <Label text="起始时间：" GridPane.columnIndex="2" />
-                                          <Label text="使用条件：" GridPane.columnIndex="2" GridPane.rowIndex="1" />
+                                          <Label text="起始时间：" GridPane.rowIndex="1" />
+                                          <Label text="策略类型：" GridPane.columnIndex="2" />
                                           <Button alignment="CENTER" contentDisplay="CENTER" mnemonicParsing="false" onAction="#updateStrategy" prefHeight="36.0" prefWidth="122.0" text="确认" GridPane.columnIndex="2" GridPane.rowIndex="3">
                                              <GridPane.margin>
                                                 <Insets left="-170.0" />
                                              </GridPane.margin>
                                           </Button>
                                           <TextField fx:id="updateNameField" GridPane.columnIndex="1" />
-                                          <TextField fx:id="updateEndTimeField" GridPane.columnIndex="1" GridPane.rowIndex="1" />
-                                          <TextField fx:id="updateDiscountField" GridPane.columnIndex="1" GridPane.rowIndex="2" />
-                                          <TextField fx:id="updateStartTimeField" GridPane.columnIndex="3" />
-                                          <TextField fx:id="updateConditionField" GridPane.columnIndex="3" GridPane.rowIndex="1" />
                                           <Button alignment="CENTER" contentDisplay="CENTER" mnemonicParsing="false" onAction="#updateSearchStrategy" prefHeight="18.0" prefWidth="14.0">
                                              <graphic>
                                                 <ImageView fitHeight="19.0" fitWidth="19.0">
@@ -119,20 +120,29 @@
                                           <Label text="是否可叠加使用：" GridPane.columnIndex="2" GridPane.rowIndex="2" />
                                           <RadioButton fx:id="updateYesButton" mnemonicParsing="false" text="是" GridPane.columnIndex="3" GridPane.rowIndex="2">
                                              <GridPane.margin>
-                                                <Insets left="40.0" />
+                                                <Insets left="-60.0" />
                                              </GridPane.margin>
                                           </RadioButton>
                                           <RadioButton fx:id="updateNoButton" mnemonicParsing="false" text="否" GridPane.columnIndex="3" GridPane.rowIndex="2">
                                              <GridPane.margin>
-                                                <Insets left="110.0" />
+                                                <Insets left="60.0" />
                                              </GridPane.margin>
                                           </RadioButton>
+                                          <ComboBox fx:id="updateDiscountComboBox" prefHeight="23.0" prefWidth="85.0" GridPane.columnIndex="1" GridPane.rowIndex="2" />
+                                          <ComboBox fx:id="updateConditionComboBox" prefHeight="23.0" prefWidth="180.0" GridPane.columnIndex="3" />
+                                          <DatePicker fx:id="updateEndTimeDatePicker" GridPane.columnIndex="1" GridPane.rowIndex="1" />
+                                          <DatePicker fx:id="updateStartTimeDatePicker" GridPane.columnIndex="3" GridPane.rowIndex="1" />
+                                          <Label text="折" GridPane.columnIndex="1" GridPane.rowIndex="2">
+                                             <GridPane.margin>
+                                                <Insets left="110.0" />
+                                             </GridPane.margin>
+                                          </Label>
                                        </children>
                                        <columnConstraints>
                                           <ColumnConstraints halignment="CENTER" hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
                                           <ColumnConstraints halignment="CENTER" hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
                                           <ColumnConstraints halignment="CENTER" hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
-                                          <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+                                          <ColumnConstraints halignment="CENTER" hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
                                        </columnConstraints>
                                        <rowConstraints>
                                           <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
@@ -152,10 +162,10 @@
                                     <GridPane prefHeight="181.0" prefWidth="680.0">
                                        <children>
                                           <Label text="名称：" />
-                                          <Label text="结束时间：" GridPane.rowIndex="1" />
+                                          <Label text="结束时间：" GridPane.columnIndex="2" GridPane.rowIndex="1" />
                                           <Label text="促销折扣：" GridPane.rowIndex="2" />
-                                          <Label text="起始时间：" GridPane.columnIndex="2" />
-                                          <Label text="使用条件：" GridPane.columnIndex="2" GridPane.rowIndex="1" />
+                                          <Label text="起始时间：" GridPane.rowIndex="1" />
+                                          <Label text="策略类型：" GridPane.columnIndex="2" />
                                           <Button alignment="CENTER" contentDisplay="CENTER" mnemonicParsing="false" onAction="#deleteStrategy" prefHeight="36.0" prefWidth="122.0" text="确认" GridPane.columnIndex="2" GridPane.rowIndex="3">
                                              <GridPane.margin>
                                                 <Insets left="-170.0" />
@@ -174,10 +184,10 @@
                                                 <Insets left="120.0" />
                                              </GridPane.margin>
                                           </Button>
-                                          <Label fx:id="deleteConditionLabel" alignment="CENTER" contentDisplay="CENTER" prefHeight="29.0" prefWidth="154.0" GridPane.columnIndex="3" GridPane.halignment="CENTER" GridPane.rowIndex="1" GridPane.valignment="CENTER" />
-                                          <Label fx:id="deleteEndTimeLabel" alignment="CENTER" contentDisplay="CENTER" prefHeight="35.0" prefWidth="150.0" GridPane.columnIndex="1" GridPane.halignment="CENTER" GridPane.rowIndex="1" GridPane.valignment="CENTER" />
+                                          <Label fx:id="deleteConditionLabel" alignment="CENTER" contentDisplay="CENTER" prefHeight="29.0" prefWidth="154.0" GridPane.columnIndex="3" GridPane.halignment="CENTER" GridPane.valignment="CENTER" />
+                                          <Label fx:id="deleteEndTimeLabel" alignment="CENTER" contentDisplay="CENTER" prefHeight="35.0" prefWidth="150.0" GridPane.columnIndex="3" GridPane.halignment="CENTER" GridPane.rowIndex="1" GridPane.valignment="CENTER" />
                                           <Label fx:id="deleteDiscountLabel" alignment="CENTER" contentDisplay="CENTER" prefHeight="25.0" prefWidth="109.0" GridPane.columnIndex="1" GridPane.halignment="CENTER" GridPane.rowIndex="2" GridPane.valignment="CENTER" />
-                                          <Label fx:id="deleteStartTimeLabel" alignment="CENTER" contentDisplay="CENTER" prefHeight="24.0" prefWidth="106.0" GridPane.columnIndex="3" GridPane.halignment="CENTER" GridPane.valignment="CENTER" />
+                                          <Label fx:id="deleteStartTimeLabel" alignment="CENTER" contentDisplay="CENTER" prefHeight="33.0" prefWidth="144.0" GridPane.columnIndex="1" GridPane.halignment="CENTER" GridPane.rowIndex="1" GridPane.valignment="CENTER" />
                                           <Label text="是否可叠加使用：" GridPane.columnIndex="2" GridPane.rowIndex="2" />
                                           <Label fx:id="deleteSuperpositionLabel" alignment="CENTER" contentDisplay="CENTER" prefHeight="28.0" prefWidth="114.0" GridPane.columnIndex="3" GridPane.halignment="CENTER" GridPane.rowIndex="2" GridPane.valignment="CENTER" />
                                        </children>

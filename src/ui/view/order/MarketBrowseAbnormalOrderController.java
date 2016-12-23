@@ -28,7 +28,6 @@ import ui.model.ClientModel;
 import ui.model.HotelModel;
 import ui.model.OrderModel;
 import ui.util.AlertUtil;
-import ui.util.ComboBoxUtil;
 import ui.util.RecordActionUtil;
 import ui.view.Main;
 import vo.ClientVO;
@@ -116,7 +115,6 @@ public class MarketBrowseAbnormalOrderController implements Initializable {
 
 		ObservableList<String> choiceList = choiceComboBox.getItems();
 		choiceList.addAll("全部信用值", "一半信用值");
-		ComboBoxUtil.initialize(choiceComboBox);
 
 		// vo转成可以在tableview中显示的model
 		ObservableList<OrderModel> orderList = orderTable.getItems();
@@ -127,6 +125,8 @@ public class MarketBrowseAbnormalOrderController implements Initializable {
 					OrderModel model = new OrderModel();
 					model.setOrderid(vo.getid());
 					model.setClientid(vo.getclientid());
+					model.setStartTime(vo.getstart_time());
+					model.setEndTime(vo.getend_time());
 					model.setLatestExecuteTime(vo.getlatest_execute_time());
 					model.setIsExecute(false);
 					model.setOverTime(new Date());

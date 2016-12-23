@@ -25,7 +25,6 @@
             <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
             <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
             <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
-            <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
         </rowConstraints>
          <children>
             <Label text="酒店名：" />
@@ -38,7 +37,6 @@
             <Label text="入住人数：" GridPane.rowIndex="6" />
             <Label text="有无儿童：" GridPane.rowIndex="7" />
             <Label text="总价值：" GridPane.rowIndex="8" />
-            <Label text="使用的促销策略：" GridPane.rowIndex="9" />
             <AnchorPane GridPane.columnIndex="1" GridPane.rowIndex="1">
                <children>
                   <DatePicker fx:id="startDatePicker" layoutX="45.0" layoutY="11.0" onAction="#updateendtime" />
@@ -63,7 +61,6 @@
                   <Insets left="80.0" />
                </GridPane.margin>
             </RadioButton>
-            <Label fx:id="strategyLabel" alignment="CENTER" prefHeight="30.0" prefWidth="271.0" GridPane.columnIndex="1" GridPane.rowIndex="9" />
             <GridPane GridPane.columnIndex="1" GridPane.rowIndex="4">
               <columnConstraints>
                 <ColumnConstraints halignment="CENTER" hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
