@@ -29,6 +29,8 @@ import objects.RoomType;
 import rmi.RemoteHelper;
 import ui.model.HotelModel;
 import ui.util.AlertUtil;
+import ui.util.LocationUtil;
+import ui.util.RoomTypeUtil;
 import ui.view.Main;
 import vo.ClientVO;
 import vo.HotelVO;
@@ -190,30 +192,20 @@ public class ClientSearchHotelController implements Initializable {
 		currentClient = clientVO;
 		// 初始化组合框
 		ObservableList<String> cities = FXCollections.observableArrayList();
-		cities.addAll("南京", "上海", "北京");
-		ArrayList<ArrayList<String>> businessaddresses = new ArrayList<>();
-		ArrayList<String> nanjings = new ArrayList<>();
-		nanjings.add("新街口");
-		nanjings.add("仙林中心");
-		businessaddresses.add(nanjings);
+		cities.addAll(LocationUtil.getCities());
 		locationButton.setItems(cities);
 		locationButton.setOnAction(new EventHandler<ActionEvent>() {
 
 			@Override
 			public void handle(ActionEvent event) {
 				if (locationButton.getValue() != null) {
-					for (int i = 0; i < cities.size(); i++) {
-						if (cities.get(i).equals(locationButton.getValue())) {
-							ObservableList<String> bas = FXCollections.observableArrayList(businessaddresses.get(i));
-							businessAddressButton.setItems(bas);
-							break;
-						}
-					}
+					businessAddressButton.getItems().setAll(LocationUtil.getBusinessAddress(locationButton.getValue()));
 				}
 			}
 		});
 
-		roomtypeButton.getItems().addAll("不限", "标准间", "大床房", "双人房","商务房","豪华房","海景房");
+		roomtypeButton.getItems().add("不限");
+		roomtypeButton.getItems().addAll(RoomTypeUtil.getAllRoomType());
 		roomtypeButton.setValue("不限");
 
 		starButton.getItems().addAll("不限", "一星级", "二星级", "三星级", "四星级", "五星级");

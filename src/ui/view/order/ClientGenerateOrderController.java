@@ -81,8 +81,6 @@ public class ClientGenerateOrderController implements Initializable {
 	@FXML
 	private RadioButton hasNoChildButton;
 	
-	@FXML
-	private Label strategyLabel;
 	
 	@FXML 
 	private CheckBox shangwufang;
