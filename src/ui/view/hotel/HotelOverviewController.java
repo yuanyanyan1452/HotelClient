@@ -44,6 +44,12 @@ public class HotelOverviewController implements Initializable {
 	
 	@FXML
 	private void exit(){
+		currenthotelworkervo.setlogged(false);
+		try {
+			helper.getManageBLService().manage_updateHotelWorker(currenthotelworkervo);
+		} catch (RemoteException e) {
+			e.printStackTrace();
+		}
 		main.exitSystem();
 	}
 	
@@ -57,18 +63,10 @@ public class HotelOverviewController implements Initializable {
 		main.gotoHotelBrowseOrder(currenthotelvo.getid());
 	}
 
-
 	@FXML
 	public void gotoHotelCheckIn() {
 		main.gotoHotelCheckIn(currenthotelvo);
 	}
-
-
-//	@FXML
-//	public void gotoHotelExecuteOrder() {
-//		main.gotoHotelExecuteOrder();
-//	}
-
 
 	@FXML
 	public void gotoHotelRoomManage() {
@@ -98,9 +96,4 @@ public class HotelOverviewController implements Initializable {
 		contactlabel.setText(hotelworkervo.getcontact());
 		
 	}
-	
-//	public void update() throws RemoteException{
-//		currenthotelvo=helper.getHotelBLService().hotel_checkInfo(currenthotelvo.getid());
-//	}
-
 }

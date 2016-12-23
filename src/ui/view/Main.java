@@ -717,7 +717,7 @@ public class Main extends Application {
 		if (extraStage2!=null&&extraStage2.isShowing()) {
 			extraStage2.hide();
 		}
-		else if (extraStage!=null&&extraStage.isShowing()) {
+		if (extraStage!=null&&extraStage.isShowing()) {
 			extraStage.hide();
 		}
 	}

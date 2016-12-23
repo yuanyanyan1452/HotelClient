@@ -22,6 +22,7 @@ public class ClientOverviewController implements Initializable {
 	private Main main;
 	private ClientVO currentclientvo;
 
+	RemoteHelper helper=RemoteHelper.getInstance();
 	//用于头像切换
 	private static int count = 1;
 	
@@ -79,6 +80,12 @@ public class ClientOverviewController implements Initializable {
 
 	@FXML
 	private void exit() {
+		currentclientvo.setlogged(false);
+		try {
+			helper.getClientBLService().client_updateInfo(currentclientvo);
+		} catch (RemoteException e) {
+			e.printStackTrace();
+		}
 		main.exitSystem();
 	}
 

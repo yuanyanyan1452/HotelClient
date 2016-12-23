@@ -77,6 +77,7 @@ public class UnfilledOrderDetailInfoByClientController implements Initializable 
 		currentordervo.setstate("撤销");
 		ResultMessage result=helper.getOrderBLService().order_client_cancel(currentordervo.getid());
 		if(result==ResultMessage.Success){
+			main.closeExtraStage();
 			AlertUtil.showInformationAlert("撤销订单成功");
 			this.update();
 			Date date=new Date();

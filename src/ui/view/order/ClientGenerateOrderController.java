@@ -13,6 +13,7 @@ import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
+import javafx.scene.control.Button;
 import javafx.scene.control.CheckBox;
 import javafx.scene.control.ComboBox;
 import javafx.scene.control.DateCell;
@@ -42,9 +43,19 @@ public class ClientGenerateOrderController implements Initializable {
 	int haijingfangprice;
 	int shangwufangprice;
 	int biaozhunjianprice;
+	int dachuangfangprice1;
+	int shuangrenfangprice1;
+	int haohuafangprice1;
+	int haijingfangprice1;
+	int shangwufangprice1;
+	int biaozhunjianprice1;
 	int price;
-	
+	long daynmber;
 	RemoteHelper helper=RemoteHelper.getInstance();
+	
+	@FXML
+	private Button generatebuttom;
+	
 	@FXML
 	private Label hotelnameLabel;
 	
@@ -179,7 +190,8 @@ public class ClientGenerateOrderController implements Initializable {
 		ResultMessage result=helper.getOrderBLService().order_client_generate(order);
 		if(result==ResultMessage.Success){
 			AlertUtil.showInformationAlert("生成订单成功！");
-			main.gotoClientBrowseOrder(currentClient.getclientid());;
+			main.closeExtraStage();
+			main.gotoClientBrowseOrder(currentClient.getclientid());
 		}
 		else{
 			AlertUtil.showErrorAlert("对不起生成订单失败");
@@ -210,6 +222,15 @@ public class ClientGenerateOrderController implements Initializable {
             };
             endDatePicker.setDayCellFactory(dayCellFactory1);
 	}
+	
+	@FXML
+	public void updatedaytime(){
+		daynmber=endDatePicker.getValue().toEpochDay()-startDatePicker.getValue().toEpochDay();
+		price=biaozhunjianprice1+haijingfangprice1+haohuafangprice1+dachuangfangprice1+shangwufangprice1+shuangrenfangprice1;
+		price*=daynmber;
+		priceLabel.setText(String.valueOf(price));
+	}
+	
 	public ClientGenerateOrderController() {
 		
 	}
@@ -314,17 +335,72 @@ public class ClientGenerateOrderController implements Initializable {
 			}
 			
 		});
-//		biaozhunjiannumber.setOnAction(new EventHandler<ActionEvent>() {
-//
-//			@Override
-//			public void handle(ActionEvent event) {
-//				int num = biaozhunjiannumber.getValue();
-//				//TODO int price = 
-////				priceLabel.setText(value);
-//				price+=biaozhunjianprice*biaozhunjiannumber.getValue();
-//			}
-//		});
 		
+		biaozhunjiannumber.setOnAction(new EventHandler<ActionEvent>() {
+
+			@Override
+			public void handle(ActionEvent event) {
+				biaozhunjianprice1=biaozhunjianprice*biaozhunjiannumber.getValue();
+				price=biaozhunjianprice1+haijingfangprice1+haohuafangprice1+dachuangfangprice1+shangwufangprice1+shuangrenfangprice1;
+				price*=daynmber;
+				priceLabel.setText(String.valueOf(price));
+			}
+		});
+		
+		haohuafangnumber.setOnAction(new EventHandler<ActionEvent>() {
+
+			@Override
+			public void handle(ActionEvent event) {
+				haohuafangprice1=haohuafangprice*haohuafangnumber.getValue();
+				price=biaozhunjianprice1+haijingfangprice1+haohuafangprice1+dachuangfangprice1+shangwufangprice1+shuangrenfangprice1;				
+				price*=daynmber;
+				priceLabel.setText(String.valueOf(price));
+			}
+		});
+		
+		haijingfangnumber.setOnAction(new EventHandler<ActionEvent>() {
+
+			@Override
+			public void handle(ActionEvent event) {
+				haijingfangprice1=haijingfangprice*haijingfangnumber.getValue();
+				price=biaozhunjianprice1+haijingfangprice1+haohuafangprice1+dachuangfangprice1+shangwufangprice1+shuangrenfangprice1;
+				price*=daynmber;
+				priceLabel.setText(String.valueOf(price));
+			}
+		});
+		
+		dachuangfangnumber.setOnAction(new EventHandler<ActionEvent>() {
+
+			@Override
+			public void handle(ActionEvent event) {
+				dachuangfangprice1=dachuangfangprice*dachuangfangnumber.getValue();
+				price=biaozhunjianprice1+haijingfangprice1+haohuafangprice1+dachuangfangprice1+shangwufangprice1+shuangrenfangprice1;
+				price*=daynmber;
+				priceLabel.setText(String.valueOf(price));
+			}
+		});
+		
+		shuangrenfangnumber.setOnAction(new EventHandler<ActionEvent>() {
+
+			@Override
+			public void handle(ActionEvent event) {
+				shuangrenfangprice1=shuangrenfangprice*shuangrenfangnumber.getValue();
+				price=biaozhunjianprice1+haijingfangprice1+haohuafangprice1+dachuangfangprice1+shangwufangprice1+shuangrenfangprice1;
+				price*=daynmber;
+				priceLabel.setText(String.valueOf(price));
+			}
+		});
+		
+		shangwufangnumber.setOnAction(new EventHandler<ActionEvent>() {
+
+			@Override
+			public void handle(ActionEvent event) {
+				shangwufangprice1=shangwufangprice*shangwufangnumber.getValue();
+				price=biaozhunjianprice1+haijingfangprice1+haohuafangprice1+dachuangfangprice1+shangwufangprice1+shuangrenfangprice1;
+				price*=daynmber;
+				priceLabel.setText(String.valueOf(price));
+			}
+		});
 		
 		//初始化combobox中的选项
 		latestHourComboBox.getItems().addAll("12:00","13:00","14:00","15:00","16:00","17:00","18:00","19:00","20:00","21:00","22:00");
@@ -338,42 +414,42 @@ public class ClientGenerateOrderController implements Initializable {
 				shangwufang.setVisible(true);
 				shangwufangprice=roomlist.get(i).getprice();
 				for(int j=0;j<roomlist.get(i).getavailable_num();j++){
-					shangwufangnumber.getItems().add(j);
+					shangwufangnumber.getItems().add(j+1);
 				}
 			}
 			if(roomlist.get(i).getroom_type().equals("大床房")){
 				dachuangfang.setVisible(true);
 				dachuangfangprice=roomlist.get(i).getprice();
 				for(int j=0;j<roomlist.get(i).getavailable_num();j++){
-					dachuangfangnumber.getItems().add(j);
+					dachuangfangnumber.getItems().add(j+1);
 				}
 			}
 			if(roomlist.get(i).getroom_type().equals("双人房")){
 				shuangrenfang.setVisible(true);
 				shuangrenfangprice=roomlist.get(i).getprice();
 				for(int j=0;j<roomlist.get(i).getavailable_num();j++){
-					shuangrenfangnumber.getItems().add(j);
+					shuangrenfangnumber.getItems().add(j+1);
 				}
 			}
 			if(roomlist.get(i).getroom_type().equals("海景房")){
 				haijingfang.setVisible(true);
 				haijingfangprice=roomlist.get(i).getprice();
 				for(int j=0;j<roomlist.get(i).getavailable_num();j++){
-					haijingfangnumber.getItems().add(j);
+					haijingfangnumber.getItems().add(j+1);
 				}
 			}
 			if(roomlist.get(i).getroom_type().equals("豪华房")){
 				haohuafang.setVisible(true);
 				haohuafangprice=roomlist.get(i).getprice();
 				for(int j=0;j<roomlist.get(i).getavailable_num();j++){
-					haohuafangnumber.getItems().add(j);
+					haohuafangnumber.getItems().add(j+1);
 				}
 			}
 			if(roomlist.get(i).getroom_type().equals("标准间")){
 				biaozhunjian.setVisible(true);
 				biaozhunjianprice=roomlist.get(i).getprice();
 				for(int j=0;j<roomlist.get(i).getavailable_num();j++){
-					biaozhunjiannumber.getItems().add(j);
+					biaozhunjiannumber.getItems().add(j+1);
 				}
 			}
 		}
@@ -412,7 +488,7 @@ public class ClientGenerateOrderController implements Initializable {
 	        startDatePicker.setDayCellFactory(dayCellFactory);
 	        endDatePicker.setDayCellFactory(dayCellFactory);
 
-		
+		//generatebuttom.setVisible(false);
 	          
 	    
 	}

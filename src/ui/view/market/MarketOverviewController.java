@@ -1,19 +1,21 @@
 package ui.view.market;
 
 import java.net.URL;
+import java.rmi.RemoteException;
 import java.util.ResourceBundle;
 
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
+import rmi.RemoteHelper;
 import ui.view.Main;
 import vo.WebMarketVO;
 
 public class MarketOverviewController implements Initializable {
 	private Main main;
 	private WebMarketVO currentwebmarketvo;
-	
+	RemoteHelper helper=RemoteHelper.getInstance();
 	@FXML
 	private Label nameLabel;
 	
@@ -25,6 +27,12 @@ public class MarketOverviewController implements Initializable {
 	
 	@FXML
 	private void exit(){
+		currentwebmarketvo.setlogged(false);
+		try {
+			helper.getManageBLService().manage_updateMarketWorker(currentwebmarketvo);
+		} catch (RemoteException e) {
+			e.printStackTrace();
+		}
 		main.exitSystem();
 	}
 	@FXML

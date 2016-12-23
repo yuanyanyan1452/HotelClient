@@ -51,7 +51,7 @@
                   <Label fx:id="priceLabel" alignment="CENTER" layoutX="108.0" layoutY="8.0" prefHeight="29.0" prefWidth="60.0" />
                </children>
             </AnchorPane>
-            <DatePicker fx:id="endDatePicker" GridPane.columnIndex="1" GridPane.rowIndex="2" />
+            <DatePicker fx:id="endDatePicker" onAction="#updatedaytime" GridPane.columnIndex="1" GridPane.rowIndex="2" />
             <ComboBox fx:id="peopleNumComboBox" prefHeight="23.0" prefWidth="110.0" GridPane.columnIndex="1" GridPane.rowIndex="6" />
             <RadioButton fx:id="hasChildButton" mnemonicParsing="false" text="有" GridPane.columnIndex="1" GridPane.rowIndex="7">
                <GridPane.margin>
@@ -112,7 +112,7 @@
             <Font size="22.0" />
          </font>
       </Label>
-      <Button layoutX="393.0" layoutY="502.0" mnemonicParsing="false" onAction="#generate" prefHeight="40.0" prefWidth="100.0" text="确认" />
+      <Button fx:id="generatebuttom" layoutX="393.0" layoutY="502.0" mnemonicParsing="false" onAction="#generate" prefHeight="40.0" prefWidth="100.0" text="确认" />
       <Button layoutX="109.0" layoutY="502.0" mnemonicParsing="false" onAction="#close" prefHeight="40.0" prefWidth="100.0" text="取消" />
    </children>
 </AnchorPane>
