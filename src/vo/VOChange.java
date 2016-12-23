@@ -80,6 +80,7 @@ public class VOChange implements Serializable{
 		order.setprice(ordervo.getprice());
 		order.setexpect_number_of_people(ordervo.getexpect_number_of_people());
 		order.sethave_child(ordervo.gethave_child());
+		order.setevaluation(ordervo.getevaluation());
 
 		return order;
 	}

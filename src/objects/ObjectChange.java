@@ -120,6 +120,7 @@ public class ObjectChange {
 		vo.setprice(order.price);
 		vo.setexpect_number_of_people(order.expect_number_of_people);
 		vo.sethave_child(order.havechild);
+		vo.setevaluation(order.evaluation);
 		return vo;
 	}
 	
