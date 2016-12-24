@@ -1,0 +1,68 @@
+.label{
+	-fx-background-color: rgb(194,218,105);
+	-fx-text-fill: white;
+}
+.button{
+	-fx-text-fill: rgb(128,179,128);
+	-fx-background-color: rgb(226,238,196);
+}
+
+
+#exitButton.button{
+	-fx-background-color:  rgb(194,218,105) ;
+	-fx-border-color: white;
+	-fx-border-width: 2.0;
+	-fx-text-fill: white;
+}
+#exitButton.button:hover{
+	-fx-alignment: center;
+	-fx-background-color: white;
+	-fx-text-fill: rgb(194,218,105);
+	-fx-border-color: rgb(194,218,105);
+}
+
+#clientButton.button{
+	-fx-background-image: url(../../../../resources/loginoverview_client.png);
+    -fx-background-position: center center;
+    -fx-background-size: 200.0,150.0;
+    -fx-background-repeat:no-repeat ;
+}
+#clientButton.button:hover{
+	 -fx-background-size: 240.0,190.0;
+}
+#hotelButton.button{
+	-fx-background-image: url(../../../../resources/loginoverview_hotel.png);
+	-fx-background-position: center center;
+    -fx-background-size: 170,120.0;
+    -fx-background-repeat:no-repeat ;
+}
+#hotelButton.button:hover{
+	 -fx-background-size: 200.0,150.0;
+}
+#marketButton.button{
+	-fx-background-image: url(../../../../resources/loginoverview_market.png);
+	-fx-background-position: center center;
+    -fx-background-size: 170,120.0;
+    -fx-background-repeat:no-repeat ;
+}
+#marketButton.button:hover{
+	 -fx-background-size: 200.0,150.0;
+}
+#marketButton.button{
+	-fx-background-image: url(../../../../resources/loginoverview_market.png);
+	-fx-background-position: center center;
+    -fx-background-size: 170,120.0;
+    -fx-background-repeat:no-repeat ;
+}
+#marketButton.button:hover{
+	 -fx-background-size: 200.0,150.0;
+}
+#managerButton.button{
+	-fx-background-image: url(../../../../resources/loginoverview_manager.png);
+	-fx-background-position: center center;
+    -fx-background-size: 150,100.0;
+    -fx-background-repeat:no-repeat ;
+}
+#managerButton.button:hover{
+	 -fx-background-size: 180.0,130.0;
+}

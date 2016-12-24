@@ -9,6 +9,7 @@ import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
+import javafx.scene.control.ComboBox;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.scene.control.TextField;
@@ -16,6 +17,7 @@ import objects.ResultMessage;
 import rmi.RemoteHelper;
 import ui.model.RoomModel;
 import ui.util.AlertUtil;
+import ui.util.RoomTypeUtil;
 import ui.view.Main;
 import vo.HotelVO;
 import vo.RoomVO;
@@ -37,7 +39,7 @@ public class HotelRoomManageController implements Initializable {
 	private TableColumn<RoomModel, String> roompricecolumn;
 
 	@FXML
-	private TextField addTypeTextField;
+	private ComboBox<String> addTypeTextField;
 
 	@FXML
 	private TextField addNumTextField;
@@ -46,7 +48,7 @@ public class HotelRoomManageController implements Initializable {
 	private TextField addPriceTextField;
 
 	@FXML
-	private TextField updateTypeTextField;
+	private ComboBox<String> updateTypeTextField;
 
 	@FXML
 	private TextField updateNumTextField;
@@ -56,7 +58,7 @@ public class HotelRoomManageController implements Initializable {
 
 	@FXML
 	private void addRoom() {
-		if (addTypeTextField.getText().isEmpty()) {
+		if (addTypeTextField.getValue().isEmpty()) {
 			AlertUtil.showWarningAlert("未输入房间类型！");
 		} else if (addNumTextField.getText().isEmpty()) {
 			AlertUtil.showWarningAlert("未输入房间数量！");
@@ -64,7 +66,7 @@ public class HotelRoomManageController implements Initializable {
 			AlertUtil.showWarningAlert("未输入房间价格！");
 		} else {
 			RemoteHelper helper = RemoteHelper.getInstance();
-			String type = addTypeTextField.getText();
+			String type = addTypeTextField.getValue();
 			int num = Integer.parseInt(addNumTextField.getText());
 			int price = Integer.parseInt(addPriceTextField.getText());
 			RoomVO vo = new RoomVO();
@@ -88,7 +90,7 @@ public class HotelRoomManageController implements Initializable {
 
 	@FXML
 	private void updateRoom() {
-		if (updateTypeTextField.getText().isEmpty()) {
+		if (updateTypeTextField.getValue().isEmpty()) {
 			AlertUtil.showWarningAlert("未输入房间类型！");
 		} else if (updateNumTextField.getText().isEmpty()) {
 			AlertUtil.showWarningAlert("未输入房间数量！");
@@ -97,7 +99,7 @@ public class HotelRoomManageController implements Initializable {
 		} else {
 			try {
 				boolean hasFind = false;
-				String type = updateTypeTextField.getText();
+				String type = updateTypeTextField.getValue();
 				int num = Integer.parseInt(updateNumTextField.getText());
 				int price = Integer.parseInt(updatePriceTextField.getText());
 				RemoteHelper helper = RemoteHelper.getInstance();
@@ -136,6 +138,8 @@ public class HotelRoomManageController implements Initializable {
 		this.main = main;
 		currentHotel = hotelVO;
 
+		addTypeTextField.getItems().addAll(RoomTypeUtil.getAllRoomType());
+		updateTypeTextField.setItems(addTypeTextField.getItems());
 		// 将当前酒店的所有可用房间录入到表格内
 		RemoteHelper helper = RemoteHelper.getInstance();
 		ObservableList<RoomModel> roomModels = FXCollections.observableArrayList();

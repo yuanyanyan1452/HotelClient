@@ -9,13 +9,13 @@
 
 <AnchorPane prefHeight="600.0" prefWidth="700.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="ui.view.hotel.HotelStrategyController">
    <children>
-      <SplitPane dividerPositions="0.6438127090301003" layoutY="-1.0" orientation="VERTICAL" prefHeight="600.0" prefWidth="700.0">
+      <SplitPane dividerPositions="0.6438127090301003" layoutY="-1.0" orientation="VERTICAL" prefHeight="600.0" prefWidth="700.0" stylesheets="@../css/HotelCheckIn.css">
          <items>
             <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="100.0" prefWidth="700.0">
                <children>
-                  <TitledPane alignment="CENTER" animated="false" collapsible="false" prefHeight="382.0" prefWidth="700.0" text="促销策略列表">
+                  <TitledPane alignment="CENTER" animated="false" collapsible="false" prefHeight="382.0" prefWidth="700.0" stylesheets="@../css/titlepane.css" text="促销策略列表">
                      <content>
-                        <TableView fx:id="strategyTable" prefHeight="200.0" prefWidth="698.0">
+                        <TableView fx:id="strategyTable" prefHeight="331.0" prefWidth="679.0" stylesheets="@../css/tableview.css">
                            <columns>
                               <TableColumn fx:id="nameColumn" prefWidth="118.0" text="名称" />
                               <TableColumn fx:id="conditionColumn" prefWidth="171.0" text="策略类型" />
@@ -31,38 +31,38 @@
             </AnchorPane>
             <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="100.0" prefWidth="160.0">
                <children>
-                  <TabPane prefHeight="210.0" prefWidth="700.0" tabClosingPolicy="UNAVAILABLE">
+                  <TabPane prefHeight="210.0" prefWidth="700.0" stylesheets="@../css/tabpane.css" tabClosingPolicy="UNAVAILABLE">
                      <tabs>
                         <Tab text="添加促销策略">
                            <content>
-                              <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
+                              <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0" style="-fx-background-color: rgb(226,238,196);">
                                  <children>
                                     <GridPane prefHeight="181.0" prefWidth="680.0">
                                        <children>
-                                          <Label text="名称：" />
-                                          <Label text="结束时间：" GridPane.columnIndex="2" GridPane.rowIndex="1" />
-                                          <Label text="促销折扣：" GridPane.rowIndex="2" />
-                                          <Label text="起始时间：" GridPane.rowIndex="1" />
-                                          <Label text="策略类型：" GridPane.columnIndex="2" />
-                                          <Button alignment="CENTER" contentDisplay="CENTER" mnemonicParsing="false" onAction="#addStrategy" prefHeight="36.0" prefWidth="122.0" text="确认" GridPane.columnIndex="2" GridPane.rowIndex="3">
+                                          <Label stylesheets="@../css/label.css" text="名称：" />
+                                          <Label stylesheets="@../css/label.css" text="结束时间：" GridPane.columnIndex="2" GridPane.rowIndex="1" />
+                                          <Label stylesheets="@../css/label.css" text="促销折扣：" GridPane.rowIndex="2" />
+                                          <Label stylesheets="@../css/label.css" text="起始时间：" GridPane.rowIndex="1" />
+                                          <Label stylesheets="@../css/label.css" text="策略类型：" GridPane.columnIndex="2" />
+                                          <Button alignment="CENTER" contentDisplay="CENTER" mnemonicParsing="false" onAction="#addStrategy" prefHeight="36.0" prefWidth="122.0" stylesheets="@../css/button.css" text="确认" GridPane.columnIndex="2" GridPane.rowIndex="3">
                                              <GridPane.margin>
                                                 <Insets left="-170.0" />
                                              </GridPane.margin>
                                           </Button>
                                           <TextField fx:id="addNameField" GridPane.columnIndex="1" />
-                                          <Label text="是否可叠加使用：" GridPane.columnIndex="2" GridPane.rowIndex="2" />
-                                          <RadioButton fx:id="addNoButton" mnemonicParsing="false" text="否" GridPane.columnIndex="3" GridPane.rowIndex="2">
+                                          <Label stylesheets="@../css/label.css" text="是否可叠加使用：" GridPane.columnIndex="2" GridPane.rowIndex="2" />
+                                          <RadioButton fx:id="addNoButton" mnemonicParsing="false" stylesheets="@../css/radiobutton.css" text="否" GridPane.columnIndex="3" GridPane.rowIndex="2">
                                              <GridPane.margin>
                                                 <Insets left="60.0" />
                                              </GridPane.margin>
                                           </RadioButton>
-                                          <RadioButton fx:id="addYesButton" mnemonicParsing="false" text="是" GridPane.columnIndex="3" GridPane.rowIndex="2">
+                                          <RadioButton fx:id="addYesButton" mnemonicParsing="false" stylesheets="@../css/radiobutton.css" text="是" GridPane.columnIndex="3" GridPane.rowIndex="2">
                                              <GridPane.margin>
                                                 <Insets left="-60.0" />
                                              </GridPane.margin>
                                           </RadioButton>
-                                          <DatePicker fx:id="addStartTimeDatePicker" GridPane.columnIndex="1" GridPane.rowIndex="1" />
-                                          <DatePicker fx:id="addEndTimeDatePicker" GridPane.columnIndex="3" GridPane.rowIndex="1" />
+                                          <DatePicker fx:id="addStartTimeDatePicker" stylesheets="@../css/datepicker.css" GridPane.columnIndex="1" GridPane.rowIndex="1" />
+                                          <DatePicker fx:id="addEndTimeDatePicker" stylesheets="@../css/datepicker.css" GridPane.columnIndex="3" GridPane.rowIndex="1" />
                                           <ComboBox fx:id="addConditionComboBox" prefHeight="23.0" prefWidth="183.0" GridPane.columnIndex="3" />
                                           <ComboBox fx:id="addDiscountComboBox" prefHeight="23.0" prefWidth="85.0" GridPane.columnIndex="1" GridPane.rowIndex="2" />
                                        </children>
@@ -85,16 +85,16 @@
                         </Tab>
                         <Tab text="修改促销策略">
                            <content>
-                              <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
+                              <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0" style="-fx-background-color: rgb(226,238,196);">
                                  <children>
                                     <GridPane prefHeight="181.0" prefWidth="680.0">
                                        <children>
-                                          <Label text="名称：" />
-                                          <Label text="结束时间：" GridPane.columnIndex="2" GridPane.rowIndex="1" />
-                                          <Label text="促销折扣：" GridPane.rowIndex="2" />
-                                          <Label text="起始时间：" GridPane.rowIndex="1" />
-                                          <Label text="策略类型：" GridPane.columnIndex="2" />
-                                          <Button alignment="CENTER" contentDisplay="CENTER" mnemonicParsing="false" onAction="#updateStrategy" prefHeight="36.0" prefWidth="122.0" text="确认" GridPane.columnIndex="2" GridPane.rowIndex="3">
+                                          <Label stylesheets="@../css/label.css" text="名称：" />
+                                          <Label stylesheets="@../css/label.css" text="结束时间：" GridPane.columnIndex="2" GridPane.rowIndex="1" />
+                                          <Label stylesheets="@../css/label.css" text="促销折扣：" GridPane.rowIndex="2" />
+                                          <Label stylesheets="@../css/label.css" text="起始时间：" GridPane.rowIndex="1" />
+                                          <Label stylesheets="@../css/label.css" text="策略类型：" GridPane.columnIndex="2" />
+                                          <Button alignment="CENTER" contentDisplay="CENTER" mnemonicParsing="false" onAction="#updateStrategy" prefHeight="36.0" prefWidth="122.0" stylesheets="@../css/button.css" text="确认" GridPane.columnIndex="2" GridPane.rowIndex="3">
                                              <GridPane.margin>
                                                 <Insets left="-170.0" />
                                              </GridPane.margin>
@@ -112,21 +112,21 @@
                                                 <Insets left="120.0" />
                                              </GridPane.margin>
                                           </Button>
-                                          <Label text="是否可叠加使用：" GridPane.columnIndex="2" GridPane.rowIndex="2" />
-                                          <RadioButton fx:id="updateYesButton" mnemonicParsing="false" text="是" GridPane.columnIndex="3" GridPane.rowIndex="2">
+                                          <Label stylesheets="@../css/label.css" text="是否可叠加使用：" GridPane.columnIndex="2" GridPane.rowIndex="2" />
+                                          <RadioButton fx:id="updateYesButton" mnemonicParsing="false" stylesheets="@../css/radiobutton.css" text="是" GridPane.columnIndex="3" GridPane.rowIndex="2">
                                              <GridPane.margin>
                                                 <Insets left="-60.0" />
                                              </GridPane.margin>
                                           </RadioButton>
-                                          <RadioButton fx:id="updateNoButton" mnemonicParsing="false" text="否" GridPane.columnIndex="3" GridPane.rowIndex="2">
+                                          <RadioButton fx:id="updateNoButton" mnemonicParsing="false" stylesheets="@../css/radiobutton.css" text="否" GridPane.columnIndex="3" GridPane.rowIndex="2">
                                              <GridPane.margin>
                                                 <Insets left="60.0" />
                                              </GridPane.margin>
                                           </RadioButton>
                                           <ComboBox fx:id="updateDiscountComboBox" prefHeight="23.0" prefWidth="85.0" GridPane.columnIndex="1" GridPane.rowIndex="2" />
                                           <ComboBox fx:id="updateConditionComboBox" prefHeight="23.0" prefWidth="180.0" GridPane.columnIndex="3" />
-                                          <DatePicker fx:id="updateStartTimeDatePicker" GridPane.columnIndex="1" GridPane.rowIndex="1" />
-                                          <DatePicker fx:id="updateEndTimeDatePicker" GridPane.columnIndex="3" GridPane.rowIndex="1" />
+                                          <DatePicker fx:id="updateStartTimeDatePicker" stylesheets="@../css/datepicker.css" GridPane.columnIndex="1" GridPane.rowIndex="1" />
+                                          <DatePicker fx:id="updateEndTimeDatePicker" stylesheets="@../css/datepicker.css" GridPane.columnIndex="3" GridPane.rowIndex="1" />
                                        </children>
                                        <columnConstraints>
                                           <ColumnConstraints halignment="CENTER" hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
@@ -149,14 +149,14 @@
                            <content>
                               <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
                                  <children>
-                                    <GridPane prefHeight="181.0" prefWidth="680.0">
+                                    <GridPane prefHeight="181.0" prefWidth="680.0" style="-fx-background-color: rgb(226,238,196);">
                                        <children>
-                                          <Label text="名称：" />
-                                          <Label text="结束时间：" GridPane.columnIndex="2" GridPane.rowIndex="1" />
-                                          <Label text="促销折扣：" GridPane.rowIndex="2" />
-                                          <Label text="起始时间：" GridPane.rowIndex="1" />
-                                          <Label text="策略类型：" GridPane.columnIndex="2" />
-                                          <Button alignment="CENTER" contentDisplay="CENTER" mnemonicParsing="false" onAction="#deleteStrategy" prefHeight="36.0" prefWidth="122.0" text="确认" GridPane.columnIndex="2" GridPane.rowIndex="3">
+                                          <Label stylesheets="@../css/label.css" text="名称：" />
+                                          <Label stylesheets="@../css/label.css" text="结束时间：" GridPane.columnIndex="2" GridPane.rowIndex="1" />
+                                          <Label stylesheets="@../css/label.css" text="促销折扣：" GridPane.rowIndex="2" />
+                                          <Label stylesheets="@../css/label.css" text="起始时间：" GridPane.rowIndex="1" />
+                                          <Label stylesheets="@../css/label.css" text="策略类型：" GridPane.columnIndex="2" />
+                                          <Button alignment="CENTER" contentDisplay="CENTER" mnemonicParsing="false" onAction="#deleteStrategy" prefHeight="36.0" prefWidth="122.0" stylesheets="@../css/button.css" text="确认" GridPane.columnIndex="2" GridPane.rowIndex="3">
                                              <GridPane.margin>
                                                 <Insets left="-170.0" />
                                              </GridPane.margin>
@@ -174,12 +174,12 @@
                                                 <Insets left="120.0" />
                                              </GridPane.margin>
                                           </Button>
-                                          <Label fx:id="deleteConditionLabel" alignment="CENTER" contentDisplay="CENTER" prefHeight="29.0" prefWidth="154.0" GridPane.columnIndex="3" GridPane.halignment="CENTER" GridPane.valignment="CENTER" />
-                                          <Label fx:id="deleteEndTimeLabel" alignment="CENTER" contentDisplay="CENTER" prefHeight="35.0" prefWidth="150.0" GridPane.columnIndex="3" GridPane.halignment="CENTER" GridPane.rowIndex="1" GridPane.valignment="CENTER" />
-                                          <Label fx:id="deleteDiscountLabel" alignment="CENTER" contentDisplay="CENTER" prefHeight="25.0" prefWidth="109.0" GridPane.columnIndex="1" GridPane.halignment="CENTER" GridPane.rowIndex="2" GridPane.valignment="CENTER" />
-                                          <Label fx:id="deleteStartTimeLabel" alignment="CENTER" contentDisplay="CENTER" prefHeight="33.0" prefWidth="144.0" GridPane.columnIndex="1" GridPane.halignment="CENTER" GridPane.rowIndex="1" GridPane.valignment="CENTER" />
-                                          <Label text="是否可叠加使用：" GridPane.columnIndex="2" GridPane.rowIndex="2" />
-                                          <Label fx:id="deleteSuperpositionLabel" alignment="CENTER" contentDisplay="CENTER" prefHeight="28.0" prefWidth="114.0" GridPane.columnIndex="3" GridPane.halignment="CENTER" GridPane.rowIndex="2" GridPane.valignment="CENTER" />
+                                          <Label fx:id="deleteConditionLabel" alignment="CENTER" contentDisplay="CENTER" prefHeight="29.0" prefWidth="154.0" stylesheets="@../css/label.css" GridPane.columnIndex="3" GridPane.halignment="CENTER" GridPane.valignment="CENTER" />
+                                          <Label fx:id="deleteEndTimeLabel" alignment="CENTER" contentDisplay="CENTER" prefHeight="35.0" prefWidth="150.0" stylesheets="@../css/label.css" GridPane.columnIndex="3" GridPane.halignment="CENTER" GridPane.rowIndex="1" GridPane.valignment="CENTER" />
+                                          <Label fx:id="deleteDiscountLabel" alignment="CENTER" contentDisplay="CENTER" prefHeight="25.0" prefWidth="109.0" stylesheets="@../css/label.css" GridPane.columnIndex="1" GridPane.halignment="CENTER" GridPane.rowIndex="2" GridPane.valignment="CENTER" />
+                                          <Label fx:id="deleteStartTimeLabel" alignment="CENTER" contentDisplay="CENTER" prefHeight="33.0" prefWidth="144.0" stylesheets="@../css/label.css" GridPane.columnIndex="1" GridPane.halignment="CENTER" GridPane.rowIndex="1" GridPane.valignment="CENTER" />
+                                          <Label stylesheets="@../css/label.css" text="是否可叠加使用：" GridPane.columnIndex="2" GridPane.rowIndex="2" />
+                                          <Label fx:id="deleteSuperpositionLabel" alignment="CENTER" contentDisplay="CENTER" prefHeight="28.0" prefWidth="114.0" stylesheets="@../css/label.css" GridPane.columnIndex="3" GridPane.halignment="CENTER" GridPane.rowIndex="2" GridPane.valignment="CENTER" />
                                        </children>
                                        <columnConstraints>
                                           <ColumnConstraints halignment="CENTER" hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />

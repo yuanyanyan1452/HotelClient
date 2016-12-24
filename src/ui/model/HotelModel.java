@@ -10,6 +10,7 @@ public class HotelModel {
 	private final SimpleStringProperty star;
 	private final SimpleStringProperty score;
 	private final SimpleStringProperty orderstate;
+	private final SimpleStringProperty cheapestRoomPrice;
 	
 	public HotelModel(){
 		id = new SimpleStringProperty();
@@ -19,6 +20,7 @@ public class HotelModel {
 		star = new SimpleStringProperty();
 		score = new SimpleStringProperty();
 		orderstate = new SimpleStringProperty();
+		cheapestRoomPrice = new SimpleStringProperty();
 	}
 	
 	public String getID(){
@@ -108,4 +110,15 @@ public class HotelModel {
 		return orderstate;
 	}
 	
+	public String getCheapestRoomPrice(){
+		return cheapestRoomPrice.get();
+	}
+	
+	public void setCheapestRoomPrice(int price){
+		cheapestRoomPrice.set(price+"");
+	}
+	
+	public SimpleStringProperty cheapestRoomPriceProperty(){
+		return cheapestRoomPrice;
+	}
 }

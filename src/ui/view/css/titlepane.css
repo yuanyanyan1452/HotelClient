@@ -1,0 +1,9 @@
+.titled-pane{
+	-fx-text-fill: white ;
+}
+.titled-pane>*.content{
+	-fx-background-color: rgb(226,238,196);
+}
+.titled-pane > .title{
+	-fx-background-color: rgb(194,218,105);
+}

@@ -1,0 +1,12 @@
+.root{
+	-fx-background-color: rgb(226,238,196);
+}
+.label{
+	-fx-text-fill: rgb(102,153,102);
+}
+.text-area{
+	-fx-background-color: rgb(194,218,105);
+}
+.text-area > .scroll-pane {
+    -fx-background-color:  rgb(194,218,105);
+}

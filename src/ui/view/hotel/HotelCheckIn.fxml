@@ -10,11 +10,11 @@
 
 <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="600.0" prefWidth="700.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="ui.view.hotel.HotelCheckInController">
    <children>
-      <SplitPane dividerPositions="0.7040133779264214" orientation="VERTICAL" prefHeight="600.0" prefWidth="700.0">
+      <SplitPane dividerPositions="0.7040133779264214" orientation="VERTICAL" prefHeight="600.0" prefWidth="700.0" stylesheets="@../css/HotelCheckIn.css">
         <items>
           <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="100.0" prefWidth="160.0">
                <children>
-                  <TableView fx:id="orderTable" prefHeight="418.0" prefWidth="700.0">
+                  <TableView fx:id="orderTable" prefHeight="418.0" prefWidth="700.0" stylesheets="@../css/tableview.css">
                      <columns>
                         <TableColumn fx:id="idColumn" prefWidth="50.0" text="订单号" />
                         <TableColumn fx:id="roomTypeColumn" prefWidth="85.0" text="房间类型" />
@@ -29,14 +29,14 @@
             </AnchorPane>
           <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="235.0" prefWidth="698.0">
                <children>
-                  <Button layoutX="465.0" layoutY="68.0" mnemonicParsing="false" onAction="#downlinecheckin" prefHeight="38.0" prefWidth="114.0" text="线下入住" />
+                  <Button alignment="CENTER" layoutX="465.0" layoutY="68.0" mnemonicParsing="false" onAction="#downlinecheckin" prefHeight="38.0" prefWidth="114.0" stylesheets="@../css/button.css" text="线下入住" />
                   <ImageView fitHeight="153.0" fitWidth="163.0" layoutX="14.0" layoutY="21.0">
                      <image>
                         <Image url="@../../../../resources/酒店入住.png" />
                      </image>
                   </ImageView>
-                  <Button layoutX="465.0" layoutY="115.0" mnemonicParsing="false" onAction="#downlinecheckout" prefHeight="38.0" prefWidth="114.0" text="线下退房" />
-                  <Label layoutX="206.0" layoutY="21.0" prefHeight="27.0" prefWidth="460.0" text="亲：直接双击订单即可完成线上订单的入住、退房操作哦！">
+                  <Button alignment="CENTER" layoutX="465.0" layoutY="115.0" mnemonicParsing="false" onAction="#downlinecheckout" prefHeight="38.0" prefWidth="114.0" stylesheets="@../css/button.css" text="线下退房" />
+                  <Label layoutX="206.0" layoutY="21.0" prefHeight="27.0" prefWidth="460.0" stylesheets="@../css/label.css" text="亲：直接双击订单即可完成线上订单的入住、退房操作哦！">
                      <font>
                         <Font size="15.0" />
                      </font>
@@ -52,10 +52,10 @@
                       <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
                     </rowConstraints>
                      <children>
-                        <Label text="房间类型：" />
+                        <Label stylesheets="@../css/label.css" text="房间类型：" />
                         <ComboBox fx:id="roomtypeComboBox" prefHeight="23.0" prefWidth="114.0" GridPane.columnIndex="1" />
-                        <Label text="房间数量：" GridPane.rowIndex="1" />
-                        <Label text="入住天数：" GridPane.rowIndex="2" />
+                        <Label stylesheets="@../css/label.css" text="房间数量：" GridPane.rowIndex="1" />
+                        <Label stylesheets="@../css/label.css" text="入住天数：" GridPane.rowIndex="2" />
                         <ComboBox fx:id="roomNumComboBox" prefHeight="23.0" prefWidth="114.0" GridPane.columnIndex="1" GridPane.rowIndex="1" />
                         <ComboBox fx:id="daysComboBox" prefHeight="23.0" prefWidth="114.0" GridPane.columnIndex="1" GridPane.rowIndex="2" />
                      </children>

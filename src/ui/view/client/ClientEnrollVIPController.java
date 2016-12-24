@@ -39,6 +39,9 @@ public class ClientEnrollVIPController implements Initializable {
 	private RadioButton companyButton;
 	
 	@FXML
+	private Label bigLabel;
+	
+	@FXML
 	private Label typeLabel;
 	
 	@FXML
@@ -56,6 +59,10 @@ public class ClientEnrollVIPController implements Initializable {
 		else{
 			VIPInfo info=new VIPInfo();
 			if(normalButton.isSelected()){
+				if (birthday.getValue()==null) {
+					AlertUtil.showWarningAlert("未选择生日！");
+					return;
+				}
 				info.setType(VIPType.NORMAL);
 				LocalDate date = birthday.getValue();
 				DateTimeFormatter formatter = DateTimeFormatter.ofPattern("MM-dd");
@@ -63,6 +70,10 @@ public class ClientEnrollVIPController implements Initializable {
 				info.setInfo("一级会员"+","+birth);
 			}
 			else{
+				if (infoTextField.getText().isEmpty()) {
+					AlertUtil.showWarningAlert("企业名不能为空！");
+					return;
+				}
 				info.setType(VIPType.Enterprise);
 				info.setInfo("一级会员"+","+infoTextField.getText());
 			}

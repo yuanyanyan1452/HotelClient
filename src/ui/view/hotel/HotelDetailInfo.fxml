@@ -9,7 +9,7 @@
 
 <AnchorPane prefHeight="600.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="ui.view.hotel.HotelDetailInfoController">
    <children>
-      <TitledPane alignment="CENTER" animated="false" collapsible="false" prefHeight="600.0" prefWidth="600.0" text="酒店详细信息">
+      <TitledPane alignment="CENTER" animated="false" collapsible="false" prefHeight="600.0" prefWidth="600.0" stylesheets="@../css/titlepane.css" text="酒店详细信息">
         <content>
           <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
                <children>
@@ -19,11 +19,11 @@
                      </image>
                   </ImageView>
                   <Label />
-                  <Label layoutX="96.0" layoutY="252.0" text="简介：" />
-                  <Label fx:id="introductionLabel" alignment="TOP_LEFT" layoutX="206.0" layoutY="252.0" prefHeight="40.0" prefWidth="377.0" />
-                  <Button fx:id="button2" layoutX="407.0" layoutY="520.0" mnemonicParsing="false" onAction="#generateOrder" prefHeight="39.0" prefWidth="129.0" text="预定" AnchorPane.leftAnchor="383.0" AnchorPane.rightAnchor="114.0" />
-                  <Button fx:id="button1" layoutX="114.0" layoutY="520.0" mnemonicParsing="false" onAction="#close" prefHeight="40.0" prefWidth="120.0" text="关闭" AnchorPane.leftAnchor="114.0" AnchorPane.rightAnchor="383.20000000000005" />
-                  <TabPane layoutX="113.0" layoutY="299.0" prefHeight="212.0" prefWidth="376.0" tabClosingPolicy="UNAVAILABLE">
+                  <Label layoutX="96.0" layoutY="252.0" stylesheets="@../css/label.css" text="简介：" />
+                  <Label fx:id="introductionLabel" alignment="TOP_LEFT" layoutX="145.0" layoutY="252.0" prefHeight="40.0" prefWidth="394.0" stylesheets="@../css/label.css" />
+                  <Button fx:id="button2" alignment="CENTER" layoutX="407.0" layoutY="520.0" mnemonicParsing="false" onAction="#generateOrder" prefHeight="39.0" prefWidth="129.0" stylesheets="@../css/button.css" text="预定" AnchorPane.leftAnchor="383.0" AnchorPane.rightAnchor="114.0" />
+                  <Button fx:id="button1" alignment="CENTER" layoutX="114.0" layoutY="520.0" mnemonicParsing="false" onAction="#close" prefHeight="40.0" prefWidth="120.0" stylesheets="@../css/button.css" text="关闭" AnchorPane.leftAnchor="114.0" AnchorPane.rightAnchor="383.20000000000005" />
+                  <TabPane layoutX="113.0" layoutY="299.0" prefHeight="212.0" prefWidth="376.0" stylesheets="@../css/tabpane.css" tabClosingPolicy="UNAVAILABLE">
                     <tabs>
                       <Tab text="房间列表">
                         <content>
@@ -33,7 +33,7 @@
                                       <content>
                                         <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="181.0" prefWidth="373.0">
                                              <children>
-                                                <TableView fx:id="roomTable" editable="true" layoutX="1.0" prefHeight="182.0" prefWidth="372.0">
+                                                <TableView fx:id="roomTable" editable="true" layoutX="1.0" prefHeight="182.0" prefWidth="372.0" stylesheets="@../css/tableview.css">
                                                    <columns>
                                                       <TableColumn fx:id="roomtypeColumn" prefWidth="133.0" text="类型" />
                                                       <TableColumn fx:id="priceColumn" prefWidth="110.0" text="价格（元/间）" />
@@ -56,7 +56,7 @@
                                       <content>
                                         <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="181.0" prefWidth="373.0">
                                              <children>
-                                                <TableView fx:id="orderTable" prefHeight="186.0" prefWidth="376.0">
+                                                <TableView fx:id="orderTable" prefHeight="186.0" prefWidth="376.0" stylesheets="@../css/tableview.css">
                                                   <columns>
                                                     <TableColumn fx:id="orderidColumn" prefWidth="97.0" text="订单号" />
                                                     <TableColumn fx:id="orderRoomtypeColumn" prefWidth="73.0" text="房间类型" />
@@ -89,18 +89,18 @@
                         <RowConstraints minHeight="10.0" vgrow="SOMETIMES" />
                     </rowConstraints>
                      <children>
-                        <Label text="酒店名称：" />
-                        <Label fx:id="hotelnameLabel" alignment="CENTER" prefHeight="15.0" prefWidth="162.0" GridPane.columnIndex="1" />
-                        <Label text="所属商圈：" GridPane.rowIndex="1" />
-                        <Label fx:id="businessaddressLabel" alignment="CENTER" prefHeight="8.0" prefWidth="127.0" GridPane.columnIndex="1" GridPane.rowIndex="1" />
-                        <Label text="地址：" GridPane.rowIndex="2" />
-                        <Label fx:id="addressLabel" alignment="CENTER" prefHeight="6.0" prefWidth="122.0" GridPane.columnIndex="1" GridPane.rowIndex="2" />
-                        <Label text="星级：" GridPane.rowIndex="3" />
-                        <Label fx:id="starLabel" alignment="CENTER" prefHeight="15.0" prefWidth="139.0" GridPane.columnIndex="1" GridPane.rowIndex="3" />
-                        <Label fx:id="scoreLabel" alignment="CENTER" prefHeight="15.0" prefWidth="111.0" GridPane.columnIndex="1" GridPane.rowIndex="4" />
-                        <Label fx:id="serviceLabel" alignment="CENTER" prefHeight="15.0" prefWidth="158.0" GridPane.columnIndex="1" GridPane.rowIndex="5" />
-                        <Label text="平均评分：" GridPane.rowIndex="4" />
-                        <Label text="设施服务：" GridPane.rowIndex="5" />
+                        <Label stylesheets="@../css/label.css" text="酒店名称：" />
+                        <Label fx:id="hotelnameLabel" alignment="CENTER" prefHeight="15.0" prefWidth="162.0" stylesheets="@../css/label.css" GridPane.columnIndex="1" />
+                        <Label stylesheets="@../css/label.css" text="所属商圈：" GridPane.rowIndex="1" />
+                        <Label fx:id="businessaddressLabel" alignment="CENTER" prefHeight="8.0" prefWidth="127.0" stylesheets="@../css/label.css" GridPane.columnIndex="1" GridPane.rowIndex="1" />
+                        <Label stylesheets="@../css/label.css" text="地址：" GridPane.rowIndex="2" />
+                        <Label fx:id="addressLabel" alignment="CENTER" prefHeight="6.0" prefWidth="122.0" stylesheets="@../css/label.css" GridPane.columnIndex="1" GridPane.rowIndex="2" />
+                        <Label stylesheets="@../css/label.css" text="星级：" GridPane.rowIndex="3" />
+                        <Label fx:id="starLabel" alignment="CENTER" prefHeight="15.0" prefWidth="139.0" stylesheets="@../css/label.css" GridPane.columnIndex="1" GridPane.rowIndex="3" />
+                        <Label fx:id="scoreLabel" alignment="CENTER" prefHeight="15.0" prefWidth="111.0" stylesheets="@../css/label.css" GridPane.columnIndex="1" GridPane.rowIndex="4" />
+                        <Label fx:id="serviceLabel" alignment="CENTER" prefHeight="15.0" prefWidth="158.0" stylesheets="@../css/label.css" GridPane.columnIndex="1" GridPane.rowIndex="5" />
+                        <Label stylesheets="@../css/label.css" text="平均评分：" GridPane.rowIndex="4" />
+                        <Label stylesheets="@../css/label.css" text="设施服务：" GridPane.rowIndex="5" />
                      </children>
                   </GridPane>
                </children>

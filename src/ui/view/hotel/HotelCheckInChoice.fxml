@@ -5,11 +5,11 @@
 <?import javafx.scene.layout.*?>
 <?import javafx.scene.layout.AnchorPane?>
 
-<AnchorPane prefHeight="300.0" prefWidth="400.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="ui.view.hotel.HotelCheckInChoiceController">
+<AnchorPane prefHeight="300.0" prefWidth="400.0" stylesheets="@../css/background.css" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="ui.view.hotel.HotelCheckInChoiceController">
    <children>
-      <Button fx:id="checkinButton" alignment="CENTER" layoutX="150.0" layoutY="230.0" mnemonicParsing="false" onAction="#checkin" prefHeight="35.0" prefWidth="100.0" text="入住" />
-      <Button fx:id="delayCheckinButton" alignment="CENTER" layoutX="150.0" layoutY="230.0" mnemonicParsing="false" onAction="#delayCheckin" prefHeight="35.0" prefWidth="100.0" text="延迟入住" AnchorPane.leftAnchor="150.0" />
-      <Button fx:id="checkoutButton" alignment="CENTER" layoutX="150.0" layoutY="230.0" mnemonicParsing="false" onAction="#checkout" prefHeight="35.0" prefWidth="100.0" text="退房" AnchorPane.rightAnchor="150.0" />
+      <Button fx:id="checkinButton" alignment="CENTER" layoutX="150.0" layoutY="230.0" mnemonicParsing="false" onAction="#checkin" prefHeight="35.0" prefWidth="100.0" stylesheets="@../css/button.css" text="入住" />
+      <Button fx:id="delayCheckinButton" alignment="CENTER" layoutX="150.0" layoutY="230.0" mnemonicParsing="false" onAction="#delayCheckin" prefHeight="35.0" prefWidth="100.0" stylesheets="@../css/button.css" text="延迟入住" AnchorPane.leftAnchor="150.0" />
+      <Button fx:id="checkoutButton" alignment="CENTER" layoutX="150.0" layoutY="230.0" mnemonicParsing="false" onAction="#checkout" prefHeight="35.0" prefWidth="100.0" stylesheets="@../css/button.css" text="退房" AnchorPane.rightAnchor="150.0" />
       <GridPane layoutX="28.0" layoutY="24.0" prefHeight="178.0" prefWidth="344.0">
         <columnConstraints>
           <ColumnConstraints halignment="CENTER" hgrow="SOMETIMES" maxWidth="178.0" minWidth="10.0" prefWidth="124.0" />
@@ -22,15 +22,16 @@
             <RowConstraints minHeight="10.0" prefHeight="0.0" vgrow="SOMETIMES" />
         </rowConstraints>
          <children>
-            <Label text="当前订单号：" />
-            <Label text="订单状态：" GridPane.rowIndex="2" />
+            <Label stylesheets="@../css/label.css" text="当前订单号：" />
+            <Label stylesheets="@../css/label.css" text="订单状态：" GridPane.rowIndex="2" />
             <Label fx:id="orderIdLabel" alignment="CENTER" prefHeight="12.0" prefWidth="91.0" GridPane.columnIndex="1" />
             <Label fx:id="orderStateLabel" alignment="CENTER" prefHeight="14.0" prefWidth="95.0" GridPane.columnIndex="1" GridPane.rowIndex="2" />
-            <Label fx:id="predictLabel" text="请选择预计离开日期：" wrapText="true" GridPane.rowIndex="3" />
-            <Label text="订单执行情况：" GridPane.rowIndex="1" />
+            <Label fx:id="predictLabel" stylesheets="@../css/label.css" text="请选择预计离开日期：" wrapText="true" GridPane.rowIndex="3" />
+            <Label stylesheets="@../css/label.css" text="订单执行情况：" GridPane.rowIndex="1" />
             <Label fx:id="orderExecuteLabel" alignment="CENTER" prefHeight="10.0" prefWidth="132.0" GridPane.columnIndex="1" GridPane.rowIndex="1" />
-            <DatePicker fx:id="predictLeaveDatePicker" GridPane.columnIndex="1" GridPane.rowIndex="3" />
+            <DatePicker fx:id="predictLeaveDatePicker" stylesheets="@../css/datepicker.css" GridPane.columnIndex="1" GridPane.rowIndex="3" />
          </children>
       </GridPane>
+      <Button fx:id="returnButton" alignment="CENTER" mnemonicParsing="false" prefHeight="15.0" prefWidth="56.0" stylesheets="@../css/button.css" text="返回" />
    </children>
 </AnchorPane>

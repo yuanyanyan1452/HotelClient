@@ -1,0 +1,22 @@
+.label{
+	-fx-text-fill: rgb(102,153,102);
+	-fx-font-size: 12;
+}
+.split-pane > .split-pane-divider{
+	-fx-padding: 0 0.00em 0 0.00em;
+}
+.split-pane{
+	-fx-background-color: rgb(226,238,196);
+}
+.button{
+	-fx-background-color:  rgb(194,218,105) ;
+	-fx-border-color: white;
+	-fx-border-width: 7;
+	-fx-text-fill: white;
+}
+.button:hover{
+	-fx-alignment: center;
+	-fx-background-color: rgb(226,238,196);
+	-fx-text-fill: rgb(194,218,105);
+	-fx-border-color: rgb(194,218,105);
+}

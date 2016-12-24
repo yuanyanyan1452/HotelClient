@@ -7,7 +7,7 @@
 <?import javafx.scene.layout.*?>
 <?import javafx.scene.layout.AnchorPane?>
 
-<AnchorPane prefHeight="600.0" prefWidth="700.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="ui.view.client.ClientEnrollVIPController">
+<AnchorPane prefHeight="600.0" prefWidth="700.0" stylesheets="@../css/ClientEnrollVIP.css" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="ui.view.client.ClientEnrollVIPController">
    <children>
       <Label layoutX="149.0" layoutY="202.0" text="会员类型选择">
          <font>
@@ -22,24 +22,24 @@
             <Image url="@../../../../resources/会员.png" />
          </image>
       </ImageView>
-      <Label layoutX="341.0" layoutY="80.0" text="注册会员">
+      <Label fx:id="bigLabel" layoutX="341.0" layoutY="80.0" text="注册会员">
          <font>
             <Font name="AR LisuGB Medium" size="32.0" />
          </font>
       </Label>
-      <RadioButton fx:id="normalButton" layoutX="362.0" layoutY="201.0" mnemonicParsing="false" text="普通会员">
+      <RadioButton fx:id="normalButton" layoutX="362.0" layoutY="201.0" mnemonicParsing="false" stylesheets="@../css/radiobutton.css" text="普通会员">
          <font>
             <Font size="15.0" />
          </font></RadioButton>
-      <RadioButton fx:id="companyButton" layoutX="469.0" layoutY="202.0" mnemonicParsing="false" text="企业会员">
+      <RadioButton fx:id="companyButton" layoutX="469.0" layoutY="202.0" mnemonicParsing="false" stylesheets="@../css/radiobutton.css" text="企业会员">
          <font>
             <Font size="15.0" />
          </font></RadioButton>
-      <TextField fx:id="infoTextField" layoutX="367.0" layoutY="325.0" prefHeight="15.0" prefWidth="186.0" />
-      <Button layoutX="281.0" layoutY="457.0" mnemonicParsing="false" onAction="#enroll" prefHeight="42.0" prefWidth="121.0" text="确认">
+      <TextField fx:id="infoTextField" layoutX="367.0" layoutY="325.0" prefHeight="23.0" prefWidth="186.0" />
+      <Button alignment="CENTER" layoutX="281.0" layoutY="457.0" mnemonicParsing="false" onAction="#enroll" prefHeight="42.0" prefWidth="121.0" stylesheets="@../css/button.css" text="确认">
          <font>
             <Font size="15.0" />
          </font></Button>
-      <DatePicker fx:id="birthday" layoutX="367.0" layoutY="325.0" />
+      <DatePicker fx:id="birthday" layoutX="367.0" layoutY="325.0" stylesheets="@../css/datepicker.css" />
    </children>
 </AnchorPane>
