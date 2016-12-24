@@ -491,7 +491,7 @@ public class ManagerOverviewController implements Initializable {
 		}
 		// 添加表格项
 		HotelWorkerModel model = new HotelWorkerModel();
-		model.setHotelid(workerList.size() + 1);
+		model.setHotelid(vo.gethotelid());
 		model.setName(vo.getname());
 		model.setContact(vo.getcontact());
 		workerList.add(model);

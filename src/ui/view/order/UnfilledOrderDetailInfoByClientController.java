@@ -14,6 +14,7 @@ import javafx.scene.control.Label;
 import objects.ResultMessage;
 import rmi.RemoteHelper;
 import ui.util.AlertUtil;
+import ui.util.OrderUtil;
 import ui.util.RecordActionUtil;
 import ui.view.Main;
 import vo.OrderVO;
@@ -74,15 +75,17 @@ public class UnfilledOrderDetailInfoByClientController implements Initializable 
 	
 	@FXML
 	public void cancel() throws RemoteException{
-		currentordervo.setstate("撤销");
+		//更新订单状态
+		currentordervo.setstate(OrderUtil.getCancel());
 		ResultMessage result=helper.getOrderBLService().order_client_cancel(currentordervo.getid());
 		if(result==ResultMessage.Success){
 			main.closeExtraStage();
 			
+			//如果撤销的订单距离最晚订单执行时间不足6个小时，扣除客户相应的信用值,增加信用记录
 			Date date=new Date();
 			if(currentordervo.getlatest_execute_time().getTime()-date.getTime()<6*60*60*1000){
 				helper.getClientBLService().updateClientCredit(currentordervo.getclientid(), currentordervo.getprice()/2, 0);
-				String creditinfo=format.format(date)+","+String.valueOf(currentordervo.getid())+","+RecordActionUtil.getClientCancel()+","+"-"+String.valueOf(currentordervo.getprice()/2)+","+String.valueOf(helper.getClientBLService().client_checkCredit(currentordervo.getclientid()));
+				String creditinfo="'"+format.format(date)+"'"+","+String.valueOf(currentordervo.getid())+","+RecordActionUtil.getClientCancel()+","+"-"+String.valueOf(currentordervo.getprice()/2)+","+String.valueOf(helper.getClientBLService().client_checkCredit(currentordervo.getclientid()));
 				helper.getClientBLService().client_updateClientCreditList(currentordervo.getclientid(), creditinfo);
 				AlertUtil.showInformationAlert("撤销订单成功，由于撤销的订单距离最晚订单执行时间不足6个小时，扣除您相应的信用值");
 				this.update();
@@ -94,7 +97,7 @@ public class UnfilledOrderDetailInfoByClientController implements Initializable 
 		}
 		else{
 			AlertUtil.showErrorAlert("对不起，撤销订单失败");
-			currentordervo.setstate("正常");
+			currentordervo.setstate(OrderUtil.getNormal());
 		}
 	}
 	

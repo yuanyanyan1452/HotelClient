@@ -129,6 +129,7 @@ public class HotelCheckInChoiceController implements Initializable {
 			Instant instant = predictlocaldate.atStartOfDay().atZone(zoneId).toInstant();
 			Date predictDate = Date.from(instant);
 			predictDate.setTime(predictDate.getTime()+12*3600*1000);
+			currentOrder.setPredictLeaveTime(predictDate);
 			currentOrder.setIsExecute(true);
 			currentOrder.setState(OrderUtil.getNormal());
 

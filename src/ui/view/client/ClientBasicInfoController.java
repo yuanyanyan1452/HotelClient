@@ -104,40 +104,43 @@ public class ClientBasicInfoController implements Initializable {
 
 	public void setMain(Main main, ClientVO clientvo,ClientOverviewController controller) {
 		this.main = main;
-		currentclientvo = clientvo;
+		try {
+			currentclientvo = helper.getClientBLService().client_checkInfo(clientvo.getclientid());
+		} catch (RemoteException e1) {
+			e1.printStackTrace();
+		}
 		this.controller = controller;
 		//导入名字和联系方式
-		nameTextField.setText(clientvo.getclient_name());
-		contactTextField.setText(clientvo.getcontact());
+		nameTextField.setText(currentclientvo.getclient_name());
+		contactTextField.setText(currentclientvo.getcontact());
 		
 		//导入会员类型和信息
-		if (clientvo.getvipinfo() == null) {
+		if (currentclientvo.getvipinfo() == null) {
 			vipTypeLabel.setText("非会员");
 			infoNameLabel.setText("");
 			infoLabel.setText("");
 			vipLevelNameLabel.setText("");
 			vipLevelLabel.setText("");
 		} else {
-			VIPType viptype = clientvo.getvipinfo().getType();
+			VIPType viptype = currentclientvo.getvipinfo().getType();
 			if (viptype.equals(VIPType.NORMAL)) {
 				vipTypeLabel.setText("普通会员");
 				infoNameLabel.setText("生日");
-				String[] info = clientvo.getvipinfo().getInfo().split(",");
+				String[] info = currentclientvo.getvipinfo().getInfo().split(",");
 				infoLabel.setText(info[1]);
 				vipLevelLabel.setText(info[0]);
 				vipLevelNameLabel.setText("会员等级：");
 			} else if (viptype.equals(VIPType.Enterprise)) {
 				vipTypeLabel.setText("企业会员");
 				infoNameLabel.setText("所属企业：");
-				String[] info = clientvo.getvipinfo().getInfo().split(",");
+				String[] info = currentclientvo.getvipinfo().getInfo().split(",");
 				infoLabel.setText(info[1]);
 				vipLevelLabel.setText(info[0]);
 				vipLevelNameLabel.setText("会员等级：");
 			}
 		}
 		//导入信用值
-		creditLabel.setText(String.valueOf(clientvo.getcredit()));
-
+		creditLabel.setText(String.valueOf(currentclientvo.getcredit()));
 		//导入信用记录
 		timeColumn.setCellValueFactory(celldata -> celldata.getValue().timeProperty());
 		reasonColumn.setCellValueFactory(celldata -> celldata.getValue().actionProperty());
@@ -147,7 +150,7 @@ public class ClientBasicInfoController implements Initializable {
 		
 		try {
 			ObservableList<CreditRecordModel> creditRecordList = FXCollections.observableArrayList();
-			ArrayList<String> records = helper.getClientBLService().client_checkCreditList(clientvo.getclientid());
+			ArrayList<String> records = helper.getClientBLService().client_checkCreditList(currentclientvo.getclientid());
 			for(int i=0;i<records.size();i++){
 				if (!records.get(i).isEmpty()) {
 					CreditRecordModel model = new CreditRecordModel(records.get(i));

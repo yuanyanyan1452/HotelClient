@@ -169,7 +169,7 @@ public class HotelCheckInController implements Initializable {
 						.setIsExecute(changedOrder.getIsExecute().equals(OrderUtil.getIsexecute()));
 				orderTable.getItems().get(index).setState(changedOrder.getState());
 				orderTable.getItems().get(index).setOverTime(new Date());
-				if (!changedOrder.getPredictLeaveTime().equals(OrderUtil.getNoexecute())) {
+				if (changedOrder.getPredictLeaveTime()!=null&&!changedOrder.getIsExecute().equals(OrderUtil.getNoexecute())) {
 					try {
 						orderTable.getItems().get(index).setPredictLeaveTime(format.parse(changedOrder.getPredictLeaveTime()));
 					} catch (ParseException e) {
@@ -213,9 +213,10 @@ public class HotelCheckInController implements Initializable {
 		
 		ObservableList<OrderModel> models = FXCollections.observableArrayList();
 		try {
-			//取出未执行的所有订单
+			//取出未执行的,未撤销的所有订单
 			ArrayList<OrderVO> orderVOs = helper.getOrderBLService().findorderBy_Hotelid_Execute(currentHotel.getid(), false);
 			for (OrderVO vo : orderVOs) {
+				if(!vo.getstate().equals(OrderUtil.getCancel())){
 				OrderModel model = new OrderModel();
 				model.setOrderid(vo.getid());
 				model.setClientid(vo.getclientid());
@@ -240,6 +241,7 @@ public class HotelCheckInController implements Initializable {
 				//未执行订单设置预计离开时间为未入住
 				model.setPredictLeaveTime(null);
 				models.add(model);
+			}
 			}
 			//取出执行了但未退房的所有订单
 			orderVOs = helper.getOrderBLService().findorderBy_Hotelid_Execute(currentHotel.getid(), true);
