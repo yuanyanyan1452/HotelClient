@@ -7,31 +7,26 @@ import java.time.Instant;
 import java.time.LocalDate;
 import java.time.ZoneId;
 import java.util.ArrayList;
-import java.util.Calendar;
 import java.util.Date;
 import java.util.ResourceBundle;
 
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
-import javafx.event.ActionEvent;
-import javafx.event.EventHandler;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
-import javafx.scene.control.Alert;
-import javafx.scene.control.Alert.AlertType;
-import javafx.util.Callback;
 import javafx.scene.control.ComboBox;
 import javafx.scene.control.DateCell;
 import javafx.scene.control.DatePicker;
-import objects.ResultMessage;
-import rmi.RemoteHelper;
 import javafx.scene.control.Label;
 import javafx.scene.control.RadioButton;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.scene.control.TextField;
 import javafx.scene.control.ToggleGroup;
-import ui.model.*;
+import javafx.util.Callback;
+import objects.ResultMessage;
+import rmi.RemoteHelper;
+import ui.model.WebStrategyModel;
 import ui.util.AlertUtil;
 import ui.util.StrategyUtil;
 import ui.view.Main;
@@ -41,7 +36,7 @@ public class MarketStrategyController implements Initializable {
 	private Main main;
 	private WebStrategyModel currentStrategy;
 	private SimpleDateFormat format = new SimpleDateFormat("yyyy-MM-dd");
-
+	private SimpleDateFormat format1 = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
 	@FXML
 	private TableView<WebStrategyModel> strategyTable;
 
@@ -189,7 +184,16 @@ public class MarketStrategyController implements Initializable {
 
 		String name = addNameField.getText();
 		LocalDate startDate = addStartTimeDatePicker.getValue();
+	    ZoneId zone = ZoneId.systemDefault();
+	    Instant instant = startDate.atStartOfDay().atZone(zone).toInstant();
+	    Date start_time = Date.from(instant);
+	    String stime=format1.format(start_time);
+	    String stime1=format.format(start_time);
 		LocalDate endDate = addEndTimeDatePicker.getValue();
+	    Instant instant1 = endDate.atStartOfDay().atZone(zone).toInstant();
+	    Date end_time = Date.from(instant1);
+	    String etime=format1.format(end_time);
+	    String etime1=format.format(end_time);
 		String condition = addConditionComboBox.getValue();
 		String discount = addDiscountComboBox.getValue();
 		String superposition = (addYesButton.isSelected()) ? "是" : "否";
@@ -204,9 +208,11 @@ public class MarketStrategyController implements Initializable {
 		}
 
 		// 更新策略表格
-		WebStrategyModel strategyModel = new WebStrategyModel(0, name, startDate.toString(), endDate.toString(),
+		WebStrategyModel strategyModel = new WebStrategyModel(0, name, stime,etime,
 				discount, condition, superposition);
-		strategyTable.getItems().add(strategyModel);
+		WebStrategyModel strategyModel1 = new WebStrategyModel(0, name, stime1,etime1,
+				discount, condition, superposition);
+		strategyTable.getItems().add(strategyModel1);
 
 		// 更新底层数据
 		WebStrategyVO vo = strategyModel.changeToVO();

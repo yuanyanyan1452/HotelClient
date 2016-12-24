@@ -479,7 +479,6 @@ public class ManagerOverviewController implements Initializable {
 		vo.setcontact(addWorkerContactTextField.getText());
 		vo.setusername(addWorkerUsernameTextField.getText());
 		vo.setpassword(addWorkerPasswordTextField.getText());
-
 		RemoteHelper helper = RemoteHelper.getInstance();
 		try {
 			ResultMessage message = helper.getManageBLService().manage_addHotelWorker(vo);
