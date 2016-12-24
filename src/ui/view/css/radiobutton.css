@@ -1,0 +1,10 @@
+.radio-button {
+    -fx-label-padding: 0.0em 0.0em 0.0em 0.416667em; /* 0 0 0 5 */
+    -fx-text-fill: rgb(102,153,102);
+}
+.radio-button > .radio {
+	-fx-background-color: white;
+}
+.radio-button:selected > .radio > .dot {
+   -fx-background-color: rgb(102,153,102);
+}

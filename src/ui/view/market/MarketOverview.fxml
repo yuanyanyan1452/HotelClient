@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<?import javafx.scene.text.*?>
 <?import java.lang.*?>
 <?import javafx.geometry.*?>
 <?import javafx.scene.control.*?>
@@ -7,48 +8,62 @@
 <?import javafx.scene.layout.*?>
 <?import javafx.scene.layout.AnchorPane?>
 
-<SplitPane dividerPositions="0.3" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="600.0" prefWidth="1000.0" stylesheets="@MarketOverview.css" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="ui.view.market.MarketOverviewController">
+<SplitPane dividerPositions="0.29" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="600.0" prefWidth="1000.0" stylesheets="@../css/MarketOverview.css" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="ui.view.market.MarketOverviewController">
   <items>
-    <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="160.0" prefWidth="100.0">
+    <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="160.0" prefWidth="100.0" style="-fx-background-color: rgb(15,174,113);">
          <children>
             <GridPane prefHeight="600.0" prefWidth="296.0">
                <children>
-                  <VBox prefHeight="210.0" prefWidth="218.0" GridPane.rowIndex="1">
+                  <VBox prefHeight="327.0" prefWidth="296.0" stylesheets="@../css/navigation.css" GridPane.rowIndex="1">
                      <children>
-                        <Label alignment="CENTER" prefHeight="33.0" prefWidth="304.0" style="-fx-border-color: #000000;" text="网站营销" />
-                        <Button mnemonicParsing="false" onAction="#gotoStrategy" prefHeight="73.0" prefWidth="296.0" text="网站促销策略制定" />
-                        <Button mnemonicParsing="false" onAction="#gotoAbnormalOrder" prefHeight="73.0" prefWidth="296.0" text="异常订单浏览" />
-                        <Button mnemonicParsing="false" onAction="#gotoCreditCharge" prefHeight="73.0" prefWidth="296.0" text="信用充值" />
+                        <Button alignment="CENTER" mnemonicParsing="false" onAction="#gotoStrategy" prefHeight="111.0" prefWidth="322.0" text="网站促销策略制定" />
+                        <Button alignment="CENTER" mnemonicParsing="false" onAction="#gotoAbnormalOrder" prefHeight="111.0" prefWidth="296.0" text="异常订单浏览" />
+                        <Button alignment="CENTER" mnemonicParsing="false" onAction="#gotoCreditCharge" prefHeight="111.0" prefWidth="296.0" text="信用充值" />
                      </children>
                   </VBox>
-                  <GridPane gridLinesVisible="true">
+                  <GridPane prefHeight="264.0" prefWidth="285.0">
                      <children>
-                        <GridPane prefHeight="132.0" prefWidth="237.0" GridPane.rowIndex="1">
+                        <GridPane alignment="CENTER" prefHeight="118.0" prefWidth="296.0" GridPane.rowIndex="1">
                            <children>
-                              <Label text="营销人员姓名：" GridPane.halignment="CENTER">
+                              <Label text="营销人员姓名：" textFill="WHITE" GridPane.halignment="CENTER">
                                  <GridPane.margin>
                                     <Insets />
                                  </GridPane.margin>
+                                 <font>
+                                    <Font size="15.0" />
+                                 </font>
                               </Label>
-                              <Label text="联系方式：" GridPane.halignment="CENTER" GridPane.rowIndex="1">
+                              <Label text="联系方式：" textFill="WHITE" GridPane.halignment="CENTER" GridPane.rowIndex="1">
                                  <GridPane.margin>
                                     <Insets />
                                  </GridPane.margin>
+                                 <font>
+                                    <Font size="15.0" />
+                                 </font>
                               </Label>
-                              <Label fx:id="nameLabel" text="Tom" GridPane.columnIndex="1" GridPane.halignment="CENTER" />
-                              <Label fx:id="contactLabel" text="88888888" GridPane.columnIndex="1" GridPane.halignment="CENTER" GridPane.rowIndex="1" />
+                              <Label fx:id="nameLabel" text="Tom" textFill="WHITE" GridPane.columnIndex="1" GridPane.halignment="CENTER">
+                                 <font>
+                                    <Font size="15.0" />
+                                 </font></Label>
+                              <Label fx:id="contactLabel" text="88888888" textFill="WHITE" GridPane.columnIndex="1" GridPane.halignment="CENTER" GridPane.rowIndex="1">
+                                 <font>
+                                    <Font size="15.0" />
+                                 </font></Label>
                            </children>
                            <columnConstraints>
-                              <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
-                              <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+                              <ColumnConstraints hgrow="SOMETIMES" maxWidth="148.0" minWidth="10.0" prefWidth="148.0" />
+                              <ColumnConstraints hgrow="SOMETIMES" maxWidth="148.0" minWidth="10.0" prefWidth="148.0" />
                            </columnConstraints>
                            <rowConstraints>
                               <RowConstraints maxHeight="69.0" minHeight="10.0" prefHeight="69.0" vgrow="SOMETIMES" />
                               <RowConstraints maxHeight="86.0" minHeight="10.0" prefHeight="63.0" vgrow="SOMETIMES" />
                            </rowConstraints>
                         </GridPane>
-                        <Label alignment="CENTER" prefHeight="15.0" prefWidth="226.0" text="当前营销人员信息" />
-                        <Button fx:id="exitButton" mnemonicParsing="false" onAction="#exit" prefHeight="30.0" prefWidth="35.0">
+                        <Label alignment="CENTER" prefHeight="15.0" prefWidth="226.0" text="当前营销人员信息" textFill="WHITE">
+                           <font>
+                              <Font size="15.0" />
+                           </font></Label>
+                        <Button fx:id="exitButton" mnemonicParsing="false" onAction="#exit" prefHeight="30.0" prefWidth="35.0" stylesheets="@../css/MarketOverview.css">
                            <GridPane.margin>
                               <Insets left="-230.0" />
                            </GridPane.margin>
@@ -58,8 +73,8 @@
                         <ColumnConstraints halignment="CENTER" hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
                      </columnConstraints>
                      <rowConstraints>
-                        <RowConstraints maxHeight="89.0" minHeight="10.0" prefHeight="39.0" vgrow="SOMETIMES" />
-                        <RowConstraints maxHeight="149.0" minHeight="10.0" prefHeight="149.0" vgrow="SOMETIMES" />
+                        <RowConstraints maxHeight="115.0" minHeight="10.0" prefHeight="82.0" vgrow="SOMETIMES" />
+                        <RowConstraints maxHeight="202.0" minHeight="10.0" prefHeight="182.0" vgrow="SOMETIMES" />
                      </rowConstraints>
                   </GridPane>
                </children>
@@ -67,9 +82,8 @@
                   <ColumnConstraints hgrow="SOMETIMES" maxWidth="496.0" minWidth="10.0" prefWidth="300.0" />
                </columnConstraints>
                <rowConstraints>
-                  <RowConstraints maxHeight="270.0" minHeight="10.0" prefHeight="190.0" vgrow="SOMETIMES" />
-                  <RowConstraints maxHeight="476.0" minHeight="10.0" prefHeight="253.0" vgrow="SOMETIMES" />
-                  <RowConstraints maxHeight="446.0" minHeight="10.0" prefHeight="173.0" vgrow="SOMETIMES" />
+                  <RowConstraints maxHeight="270.0" minHeight="10.0" prefHeight="264.0" vgrow="SOMETIMES" />
+                  <RowConstraints maxHeight="476.0" minHeight="10.0" prefHeight="336.0" vgrow="SOMETIMES" />
                </rowConstraints>
             </GridPane>
          </children></AnchorPane>

@@ -18,7 +18,7 @@
           <RowConstraints maxHeight="295.0" minHeight="10.0" prefHeight="54.0" vgrow="SOMETIMES" />
         </rowConstraints>
          <children>
-            <Button mnemonicParsing="false" onAction="#save" prefHeight="31.0" prefWidth="102.0" text="保存" GridPane.rowIndex="1">
+            <Button mnemonicParsing="false" onAction="#save" prefHeight="31.0" prefWidth="102.0" stylesheets="@../css/button.css" text="保存" GridPane.rowIndex="1">
                <GridPane.margin>
                   <Insets left="550.0" />
                </GridPane.margin>
@@ -36,11 +36,11 @@
                   <RowConstraints minHeight="10.0" prefHeight="10.0" vgrow="SOMETIMES" />
               </rowConstraints>
                <children>
-                  <Label prefHeight="24.0" prefWidth="38.0" text="地址：" GridPane.halignment="CENTER" GridPane.valignment="CENTER" />
-                  <Label text="所属商圈：" GridPane.halignment="CENTER" GridPane.rowIndex="1" />
-                  <Label text="简介：" GridPane.halignment="CENTER" GridPane.rowIndex="2" GridPane.valignment="CENTER" />
-                  <Label text="设施服务：" GridPane.halignment="CENTER" GridPane.rowIndex="3" />
-                  <Label text="星级：" GridPane.halignment="CENTER" GridPane.rowIndex="4" />
+                  <Label alignment="CENTER" prefHeight="42.0" prefWidth="94.0" stylesheets="@../css/label.css" text="地址：" GridPane.halignment="CENTER" GridPane.valignment="CENTER" />
+                  <Label alignment="CENTER" prefHeight="42.0" prefWidth="125.0" stylesheets="@../css/label.css" text="所属商圈：" GridPane.halignment="CENTER" GridPane.rowIndex="1" />
+                  <Label alignment="CENTER" prefHeight="50.0" prefWidth="102.0" stylesheets="@../css/label.css" text="简介：" GridPane.halignment="CENTER" GridPane.rowIndex="2" GridPane.valignment="CENTER" />
+                  <Label alignment="CENTER" prefHeight="46.0" prefWidth="112.0" stylesheets="@../css/label.css" text="设施服务：" GridPane.halignment="CENTER" GridPane.rowIndex="3" />
+                  <Label alignment="CENTER" prefHeight="42.0" prefWidth="89.0" stylesheets="@../css/label.css" text="星级：" GridPane.halignment="CENTER" GridPane.rowIndex="4" />
                   <ScrollPane prefHeight="64.0" prefWidth="511.0" GridPane.columnIndex="1">
                      <content>
                         <TextArea fx:id="addressTextField" prefHeight="83.0" prefWidth="509.0" text="&#10;" wrapText="true">

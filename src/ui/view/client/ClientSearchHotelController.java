@@ -35,6 +35,7 @@ import ui.view.Main;
 import vo.ClientVO;
 import vo.HotelVO;
 import vo.OrderVO;
+import vo.RoomVO;
 
 public class ClientSearchHotelController implements Initializable {
 	private Main main;
@@ -64,6 +65,9 @@ public class ClientSearchHotelController implements Initializable {
 	@FXML
 	private TableColumn<HotelModel, String> orderstatecolumn;
 
+	@FXML
+	private TableColumn<HotelModel, String> cheapestroomcolumn;
+	
 	@FXML
 	private ComboBox<String> locationButton;
 
@@ -309,7 +313,6 @@ public class ClientSearchHotelController implements Initializable {
 						try {
 							currentHotel=helper.getHotelBLService().hotel_getInfo(Integer.parseInt(models.get(cell.getIndex()).getID()));
 						} catch (NumberFormatException | RemoteException e) {
-							// TODO Auto-generated catch block
 							e.printStackTrace();
 						}
 					}
@@ -333,7 +336,6 @@ public class ClientSearchHotelController implements Initializable {
 								try {
 									currentHotel=helper.getHotelBLService().hotel_getInfo(Integer.parseInt(hotelTable.getItems().get(cell.getIndex()).getID()));
 								} catch (NumberFormatException | RemoteException e) {
-									// TODO Auto-generated catch block
 									e.printStackTrace();
 								}
 							}
@@ -356,7 +358,28 @@ public class ClientSearchHotelController implements Initializable {
 						try {
 							currentHotel=helper.getHotelBLService().hotel_getInfo(Integer.parseInt(hotelTable.getItems().get(cell.getIndex()).getID()));
 						} catch (NumberFormatException | RemoteException e) {
-							// TODO Auto-generated catch block
+							e.printStackTrace();
+						}
+					}
+				});
+				return cell;
+			}
+		});
+		cheapestroomcolumn.setCellValueFactory(celldata -> celldata.getValue().cheapestRoomPriceProperty());
+		cheapestroomcolumn.setCellFactory(new Callback<TableColumn<HotelModel, String>, TableCell<HotelModel, String>>() {
+
+			@Override
+			public TableCell<HotelModel, String> call(TableColumn<HotelModel, String> param) {
+				TextFieldTableCell<HotelModel, String> cell = new TextFieldTableCell<>();
+				cell.setOnMouseClicked((MouseEvent t) -> {
+					if (t.getClickCount() == 2) {
+						int hotelid=(Integer.parseInt(hotelTable.getItems().get(cell.getIndex()).getID()));
+						gotodetailinfo(hotelid);
+					}
+					else if(t.getClickCount() == 1){
+						try {
+							currentHotel=helper.getHotelBLService().hotel_getInfo(Integer.parseInt(hotelTable.getItems().get(cell.getIndex()).getID()));
+						} catch (NumberFormatException | RemoteException e) {
 							e.printStackTrace();
 						}
 					}
@@ -379,7 +402,6 @@ public class ClientSearchHotelController implements Initializable {
 						try {
 							currentHotel=helper.getHotelBLService().hotel_getInfo(Integer.parseInt(hotelTable.getItems().get(cell.getIndex()).getID()));
 						} catch (NumberFormatException | RemoteException e) {
-							// TODO Auto-generated catch block
 							e.printStackTrace();
 						}
 					}
@@ -402,7 +424,6 @@ public class ClientSearchHotelController implements Initializable {
 						try {
 							currentHotel=helper.getHotelBLService().hotel_getInfo(Integer.parseInt(hotelTable.getItems().get(cell.getIndex()).getID()));
 						} catch (NumberFormatException | RemoteException e) {
-							// TODO Auto-generated catch block
 							e.printStackTrace();
 						}
 					}
@@ -425,7 +446,6 @@ public class ClientSearchHotelController implements Initializable {
 						try {
 							currentHotel=helper.getHotelBLService().hotel_getInfo(Integer.parseInt(hotelTable.getItems().get(cell.getIndex()).getID()));
 						} catch (NumberFormatException | RemoteException e) {
-							// TODO Auto-generated catch block
 							e.printStackTrace();
 						}
 					}
@@ -443,9 +463,20 @@ public class ClientSearchHotelController implements Initializable {
 			model.setHotelName(vo.getname());
 			model.setBusinessAddress(vo.getbussiness_address());
 			model.setAddress(vo.getaddress());
+			
+			//选择当前酒店最便宜的房间价格
+			ArrayList<RoomVO> rooms = helper.getHotelBLService().getallroom(vo.getid());
+			int cheapest = rooms.get(0).getprice();
+			for(RoomVO room: rooms){
+				if (cheapest>room.getprice()) {
+					cheapest = room.getprice();
+				}
+			}
+			model.setCheapestRoomPrice(cheapest);
 			model.setStar(vo.getstar());
 			model.setScore(vo.getscore().split(",")[0]);
 			model.setOrderState("未曾入住");
+			//选择最近一次订单
 			ArrayList<OrderVO> orders = helper.getOrderBLService().findorderByHotelid(vo.getid());
 			for(int i=orders.size()-1;i>=0;i--){
 				if (orders.get(i).getclientid()==currentClient.getclientid()) {

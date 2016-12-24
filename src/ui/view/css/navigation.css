@@ -1,0 +1,9 @@
+.button{
+	-fx-text-fill: white;
+	-fx-font-size: 15;
+	-fx-background-color: rgb(15,174,113);
+}
+.button:focused{
+	-fx-text-fill: rgb(15,174,113);
+	-fx-background-color: rgb(226,238,196);
+}

@@ -1,0 +1,6 @@
+.label{
+	-fx-text-fill: rgb(102,153,102);
+}
+#bigLabel.label {
+	-fx-font-size: 32;
+}

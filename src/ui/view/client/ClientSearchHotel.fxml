@@ -6,9 +6,9 @@
 <?import javafx.scene.layout.*?>
 <?import javafx.scene.layout.AnchorPane?>
 
-<AnchorPane prefHeight="600.0" prefWidth="700.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="ui.view.client.ClientSearchHotelController">
+<AnchorPane prefHeight="600.0" prefWidth="700.0" stylesheets="@../css/ClientSearchHotel.css" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="ui.view.client.ClientSearchHotelController">
    <children>
-      <SplitPane dividerPositions="0.39297658862876256" orientation="VERTICAL" prefHeight="600.0" prefWidth="700.0">
+      <SplitPane dividerPositions="0.3862876254180602" orientation="VERTICAL" prefHeight="600.0" prefWidth="700.0">
         <items>
           <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="202.0" prefWidth="700.0">
                <children>
@@ -33,14 +33,14 @@
                                     </AnchorPane>
                                  </items>
                               </SplitPane>
-                              <TabPane layoutY="56.0" prefHeight="172.0" prefWidth="373.0" tabClosingPolicy="UNAVAILABLE">
+                              <TabPane layoutY="56.0" prefHeight="172.0" prefWidth="373.0" stylesheets="@../css/tabpane.css" tabClosingPolicy="UNAVAILABLE">
                                 <tabs>
                                   <Tab text="酒店名称">
                                     <content>
                                       <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="150.0" prefWidth="367.0">
                                              <children>
                                                 <Label layoutX="89.0" layoutY="63.0" text="名称：" />
-                                                <TextField fx:id="hotelnameTextField" layoutX="151.0" layoutY="60.0" />
+                                                <TextField fx:id="hotelnameTextField" layoutX="151.0" layoutY="60.0" prefHeight="1.0" prefWidth="167.0" />
                                                 <ImageView fitHeight="36.0" fitWidth="35.0" layoutX="26.0" layoutY="53.0">
                                                    <image>
                                                       <Image url="@../../../../resources/酒店名称.png" />
@@ -125,7 +125,7 @@
                                                       <Image url="@../../../../resources/近商圈.png" />
                                                    </image>
                                                 </ImageView>
-                                                <RadioButton fx:id="everBookedButton" layoutX="130.0" layoutY="63.0" mnemonicParsing="false" text="只搜索自己预定过的酒店" />
+                                                <RadioButton fx:id="everBookedButton" layoutX="130.0" layoutY="63.0" mnemonicParsing="false" stylesheets="@../css/radiobutton.css" text="只搜索自己预定过的酒店" />
                                              </children>
                                           </AnchorPane>
                                     </content>
@@ -136,7 +136,7 @@
                         </AnchorPane>
                       <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="215.0" prefWidth="300.0">
                            <children>
-                              <Button fx:id="searchButton" mnemonicParsing="false" onAction="#search" prefHeight="228.0" prefWidth="373.0" />
+                              <Button fx:id="searchButton" alignment="CENTER" mnemonicParsing="false" onAction="#search" prefHeight="228.0" prefWidth="322.0" />
                               <ImageView fitHeight="200.0" fitWidth="200.0" layoutX="62.0" layoutY="14.0">
                                  <image>
                                     <Image url="@../../../../resources/搜索.png" />
@@ -148,19 +148,20 @@
                   </SplitPane>
                </children>
             </AnchorPane>
-          <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="375.0" prefWidth="700.0">
+          <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="391.0" prefWidth="698.0">
                <children>
-                  <TableView fx:id="hotelTable" fixedCellSize="0.0" prefHeight="321.0" prefWidth="700.0">
+                  <TableView fx:id="hotelTable" fixedCellSize="0.0" prefHeight="321.0" prefWidth="700.0" stylesheets="@../css/tableview.css">
                     <columns>
                       <TableColumn fx:id="hotelnamecolumn" prefWidth="112.0" text="酒店名称" />
                       <TableColumn fx:id="businessaddresscolumn" minWidth="0.0" prefWidth="102.0" text="所属商圈" />
-                        <TableColumn fx:id="addresscolumn" minWidth="0.0" prefWidth="257.0" text="地址" />
-                        <TableColumn fx:id="starcolumn" prefWidth="66.0" text="星级" />
-                        <TableColumn fx:id="scorecolumn" minWidth="0.0" prefWidth="58.0" text="评分" />
-                        <TableColumn fx:id="orderstatecolumn" minWidth="0.0" prefWidth="103.0" text="最近一次订单状态" />
+                        <TableColumn fx:id="addresscolumn" minWidth="0.0" prefWidth="181.0" text="地址" />
+                        <TableColumn fx:id="cheapestroomcolumn" prefWidth="100.0" text="房间最低价格" />
+                        <TableColumn fx:id="starcolumn" prefWidth="51.0" text="星级" />
+                        <TableColumn fx:id="scorecolumn" minWidth="0.0" prefWidth="46.0" text="评分" />
+                        <TableColumn fx:id="orderstatecolumn" minWidth="0.0" prefWidth="106.0" text="最近一次订单状态" />
                     </columns>
                   </TableView>
-                  <Button layoutX="273.0" layoutY="323.0" mnemonicParsing="false" onAction="#gotoGenerateOrder" prefHeight="36.0" prefWidth="155.0" text="预订酒店" />
+                  <Button alignment="CENTER" layoutX="273.0" layoutY="323.0" mnemonicParsing="false" onAction="#gotoGenerateOrder" prefHeight="36.0" prefWidth="155.0" stylesheets="@../css/button.css" text="预订酒店" />
                </children>
             </AnchorPane>
         </items>

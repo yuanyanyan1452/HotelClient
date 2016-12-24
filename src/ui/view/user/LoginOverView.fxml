@@ -9,7 +9,7 @@
 <?import javafx.scene.layout.*?>
 <?import javafx.scene.layout.AnchorPane?>
 
-<AnchorPane prefHeight="400.0" prefWidth="500.0" stylesheets="@LoginOverview.css" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="ui.view.user.LoginOverviewController">
+<AnchorPane prefHeight="400.0" prefWidth="500.0" stylesheets="@../css/LoginOverview.css" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="ui.view.user.LoginOverviewController">
    <children>
       <GridPane prefHeight="400.0" prefWidth="500.0">
         <columnConstraints>
@@ -22,24 +22,24 @@
           <RowConstraints maxHeight="215.0" minHeight="10.0" prefHeight="186.0" vgrow="SOMETIMES" />
         </rowConstraints>
          <children>
-            <Button fx:id="clientButton" alignment="BOTTOM_CENTER" contentDisplay="TOP" mnemonicParsing="false" onAction="#clientgotoLogin" prefHeight="229.0" prefWidth="250.0" text="客户" GridPane.rowIndex="1" GridPane.valignment="TOP">
+            <Button fx:id="clientButton" alignment="TOP_LEFT" contentDisplay="TOP" mnemonicParsing="false" onAction="#clientgotoLogin" prefHeight="229.0" prefWidth="250.0" text="客户" GridPane.rowIndex="1" GridPane.valignment="TOP">
                <font>
-                  <Font name="Microsoft JhengHei Light" size="22.0" />
+                  <Font size="24.0" />
                </font>
             </Button>
-            <Button fx:id="hotelButton" alignment="BOTTOM_CENTER" contentDisplay="TOP" graphicTextGap="0.0" mnemonicParsing="false" onAction="#hotelgotoLogin" prefHeight="192.0" prefWidth="250.0" text="酒店" GridPane.columnIndex="1" GridPane.rowIndex="1">
+            <Button fx:id="hotelButton" alignment="TOP_LEFT" contentDisplay="TOP" graphicTextGap="0.0" mnemonicParsing="false" onAction="#hotelgotoLogin" prefHeight="192.0" prefWidth="250.0" text="酒店" GridPane.columnIndex="1" GridPane.rowIndex="1">
                <font>
-                  <Font name="Microsoft JhengHei Light" size="22.0" />
+                  <Font size="24.0" />
                </font>
             </Button>
-            <Button fx:id="marketButton" alignment="BOTTOM_CENTER" contentDisplay="TOP" mnemonicParsing="false" onAction="#marketgotoLogin" prefHeight="196.0" prefWidth="250.0" text="网站营销" GridPane.rowIndex="2">
+            <Button fx:id="marketButton" alignment="TOP_LEFT" contentDisplay="TOP" mnemonicParsing="false" onAction="#marketgotoLogin" prefHeight="196.0" prefWidth="250.0" text="营销" GridPane.rowIndex="2">
                <font>
-                  <Font name="Microsoft JhengHei" size="22.0" />
+                  <Font size="24.0" />
                </font>
             </Button>
-            <Button fx:id="managerButton" alignment="BOTTOM_CENTER" contentDisplay="TOP" mnemonicParsing="false" onAction="#managergotoLogin" prefHeight="222.0" prefWidth="250.0" text="网站管理" GridPane.columnIndex="1" GridPane.rowIndex="2">
+            <Button fx:id="managerButton" alignment="TOP_LEFT" contentDisplay="TOP" mnemonicParsing="false" onAction="#managergotoLogin" prefHeight="222.0" prefWidth="250.0" text="管理" GridPane.columnIndex="1" GridPane.rowIndex="2">
                <font>
-                  <Font name="Microsoft JhengHei Light" size="22.0" />
+                  <Font size="24.0" />
                </font>
             </Button>
             <Label fx:id="welcomeLabel" alignment="CENTER" prefHeight="60.0" prefWidth="500.0" text="欢迎！">
@@ -54,9 +54,6 @@
                <GridPane.margin>
                   <Insets left="185.0" />
                </GridPane.margin>
-               <font>
-                  <Font name="System Bold" size="12.0" />
-               </font>
             </Button>
          </children>
       </GridPane>

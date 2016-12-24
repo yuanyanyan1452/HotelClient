@@ -5,25 +5,25 @@
 <?import javafx.scene.layout.*?>
 <?import javafx.scene.layout.AnchorPane?>
 
-<AnchorPane prefHeight="600.0" prefWidth="700.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="ui.view.order.MarketBrowseAbnormalOrderController">
+<AnchorPane prefHeight="600.0" prefWidth="700.0" stylesheets="@../css/HotelCheckIn.css" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="ui.view.order.MarketBrowseAbnormalOrderController">
    <children>
       <SplitPane dividerPositions="0.8712374581939799" orientation="VERTICAL" prefHeight="600.0" prefWidth="700.0">
         <items>
           <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="100.0" prefWidth="160.0">
                <children>
-                  <TitledPane alignment="CENTER" animated="false" collapsible="false" prefHeight="600.0" prefWidth="700.0" text="每日异常订单列表">
+                  <TitledPane alignment="CENTER" animated="false" collapsible="false" prefHeight="600.0" prefWidth="700.0" stylesheets="@../css/titlepane.css" text="每日异常订单列表">
                      <content>
                         <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
                            <children>
-                              <ScrollPane layoutY="-1.0" prefHeight="579.0" prefWidth="760.0">
+                              <ScrollPane layoutY="-1.0" prefHeight="579.0" prefWidth="697.0">
                                  <content>
-                                    <TableView fx:id="orderTable" prefHeight="607.0" prefWidth="697.0">
+                                    <TableView fx:id="orderTable" prefHeight="500.0" prefWidth="697.0" stylesheets="@../css/tableview.css">
                                        <columns>
                                           <TableColumn fx:id="idColumn" prefWidth="119.0" text="订单号" />
                                           <TableColumn fx:id="clientColumn" prefWidth="100.0" text="客户ID" />
                                           <TableColumn fx:id="deadTimeColumn" prefWidth="190.0" text="最晚执行时间" />
                                           <TableColumn fx:id="overTimeColumn" prefWidth="190.0" text="超过最晚执行时间(小时)" />
-                                          <TableColumn fx:id="punishColumn" prefWidth="97.0" text="扣除信用值" />
+                                          <TableColumn fx:id="punishColumn" prefWidth="94.0" text="扣除信用值" />
                                        </columns>
                                     </TableView>
                                  </content>
@@ -36,8 +36,8 @@
             </AnchorPane>
           <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="100.0" prefWidth="160.0">
                <children>
-                  <Button layoutX="519.0" layoutY="15.0" mnemonicParsing="false" onAction="#cancelAbnormalOrder" prefHeight="44.0" prefWidth="142.0" text="撤销异常订单" />
-                  <Label layoutX="269.0" layoutY="30.0" text="恢复信用值选项：" />
+                  <Button layoutX="519.0" layoutY="15.0" mnemonicParsing="false" onAction="#cancelAbnormalOrder" prefHeight="44.0" prefWidth="142.0" stylesheets="@../css/button.css" text="撤销异常订单" />
+                  <Label layoutX="249.0" layoutY="27.0" stylesheets="@../css/label.css" text="恢复信用值选项：" />
                   <ComboBox fx:id="choiceComboBox" layoutX="377.0" layoutY="26.0" prefHeight="21.0" prefWidth="131.0" />
                </children>
             </AnchorPane>

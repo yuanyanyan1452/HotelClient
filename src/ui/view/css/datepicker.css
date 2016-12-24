@@ -1,0 +1,7 @@
+.date-picker{
+	-fx-background-color: rgb(226,238,196);
+	-fx-text-fill: white;
+}
+.date-picker >.arrow-button{
+	-fx-background-color: rgb(194,218,105);
+}

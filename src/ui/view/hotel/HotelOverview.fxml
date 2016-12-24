@@ -9,64 +9,75 @@
 <?import javafx.scene.layout.*?>
 <?import javafx.scene.layout.AnchorPane?>
 
-<SplitPane dividerPositions="0.29797979797979796" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="600.0" prefWidth="1000.0" stylesheets="@HotelOverview.css" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="ui.view.hotel.HotelOverviewController">
+<SplitPane dividerPositions="0.29797979797979796" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="600.0" prefWidth="1000.0" stylesheets="@../css/HotelOverview.css" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="ui.view.hotel.HotelOverviewController">
   <items>
       <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="269.0" prefWidth="188.0">
          <children>
-            <GridPane layoutX="2.0" prefHeight="598.0" prefWidth="294.0">
-              <columnConstraints>
-                <ColumnConstraints halignment="CENTER" hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
-              </columnConstraints>
-              <rowConstraints>
-                <RowConstraints maxHeight="70.0" minHeight="0.0" prefHeight="44.0" vgrow="SOMETIMES" />
-                <RowConstraints maxHeight="326.0" minHeight="10.0" prefHeight="162.0" vgrow="SOMETIMES" />
-                  <RowConstraints maxHeight="383.0" minHeight="10.0" prefHeight="383.0" vgrow="SOMETIMES" />
-              </rowConstraints>
-               <children>
-                  <GridPane prefHeight="152.0" prefWidth="294.0" GridPane.rowIndex="1">
+            <SplitPane fx:id="leftPane" dividerPositions="0.45805369127516776" orientation="VERTICAL" prefHeight="598.0" prefWidth="297.0">
+              <items>
+                <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="270.0" prefWidth="295.0">
                      <children>
-                        <Label text="酒店工作人员姓名：" GridPane.halignment="CENTER" GridPane.rowIndex="1">
-                           <GridPane.margin>
-                              <Insets />
-                           </GridPane.margin>
-                        </Label>
-                        <Label text="联系方式：" GridPane.halignment="CENTER" GridPane.rowIndex="2">
-                           <GridPane.margin>
-                              <Insets />
-                           </GridPane.margin>
-                        </Label>
-                        <Label fx:id="namelabel" alignment="CENTER" prefHeight="22.0" prefWidth="97.0" GridPane.columnIndex="1" GridPane.halignment="CENTER" GridPane.rowIndex="1" />
-                        <Label fx:id="contactlabel" alignment="CENTER" prefHeight="15.0" prefWidth="99.0" GridPane.columnIndex="1" GridPane.halignment="CENTER" GridPane.rowIndex="2" />
-                        <Label text="酒店名：" />
-                        <Label fx:id="hotelnamelabel" alignment="CENTER" prefHeight="21.0" prefWidth="95.0" GridPane.columnIndex="1" />
+                        <GridPane prefHeight="275.0" prefWidth="297.0">
+                          <columnConstraints>
+                            <ColumnConstraints halignment="CENTER" hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+                          </columnConstraints>
+                          <rowConstraints>
+                            <RowConstraints maxHeight="70.0" minHeight="0.0" prefHeight="44.0" vgrow="SOMETIMES" />
+                            <RowConstraints maxHeight="326.0" minHeight="10.0" prefHeight="162.0" vgrow="SOMETIMES" />
+                          </rowConstraints>
+                           <children>
+                              <GridPane prefHeight="207.0" prefWidth="288.0" GridPane.rowIndex="1">
+                                 <children>
+                                    <Label text="酒店工作人员姓名：" GridPane.halignment="CENTER" GridPane.rowIndex="1">
+                                       <GridPane.margin>
+                                          <Insets />
+                                       </GridPane.margin>
+                                    </Label>
+                                    <Label text="联系方式：" GridPane.halignment="CENTER" GridPane.rowIndex="2">
+                                       <GridPane.margin>
+                                          <Insets />
+                                       </GridPane.margin>
+                                    </Label>
+                                    <Label fx:id="namelabel" alignment="CENTER" prefHeight="22.0" prefWidth="97.0" GridPane.columnIndex="1" GridPane.halignment="CENTER" GridPane.rowIndex="1" />
+                                    <Label fx:id="contactlabel" alignment="CENTER" prefHeight="38.0" prefWidth="129.0" GridPane.columnIndex="1" GridPane.halignment="CENTER" GridPane.rowIndex="2" />
+                                    <Label text="酒店名：" />
+                                    <Label fx:id="hotelnamelabel" alignment="CENTER" prefHeight="21.0" prefWidth="95.0" GridPane.columnIndex="1" />
+                                 </children>
+                                 <columnConstraints>
+                                    <ColumnConstraints halignment="CENTER" hgrow="SOMETIMES" maxWidth="217.0" minWidth="10.0" prefWidth="150.0" />
+                                    <ColumnConstraints halignment="CENTER" hgrow="SOMETIMES" maxWidth="154.0" minWidth="3.0" prefWidth="144.0" />
+                                 </columnConstraints>
+                                 <rowConstraints>
+                                    <RowConstraints maxHeight="69.0" minHeight="10.0" prefHeight="69.0" vgrow="SOMETIMES" />
+                                    <RowConstraints maxHeight="69.0" minHeight="10.0" prefHeight="69.0" vgrow="SOMETIMES" />
+                                    <RowConstraints maxHeight="86.0" minHeight="10.0" prefHeight="63.0" vgrow="SOMETIMES" />
+                                 </rowConstraints>
+                              </GridPane>
+                              <Label alignment="CENTER" prefHeight="15.0" prefWidth="226.0" text="当前酒店信息" />
+                              <Button fx:id="exitButton" mnemonicParsing="false" onAction="#exit" prefHeight="30.0" prefWidth="35.0">
+                                 <GridPane.margin>
+                                    <Insets left="-220.0" />
+                                 </GridPane.margin>
+                              </Button>
+                           </children>
+                        </GridPane>
                      </children>
-                     <columnConstraints>
-                        <ColumnConstraints halignment="CENTER" hgrow="SOMETIMES" maxWidth="217.0" minWidth="10.0" prefWidth="150.0" />
-                        <ColumnConstraints halignment="CENTER" hgrow="SOMETIMES" maxWidth="154.0" minWidth="3.0" prefWidth="144.0" />
-                     </columnConstraints>
-                     <rowConstraints>
-                        <RowConstraints maxHeight="69.0" minHeight="10.0" prefHeight="69.0" vgrow="SOMETIMES" />
-                        <RowConstraints maxHeight="69.0" minHeight="10.0" prefHeight="69.0" vgrow="SOMETIMES" />
-                        <RowConstraints maxHeight="86.0" minHeight="10.0" prefHeight="63.0" vgrow="SOMETIMES" />
-                     </rowConstraints>
-                  </GridPane>
-                  <Label alignment="CENTER" prefHeight="15.0" prefWidth="226.0" text="当前酒店信息" />
-                  <Button fx:id="exitButton" mnemonicParsing="false" onAction="#exit" prefHeight="30.0" prefWidth="35.0">
-                     <GridPane.margin>
-                        <Insets left="-220.0" />
-                     </GridPane.margin>
-                  </Button>
-                  <VBox alignment="CENTER" prefHeight="335.0" prefWidth="294.0" GridPane.rowIndex="2">
+                  </AnchorPane>
+                <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="100.0" prefWidth="160.0">
                      <children>
-                        <Button mnemonicParsing="false" onAction="#gotoHotelBasicInfo" prefHeight="76.0" prefWidth="294.0" text="基本信息管理" />
-                        <Button mnemonicParsing="false" onAction="#gotoHotelRoomManage" prefHeight="76.0" prefWidth="294.0" text="可用客房管理" />
-                        <Button mnemonicParsing="false" onAction="#gotoHotelBrowseOrder" prefHeight="76.0" prefWidth="297.0" text="订单浏览" />
-                        <Button mnemonicParsing="false" onAction="#gotoHotelCheckIn" prefHeight="76.0" prefWidth="308.0" text="客户入住" />
-                        <Button mnemonicParsing="false" onAction="#gotoHotelStrategyManage" prefHeight="76.0" prefWidth="299.0" text="销售策略管理" />
+                        <VBox alignment="CENTER" layoutX="-1.0" prefHeight="323.0" prefWidth="297.0">
+                           <children>
+                              <Button alignment="CENTER" mnemonicParsing="false" onAction="#gotoHotelBasicInfo" prefHeight="76.0" prefWidth="294.0" stylesheets="@../css/navigation.css" text="基本信息管理" />
+                              <Button alignment="CENTER" mnemonicParsing="false" onAction="#gotoHotelRoomManage" prefHeight="76.0" prefWidth="294.0" stylesheets="@../css/navigation.css" text="可用客房管理" />
+                              <Button alignment="CENTER" mnemonicParsing="false" onAction="#gotoHotelBrowseOrder" prefHeight="76.0" prefWidth="297.0" stylesheets="@../css/navigation.css" text="订单浏览" />
+                              <Button alignment="CENTER" mnemonicParsing="false" onAction="#gotoHotelCheckIn" prefHeight="76.0" prefWidth="308.0" stylesheets="@../css/navigation.css" text="客户入住" />
+                              <Button alignment="CENTER" mnemonicParsing="false" onAction="#gotoHotelStrategyManage" prefHeight="76.0" prefWidth="299.0" stylesheets="@../css/navigation.css" text="销售策略管理" />
+                           </children>
+                        </VBox>
                      </children>
-                  </VBox>
-               </children>
-            </GridPane>
+                  </AnchorPane>
+              </items>
+            </SplitPane>
          </children>
       </AnchorPane>
     <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="160.0" prefWidth="100.0" />

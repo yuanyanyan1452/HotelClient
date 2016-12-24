@@ -1,0 +1,6 @@
+.split-pane > .split-pane-divider{
+	-fx-padding: 0 0.15em 0 0.00em;
+}
+.split-pane:vertical{
+	-fx-background-color: rgb(15,174,113),rgb(226,238,196);
+}

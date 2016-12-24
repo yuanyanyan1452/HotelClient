@@ -8,6 +8,9 @@ import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
+import javafx.scene.control.SplitPane;
+import javafx.scene.layout.AnchorPane;
+import javafx.scene.layout.VBox;
 import rmi.RemoteHelper;
 import ui.view.Main;
 import vo.HotelVO;
@@ -28,6 +31,9 @@ public class HotelOverviewController implements Initializable {
 		namelabel.setText(currenthotelworkervo.getname());
 		contactlabel.setText(currenthotelworkervo.getcontact());
 	}
+	@FXML
+	private SplitPane leftPane;
+	
 	
 	@FXML
 	private Label hotelnamelabel;

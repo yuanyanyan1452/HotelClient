@@ -10,11 +10,11 @@
 <?import javafx.scene.layout.*?>
 <?import javafx.scene.layout.AnchorPane?>
 
-<SplitPane dividerPositions="0.25" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="600.0" prefWidth="1000.0" stylesheets="@ClientOverview.css" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="ui.view.client.ClientOverviewController">
+<SplitPane dividerPositions="0.25" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="600.0" prefWidth="1000.0" stylesheets="@../css/ClientOverview.css" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="ui.view.client.ClientOverviewController">
   <items>
-      <AnchorPane prefHeight="391.0" prefWidth="250.0" stylesheets="@ClientOverview.css">
+      <AnchorPane prefHeight="391.0" prefWidth="250.0" stylesheets="@../css/ClientOverview.css">
          <children>
-            <SplitPane dividerPositions="0.4865771812080537" orientation="VERTICAL" prefHeight="598.0" prefWidth="296.0">
+            <SplitPane fx:id="leftPane" dividerPositions="0.4865771812080537" orientation="VERTICAL" prefHeight="598.0" prefWidth="296.0">
                <items>
                   <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="100.0" prefWidth="160.0">
                      <children>
@@ -35,7 +35,7 @@
                                              </GridPane.margin>
                                           </Label>
                                           <Label fx:id="nameLabel" alignment="CENTER" prefHeight="15.0" prefWidth="93.0" GridPane.columnIndex="1" GridPane.halignment="CENTER" />
-                                          <Label fx:id="vipLabel" alignment="CENTER" prefHeight="0.0" prefWidth="56.0" GridPane.columnIndex="1" GridPane.halignment="CENTER" GridPane.rowIndex="2" />
+                                          <Label fx:id="vipLabel" alignment="CENTER" prefHeight="16.0" prefWidth="139.0" GridPane.columnIndex="1" GridPane.halignment="CENTER" GridPane.rowIndex="2" />
                                           <Label text="会员类型：" GridPane.halignment="CENTER" GridPane.rowIndex="2" />
                                           <Label text="联系方式：" GridPane.halignment="CENTER" GridPane.rowIndex="1" GridPane.valignment="CENTER" />
                                           <Label fx:id="contactLabel" alignment="CENTER" prefHeight="26.0" prefWidth="115.0" GridPane.columnIndex="1" GridPane.halignment="CENTER" GridPane.rowIndex="1" GridPane.valignment="CENTER" />
@@ -75,11 +75,11 @@
                         <Label fx:id="tipLabel" alignment="CENTER" contentDisplay="TOP" prefHeight="23.0" prefWidth="294.0" text="您可以..." />
                         <GridPane alignment="CENTER" layoutY="23.0" nodeOrientation="LEFT_TO_RIGHT" prefHeight="280.0" prefWidth="294.0">
                            <children>
-                              <Button fx:id="basicinfoButton" mnemonicParsing="false" onAction="#gotoBasicInfo" prefHeight="74.0" prefWidth="302.0" text="管理基本信息" />
-                              <Button fx:id="searchhotelButton" mnemonicParsing="false" onAction="#gotoSearchHotel" prefHeight="74.0" prefWidth="303.0" text="搜索酒店" GridPane.rowIndex="1" />
-                              <Button fx:id="browseorderButton" mnemonicParsing="false" onAction="#gotoBrowseOrder" prefHeight="74.0" prefWidth="321.0" text="浏览历史订单" GridPane.rowIndex="3" />
-                              <Button fx:id="browsehotelButton" mnemonicParsing="false" onAction="#gotoBrowseHotel" prefHeight="74.0" prefWidth="326.0" text="浏览历史酒店" GridPane.rowIndex="2" />
-                              <Button fx:id="enrollvipButton" mnemonicParsing="false" onAction="#gotoEnrollVIP" prefHeight="75.0" prefWidth="302.0" text="注册会员" GridPane.rowIndex="4" />
+                              <Button fx:id="basicinfoButton" alignment="CENTER" mnemonicParsing="false" onAction="#gotoBasicInfo" prefHeight="74.0" prefWidth="302.0" stylesheets="@../css/navigation.css" text="管理基本信息" />
+                              <Button fx:id="searchhotelButton" alignment="CENTER" mnemonicParsing="false" onAction="#gotoSearchHotel" prefHeight="74.0" prefWidth="303.0" stylesheets="@../css/navigation.css" text="搜索酒店" GridPane.rowIndex="1" />
+                              <Button fx:id="browseorderButton" alignment="CENTER" mnemonicParsing="false" onAction="#gotoBrowseOrder" prefHeight="74.0" prefWidth="321.0" stylesheets="@../css/navigation.css" text="浏览历史订单" GridPane.rowIndex="3" />
+                              <Button fx:id="browsehotelButton" alignment="CENTER" mnemonicParsing="false" onAction="#gotoBrowseHotel" prefHeight="74.0" prefWidth="326.0" stylesheets="@../css/navigation.css" text="浏览历史酒店" GridPane.rowIndex="2" />
+                              <Button fx:id="enrollvipButton" alignment="CENTER" mnemonicParsing="false" onAction="#gotoEnrollVIP" prefHeight="75.0" prefWidth="302.0" stylesheets="@../css/navigation.css" text="注册会员" GridPane.rowIndex="4" />
                            </children>
                            <columnConstraints>
                               <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />

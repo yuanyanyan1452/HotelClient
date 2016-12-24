@@ -16,6 +16,7 @@ public class MarketOverviewController implements Initializable {
 	private Main main;
 	private WebMarketVO currentwebmarketvo;
 	RemoteHelper helper=RemoteHelper.getInstance();
+	
 	@FXML
 	private Label nameLabel;
 	

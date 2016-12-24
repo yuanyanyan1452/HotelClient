@@ -1,0 +1,23 @@
+#exitButton.button{
+	-fx-background-color:rgb(15,174,113);
+	-fx-background-image: url(../../../../resources/exit_system.png);
+	-fx-background-size: 30,20;
+	-fx-background-position: center;
+	-fx-opacity: 0.2;
+}
+#exitButton.button:hover{
+	-fx-opacity:1;
+}
+.split-pane > .split-pane-divider{
+	-fx-padding: 0 0.00em 0 0.00em;
+}
+.split-pane:horizontal{
+	-fx-background-color: rgb(15,174,113),rgb(226,238,196);
+}
+#leftPane.split-pane:vertical{
+	-fx-background-color: rgb(15,174,113);
+}
+.label{
+	-fx-text-fill: white;
+	-fx-font-size: 15;
+}

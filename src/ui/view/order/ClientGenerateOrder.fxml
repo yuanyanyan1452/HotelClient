@@ -8,9 +8,9 @@
 <?import javafx.scene.layout.*?>
 <?import javafx.scene.layout.AnchorPane?>
 
-<AnchorPane prefHeight="600.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="ui.view.order.ClientGenerateOrderController">
+<AnchorPane prefHeight="600.0" prefWidth="600.0" stylesheets="@../css/background.css" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="ui.view.order.ClientGenerateOrderController">
    <children>
-      <GridPane gridLinesVisible="true" layoutX="24.0" layoutY="52.0" prefHeight="439.0" prefWidth="552.0">
+      <GridPane layoutX="24.0" layoutY="52.0" prefHeight="439.0" prefWidth="552.0">
         <columnConstraints>
           <ColumnConstraints halignment="CENTER" hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
           <ColumnConstraints halignment="CENTER" hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
@@ -27,36 +27,36 @@
             <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
         </rowConstraints>
          <children>
-            <Label text="酒店名：" />
-            <Label fx:id="hotelnameLabel" alignment="CENTER" prefHeight="31.0" prefWidth="156.0" GridPane.columnIndex="1" />
-            <Label text="开始时间：" GridPane.rowIndex="1" />
-            <Label text="结束时间：" GridPane.rowIndex="2" />
-            <Label text="最晚订单执行时间：" GridPane.rowIndex="3" />
-            <Label text="房间类型：" GridPane.rowIndex="4" />
-            <Label text="房间数量(与类型对应)：" GridPane.rowIndex="5" />
-            <Label text="入住人数：" GridPane.rowIndex="6" />
-            <Label text="有无儿童：" GridPane.rowIndex="7" />
-            <Label text="总价值：" GridPane.rowIndex="8" />
+            <Label stylesheets="@../css/label.css" text="酒店名：" />
+            <Label fx:id="hotelnameLabel" alignment="CENTER" prefHeight="31.0" prefWidth="156.0" stylesheets="@../css/label.css" GridPane.columnIndex="1" />
+            <Label stylesheets="@../css/label.css" text="开始时间：" GridPane.rowIndex="1" />
+            <Label stylesheets="@../css/label.css" text="结束时间：" GridPane.rowIndex="2" />
+            <Label stylesheets="@../css/label.css" text="最晚订单执行时间：" GridPane.rowIndex="3" />
+            <Label stylesheets="@../css/label.css" text="房间类型：" GridPane.rowIndex="4" />
+            <Label stylesheets="@../css/label.css" text="房间数量(与类型对应)：" GridPane.rowIndex="5" />
+            <Label stylesheets="@../css/label.css" text="入住人数：" GridPane.rowIndex="6" />
+            <Label stylesheets="@../css/label.css" text="有无儿童：" GridPane.rowIndex="7" />
+            <Label stylesheets="@../css/label.css" text="总价值：" GridPane.rowIndex="8" />
             <AnchorPane GridPane.columnIndex="1" GridPane.rowIndex="1">
                <children>
-                  <DatePicker fx:id="startDatePicker" layoutX="45.0" layoutY="11.0" onAction="#updateendtime" />
+                  <DatePicker fx:id="startDatePicker" layoutX="45.0" layoutY="11.0" onAction="#updateendtime" stylesheets="@../css/datepicker.css" />
                </children>
             </AnchorPane>
             <ComboBox fx:id="latestHourComboBox" prefHeight="25.0" prefWidth="110.0" GridPane.columnIndex="1" GridPane.rowIndex="3" />
             <AnchorPane prefHeight="200.0" prefWidth="200.0" GridPane.columnIndex="1" GridPane.rowIndex="8">
                <children>
-                  <Label layoutX="174.0" layoutY="15.0" text="元" />
-                  <Label fx:id="priceLabel" alignment="CENTER" layoutX="108.0" layoutY="8.0" prefHeight="29.0" prefWidth="60.0" />
+                  <Label layoutX="174.0" layoutY="15.0" stylesheets="@../css/label.css" text="元" />
+                  <Label fx:id="priceLabel" alignment="CENTER" layoutX="108.0" layoutY="8.0" prefHeight="29.0" prefWidth="60.0" stylesheets="@../css/label.css" />
                </children>
             </AnchorPane>
-            <DatePicker fx:id="endDatePicker" onAction="#updatedaytime" GridPane.columnIndex="1" GridPane.rowIndex="2" />
+            <DatePicker fx:id="endDatePicker" onAction="#updatedaytime" stylesheets="@../css/datepicker.css" GridPane.columnIndex="1" GridPane.rowIndex="2" />
             <ComboBox fx:id="peopleNumComboBox" prefHeight="23.0" prefWidth="110.0" GridPane.columnIndex="1" GridPane.rowIndex="6" />
-            <RadioButton fx:id="hasChildButton" mnemonicParsing="false" text="有" GridPane.columnIndex="1" GridPane.rowIndex="7">
+            <RadioButton fx:id="hasChildButton" mnemonicParsing="false" stylesheets="@../css/radiobutton.css" text="有" GridPane.columnIndex="1" GridPane.rowIndex="7">
                <GridPane.margin>
                   <Insets right="80.0" />
                </GridPane.margin>
             </RadioButton>
-            <RadioButton fx:id="hasNoChildButton" mnemonicParsing="false" text="无" GridPane.columnIndex="1" GridPane.rowIndex="7">
+            <RadioButton fx:id="hasNoChildButton" mnemonicParsing="false" stylesheets="@../css/radiobutton.css" text="无" GridPane.columnIndex="1" GridPane.rowIndex="7">
                <GridPane.margin>
                   <Insets left="80.0" />
                </GridPane.margin>
@@ -104,12 +104,12 @@
             </GridPane>
          </children>
       </GridPane>
-      <Label layoutX="256.0" layoutY="14.0" text="您的订单">
+      <Label layoutX="256.0" layoutY="14.0" style="-fx-text-fill: rgb(102,153,102);" text="您的订单">
          <font>
             <Font size="22.0" />
          </font>
       </Label>
-      <Button fx:id="generatebuttom" layoutX="393.0" layoutY="502.0" mnemonicParsing="false" onAction="#generate" prefHeight="40.0" prefWidth="100.0" text="确认" />
-      <Button layoutX="109.0" layoutY="502.0" mnemonicParsing="false" onAction="#close" prefHeight="40.0" prefWidth="100.0" text="取消" />
+      <Button fx:id="generatebuttom" layoutX="393.0" layoutY="502.0" mnemonicParsing="false" onAction="#generate" prefHeight="40.0" prefWidth="100.0" stylesheets="@../css/button.css" text="确认" />
+      <Button layoutX="109.0" layoutY="502.0" mnemonicParsing="false" onAction="#close" prefHeight="40.0" prefWidth="100.0" stylesheets="@../css/button.css" text="取消" />
    </children>
 </AnchorPane>

@@ -8,20 +8,20 @@
 <?import javafx.scene.layout.*?>
 <?import javafx.scene.layout.AnchorPane?>
 
-<AnchorPane prefHeight="600.0" prefWidth="1000.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="ui.view.manager.ManagerOverviewController">
+<AnchorPane prefHeight="600.0" prefWidth="1000.0" stylesheets="@../css/ManagerOverview.css" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="ui.view.manager.ManagerOverviewController">
    <children>
       <SplitPane dividerPositions="0.1844" prefHeight="600.0" prefWidth="1000.0">
         <items>
-          <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="160.0" prefWidth="100.0" stylesheets="@ManagerOverview.css">
+          <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="160.0" prefWidth="100.0" style="-fx-background-color: rgb(15,174,113);">
                <children>
                   <SplitPane prefHeight="199.0" prefWidth="181.0">
                      <items>
-                        <AnchorPane prefHeight="200.0" prefWidth="200.0">
+                        <AnchorPane prefHeight="197.0" prefWidth="177.0" style="-fx-background-color: rgb(15,174,113);">
                            <children>
-                              <Label layoutX="54.0" layoutY="14.0" text="管理员，您好" />
-                              <Label layoutX="69.0" layoutY="34.0" text="截止至：" />
-                              <Label fx:id="timeLabel" alignment="CENTER" contentDisplay="CENTER" layoutX="20.0" layoutY="55.0" prefHeight="15.0" prefWidth="140.0" />
-                              <GridPane layoutX="20.0" layoutY="70.0" prefHeight="124.0" prefWidth="181.0">
+                              <Label layoutX="54.0" layoutY="14.0" text="管理员，您好" textFill="WHITE" />
+                              <Label layoutX="69.0" layoutY="34.0" text="截止至：" textFill="WHITE" />
+                              <Label fx:id="timeLabel" alignment="CENTER" contentDisplay="CENTER" layoutX="20.0" layoutY="55.0" prefHeight="15.0" prefWidth="140.0" textFill="WHITE" />
+                              <GridPane layoutX="14.0" layoutY="70.0" prefHeight="124.0" prefWidth="181.0">
                                 <columnConstraints>
                                   <ColumnConstraints halignment="CENTER" hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
                                   <ColumnConstraints halignment="CENTER" hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
@@ -32,12 +32,12 @@
                                   <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
                                 </rowConstraints>
                                  <children>
-                                    <Label text="已注册客户数：" />
-                                    <Label text="已加盟酒店数：" GridPane.rowIndex="1" />
-                                    <Label text="累计订单量：" GridPane.rowIndex="2" />
-                                    <Label fx:id="clientNumLabel" text="0" GridPane.columnIndex="1" />
-                                    <Label fx:id="hotelNumLabel" text="0" GridPane.columnIndex="1" GridPane.rowIndex="1" />
-                                    <Label fx:id="orderNumLabel" text="0" GridPane.columnIndex="1" GridPane.rowIndex="2" />
+                                    <Label text="已注册客户数：" textFill="WHITE" />
+                                    <Label text="已加盟酒店数：" textFill="WHITE" GridPane.rowIndex="1" />
+                                    <Label text="累计订单量：" textFill="WHITE" GridPane.rowIndex="2" />
+                                    <Label fx:id="clientNumLabel" text="0" textFill="WHITE" GridPane.columnIndex="1" />
+                                    <Label fx:id="hotelNumLabel" text="0" textFill="WHITE" GridPane.columnIndex="1" GridPane.rowIndex="1" />
+                                    <Label fx:id="orderNumLabel" text="0" textFill="WHITE" GridPane.columnIndex="1" GridPane.rowIndex="2" />
                                  </children>
                               </GridPane>
                               <Button fx:id="exitButton" layoutX="3.0" layoutY="7.0" mnemonicParsing="false" onAction="#exit" prefHeight="30.0" prefWidth="35.0" />
@@ -49,7 +49,7 @@
             </AnchorPane>
           <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="160.0" prefWidth="100.0">
                <children>
-                  <TabPane prefHeight="598.0" prefWidth="537.0" style="-fx-border-color: #C0C0C0;" tabClosingPolicy="UNAVAILABLE">
+                  <TabPane prefHeight="598.0" prefWidth="537.0" stylesheets="@../css/tabpane.css" tabClosingPolicy="UNAVAILABLE">
                     <tabs>
                       <Tab fx:id="clientTab" onSelectionChanged="#updateClientTable" text="客户人员管理">
                         <content>
@@ -59,13 +59,13 @@
                                       <items>
                                         <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="100.0" prefWidth="160.0">
                                              <children>
-                                                <TableView fx:id="clientTable" layoutX="-1.0" prefHeight="377.0" prefWidth="537.0">
+                                                <TableView fx:id="clientTable" layoutX="-1.0" prefHeight="377.0" prefWidth="537.0" stylesheets="@../css/tableview.css">
                                                   <columns>
                                                       <TableColumn fx:id="clientIDColumn" prefWidth="54.0" text="ID" />
-                                                    <TableColumn fx:id="clientNameColumn" prefWidth="95.0" text="姓名" />
-                                                      <TableColumn fx:id="clientContactColumn" prefWidth="116.0" text="手机号" />
-                                                      <TableColumn fx:id="clientVipTypeColumn" prefWidth="116.0" text="会员类型" />
-                                                    <TableColumn fx:id="clientVipInfoColumn" prefWidth="155.0" text="会员信息" />
+                                                    <TableColumn fx:id="clientNameColumn" prefWidth="86.0" text="姓名" />
+                                                      <TableColumn fx:id="clientContactColumn" prefWidth="125.0" text="手机号" />
+                                                      <TableColumn fx:id="clientVipTypeColumn" prefWidth="72.0" text="会员类型" />
+                                                    <TableColumn fx:id="clientVipInfoColumn" prefWidth="199.0" text="会员信息" />
                                                   </columns>
                                                 </TableView>
                                              </children>
@@ -76,14 +76,14 @@
                                                   <tabs>
                                                     <Tab text="修改客户信息">
                                                       <content>
-                                                        <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
+                                                        <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0" style="-fx-background-color: rgb(226,238,196);" stylesheets="@../css/background.css">
                                                                <children>
-                                                                  <Button alignment="CENTER" contentDisplay="CENTER" layoutX="221.0" layoutY="118.0" mnemonicParsing="false" onAction="#updateClient" prefHeight="24.0" prefWidth="95.0" text="修改" AnchorPane.leftAnchor="222.0" />
+                                                                  <Button alignment="CENTER" contentDisplay="CENTER" layoutX="221.0" layoutY="118.0" mnemonicParsing="false" onAction="#updateClient" prefHeight="24.0" prefWidth="95.0" stylesheets="@../css/button.css" text="修改" AnchorPane.leftAnchor="222.0" />
                                                                   <GridPane layoutY="14.0" prefHeight="109.0" prefWidth="504.0" AnchorPane.topAnchor="9.0">
                                                                      <children>
-                                                                        <Label text="姓名：" GridPane.rowIndex="1" />
-                                                                        <Label text="会员信息：" GridPane.columnIndex="2" GridPane.rowIndex="2" />
-                                                                        <Label text="手机号：" GridPane.columnIndex="2" GridPane.rowIndex="1" />
+                                                                        <Label stylesheets="@../css/label.css" text="姓名：" GridPane.rowIndex="1" />
+                                                                        <Label stylesheets="@../css/label.css" text="会员信息：" GridPane.columnIndex="2" GridPane.rowIndex="2" />
+                                                                        <Label stylesheets="@../css/label.css" text="手机号：" GridPane.columnIndex="2" GridPane.rowIndex="1" />
                                                                         <TextField fx:id="updateClientIDTextField" GridPane.columnIndex="1" />
                                                                         <TextField fx:id="updateClientNameTextField" GridPane.columnIndex="1" GridPane.rowIndex="1" />
                                                                         <TextField fx:id="updateClientContactTextField" GridPane.columnIndex="3" GridPane.rowIndex="1" />
@@ -100,8 +100,8 @@
                                                                            </GridPane.margin>
                                                                         </Button>
                                                                         <TextField fx:id="updateClientVIPTextField" GridPane.columnIndex="3" GridPane.rowIndex="2" />
-                                                                        <Label text="ID：" />
-                                                                        <Label text="会员类型：" GridPane.rowIndex="2" />
+                                                                        <Label stylesheets="@../css/label.css" text="ID：" />
+                                                                        <Label stylesheets="@../css/label.css" text="会员类型：" GridPane.rowIndex="2" />
                                                                         <ComboBox fx:id="updatevipTypeCombobox" prefWidth="150.0" GridPane.columnIndex="1" GridPane.rowIndex="2" />
                                                                      </children>
                                                                      <columnConstraints>
@@ -138,7 +138,7 @@
                                        <items>
                                           <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="100.0" prefWidth="160.0">
                                              <children>
-                                                <TableView fx:id="hotelTable" prefHeight="377.0" prefWidth="537.0">
+                                                <TableView fx:id="hotelTable" prefHeight="377.0" prefWidth="537.0" stylesheets="@../css/tableview.css">
                                                    <columns>
                                                       <TableColumn fx:id="hotelIDColumn" prefWidth="43.0" text="ID" />
                                                       <TableColumn fx:id="hotelNameColumn" prefWidth="109.0" text="酒店名" />
@@ -155,20 +155,20 @@
                                                    <tabs>
                                                       <Tab text="添加酒店">
                                                          <content>
-                                                            <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
+                                                            <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0" style="-fx-background-color: rgb(226,238,196);">
                                                                <children>
-                                                                  <Button alignment="CENTER" layoutX="222.0" layoutY="118.0" mnemonicParsing="false" onAction="#addHotel" prefHeight="24.0" prefWidth="95.0" text="添加" AnchorPane.leftAnchor="222.0" />
+                                                                  <Button alignment="CENTER" layoutX="222.0" layoutY="118.0" mnemonicParsing="false" onAction="#addHotel" prefHeight="24.0" prefWidth="95.0" stylesheets="@../css/button.css" text="添加" AnchorPane.leftAnchor="222.0" />
                                                                   <GridPane layoutY="9.0" prefHeight="109.0" prefWidth="504.0" AnchorPane.topAnchor="9.0">
                                                                      <children>
-                                                                        <Label text="酒店名：" />
-                                                                        <Label text="所属商圈：" GridPane.rowIndex="1" />
-                                                                        <Label text="地址：" GridPane.columnIndex="2" />
-                                                                        <Label text="星级：" GridPane.columnIndex="2" GridPane.rowIndex="1" />
+                                                                        <Label stylesheets="@../css/label.css" text="酒店名：" />
+                                                                        <Label stylesheets="@../css/label.css" text="所属商圈：" GridPane.rowIndex="1" />
+                                                                        <Label stylesheets="@../css/label.css" text="地址：" GridPane.columnIndex="2" />
+                                                                        <Label stylesheets="@../css/label.css" text="星级：" GridPane.columnIndex="2" GridPane.rowIndex="1" />
                                                                         <TextField fx:id="addHotelNameTextField" GridPane.columnIndex="1" />
                                                                         <TextField fx:id="addHotelAddressTextField" GridPane.columnIndex="3" />
                                                                         <TextField fx:id="addHotelBusinessAddressTextField" GridPane.columnIndex="1" GridPane.rowIndex="1" />
                                                                         <TextField fx:id="addHotelStarTextField" GridPane.columnIndex="3" GridPane.rowIndex="1" />
-                                                                        <Label text="初始评分：" GridPane.rowIndex="2" />
+                                                                        <Label stylesheets="@../css/label.css" text="初始评分：" GridPane.rowIndex="2" />
                                                                         <TextField fx:id="addHotelScoreTextField" GridPane.columnIndex="1" GridPane.rowIndex="2" />
                                                                      </children>
                                                                      <columnConstraints>
@@ -189,15 +189,15 @@
                                                       </Tab>
                                                       <Tab text="修改酒店">
                                                          <content>
-                                                            <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
+                                                            <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0" style="-fx-background-color: rgb(226,238,196);">
                                                                <children>
-                                                                  <Button alignment="CENTER" layoutX="221.0" layoutY="118.0" mnemonicParsing="false" onAction="#updateHotel" prefHeight="24.0" prefWidth="95.0" text="修改" AnchorPane.leftAnchor="222.0" />
+                                                                  <Button alignment="CENTER" layoutX="221.0" layoutY="118.0" mnemonicParsing="false" onAction="#updateHotel" prefHeight="24.0" prefWidth="95.0" stylesheets="@../css/button.css" text="修改" AnchorPane.leftAnchor="222.0" />
                                                                   <GridPane layoutY="14.0" prefHeight="109.0" prefWidth="504.0" AnchorPane.topAnchor="9.0">
                                                                      <children>
-                                                                        <Label text="酒店名：" GridPane.rowIndex="1" />
-                                                                        <Label text="所属商圈：" GridPane.rowIndex="2" />
-                                                                        <Label text="地址：" GridPane.columnIndex="2" GridPane.rowIndex="1" />
-                                                                        <Label text="星级：" GridPane.columnIndex="2" GridPane.rowIndex="2" />
+                                                                        <Label stylesheets="@../css/label.css" text="酒店名：" GridPane.rowIndex="1" />
+                                                                        <Label stylesheets="@../css/label.css" text="所属商圈：" GridPane.rowIndex="2" />
+                                                                        <Label stylesheets="@../css/label.css" text="地址：" GridPane.columnIndex="2" GridPane.rowIndex="1" />
+                                                                        <Label stylesheets="@../css/label.css" text="星级：" GridPane.columnIndex="2" GridPane.rowIndex="2" />
                                                                         <TextField fx:id="updateHotelNameTextField" GridPane.columnIndex="1" GridPane.rowIndex="1" />
                                                                         <TextField fx:id="updateHotelAddressTextField" GridPane.columnIndex="3" GridPane.rowIndex="1" />
                                                                         <TextField fx:id="updateHotelBusinessAddressTextField" GridPane.columnIndex="1" GridPane.rowIndex="2" />
@@ -214,7 +214,7 @@
                                                                               <Insets left="60.0" />
                                                                            </GridPane.margin>
                                                                         </Button>
-                                                                        <Label text="ID：" />
+                                                                        <Label stylesheets="@../css/label.css" text="ID：" />
                                                                         <TextField fx:id="updateHotelIDTextField" GridPane.columnIndex="1" />
                                                                      </children>
                                                                      <columnConstraints>
@@ -251,7 +251,7 @@
                                        <items>
                                           <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="100.0" prefWidth="160.0">
                                              <children>
-                                                <TableView fx:id="hotelWorkerTable" prefHeight="380.0" prefWidth="537.0">
+                                                <TableView fx:id="hotelWorkerTable" prefHeight="380.0" prefWidth="537.0" stylesheets="@../css/tableview.css">
                                                    <columns>
                                                       <TableColumn fx:id="workerHotelColumn" prefWidth="132.0" text="所属酒店ID" />
                                                       <TableColumn fx:id="workerNameColumn" prefWidth="208.0" text="姓名" />
@@ -266,7 +266,7 @@
                                                   <tabs>
                                                     <Tab text="添加酒店工作人员">
                                                       <content>
-                                                        <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
+                                                        <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0" style="-fx-background-color: rgb(226,238,196);">
                                                                <children>
                                                                   <GridPane layoutX="5.0" layoutY="14.0" prefHeight="89.0" prefWidth="527.0" AnchorPane.leftAnchor="0.0" AnchorPane.topAnchor="14.0">
                                                                     <columnConstraints>
@@ -281,35 +281,35 @@
                                                                         <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
                                                                     </rowConstraints>
                                                                      <children>
-                                                                        <Label text="姓名：" GridPane.rowIndex="1" />
-                                                                        <Label text="手机号：" GridPane.columnIndex="2" GridPane.rowIndex="1" />
+                                                                        <Label stylesheets="@../css/label.css" text="姓名：" GridPane.rowIndex="1" />
+                                                                        <Label stylesheets="@../css/label.css" text="手机号：" GridPane.columnIndex="2" GridPane.rowIndex="1" />
                                                                         <TextField fx:id="addWorkerIDTextField" GridPane.columnIndex="1" />
                                                                         <TextField fx:id="addWorkerContactTextField" GridPane.columnIndex="3" GridPane.rowIndex="1" />
-                                                                        <Label text="所属酒店ID:" />
+                                                                        <Label stylesheets="@../css/label.css" text="所属酒店ID:" />
                                                                         <TextField fx:id="addWorkerNameTextField" GridPane.columnIndex="1" GridPane.rowIndex="1" />
-                                                                        <Label text="账号：" GridPane.rowIndex="2" />
-                                                                        <Label text="密码：" GridPane.columnIndex="2" GridPane.rowIndex="2" />
+                                                                        <Label stylesheets="@../css/label.css" text="账号：" GridPane.rowIndex="2" />
+                                                                        <Label stylesheets="@../css/label.css" text="密码：" GridPane.columnIndex="2" GridPane.rowIndex="2" />
                                                                         <TextField fx:id="addWorkerUsernameTextField" GridPane.columnIndex="1" GridPane.rowIndex="2" />
                                                                         <TextField fx:id="addWorkerPasswordTextField" GridPane.columnIndex="3" GridPane.rowIndex="2" />
                                                                      </children>
                                                                   </GridPane>
-                                                                  <Button alignment="CENTER" layoutX="221.0" layoutY="114.0" mnemonicParsing="false" onAction="#addHotelWorker" prefHeight="24.0" prefWidth="95.0" text="添加" />
+                                                                  <Button alignment="CENTER" layoutX="221.0" layoutY="114.0" mnemonicParsing="false" onAction="#addHotelWorker" prefHeight="24.0" prefWidth="95.0" stylesheets="@../css/button.css" text="添加" />
                                                                </children>
                                                             </AnchorPane>
                                                       </content>
                                                     </Tab>
                                                     <Tab text="修改酒店工作人员">
                                                       <content>
-                                                        <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
+                                                        <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0" style="-fx-background-color: rgb(226,238,196);">
                                                                <children>
-                                                                  <Button alignment="CENTER" layoutX="221.0" layoutY="114.0" mnemonicParsing="false" onAction="#updateHotelWorker" prefHeight="24.0" prefWidth="95.0" text="修改" />
+                                                                  <Button alignment="CENTER" layoutX="221.0" layoutY="114.0" mnemonicParsing="false" onAction="#updateHotelWorker" prefHeight="24.0" prefWidth="95.0" stylesheets="@../css/button.css" text="修改" />
                                                                   <GridPane prefHeight="89.0" prefWidth="527.0" AnchorPane.leftAnchor="0.0" AnchorPane.topAnchor="14.0">
                                                                      <children>
-                                                                        <Label text="姓名：" GridPane.rowIndex="1" />
-                                                                        <Label text="手机号：" GridPane.columnIndex="2" GridPane.rowIndex="1" />
+                                                                        <Label stylesheets="@../css/label.css" text="姓名：" GridPane.rowIndex="1" />
+                                                                        <Label stylesheets="@../css/label.css" text="手机号：" GridPane.columnIndex="2" GridPane.rowIndex="1" />
                                                                         <TextField fx:id="updateWorkerIDTextField" GridPane.columnIndex="1" />
                                                                         <TextField fx:id="updateWorkerContactTextField" GridPane.columnIndex="3" GridPane.rowIndex="1" />
-                                                                        <Label text="所属酒店ID:" />
+                                                                        <Label stylesheets="@../css/label.css" text="所属酒店ID:" />
                                                                         <TextField fx:id="updateWorkerNameTextField" GridPane.columnIndex="1" GridPane.rowIndex="1" />
                                                                         <Button alignment="CENTER" contentDisplay="CENTER" mnemonicParsing="false" onAction="#updateSearchHotelWorker" prefHeight="27.0" prefWidth="24.0">
                                                                            <graphic>
@@ -357,7 +357,7 @@
                                        <items>
                                           <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="100.0" prefWidth="160.0">
                                              <children>
-                                                <TableView fx:id="marketTable" prefHeight="379.0" prefWidth="537.0">
+                                                <TableView fx:id="marketTable" prefHeight="379.0" prefWidth="537.0" stylesheets="@../css/tableview.css">
                                                    <columns>
                                                       <TableColumn fx:id="marketIDColumn" prefWidth="135.0" text="ID" />
                                                       <TableColumn fx:id="marketNameColumn" prefWidth="177.0" text="姓名" />
@@ -372,7 +372,7 @@
                                                   <tabs>
                                                     <Tab text="添加营销人员">
                                                       <content>
-                                                        <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
+                                                        <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0" style="-fx-background-color: rgb(226,238,196);">
                                                                <children>
                                                                   <GridPane layoutX="48.0" layoutY="14.0" prefHeight="94.0" prefWidth="513.0" AnchorPane.leftAnchor="0.0" AnchorPane.topAnchor="14.0">
                                                                     <columnConstraints>
@@ -386,30 +386,30 @@
                                                                         <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
                                                                     </rowConstraints>
                                                                      <children>
-                                                                        <Label text="姓名：" />
-                                                                        <Label text="手机号：" GridPane.columnIndex="2" />
+                                                                        <Label stylesheets="@../css/label.css" text="姓名：" />
+                                                                        <Label stylesheets="@../css/label.css" text="手机号：" GridPane.columnIndex="2" />
                                                                         <TextField fx:id="addMarketNameTextField" GridPane.columnIndex="1" />
                                                                         <TextField fx:id="addMarketContactTextField" GridPane.columnIndex="3" />
-                                                                        <Label text="账号：" GridPane.rowIndex="1" />
-                                                                        <Label text="密码：" GridPane.columnIndex="2" GridPane.rowIndex="1" />
+                                                                        <Label stylesheets="@../css/label.css" text="账号：" GridPane.rowIndex="1" />
+                                                                        <Label stylesheets="@../css/label.css" text="密码：" GridPane.columnIndex="2" GridPane.rowIndex="1" />
                                                                         <TextField fx:id="addMarketUsernameTextField" GridPane.columnIndex="1" GridPane.rowIndex="1" />
                                                                         <TextField fx:id="addMarketPasswordTextField" GridPane.columnIndex="3" GridPane.rowIndex="1" />
                                                                      </children>
                                                                   </GridPane>
-                                                                  <Button alignment="CENTER" layoutX="221.0" layoutY="118.0" mnemonicParsing="false" onAction="#addMarket" prefHeight="24.0" prefWidth="95.0" text="添加" />
+                                                                  <Button alignment="CENTER" layoutX="221.0" layoutY="118.0" mnemonicParsing="false" onAction="#addMarket" prefHeight="24.0" prefWidth="95.0" stylesheets="@../css/button.css" text="添加" />
                                                                </children>
                                                             </AnchorPane>
                                                       </content>
                                                     </Tab>
                                                     <Tab text="修改营销人员">
                                                       <content>
-                                                        <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
+                                                        <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0" style="-fx-background-color: rgb(226,238,196);">
                                                                <children>
                                                                   <GridPane prefHeight="94.0" prefWidth="513.0" AnchorPane.leftAnchor="0.0" AnchorPane.topAnchor="14.0">
                                                                      <children>
-                                                                        <Label text="ID :" />
-                                                                        <Label text="姓名：" GridPane.rowIndex="1" />
-                                                                        <Label text="手机号：" GridPane.columnIndex="2" GridPane.rowIndex="1" />
+                                                                        <Label stylesheets="@../css/label.css" text="ID :" />
+                                                                        <Label stylesheets="@../css/label.css" text="姓名：" GridPane.rowIndex="1" />
+                                                                        <Label stylesheets="@../css/label.css" text="手机号：" GridPane.columnIndex="2" GridPane.rowIndex="1" />
                                                                         <TextField fx:id="updateMarketIDTextField" GridPane.columnIndex="1" />
                                                                         <TextField fx:id="updateMarketNameTextField" GridPane.columnIndex="1" GridPane.rowIndex="1" />
                                                                         <TextField fx:id="updateMarketContactTextField" GridPane.columnIndex="3" GridPane.rowIndex="1" />
@@ -437,7 +437,7 @@
                                                                         <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
                                                                      </rowConstraints>
                                                                   </GridPane>
-                                                                  <Button alignment="CENTER" layoutX="221.0" layoutY="118.0" mnemonicParsing="false" onAction="#updateMarket" prefHeight="24.0" prefWidth="95.0" text="修改" />
+                                                                  <Button alignment="CENTER" layoutX="221.0" layoutY="118.0" mnemonicParsing="false" onAction="#updateMarket" prefHeight="24.0" prefWidth="95.0" stylesheets="@../css/button.css" text="修改" />
                                                                </children>
                                                             </AnchorPane>
                                                       </content>

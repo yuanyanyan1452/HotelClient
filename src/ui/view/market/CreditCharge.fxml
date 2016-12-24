@@ -6,7 +6,7 @@
 <?import javafx.scene.layout.*?>
 <?import javafx.scene.layout.AnchorPane?>
 
-<AnchorPane prefHeight="600.0" prefWidth="700.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="ui.view.market.CreditChargeController">
+<AnchorPane prefHeight="600.0" prefWidth="700.0" stylesheets="@../css/background.css" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="ui.view.market.CreditChargeController">
    <children>
       <GridPane layoutX="92.0" layoutY="39.0" prefHeight="106.0" prefWidth="246.0">
         <columnConstraints>
@@ -18,13 +18,13 @@
           <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
         </rowConstraints>
          <children>
-            <Label text="增加信用值：" GridPane.rowIndex="1" />
-            <Label text="客户名：" />
+            <Label stylesheets="@../css/label.css" text="增加信用值：" GridPane.rowIndex="1" />
+            <Label stylesheets="@../css/label.css" text="客户名：" />
             <TextField fx:id="clientUserNameTextField" GridPane.columnIndex="1" />
             <TextField fx:id="creditTextField" GridPane.columnIndex="1" GridPane.rowIndex="1" />
          </children>
       </GridPane>
-      <TitledPane alignment="CENTER" animated="false" collapsible="false" layoutX="30.0" layoutY="170.0" prefHeight="279.0" prefWidth="390.0" text="客户信息">
+      <TitledPane alignment="CENTER" animated="false" collapsible="false" layoutX="30.0" layoutY="170.0" prefHeight="279.0" prefWidth="390.0" stylesheets="@../css/titlepane.css" text="客户信息">
          <content>
             <GridPane>
               <columnConstraints>
@@ -38,14 +38,14 @@
                   <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
               </rowConstraints>
                <children>
-                  <Label text="姓名：" />
-                  <Label text="手机号：" GridPane.rowIndex="1" />
-                  <Label text="会员类型：" GridPane.rowIndex="2" />
-                  <Label text="当前信用值：" GridPane.rowIndex="3" />
-                  <Label fx:id="nameLabel" alignment="CENTER" prefHeight="20.0" prefWidth="56.0" GridPane.columnIndex="1" />
-                  <Label fx:id="contactLabel" alignment="CENTER" prefHeight="20.0" prefWidth="150.0" GridPane.columnIndex="1" GridPane.rowIndex="1" />
-                  <Label fx:id="viptypeLabel" alignment="CENTER" prefHeight="30.0" prefWidth="154.0" GridPane.columnIndex="1" GridPane.rowIndex="2" />
-                  <Label fx:id="creditLabel" alignment="CENTER" prefHeight="20.0" prefWidth="56.0" GridPane.columnIndex="1" GridPane.rowIndex="3" />
+                  <Label stylesheets="@../css/label.css" text="姓名：" />
+                  <Label stylesheets="@../css/label.css" text="手机号：" GridPane.rowIndex="1" />
+                  <Label stylesheets="@../css/label.css" text="会员类型：" GridPane.rowIndex="2" />
+                  <Label stylesheets="@../css/label.css" text="当前信用值：" GridPane.rowIndex="3" />
+                  <Label fx:id="nameLabel" alignment="CENTER" prefHeight="20.0" prefWidth="56.0" stylesheets="@../css/label.css" GridPane.columnIndex="1" />
+                  <Label fx:id="contactLabel" alignment="CENTER" prefHeight="20.0" prefWidth="150.0" stylesheets="@../css/label.css" GridPane.columnIndex="1" GridPane.rowIndex="1" />
+                  <Label fx:id="viptypeLabel" alignment="CENTER" prefHeight="30.0" prefWidth="154.0" stylesheets="@../css/label.css" GridPane.columnIndex="1" GridPane.rowIndex="2" />
+                  <Label fx:id="creditLabel" alignment="CENTER" prefHeight="20.0" prefWidth="56.0" stylesheets="@../css/label.css" GridPane.columnIndex="1" GridPane.rowIndex="3" />
                </children>
             </GridPane>
          </content>
@@ -59,12 +59,12 @@
             </ImageView>
          </graphic>
       </Button>
-      <Button layoutX="171.0" layoutY="485.0" mnemonicParsing="false" onAction="#chargeCredit" prefHeight="41.0" prefWidth="108.0" text="确认充值" />
+      <Button layoutX="171.0" layoutY="485.0" mnemonicParsing="false" onAction="#chargeCredit" prefHeight="41.0" prefWidth="108.0" stylesheets="@../css/button.css" text="确认充值" />
       <ImageView fitHeight="243.0" fitWidth="246.0" layoutX="434.0" layoutY="188.0">
          <image>
             <Image url="@../../../../resources/timg.png" />
          </image>
       </ImageView>
-      <Label layoutX="356.0" layoutY="110.0" text="(充值额度*100)" />
+      <Label layoutX="356.0" layoutY="110.0" stylesheets="@../css/label.css" text="(充值额度*100)" />
    </children>
 </AnchorPane>

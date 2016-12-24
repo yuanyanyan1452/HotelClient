@@ -1,0 +1,13 @@
+.tab-pane > .tab-header-area > .headers-region > .tab:top {
+    -fx-background-color: white, white,  rgb(194,218,105);
+}
+.tab-pane > .tab-header-area > .headers-region > .tab > .tab-container > .tab-label {
+    -fx-alignment: CENTER;
+    -fx-text-fill: white;
+}
+.tab-pane > .tab-header-area > .tab-header-background{
+	-fx-background-color: rgb(226,238,196);
+}
+.tab-pane{
+	-fx-border-color: rgb(194,218,105);
+}

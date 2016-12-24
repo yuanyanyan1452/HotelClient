@@ -10,6 +10,7 @@ import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
+import javafx.scene.control.SplitPane;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.input.MouseEvent;
@@ -45,6 +46,9 @@ public class ClientOverviewController implements Initializable {
 		
 	}
 
+	@FXML
+	private SplitPane leftPane;
+	
 	@FXML
 	private ImageView head;
 	
@@ -129,7 +133,7 @@ public class ClientOverviewController implements Initializable {
 		// 如果是刚注册的用户，只开放维护基本信息按钮
 		if (currentclientvo.getclient_name()==null || currentclientvo.getcontact()==null
 				||currentclientvo.getclient_name().isEmpty()||currentclientvo.getcontact().isEmpty()) {
-			tipLabel.setText("您是刚注册的客户，请先完善您的基本信息~");
+			tipLabel.setText("您是刚注册的客户，请先完善基本信息~");
 			basicinfoButton.setDisable(false);
 			searchhotelButton.setDisable(true);
 			browsehotelButton.setDisable(true);

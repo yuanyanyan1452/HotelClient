@@ -9,6 +9,8 @@ import java.time.ZoneId;
 import java.util.Date;
 import java.util.ResourceBundle;
 
+import javafx.event.ActionEvent;
+import javafx.event.EventHandler;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.Button;
@@ -31,6 +33,9 @@ public class HotelCheckInChoiceController implements Initializable {
 	private OrderModel currentOrder;
 	private SimpleDateFormat format = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
 
+	@FXML
+	private Button returnButton;
+	
 	@FXML
 	private Label orderIdLabel;
 
@@ -212,6 +217,13 @@ public class HotelCheckInChoiceController implements Initializable {
 		this.checkInController = checkInController;
 		currentOrder = checkInController.currentOrder;
 
+		returnButton.setOnAction(new EventHandler<ActionEvent>() {
+			
+			@Override
+			public void handle(ActionEvent arg0) {
+				main.closeExtraStage();
+			}
+		});
 		orderIdLabel.setText(currentOrder.getOrderid());
 		orderExecuteLabel.setText(currentOrder.getIsExecute());
 		orderStateLabel.setText(currentOrder.getState());

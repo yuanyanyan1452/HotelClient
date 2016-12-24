@@ -7,9 +7,9 @@
 <?import javafx.scene.layout.*?>
 <?import javafx.scene.layout.AnchorPane?>
 
-<AnchorPane prefHeight="600.0" prefWidth="700.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="ui.view.order.HotelBrowseOrderController">
+<AnchorPane prefHeight="600.0" prefWidth="700.0" stylesheets="@../css/background.css" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="ui.view.order.HotelBrowseOrderController">
    <children>
-      <TitledPane alignment="CENTER" animated="false" collapsible="false" layoutY="56.0" prefHeight="544.0" prefWidth="700.0" text="订单列表">
+      <TitledPane alignment="CENTER" animated="false" collapsible="false" layoutY="56.0" prefHeight="544.0" prefWidth="700.0" stylesheets="@../css/titlepane.css" text="订单列表">
         <content>
           <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="539.0" prefWidth="698.0">
                <children>
@@ -19,7 +19,7 @@
                            <content>
                               <VBox prefHeight="512.0" prefWidth="882.0">
                                  <children>
-                                    <TableView fx:id="orderTable" prefHeight="511.0" prefWidth="900.0">
+                                    <TableView fx:id="orderTable" prefHeight="511.0" prefWidth="900.0" stylesheets="@../css/tableview.css">
                                        <columns>
                                           <TableColumn fx:id="idColumn" prefWidth="69.0" text="订单号" />
                                           <TableColumn fx:id="executeColumn" prefWidth="88.0" text="执行情况" />
@@ -52,11 +52,11 @@
             <Font name="System Bold" size="12.0" />
          </font>
       </TitledPane>
-      <RadioButton fx:id="cancelButton" layoutX="265.0" layoutY="33.0" mnemonicParsing="false" onAction="#update_cancelled" text="撤销" />
-      <RadioButton fx:id="abnormalButton" layoutX="172.0" layoutY="33.0" mnemonicParsing="false" onAction="#update_abnormal" text="异常" />
-      <RadioButton fx:id="normalButton" layoutX="75.0" layoutY="33.0" mnemonicParsing="false" onAction="#update_normal" text="正常" />
-      <RadioButton fx:id="unfilledButton" layoutX="172.0" layoutY="7.0" mnemonicParsing="false" onAction="#update_noexecute" text="未执行" />
-      <RadioButton fx:id="filledButton" layoutX="75.0" layoutY="7.0" mnemonicParsing="false" onAction="#update_execute" text="已执行" />
-      <Label layoutX="20.0" layoutY="21.0" text="筛选：" />
+      <RadioButton fx:id="cancelButton" layoutX="265.0" layoutY="33.0" mnemonicParsing="false" onAction="#update_cancelled" stylesheets="@../css/radiobutton.css" text="撤销" />
+      <RadioButton fx:id="abnormalButton" layoutX="172.0" layoutY="33.0" mnemonicParsing="false" onAction="#update_abnormal" stylesheets="@../css/radiobutton.css" text="异常" />
+      <RadioButton fx:id="normalButton" layoutX="75.0" layoutY="33.0" mnemonicParsing="false" onAction="#update_normal" stylesheets="@../css/radiobutton.css" text="正常" />
+      <RadioButton fx:id="unfilledButton" layoutX="172.0" layoutY="7.0" mnemonicParsing="false" onAction="#update_noexecute" stylesheets="@../css/radiobutton.css" text="未执行" />
+      <RadioButton fx:id="filledButton" layoutX="75.0" layoutY="7.0" mnemonicParsing="false" onAction="#update_execute" stylesheets="@../css/radiobutton.css" text="已执行" />
+      <Label layoutX="20.0" layoutY="21.0" stylesheets="@../css/label.css" text="筛选：" />
    </children>
 </AnchorPane>
