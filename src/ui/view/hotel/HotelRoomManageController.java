@@ -90,6 +90,7 @@ public class HotelRoomManageController implements Initializable {
 
 	@FXML
 	private void updateRoom() {
+		int booked_num=0;
 		if (updateTypeTextField.getValue().isEmpty()) {
 			AlertUtil.showWarningAlert("未输入房间类型！");
 		} else if (updateNumTextField.getText().isEmpty()) {
@@ -106,8 +107,13 @@ public class HotelRoomManageController implements Initializable {
 				ArrayList<RoomVO> roomVOs = helper.getHotelBLService().getallroom(currentHotel.getid());
 				for (RoomVO roomVO : roomVOs) {
 					if (roomVO.getroom_type().equals(type)) {
-						roomVO.settotal_num(num);
-						roomVO.setprice(price);
+						booked_num=roomVO.gettotal_num()-roomVO.getavailable_num();
+						if(num<booked_num){
+							AlertUtil.showWarningAlert("房间总数不能比已预订的房间数量少~");
+						}else{
+							roomVO.settotal_num(num);
+							roomVO.setprice(price);
+						}
 						helper.getHotelBLService().hotel_updateRoom(roomVO);
 						hasFind = true;
 						break;
@@ -116,7 +122,7 @@ public class HotelRoomManageController implements Initializable {
 				if (!hasFind) {
 					AlertUtil.showWarningAlert("当前酒店不存在这种类型的房间，请先添加~");
 				}
-				else {
+				if(num>=booked_num&&hasFind) {
 					AlertUtil.showInformationAlert("更新可用房间成功！");
 				}
 			} catch (RemoteException e) {
