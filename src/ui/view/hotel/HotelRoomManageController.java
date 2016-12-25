@@ -25,6 +25,7 @@ import vo.RoomVO;
 public class HotelRoomManageController implements Initializable {
 	private Main main;
 	private HotelVO currentHotel;
+	RemoteHelper helper = RemoteHelper.getInstance();
 
 	@FXML
 	private TableView<RoomModel> roomTable;
@@ -75,16 +76,36 @@ public class HotelRoomManageController implements Initializable {
 			vo.settotal_num(num);
 			vo.setprice(price);
 			vo.setavailable_num(num);
+			
 			try {
+				boolean ss=true;
+				ArrayList<RoomVO> roomVOs = helper.getHotelBLService().getallroom(currentHotel.getid());
+				for(RoomVO roomvo: roomVOs){
+				if(roomvo.getroom_type().equals(type)){
+					ss=false;
+					break;
+				}
+				}
+				if(ss){
 				ResultMessage message = helper.getHotelBLService().hotel_importRoom(vo);
 				if (message == ResultMessage.Success) {
 					AlertUtil.showInformationAlert("添加可用房间成功！");
 				} else {
 					AlertUtil.showErrorAlert("添加可用房间失败。。可能是由于网络问题。");
 				}
+				}
+				else{
+					AlertUtil.showWarningAlert("已有该种房间，请修改该种房间信息");
+				}
 			} catch (RemoteException e) {
 				e.printStackTrace();
 			}
+		}
+			
+		try {
+			setMain(main,helper.getHotelBLService().hotel_getInfo(currentHotel.getid()));
+		} catch (RemoteException e) {
+			e.printStackTrace();
 		}
 	}
 
@@ -129,6 +150,11 @@ public class HotelRoomManageController implements Initializable {
 				e.printStackTrace();
 			}
 		}
+		try {
+			setMain(main,helper.getHotelBLService().hotel_getInfo(currentHotel.getid()));
+		} catch (RemoteException e) {
+			e.printStackTrace();
+		}
 	}
 
 	public HotelRoomManageController() {
@@ -147,7 +173,7 @@ public class HotelRoomManageController implements Initializable {
 		addTypeTextField.getItems().addAll(RoomTypeUtil.getAllRoomType());
 		updateTypeTextField.setItems(addTypeTextField.getItems());
 		// 将当前酒店的所有可用房间录入到表格内
-		RemoteHelper helper = RemoteHelper.getInstance();
+		
 		ObservableList<RoomModel> roomModels = FXCollections.observableArrayList();
 		try {
 			ArrayList<RoomVO> roomVOs = helper.getHotelBLService().getallroom(currentHotel.getid());

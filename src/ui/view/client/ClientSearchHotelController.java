@@ -169,8 +169,6 @@ public class ClientSearchHotelController implements Initializable {
 	private void gotoGenerateOrder() {
 		if(currentClient.getcredit()>=0){
 		main.gotoGenerateOrder(currentHotel,currentClient);
-		System.out.println(currentClient.getclientid());
-		//System.out.println(currentClient.getvipinfo().getInfo());
 		}
 		else{
 			AlertUtil.showWarningAlert("对不起，您的信用值不足");
@@ -287,6 +285,7 @@ public class ClientSearchHotelController implements Initializable {
 							models.add(model);
 						}
 						hotelTable.setItems(models);
+
 					} catch (RemoteException e) {
 						e.printStackTrace();
 					}
@@ -306,12 +305,16 @@ public class ClientSearchHotelController implements Initializable {
 				TextFieldTableCell<HotelModel, String> cell = new TextFieldTableCell<>();
 				cell.setOnMouseClicked((MouseEvent t) -> {
 					if (t.getClickCount() == 2) {
+						if(cell.getIndex()<=models.size()){
 						int hotelid=(Integer.parseInt(hotelTable.getItems().get(cell.getIndex()).getID()));
 						gotodetailinfo(hotelid);
 					}
+					}
 					else if(t.getClickCount() == 1){
 						try {
-							currentHotel=helper.getHotelBLService().hotel_getInfo(Integer.parseInt(models.get(cell.getIndex()).getID()));
+							if(cell.getIndex()<=models.size()){
+							currentHotel=helper.getHotelBLService().hotel_getInfo(Integer.parseInt(hotelTable.getItems().get(cell.getIndex()).getID()));
+						} 
 						} catch (NumberFormatException | RemoteException e) {
 							e.printStackTrace();
 						}
@@ -329,13 +332,17 @@ public class ClientSearchHotelController implements Initializable {
 						TextFieldTableCell<HotelModel, String> cell = new TextFieldTableCell<>();
 						cell.setOnMouseClicked((MouseEvent t) -> {
 							if (t.getClickCount() == 2) {
+								if(cell.getIndex()<=currentHotelList.size()){
 								int hotelid=(Integer.parseInt(hotelTable.getItems().get(cell.getIndex()).getID()));
 								gotodetailinfo(hotelid);
 							}
+							}
 							else if(t.getClickCount() == 1){
 								try {
+									if(cell.getIndex()<=currentHotelList.size()){
 									currentHotel=helper.getHotelBLService().hotel_getInfo(Integer.parseInt(hotelTable.getItems().get(cell.getIndex()).getID()));
-								} catch (NumberFormatException | RemoteException e) {
+								} 
+								}catch (NumberFormatException | RemoteException e) {
 									e.printStackTrace();
 								}
 							}
@@ -351,12 +358,16 @@ public class ClientSearchHotelController implements Initializable {
 				TextFieldTableCell<HotelModel, String> cell = new TextFieldTableCell<>();
 				cell.setOnMouseClicked((MouseEvent t) -> {
 					if (t.getClickCount() == 2) {
+						if(cell.getIndex()<=currentHotelList.size()){
 						int hotelid=(Integer.parseInt(hotelTable.getItems().get(cell.getIndex()).getID()));
 						gotodetailinfo(hotelid);
 					}
+					}
 					else if(t.getClickCount() == 1){
 						try {
+							if(cell.getIndex()<=currentHotelList.size()){
 							currentHotel=helper.getHotelBLService().hotel_getInfo(Integer.parseInt(hotelTable.getItems().get(cell.getIndex()).getID()));
+						} 
 						} catch (NumberFormatException | RemoteException e) {
 							e.printStackTrace();
 						}
@@ -373,12 +384,16 @@ public class ClientSearchHotelController implements Initializable {
 				TextFieldTableCell<HotelModel, String> cell = new TextFieldTableCell<>();
 				cell.setOnMouseClicked((MouseEvent t) -> {
 					if (t.getClickCount() == 2) {
+						if(cell.getIndex()<=currentHotelList.size()){
 						int hotelid=(Integer.parseInt(hotelTable.getItems().get(cell.getIndex()).getID()));
 						gotodetailinfo(hotelid);
 					}
+					}
 					else if(t.getClickCount() == 1){
 						try {
-							currentHotel=helper.getHotelBLService().hotel_getInfo(Integer.parseInt(hotelTable.getItems().get(cell.getIndex()).getID()));
+							if(cell.getIndex()<=currentHotelList.size()){
+								currentHotel=helper.getHotelBLService().hotel_getInfo(Integer.parseInt(hotelTable.getItems().get(cell.getIndex()).getID()));
+							} 
 						} catch (NumberFormatException | RemoteException e) {
 							e.printStackTrace();
 						}
@@ -395,12 +410,16 @@ public class ClientSearchHotelController implements Initializable {
 				TextFieldTableCell<HotelModel, String> cell = new TextFieldTableCell<>();
 				cell.setOnMouseClicked((MouseEvent t) -> {
 					if (t.getClickCount() == 2) {
+						if(cell.getIndex()<=currentHotelList.size()){
 						int hotelid=(Integer.parseInt(hotelTable.getItems().get(cell.getIndex()).getID()));
 						gotodetailinfo(hotelid);
 					}
+					}
 					else if(t.getClickCount() == 1){
 						try {
-							currentHotel=helper.getHotelBLService().hotel_getInfo(Integer.parseInt(hotelTable.getItems().get(cell.getIndex()).getID()));
+							if(cell.getIndex()<=currentHotelList.size()){
+								currentHotel=helper.getHotelBLService().hotel_getInfo(Integer.parseInt(hotelTable.getItems().get(cell.getIndex()).getID()));
+							} 
 						} catch (NumberFormatException | RemoteException e) {
 							e.printStackTrace();
 						}
@@ -417,12 +436,16 @@ public class ClientSearchHotelController implements Initializable {
 				TextFieldTableCell<HotelModel, String> cell = new TextFieldTableCell<>();
 				cell.setOnMouseClicked((MouseEvent t) -> {
 					if (t.getClickCount() == 2) {
+						if(cell.getIndex()<=currentHotelList.size()){
 						int hotelid=(Integer.parseInt(hotelTable.getItems().get(cell.getIndex()).getID()));
 						gotodetailinfo(hotelid);
 					}
+					}
 					else if(t.getClickCount() == 1){
 						try {
-							currentHotel=helper.getHotelBLService().hotel_getInfo(Integer.parseInt(hotelTable.getItems().get(cell.getIndex()).getID()));
+							if(cell.getIndex()<=currentHotelList.size()){
+								currentHotel=helper.getHotelBLService().hotel_getInfo(Integer.parseInt(hotelTable.getItems().get(cell.getIndex()).getID()));
+							} 
 						} catch (NumberFormatException | RemoteException e) {
 							e.printStackTrace();
 						}
@@ -439,12 +462,16 @@ public class ClientSearchHotelController implements Initializable {
 				TextFieldTableCell<HotelModel, String> cell = new TextFieldTableCell<>();
 				cell.setOnMouseClicked((MouseEvent t) -> {
 					if (t.getClickCount() == 2) {
+						if(cell.getIndex()<=currentHotelList.size()){
 						int hotelid=(Integer.parseInt(hotelTable.getItems().get(cell.getIndex()).getID()));
 						gotodetailinfo(hotelid);
 					}
+					}
 					else if(t.getClickCount() == 1){
 						try {
-							currentHotel=helper.getHotelBLService().hotel_getInfo(Integer.parseInt(hotelTable.getItems().get(cell.getIndex()).getID()));
+							if(cell.getIndex()<=currentHotelList.size()){
+								currentHotel=helper.getHotelBLService().hotel_getInfo(Integer.parseInt(hotelTable.getItems().get(cell.getIndex()).getID()));
+							} 
 						} catch (NumberFormatException | RemoteException e) {
 							e.printStackTrace();
 						}
