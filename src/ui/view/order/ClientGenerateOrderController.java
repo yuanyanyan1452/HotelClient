@@ -37,20 +37,24 @@ public class ClientGenerateOrderController implements Initializable {
 	private Main main;
 	private HotelVO currentHotel;
 	private ClientVO currentClient;
+	//单价
 	int dachuangfangprice;
 	int shuangrenfangprice;
 	int haohuafangprice;
 	int haijingfangprice;
 	int shangwufangprice;
 	int biaozhunjianprice;
+	//该种房间价格
 	int dachuangfangprice1;
 	int shuangrenfangprice1;
 	int haohuafangprice1;
 	int haijingfangprice1;
 	int shangwufangprice1;
 	int biaozhunjianprice1;
+	
 	int price;
 	long daynmber;
+	
 	RemoteHelper helper=RemoteHelper.getInstance();
 	
 	@FXML
@@ -150,27 +154,27 @@ public class ClientGenerateOrderController implements Initializable {
 		//房间的处理
 		ArrayList<RoomOrderVO> roomlist=new ArrayList<RoomOrderVO>();
 		int daynumber=(int)((enddate.getTime()-startdate.getTime())/1000/3600/24 );
-		if(shangwufang.isSelected()){
+		if(shangwufang.isSelected()&&shangwufangnumber.getValue()!=0){
 			RoomOrderVO roomorder=new RoomOrderVO("商务房",shangwufangnumber.getValue(),daynumber);
 			roomlist.add(roomorder);
 		}
-		if(dachuangfang.isSelected()){
+		if(dachuangfang.isSelected()&&dachuangfangnumber.getValue()!=0){
 			RoomOrderVO roomorder=new RoomOrderVO("大床房",dachuangfangnumber.getValue(),daynumber);
 			roomlist.add(roomorder);
 		}
-		if(shuangrenfang.isSelected()){
+		if(shuangrenfang.isSelected()&&shuangrenfangnumber.getValue()!=0){
 			RoomOrderVO roomorder=new RoomOrderVO("双人房",shuangrenfangnumber.getValue(),daynumber);
 			roomlist.add(roomorder);
 		}
-		if(biaozhunjian.isSelected()){
+		if(biaozhunjian.isSelected()&&biaozhunjiannumber.getValue()!=0){
 			RoomOrderVO roomorder=new RoomOrderVO("标准间",biaozhunjiannumber.getValue(),daynumber);
 			roomlist.add(roomorder);
 		}
-		if(haohuafang.isSelected()){
+		if(haohuafang.isSelected()&&haohuafangnumber.getValue()!=0){
 			RoomOrderVO roomorder=new RoomOrderVO("豪华房",haohuafangnumber.getValue(),daynumber);
 			roomlist.add(roomorder);
 		}
-		if(haijingfang.isSelected()){
+		if(haijingfang.isSelected()&&haijingfangnumber.getValue()!=0){
 			RoomOrderVO roomorder=new RoomOrderVO("海景房",haijingfangnumber.getValue(),daynumber);
 			roomlist.add(roomorder);
 		}
@@ -260,16 +264,21 @@ public class ClientGenerateOrderController implements Initializable {
 		haijingfangnumber.setVisible(false);
 		biaozhunjiannumber.setVisible(false);
 		
-		//监听
+		//监听，选中对应酒店类型，酒店数量选框才会出现，酒店类型选择取消后，减去对应价格
 		shangwufang.setOnAction(new EventHandler<ActionEvent>() {
 			
 			@Override
 			public void handle(ActionEvent event) {
 				if (shangwufang.isSelected()) {
 					shangwufangnumber.setVisible(true);
+					
 				}
-				else
+				else{
 					shangwufangnumber.setVisible(false);
+					price-=(shangwufangprice1*daynmber);
+					priceLabel.setText(String.valueOf(price));
+					shangwufangnumber.setValue(0);
+				}
 			}
 		});
 		biaozhunjian.setOnAction(new EventHandler<ActionEvent>() {
@@ -279,8 +288,12 @@ public class ClientGenerateOrderController implements Initializable {
 				if (biaozhunjian.isSelected()) {
 					biaozhunjiannumber.setVisible(true);
 				}
-				else
+				else{
 					biaozhunjiannumber.setVisible(false);
+					price-=(biaozhunjianprice1*daynmber);
+					priceLabel.setText(String.valueOf(price));
+					biaozhunjiannumber.setValue(0);
+				}
 			}
 		});
 		
@@ -291,8 +304,12 @@ public class ClientGenerateOrderController implements Initializable {
 				if (dachuangfang.isSelected()) {
 					dachuangfangnumber.setVisible(true);
 				}
-				else
+				else{
+					price-=(dachuangfangprice1*daynmber);
+					priceLabel.setText(String.valueOf(price));
 					dachuangfangnumber.setVisible(false);
+					dachuangfangnumber.setValue(0);
+				}
 			}
 		});
 		
@@ -303,8 +320,12 @@ public class ClientGenerateOrderController implements Initializable {
 				if (shuangrenfang.isSelected()) {
 					shuangrenfangnumber.setVisible(true);
 				}
-				else
+				else{
+					price-=(shuangrenfangprice1*daynmber);
+					priceLabel.setText(String.valueOf(price));
 					shuangrenfangnumber.setVisible(false);
+					shuangrenfangnumber.setValue(0);
+				}
 			}
 		});
 		
@@ -315,8 +336,12 @@ public class ClientGenerateOrderController implements Initializable {
 				if (haohuafang.isSelected()) {
 					haohuafangnumber.setVisible(true);
 				}
-				else
+				else{
+					price-=(haohuafangprice1*daynmber);
+					priceLabel.setText(String.valueOf(price));
 					haohuafangnumber.setVisible(false);
+					haohuafangnumber.setValue(0);
+				}
 			}
 		});
 		
@@ -328,12 +353,16 @@ public class ClientGenerateOrderController implements Initializable {
 					haijingfangnumber.setVisible(true);
 				}
 				else{
+					price-=(haijingfangprice1*daynmber);
+					priceLabel.setText(String.valueOf(price));
 					haijingfangnumber.setVisible(false);
+					haijingfangnumber.setValue(0);
 				}
 			}
 			
 		});
 		
+		//监听，选中酒店房间数量之后，价格发生变化
 		biaozhunjiannumber.setOnAction(new EventHandler<ActionEvent>() {
 
 			@Override
