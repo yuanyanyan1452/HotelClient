@@ -114,6 +114,7 @@ public class Main extends Application {
 	 */
 	public void exitSystem(){
 		stage.close();
+		closeExtraStage();
 	}
 	/**
 	 * 返回主界面
