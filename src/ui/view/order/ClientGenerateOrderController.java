@@ -191,7 +191,7 @@ public class ClientGenerateOrderController implements Initializable {
 		
 		ResultMessage result=helper.getOrderBLService().order_client_generate(order);
 		if(result==ResultMessage.Success){
-			AlertUtil.showInformationAlert("生成订单成功！");
+			AlertUtil.showInformationAlert("生成订单成功！总价是"+order.getprice()+"。");
 			main.closeExtraStage();
 			main.gotoClientBrowseOrder(currentClient.getclientid());
 		}
