@@ -14,7 +14,7 @@ public class CreditRecordModel {
 		if (record!=null&&!record.isEmpty()) {
 			record = record.replace('，', ',');
 			String[] records = record.split(",");
-			time = new SimpleStringProperty(records[0].split("'")[1]);
+			time = new SimpleStringProperty(records[0].split("'")[0]);
 			orderid = new SimpleStringProperty(records[1]);
 			action = new SimpleStringProperty(records[2]);
 			change = new SimpleStringProperty(records[3]);
