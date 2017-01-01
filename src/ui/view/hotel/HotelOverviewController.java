@@ -9,8 +9,6 @@ import javafx.fxml.Initializable;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.SplitPane;
-import javafx.scene.layout.AnchorPane;
-import javafx.scene.layout.VBox;
 import rmi.RemoteHelper;
 import ui.view.Main;
 import vo.HotelVO;
@@ -50,8 +48,9 @@ public class HotelOverviewController implements Initializable {
 	
 	@FXML
 	private void exit(){
-		currenthotelworkervo.setlogged(false);
 		try {
+			currenthotelvo=helper.getHotelBLService().hotel_getInfo(currenthotelworkervo.gethotelid());
+			currenthotelworkervo.setlogged(false);
 			helper.getManageBLService().manage_updateHotelWorker(currenthotelworkervo);
 		} catch (RemoteException e) {
 			e.printStackTrace();

@@ -103,7 +103,7 @@ public class HotelCheckInChoiceController implements Initializable {
 			Date now = new Date();
 			String nowtime = format.format(now);
 			int nowCredit = helper.getClientBLService().client_checkCredit(clientid);
-			String newRecord = "'" + nowtime + "'" + "," + orderid + "," + RecordActionUtil.getExecute() + "," + price
+			String newRecord =  nowtime + "," + orderid + "," + RecordActionUtil.getExecute() + "," + price
 					+ "," + nowCredit;
 			ResultMessage message4 = helper.getClientBLService().client_updateClientCreditList(clientid, newRecord);
 			if (message4 == ResultMessage.Fail) {

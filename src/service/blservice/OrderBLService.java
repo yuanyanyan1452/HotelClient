@@ -172,4 +172,11 @@ public interface OrderBLService extends Remote{
 	 * @throws RemoteException
 	 */
 	public ArrayList<OrderVO> get_client_hotel_order(int clientid,int hotelid) throws RemoteException;
+	
+	/**
+	 * 获得生成订单时使用的策略名字
+	 * @return
+	 * @throws RemoteException
+	 */
+	public String getstrategyname() throws RemoteException;
 }

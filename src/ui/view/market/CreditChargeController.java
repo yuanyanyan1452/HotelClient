@@ -102,7 +102,7 @@ public class CreditChargeController implements Initializable {
 				}
 				Date date = new Date();
 				String nowTime = format.format(date);
-				String newRecord = "'"+nowTime+"'"+",-1,"+RecordActionUtil.getCharge()+","+charge+","+currentclientvo.getcredit();
+				String newRecord = nowTime+",-1,"+RecordActionUtil.getCharge()+","+charge+","+currentclientvo.getcredit();
 				record.add(newRecord);
 				currentclientvo.setcredit_record(record);
 				helper.getClientBLService().client_updateInfo(currentclientvo);

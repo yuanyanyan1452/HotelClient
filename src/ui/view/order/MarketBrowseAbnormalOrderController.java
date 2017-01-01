@@ -7,30 +7,22 @@ import java.util.ArrayList;
 import java.util.Date;
 import java.util.ResourceBundle;
 
-import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
-import javafx.scene.control.Alert;
 import javafx.scene.control.ComboBox;
-import javafx.scene.control.ListCell;
-import javafx.scene.control.ListView;
 import javafx.scene.control.TableCell;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
-import javafx.scene.control.Alert.AlertType;
 import javafx.scene.control.cell.TextFieldTableCell;
 import javafx.scene.input.MouseEvent;
 import javafx.util.Callback;
 import objects.ResultMessage;
 import rmi.RemoteHelper;
-import ui.model.ClientModel;
-import ui.model.HotelModel;
 import ui.model.OrderModel;
 import ui.util.AlertUtil;
 import ui.util.RecordActionUtil;
 import ui.view.Main;
-import vo.ClientVO;
 import vo.OrderVO;
 
 public class MarketBrowseAbnormalOrderController implements Initializable {
@@ -81,7 +73,7 @@ public class MarketBrowseAbnormalOrderController implements Initializable {
 			//添加信用记录
 			Date date = new Date();
 			String nowTime = format.format(date);
-			String newRecord = "'"+nowTime+"'"+","+currentOrder.getOrderid()+","+RecordActionUtil.getMarketCancel()+","+recover+","+helper.getClientBLService().client_checkCredit(clientid);
+			String newRecord = nowTime+","+currentOrder.getOrderid()+","+RecordActionUtil.getMarketCancel()+","+recover+","+helper.getClientBLService().client_checkCredit(clientid);
 			
 			ResultMessage m3 = helper.getClientBLService().client_updateClientCreditList(clientid, newRecord);
 			if (m2==ResultMessage.Success&&m1==m2&&m3==m2) {

@@ -1,6 +1,5 @@
 package ui.view.client;
 
-import java.net.MalformedURLException;
 import java.net.URL;
 import java.rmi.RemoteException;
 import java.util.ResourceBundle;
@@ -84,8 +83,9 @@ public class ClientOverviewController implements Initializable {
 
 	@FXML
 	private void exit() {
-		currentclientvo.setlogged(false);
 		try {
+			currentclientvo=helper.getClientBLService().client_checkInfo(currentclientvo.getclientid());
+			currentclientvo.setlogged(false);
 			helper.getClientBLService().client_updateInfo(currentclientvo);
 		} catch (RemoteException e) {
 			e.printStackTrace();

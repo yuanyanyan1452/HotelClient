@@ -85,7 +85,7 @@ public class UnfilledOrderDetailInfoByClientController implements Initializable 
 			Date date=new Date();
 			if(currentordervo.getlatest_execute_time().getTime()-date.getTime()<6*60*60*1000){
 				helper.getClientBLService().updateClientCredit(currentordervo.getclientid(), currentordervo.getprice()/2, 0);
-				String creditinfo="'"+format.format(date)+"'"+","+String.valueOf(currentordervo.getid())+","+RecordActionUtil.getClientCancel()+","+"-"+String.valueOf(currentordervo.getprice()/2)+","+String.valueOf(helper.getClientBLService().client_checkCredit(currentordervo.getclientid()));
+				String creditinfo=format.format(date)+","+String.valueOf(currentordervo.getid())+","+RecordActionUtil.getClientCancel()+","+"-"+String.valueOf(currentordervo.getprice()/2)+","+String.valueOf(helper.getClientBLService().client_checkCredit(currentordervo.getclientid()));
 				helper.getClientBLService().client_updateClientCreditList(currentordervo.getclientid(), creditinfo);
 				AlertUtil.showInformationAlert("撤销订单成功，由于撤销的订单距离最晚订单执行时间不足6个小时，扣除您相应的信用值");
 				this.update();
